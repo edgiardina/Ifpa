@@ -1,17 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Ifpa.Views.NewItemPage"
+             x:Class="Ifpa.Views.ConfigureMyStatsPage"
              Title="New Item">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Save" Clicked="Save_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
-            <Label Text="Text" FontSize="Medium" />
-            <Entry Text="{Binding Item.Text}" FontSize="Small" />
-            <Label Text="Description" FontSize="Medium" />
-            <Editor Text="{Binding Item.Description}" FontSize="Small" Margin="0" />
+            <Label Text="It looks like you haven't configured the IFPA app with your IFPA number. Please enter your IFPA number below." />
+            <Entry FontSize="Small" Keyboard="Numeric" x:Name="IfpaEntryField" />            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

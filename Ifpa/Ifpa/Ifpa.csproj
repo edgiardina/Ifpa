@@ -10,6 +10,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="PinballApi" Version="1.0.23" />
     <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />  
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\ConfigureMyStatsPage.xaml.cs">
+      <DependentUpon>ConfigureMyStatsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PlayerDetailPage.xaml.cs">
+      <DependentUpon>PlayerDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PlayersPage.xaml.cs">
+      <DependentUpon>PlayersPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

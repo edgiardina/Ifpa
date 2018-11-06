@@ -49,9 +49,10 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Paul Farnell (482XPEALN6)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignProvision>iOS Team Provisioning Profile: *</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -140,5 +141,20 @@
       <Project>{B66A5A31-A549-4FDF-A222-A48F7660103F}</Project>
       <Name>Ifpa</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\numbered-list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\numbered-list%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\numbered-list%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\mystats.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\mystats%402x.png" />
   </ItemGroup>
 </Project>

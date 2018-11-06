@@ -2,31 +2,21 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
-
-using Ifpa.Models;
-using Ifpa.Views;
+using PinballApi.Models.WPPR.Rankings;
 
 namespace Ifpa.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class PlayersViewModel : BaseViewModel
     {
-        public ObservableCollection<Item> Items { get; set; }
+        public ObservableCollection<Ranking> Players { get; set; }
         public Command LoadItemsCommand { get; set; }
 
-        public ItemsViewModel()
+        public PlayersViewModel()
         {
-            Title = "Browse";
-            Items = new ObservableCollection<Item>();
+            Title = "Top 50";
+            Players = new ObservableCollection<Ranking>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
-
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
-            {
-                var newItem = item as Item;
-                Items.Add(newItem);
-                await DataStore.AddItemAsync(newItem);
-            });
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -38,11 +28,11 @@ namespace Ifpa.ViewModels
 
             try
             {
-                Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
-                foreach (var item in items)
+                Players.Clear();
+                var items = await PinballRankingApi.GetRankings();
+                foreach (var item in items.Rankings)
                 {
-                    Items.Add(item);
+                    Players.Add(item);
                 }
             }
             catch (Exception ex)

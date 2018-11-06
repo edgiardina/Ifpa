@@ -2,17 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
-using Xamarin.Forms;
-
-using Ifpa.Models;
-using Ifpa.Services;
+using PinballApi;
 
 namespace Ifpa.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
+        public PinballRankingApi PinballRankingApi => new PinballRankingApi("585c0438147e11520622277d2ac7b298");
 
         bool isBusy = false;
         public bool IsBusy
