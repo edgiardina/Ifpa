@@ -178,9 +178,6 @@
     <BundleResource Include="Resources\mystats%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Default-Portrait%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\ifpa_logo.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -188,5 +185,11 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\calendar%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\calendar%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\mystats%402x.png" />
   </ItemGroup>
 </Project>
