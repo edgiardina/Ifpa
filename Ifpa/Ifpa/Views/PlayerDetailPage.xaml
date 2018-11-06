@@ -3,8 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ifpa.Views.PlayerDetailPage"
              Title="{Binding Title}">
+    <!--<TableView Intent="Data" HasUnevenRows="True">
+        <TableRoot>
+            <TableSection>
+                <ImageCell Height="165" ImageSource="{Binding PlayerAvatar}" Text="{Binding Name}" Detail="{Binding Player.PlayerId}" />
+                --><!--<TextCell Text="{Binding Name}"  />
+                <TextCell Text="{Binding Rank}"  />--><!--
+            </TableSection>
+        </TableRoot>
+    </TableView>-->
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--Page Level Resources: Compatibile with Xamarin Live Player -->
+            <Color x:Key="Primary">#2F4E6E</Color>
+            <Color x:Key="Accent">#072C53</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
     <StackLayout Spacing="20" Padding="15">
-        <Image Source="{Binding PlayerAvatar}" HeightRequest="165" />       
+        <Image Source="{Binding PlayerAvatar}" HeightRequest="165" />
         <Label Text="{Binding Name}" FontSize="16"/>
         <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
             <Label.FormattedText>
@@ -12,9 +32,12 @@
                     <FormattedString.Spans>
                         <Span Text="Rank: " />
                         <Span Text="{Binding Rank}" />
+                        <Span Text=" " />
+                        <Span Text="{Binding TotalWpprs}" />
                     </FormattedString.Spans>
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+        <Button Margin="0,10,0,0" Text="Latest Tournaments" Clicked="Button_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
     </StackLayout>
 </ContentPage>
