@@ -183,4 +183,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\ifpa_logo.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\calendar%403x.png" />
+  </ItemGroup>
 </Project>

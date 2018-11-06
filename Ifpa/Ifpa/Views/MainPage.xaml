@@ -15,6 +15,17 @@
             </x:Arguments>
         </NavigationPage>
 
+        <NavigationPage Title="Calendar">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="calendar.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <views:CalendarPage />
+            </x:Arguments>
+        </NavigationPage>
+
         <NavigationPage Title="My Stats">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
