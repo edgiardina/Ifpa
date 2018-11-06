@@ -155,6 +155,6 @@
     <BundleResource Include="Resources\mystats.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\mystats%402x.png" />
+    <BundleResource Include="Resources\mystats%403x.png" />
   </ItemGroup>
 </Project>
