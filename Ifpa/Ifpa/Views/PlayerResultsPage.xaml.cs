@@ -1,8 +1,5 @@
-﻿using System;
+﻿using Ifpa.ViewModels;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,24 +7,16 @@ using Xamarin.Forms.Xaml;
 namespace Ifpa.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TournamentsPage : ContentPage
+    public partial class PlayerResultsPage : ContentPage
     {
+        PlayerResultsViewModel viewModel;
         public ObservableCollection<string> Items { get; set; }
 
-        public TournamentsPage()
+        public PlayerResultsPage(PlayerResultsViewModel viewModel)
         {
             InitializeComponent();
 
-            Items = new ObservableCollection<string>
-            {
-                "Item 1",
-                "Item 2",
-                "Item 3",
-                "Item 4",
-                "Item 5"
-            };
-			
-			MyListView.ItemsSource = Items;
+            BindingContext = this.viewModel = viewModel;
         }
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -39,6 +28,13 @@ namespace Ifpa.Views
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (viewModel.Results.Count == 0)
+                viewModel.LoadItemsCommand.Execute(null);
         }
     }
 }
