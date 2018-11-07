@@ -57,9 +57,14 @@ namespace Ifpa.Views
             }
         }
 
-        private async void Button_Clicked(object sender, System.EventArgs e)
+        private async void TournamentResults_Button_Clicked(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new NavigationPage(new PlayerResultsPage(new PlayerResultsViewModel(viewModel.Player.PlayerId))));
+            await Navigation.PushAsync(new PlayerResultsPage(new PlayerResultsViewModel(viewModel.Player.PlayerId)));
+        }
+
+        private async void Pvp_Button_Clicked(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new PlayerResultsPage(new PlayerResultsViewModel(viewModel.Player.PlayerId)));
         }
     }
 }

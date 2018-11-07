@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,6 +6,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using Ifpa.ViewModels;
+using Xamarin.Forms.Maps;
+using System.Diagnostics;
 
 namespace Ifpa.Views
 {
@@ -40,16 +40,32 @@ namespace Ifpa.Views
 
         private async void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
         {
-            DistanceText.Detail = ((int)DistanceSlider.Value).ToString();
-            await viewModel.ExecuteLoadItemsCommand(ZipCodeEntry.Text, (int)DistanceSlider.Value);
+            await UpdateCalendarData();
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+                        
+            if (viewModel.CalendarDetails.Count == 0)
+            {
+                await PollAndUpdateUserLocation();
+                await UpdateCalendarData();
+            }
+        }
 
-            DistanceText.Detail = DistanceSlider.Value.ToString();
+        private async void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            await UpdateCalendarData();
+        }
+        private async void MyLocation_Clicked(object sender, EventArgs e)
+        {
+            await PollAndUpdateUserLocation();
+            await UpdateCalendarData();
+        }
 
+        private async Task PollAndUpdateUserLocation()
+        {
             try
             {
                 Location = await Geolocation.GetLastKnownLocationAsync();
@@ -59,13 +75,36 @@ namespace Ifpa.Views
                 Placemark = placemarks.First();
                 ZipCodeEntry.Text = Placemark.PostalCode;
             }
-            catch{ }
+            catch { }
+        }
 
-            if (viewModel.CalendarDetails.Count == 0)
+        private async Task UpdateCalendarData()
+        {
+            try
             {
-                await viewModel.ExecuteLoadItemsCommand(ZipCodeEntry.Text, (int)DistanceSlider.Value);
-            }
+                calendarMap.Pins.Clear();
 
+                var location = await Geocoding.GetLocationsAsync(ZipCodeEntry.Text);
+                calendarMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(location.First().Latitude, location.First().Longitude), new Distance(DistanceSlider.Value * 1609.344)));
+
+                DistanceText.Detail = ((int)DistanceSlider.Value).ToString();
+                await viewModel.ExecuteLoadItemsCommand(ZipCodeEntry.Text, (int)DistanceSlider.Value);
+
+                foreach(var detail in viewModel.CalendarDetails)
+                {
+                    var pin = new Pin();
+                    var locations = await Geocoding.GetLocationsAsync(detail.Address1 + " " + detail.City + ", " + detail.State);
+                    pin.Position = new Position(locations.First().Latitude, locations.First().Longitude);
+                    pin.Label = detail.TournamentName;
+
+                    calendarMap.Pins.Add(pin);
+                }
+            }
+            catch(Exception e)
+            {
+                //don't let the calendar crash our entire app
+                Debug.WriteLine(e.Message);
+            }
         }
     }
 }

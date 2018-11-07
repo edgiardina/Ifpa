@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using PinballApi.Models.WPPR.Rankings;
 using PinballApi.Models.WPPR.Calendar;
+using System.Linq;
 
 namespace Ifpa.ViewModels
 {
@@ -31,7 +32,8 @@ namespace Ifpa.ViewModels
             {
                 CalendarDetails.Clear();
                 var items = await PinballRankingApi.GetCalendarSearch(address, distance, DistanceUnit.Miles);
-                foreach (var item in items.Calendar)
+
+                foreach (var item in items.Calendar.OrderBy(n => n.EndDate))
                 {
                     CalendarDetails.Add(item);
                 }
