@@ -4,15 +4,6 @@
              x:Class="Ifpa.Views.PlayersPage"
               Title="{Binding Title}"
              x:Name="BrowseItemsPage">
-    <ContentPage.ToolbarItems>
-        <!--<ToolbarItem Text="Add" Clicked="AddItem_Clicked">
-            <ToolbarItem.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="UWP" Value="add.png"/>
-                </OnPlatform>
-            </ToolbarItem.Icon>
-        </ToolbarItem>-->
-    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
             <ListView x:Name="PlayersListView" 

@@ -2,32 +2,38 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ifpa.Views.CalendarPage">
-  <ListView x:Name="MyListView"
-            ItemsSource="{Binding Items}"
-            ItemTapped="Handle_ItemTapped"
-            CachingStrategy="RecycleElement">
-            
-    <!--Built in Cells-->
-    <ListView.ItemTemplate>
-        <DataTemplate>
-            <TextCell Text="{Binding .}" />
-        </DataTemplate>
-    </ListView.ItemTemplate>
-    
-    <!--Custom View Cells-->
-    <!--
-    <ListView.ItemTemplate>
-      <DataTemplate>
-        <ViewCell>
-          <StackLayout>
-            <Label Text="{Binding Text}" 
-                   Style="{DynamicResource ListItemTextStyle}" />
-            <Label Text="{Binding Detail}" 
-                   Style="{DynamicResource ListItemDetailTextStyle}"/>
-          </StackLayout>
-        </ViewCell>
-      </DataTemplate>
-    </ListView.ItemTemplate>
-    -->
-  </ListView>
+    <StackLayout>
+        <TableView Intent="Settings">
+            <TableRoot>
+                <TableSection Title="Location">
+                    <EntryCell Label="Zip Code" Placeholder="60601" x:Name="ZipCodeEntry" Keyboard="Numeric" />
+                    <TextCell Text="Distance" x:Name="DistanceText" />
+                    <ViewCell>
+                        <StackLayout>
+                            <Slider Maximum="1000" Minimum="10" Value="250" ValueChanged="Slider_ValueChanged" x:Name="DistanceSlider" />
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+
+        <ListView x:Name="MyListView"
+                     ItemsSource="{Binding CalendarDetails}"
+                     VerticalOptions="FillAndExpand"
+                     HasUnevenRows="true"       
+                     IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                     CachingStrategy="RecycleElement">
+
+            <!--Built in Cells-->
+            <ListView.ItemTemplate 
+                    VerticalOptions="FillAndExpand"
+                     HasUnevenRows="true">
+                <DataTemplate>
+                    <TextCell Text="{Binding TournamentName}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+    </StackLayout>
 </ContentPage>

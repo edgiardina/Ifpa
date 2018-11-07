@@ -6,28 +6,25 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
+using Ifpa.ViewModels;
 
 namespace Ifpa.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CalendarPage : ContentPage
     {
-        public ObservableCollection<string> Items { get; set; }
+        public CalendarViewModel viewModel { get; set; }
+
+        public Location Location { get; set; }
+
+        public Placemark Placemark { get; set; }
 
         public CalendarPage()
         {
             InitializeComponent();
 
-            Items = new ObservableCollection<string>
-            {
-                "Item 1",
-                "Item 2",
-                "Item 3",
-                "Item 4",
-                "Item 5"
-            };
-			
-			MyListView.ItemsSource = Items;
+            BindingContext = viewModel = new CalendarViewModel();
         }
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -39,6 +36,36 @@ namespace Ifpa.Views
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
+        }
+
+        private async void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            DistanceText.Detail = ((int)DistanceSlider.Value).ToString();
+            await viewModel.ExecuteLoadItemsCommand(ZipCodeEntry.Text, (int)DistanceSlider.Value);
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            DistanceText.Detail = DistanceSlider.Value.ToString();
+
+            try
+            {
+                Location = await Geolocation.GetLastKnownLocationAsync();
+
+                var placemarks = await Geocoding.GetPlacemarksAsync(Location);
+
+                Placemark = placemarks.First();
+                ZipCodeEntry.Text = Placemark.PostalCode;
+            }
+            catch{ }
+
+            if (viewModel.CalendarDetails.Count == 0)
+            {
+                await viewModel.ExecuteLoadItemsCommand(ZipCodeEntry.Text, (int)DistanceSlider.Value);
+            }
+
         }
     }
 }
