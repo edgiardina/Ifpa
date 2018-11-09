@@ -19,10 +19,7 @@ namespace Ifpa.ViewModels
             set
             {
                 playerRecord = value;
-                OnPropertyChanged("Name");
-                OnPropertyChanged("Rank");
-                OnPropertyChanged("TotalWpprs");
-                OnPropertyChanged("PlayerAvatar");
+                OnPropertyChanged(null);
             }
         }
 

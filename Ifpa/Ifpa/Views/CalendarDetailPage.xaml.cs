@@ -9,9 +9,7 @@ namespace Ifpa.Views
     public partial class CalendarDetailPage : ContentPage
     {
         CalendarDetailViewModel viewModel;
-
-        bool LoadMyStats = false;
-
+        
         public CalendarDetailPage(CalendarDetailViewModel viewModel)
         {
             InitializeComponent();

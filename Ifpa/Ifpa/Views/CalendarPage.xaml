@@ -4,14 +4,14 @@
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              x:Class="Ifpa.Views.CalendarPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Update" Clicked="ToolbarItem_Clicked" />
+        <ToolbarItem Text="Search" Clicked="ToolbarItem_Clicked" Icon="search.png" />
         <ToolbarItem Text="My Location" Clicked="MyLocation_Clicked" Icon="location.png" />
     </ContentPage.ToolbarItems>
     <StackLayout>
         <TableView Intent="Settings">
             <TableRoot>
                 <TableSection Title="Location">
-                    <EntryCell Label="Zip Code" Placeholder="60601" Text="60601" x:Name="ZipCodeEntry" Keyboard="Numeric" />
+                    <EntryCell Label="Location" Placeholder="Chicago, Illinois" Text="Chicago, Illinois" x:Name="LocationEntry" />                       
                     <TextCell Text="Distance" x:Name="DistanceText" />
                     <ViewCell>
                         <StackLayout>
@@ -25,13 +25,13 @@
             x:Name="calendarMap"
             IsShowingUser="true"
             MapType="Street" />
-        <ListView x:Name="MyListView"
+        <ListView x:Name="TournamentListView"
                      ItemsSource="{Binding CalendarDetails}"
                      VerticalOptions="FillAndExpand"
                      HasUnevenRows="true"       
                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                     CachingStrategy="RecycleElement">
-
+                     CachingStrategy="RecycleElement"
+                  ItemSelected="TournamentListView_ItemSelected">
             <!--Built in Cells-->
             <ListView.ItemTemplate 
                     VerticalOptions="FillAndExpand"

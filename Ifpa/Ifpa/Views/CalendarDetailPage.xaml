@@ -12,21 +12,16 @@
             <Color x:Key="LightTextColor">#999999</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
-
-    <StackLayout Spacing="20" Padding="15">
-        <Image Source="{Binding PlayerAvatar, Mode=OneWay}" HeightRequest="165" />
-        <Label Text="{Binding Name, Mode=OneWay}" FontSize="16"/>
-        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Rank: " />
-                        <Span Text="{Binding Rank, Mode=OneWay}" />
-                        <Span Text=" " />
-                        <Span Text="{Binding TotalWpprs, Mode=OneWay}" />
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>
+    <ScrollView>
+        <StackLayout Padding="15">
+            <Label Text="{Binding Website, Mode=OneWay}" />
+            <Label Text="{Binding DirectorName, Mode=OneWay}" />
+            <Label Text="{Binding Address1, Mode=OneWay}"   />
+            <Label Text="{Binding Address2, Mode=OneWay}"   />
+            <Label Text="{Binding City, Mode=OneWay}"    />
+            <Label Text="{Binding State, Mode=OneWay}"    />
+            <Label Text="{Binding CountryName, Mode=OneWay}"    />
+            <Editor Text="{Binding Details, Mode=OneWay}" IsEnabled="False" HeightRequest="600"  />
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
