@@ -3,22 +3,24 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using PinballApi.Models.WPPR.Tournaments;
 using PinballApi.Models.WPPR.Players;
+using System.Linq;
 
 namespace Ifpa.ViewModels
 {
-    public class PlayerResultsViewModel : BaseViewModel
+    public class PlayerVersusPlayerViewModel : BaseViewModel
     {
-        public ObservableCollection<Result> Results { get; set; }
+        public ObservableCollection<PlayerVersusRecord> Results { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         private int playerId;
 
-        public PlayerResultsViewModel(int playerId)
+        public PlayerVersusPlayerViewModel(int playerId)
         {
-            Title = "Player Results";
+            Title = "PVP";
             this.playerId = playerId;
-            Results = new ObservableCollection<Result>();
+            Results = new ObservableCollection<PlayerVersusRecord>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
 
@@ -32,9 +34,9 @@ namespace Ifpa.ViewModels
             try
             {
                 Results.Clear();
-                var playerResults = await PinballRankingApi.GetPlayerResults(playerId);
+                var pvpResults = await PinballRankingApi.GetPlayerComparisons(playerId);
 
-                foreach (var item in playerResults.Results)
+                foreach (var item in pvpResults.Pvp.OrderBy(n => n.LastName).ThenBy(n => n.FirstName))
                 {                 
                     Results.Add(item);
                 }

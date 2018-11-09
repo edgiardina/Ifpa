@@ -23,9 +23,7 @@ namespace Ifpa.Views
             if (player == null)
                 return;
 
-            var playerData = await viewModel.PinballRankingApi.GetPlayerRecord(player.PlayerId);
-
-            await Navigation.PushAsync(new PlayerDetailPage(new PlayerDetailViewModel(playerData)));
+            await Navigation.PushAsync(new PlayerDetailPage(new PlayerDetailViewModel(player.PlayerId)));
 
             // Manually deselect item.
             PlayersListView.SelectedItem = null;

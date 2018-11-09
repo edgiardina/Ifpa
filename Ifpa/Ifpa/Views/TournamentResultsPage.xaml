@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
+             x:Class="Ifpa.Views.TournamentResultsPage"
+             Title="{Binding Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:IntToOrdinalStringConverter x:Key="intToOrdinalString" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ListView x:Name="MyListView"
+            ItemsSource="{Binding Results}"
+            RefreshCommand="{Binding LoadItemsCommand}"
+            IsPullToRefreshEnabled="true"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            ItemTapped="Handle_ItemTapped"
+            CachingStrategy="RecycleElement"
+            HasUnevenRows="true">
+        <!--Custom View Cells-->
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" Padding="10">
+                        <StackLayout HorizontalOptions="Start">
+                            <Label Text="{Binding TournamentName}"  FontSize="16" Style="{DynamicResource ListItemTextStyle}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <FormattedString.Spans>
+                                                <Span Text="{Binding FirstName}" />
+                                                <Span Text=" " />
+                                                <Span Text="{Binding LastName}" />
+                                            </FormattedString.Spans>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>                            
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="EndAndExpand">
+                            <Label LineBreakMode="NoWrap" HorizontalTextAlignment="Center" Text="{Binding Position, Converter=intToOrdinalString}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
+                            <Label LineBreakMode="NoWrap" HorizontalTextAlignment="Center" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding Points, StringFormat='{0:0.00}'}" />
+                        </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

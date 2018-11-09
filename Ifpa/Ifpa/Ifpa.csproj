@@ -20,8 +20,17 @@
     <Compile Update="Views\ConfigureMyStatsPage.xaml.cs">
       <DependentUpon>ConfigureMyStatsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\CalendarDetailPage.xaml.cs">
+      <DependentUpon>CalendarDetailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\PlayerDetailPage.xaml.cs">
       <DependentUpon>PlayerDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PlayerVersusPlayerPage.xaml.cs">
+      <DependentUpon>PlayerVersusPlayerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\TournamentResultsPage.xaml.cs">
+      <DependentUpon>TournamentResultsPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\PlayersPage.xaml.cs">
       <DependentUpon>PlayersPage.xaml</DependentUpon>

@@ -1,7 +1,7 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Ifpa.ViewModels;
-using PinballApi.Models.WPPR.Players;
+using System;
 
 namespace Ifpa.Views
 {
@@ -24,9 +24,7 @@ namespace Ifpa.Views
             InitializeComponent();
 
             LoadMyStats = true;
-
-            viewModel = new PlayerDetailViewModel(new PlayerRecord { Player = new Player { PlayerId = "-1" }, PlayerStats = new PlayerStats { CurrentWpprRank = 1 } });
-            BindingContext = viewModel;
+            BindingContext = this.viewModel = new PlayerDetailViewModel(0);
         }
 
         protected async override void OnAppearing()
@@ -40,12 +38,9 @@ namespace Ifpa.Views
                     try
                     {
                         var id = Application.Current.Properties["PlayerId"] as string;
-                        var playerRecord = await viewModel.PinballRankingApi.GetPlayerRecord(int.Parse(id));
-
-                        viewModel = new PlayerDetailViewModel(playerRecord);
-                        BindingContext = viewModel;
+                        viewModel.PlayerId = int.Parse(id);                                               
                     }
-                    catch
+                    catch(Exception ex)
                     {
                         await Navigation.PushModalAsync(new NavigationPage(new ConfigureMyStatsPage()));
                     }
@@ -53,18 +48,24 @@ namespace Ifpa.Views
                 else
                 {
                     await Navigation.PushModalAsync(new NavigationPage(new ConfigureMyStatsPage()));
+
+                    var id = Application.Current.Properties["PlayerId"] as string;
+
+                    viewModel.PlayerId = int.Parse(id);
                 }
             }
+
+            viewModel.LoadItemsCommand.Execute(null);
         }
 
-        private async void TournamentResults_Button_Clicked(object sender, System.EventArgs e)
+        private async void TournamentResults_Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PlayerResultsPage(new PlayerResultsViewModel(viewModel.Player.PlayerId)));
+            await Navigation.PushAsync(new PlayerResultsPage(new PlayerResultsViewModel(viewModel.PlayerId)));
         }
 
-        private async void Pvp_Button_Clicked(object sender, System.EventArgs e)
+        private async void Pvp_Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PlayerResultsPage(new PlayerResultsViewModel(viewModel.Player.PlayerId)));
+            await Navigation.PushAsync(new PlayerVersusPlayerPage(new PlayerVersusPlayerViewModel(viewModel.PlayerId)));
         }
     }
 }

@@ -5,7 +5,7 @@
              x:Class="Ifpa.Views.CalendarPage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Update" Clicked="ToolbarItem_Clicked" />
-        <ToolbarItem Text="My Location" Clicked="MyLocation_Clicked" />
+        <ToolbarItem Text="My Location" Clicked="MyLocation_Clicked" Icon="location.png" />
     </ContentPage.ToolbarItems>
     <StackLayout>
         <TableView Intent="Settings">
