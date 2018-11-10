@@ -64,14 +64,14 @@
                     </Label.FormattedText>
                 </Label>
                 <Label>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CreatorLabel_Tapped"/>
+                    </Label.GestureRecognizers>
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
                                 <Span Text="This app was written by " />
-                                <Span Text="Ed Giardina"
-                                    >
-                                    <!-- TODO: link to my IFPA page -->
-                                </Span>
+                                <Span Text="Ed Giardina" TextColor="Blue" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
