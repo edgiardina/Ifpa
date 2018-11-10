@@ -48,10 +48,6 @@ namespace Ifpa.Views
                 else
                 {
                     await Navigation.PushModalAsync(new NavigationPage(new ConfigureMyStatsPage()));
-
-                    var id = Application.Current.Properties["PlayerId"] as string;
-
-                    viewModel.PlayerId = int.Parse(id);
                 }
             }
 

@@ -14,7 +14,11 @@
     </ContentPage.Resources>
     <ScrollView>
         <StackLayout Padding="15">
-            <Label Text="{Binding Website, Mode=OneWay}" />
+            <Label Text="{Binding Website, Mode=OneWay}" TextColor="Blue" >
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="WebsiteLabel_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
             <Label Text="{Binding DirectorName, Mode=OneWay}" />
             <Label Text="{Binding Address1, Mode=OneWay}"   />
             <Label Text="{Binding Address2, Mode=OneWay}"   />

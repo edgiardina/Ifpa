@@ -2,6 +2,8 @@
 using Xamarin.Forms.Xaml;
 using Ifpa.ViewModels;
 using System;
+using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace Ifpa.Views
 {
@@ -23,6 +25,11 @@ namespace Ifpa.Views
             base.OnAppearing();          
 
             viewModel.LoadItemsCommand.Execute(null);
+        }
+
+        private async Task WebsiteLabel_Tapped(object sender, EventArgs e)
+        {
+            await Browser.OpenAsync(viewModel.Website, BrowserLaunchMode.SystemPreferred);
         }
     }
 }

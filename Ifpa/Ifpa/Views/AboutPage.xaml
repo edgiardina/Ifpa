@@ -31,7 +31,7 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="IFPA App" FontAttributes="Bold" FontSize="22" />
+                                <Span Text="IFPA Companion" FontAttributes="Bold" FontSize="22" />
                                 <Span Text=" " />
                                 <Span Text="1.0" ForegroundColor="{StaticResource LightTextColor}" />
                             </FormattedString.Spans>
@@ -69,7 +69,7 @@
                             <FormattedString.Spans>
                                 <Span Text="This app was written by " />
                                 <Span Text="Ed Giardina"
-                                    TextColor="Blue">
+                                    >
                                     <!-- TODO: link to my IFPA page -->
                                 </Span>
                             </FormattedString.Spans>
