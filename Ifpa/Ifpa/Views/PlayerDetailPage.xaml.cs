@@ -2,6 +2,7 @@
 using Xamarin.Forms.Xaml;
 using Ifpa.ViewModels;
 using System;
+using System.Threading.Tasks;
 
 namespace Ifpa.Views
 {
@@ -62,6 +63,15 @@ namespace Ifpa.Views
         private async void Pvp_Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new PlayerVersusPlayerPage(new PlayerVersusPlayerViewModel(viewModel.PlayerId)));
+        }
+
+        private async Task Refresh_Clicked(object sender, EventArgs e)
+        {
+            RefreshIndicator.IsVisible = true;
+            viewModel.LoadItemsCommand.Execute(null);
+            await RefreshIndicator.RotateTo(360, 1250);
+            RefreshIndicator.Rotation = 0;
+            RefreshIndicator.IsVisible = false;
         }
     }
 }

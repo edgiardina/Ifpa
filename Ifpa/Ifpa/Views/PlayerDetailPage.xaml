@@ -12,9 +12,12 @@
             <Color x:Key="LightTextColor">#999999</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
-
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Refresh" x:Name="RefreshButton" Clicked="Refresh_Clicked" Icon="refresh.png" />
+    </ContentPage.ToolbarItems>
     <StackLayout Spacing="20" Padding="15">
         <Image Source="{Binding PlayerAvatar, Mode=OneWay}" HeightRequest="165" />
+        <Image Source="refresh.png" x:Name="RefreshIndicator" IsVisible="False" />
         <Label Text="{Binding Name, Mode=OneWay}" FontSize="16"/>
         <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
             <Label.FormattedText>
