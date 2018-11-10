@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ifpa.Views.PlayerSearchPage"
+              Title="{Binding Title}"
+             x:Name="SearchPlayersPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar x:Name="SearchBar" SearchCommand="{Binding SearchCommand}" SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"></SearchBar>
+            <ListView x:Name="PlayersListView" 
+                ItemsSource="{Binding Players}"
+                VerticalOptions="FillAndExpand"
+                 HasUnevenRows="true"
+                 RefreshCommand="{Binding LoadItemsCommand}"
+                 IsPullToRefreshEnabled="true"
+                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                 CachingStrategy="RecycleElement"
+                 ItemSelected="OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Horizontal" >
+                                <StackLayout Padding="10" Orientation="Vertical">
+                                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Text="{Binding FirstName}" />
+                                                    <Span Text=" " />
+                                                    <Span Text="{Binding LastName}" />
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Text="{Binding City}" />
+                                                    <Span Text=" " />
+                                                    <Span Text="{Binding State}" />
+                                                    <Span Text=" " />
+                                                    <Span Text="{Binding CountryName}" />
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                                <Label HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" Text="{Binding WpprRank}" 
+                                   LineBreakMode="NoWrap" 
+                                   Style="{DynamicResource ListItemTextStyle}" 
+                                   FontSize="24" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

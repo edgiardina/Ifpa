@@ -26,6 +26,9 @@
     <Compile Update="Views\PlayerDetailPage.xaml.cs">
       <DependentUpon>PlayerDetailPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\PlayerSearchPage.xaml.cs">
+      <DependentUpon>PlayerSearchPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\PlayerVersusPlayerPage.xaml.cs">
       <DependentUpon>PlayerVersusPlayerPage.xaml</DependentUpon>
     </Compile>
