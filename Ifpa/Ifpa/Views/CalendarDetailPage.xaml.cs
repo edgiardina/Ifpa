@@ -31,5 +31,19 @@ namespace Ifpa.Views
         {
             await Browser.OpenAsync(viewModel.Website, BrowserLaunchMode.SystemPreferred);
         }
+
+        private async Task Address_Tapped(object sender, EventArgs e)
+        {
+            var placemark = new Placemark
+            {
+                CountryName = viewModel.CountryName,
+                AdminArea = viewModel.State,
+                Thoroughfare = viewModel.Address1,
+                Locality = viewModel.City
+            };
+            var options = new MapsLaunchOptions { Name = viewModel.TournamentName };
+
+            await Maps.OpenAsync(placemark, options);
+        }
     }
 }
