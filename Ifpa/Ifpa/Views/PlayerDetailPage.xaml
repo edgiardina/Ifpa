@@ -32,7 +32,9 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
-        <Button Margin="0,10,0,0" Text="Tournament Results" Clicked="TournamentResults_Button_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
-        <Button Margin="0,10,0,0" Text="Player vs Player" Clicked="Pvp_Button_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Button WidthRequest="160" Margin="0,10,0,0" Text="Tournament Results" Clicked="TournamentResults_Button_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
+            <Button WidthRequest="160" Margin="0,10,0,0" Text="Player vs Player" Clicked="Pvp_Button_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
+        </StackLayout>
     </StackLayout>
 </ContentPage>

@@ -16,7 +16,10 @@
             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
             ItemTapped="Handle_ItemTapped"
             CachingStrategy="RecycleElement"
-            HasUnevenRows="true">
+            HasUnevenRows="true"
+            IsGroupingEnabled="True"
+            GroupDisplayBinding="{Binding Key}"
+            GroupShortNameBinding="{Binding Key}">
         <!--Custom View Cells-->
         <ListView.ItemTemplate>
             <DataTemplate>

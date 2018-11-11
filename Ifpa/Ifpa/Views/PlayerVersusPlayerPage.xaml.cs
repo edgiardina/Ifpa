@@ -11,7 +11,6 @@ namespace Ifpa.Views
     public partial class PlayerVersusPlayerPage : ContentPage
     {
         PlayerVersusPlayerViewModel viewModel;
-        public ObservableCollection<string> Items { get; set; }
 
         public PlayerVersusPlayerPage(PlayerVersusPlayerViewModel viewModel)
         {
