@@ -31,6 +31,7 @@ namespace Ifpa.Views
 
         private async void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
         {
+            DistanceText.Text = ((int)DistanceSlider.Value).ToString();
             await UpdateCalendarData();
         }
 
@@ -90,7 +91,7 @@ namespace Ifpa.Views
                     var location = await Geocoding.GetLocationsAsync(LocationEntry.Text);
                     calendarMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(location.First().Latitude, location.First().Longitude), new Distance(DistanceSlider.Value * 1609.344)));
 
-                    DistanceText.Detail = ((int)DistanceSlider.Value).ToString();
+                    DistanceText.Text = ((int)DistanceSlider.Value).ToString();
                     await viewModel.ExecuteLoadItemsCommand(LocationEntry.Text, (int)DistanceSlider.Value);
 
                     foreach (var detail in viewModel.CalendarDetails)
