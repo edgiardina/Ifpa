@@ -1,0 +1,57 @@
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using Xamarin.Forms;
+using PinballApi.Models.WPPR.Tournaments;
+using PinballApi.Models.WPPR.Pvp;
+using System.Linq;
+
+namespace Ifpa.ViewModels
+{
+    public class PlayerVersusPlayerDetailViewModel : BaseViewModel
+    {
+        public ObservableCollection<Pvp> PlayerVersusPlayer { get; set; }
+        public Command LoadItemsCommand { get; set; }
+
+        private int playerOneId;
+        private int playerTwoId;
+
+        public PlayerVersusPlayerDetailViewModel(int playerOneId, int playerTwoId)
+        {
+            this.playerOneId = playerOneId;
+            this.playerTwoId = playerTwoId;
+            PlayerVersusPlayer = new ObservableCollection<Pvp>();
+            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+        }
+
+        async Task ExecuteLoadItemsCommand()
+        {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+
+            try
+            {
+                PlayerVersusPlayer.Clear();
+                var pvpResults = await PinballRankingApi.GetPvp(playerOneId, playerTwoId);
+
+                foreach (var item in pvpResults.Pvp.OrderByDescending(n => n.EventDate))
+                {                 
+                    PlayerVersusPlayer.Add(item);
+                }
+
+                Title = $"{pvpResults.P1FirstName} {pvpResults.P1LastName} vs {pvpResults.P2FirstName} {pvpResults.P2LastName}";
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+    }
+}

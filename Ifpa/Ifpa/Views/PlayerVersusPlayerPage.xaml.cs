@@ -1,4 +1,6 @@
-﻿using Ifpa.ViewModels;
+﻿using Ifpa.Models;
+using Ifpa.ViewModels;
+using PinballApi.Models.WPPR.Players;
 using PinballApi.Models.WPPR.Tournaments;
 using System.Collections.ObjectModel;
 
@@ -22,11 +24,11 @@ namespace Ifpa.Views
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             
-            var tournament = e.Item as Result;
-            if (tournament == null)
+            var pvp = e.Item as PlayerVersusRecord;
+            if (pvp == null)
                 return;
 
-            //await Navigation.PushAsync(new PlayerDetailPage(new PlayerDetailViewModel(tournament.PlayerId)));
+            await Navigation.PushAsync(new PlayerVersusPlayerDetailPage (new PlayerVersusPlayerDetailViewModel(viewModel.PlayerId, pvp.PlayerId)));
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;

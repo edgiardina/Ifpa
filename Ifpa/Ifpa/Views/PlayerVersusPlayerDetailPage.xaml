@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
+             x:Class="Ifpa.Views.PlayerVersusPlayerDetailPage"
+             Title="{Binding Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:IntToOrdinalStringConverter x:Key="intToOrdinalString" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ListView x:Name="MyListView"
+            ItemsSource="{Binding PlayerVersusPlayer}"
+            RefreshCommand="{Binding LoadItemsCommand}"
+            IsPullToRefreshEnabled="true"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            ItemTapped="Handle_ItemTapped"
+            CachingStrategy="RecycleElement"
+            HasUnevenRows="true">
+        <!--Custom View Cells-->
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" Padding="10">
+                        <StackLayout HorizontalOptions="Start">
+                            <Label Text="{Binding TournamentName}"  FontSize="16" Style="{DynamicResource ListItemTextStyle}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding EventName}" />
+                                <Label Text="{Binding EventDate, StringFormat='{0:d}'}" FontSize="12" />
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="EndAndExpand" MinimumWidthRequest="80">
+                            <Label LineBreakMode="NoWrap" HorizontalTextAlignment="Start" FontSize="16" Style="{DynamicResource ListItemTextStyle}" >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="P1: " />
+                                            <Span Text="{Binding P1FinishPosition, Converter=intToOrdinalString}" />
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label LineBreakMode="NoWrap" HorizontalTextAlignment="Start" FontSize="16" Style="{DynamicResource ListItemTextStyle}" >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="P2: " />
+                                            <Span Text="{Binding P2FinishPosition, Converter=intToOrdinalString}" />
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

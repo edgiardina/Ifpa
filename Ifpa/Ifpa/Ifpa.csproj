@@ -29,6 +29,9 @@
     <Compile Update="Views\PlayerVersusPlayerPage.xaml.cs">
       <DependentUpon>PlayerVersusPlayerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\PlayerVersusPlayerDetailPage.xaml.cs">
+      <DependentUpon>PlayerVersusPlayerDetailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\TournamentResultsPage.xaml.cs">
       <DependentUpon>TournamentResultsPage.xaml</DependentUpon>
     </Compile>

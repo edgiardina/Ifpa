@@ -1,6 +1,6 @@
 ﻿using Ifpa.ViewModels;
+using PinballApi.Models.WPPR.Pvp;
 using PinballApi.Models.WPPR.Tournaments;
-using System.Collections.ObjectModel;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -8,11 +8,11 @@ using Xamarin.Forms.Xaml;
 namespace Ifpa.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TournamentResultsPage : ContentPage
+    public partial class PlayerVersusPlayerDetailPage : ContentPage
     {
-        TournamentResultsViewModel viewModel;
+        PlayerVersusPlayerDetailViewModel viewModel;
 
-        public TournamentResultsPage(TournamentResultsViewModel viewModel)
+        public PlayerVersusPlayerDetailPage(PlayerVersusPlayerDetailViewModel viewModel)
         {
             InitializeComponent();
 
@@ -20,13 +20,12 @@ namespace Ifpa.Views
         }
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            
-            var tournament = e.Item as Result;
+        {            
+            var tournament = e.Item as Pvp;
             if (tournament == null)
                 return;
 
-            await Navigation.PushAsync(new PlayerDetailPage(new PlayerDetailViewModel(tournament.PlayerId)));
+            await Navigation.PushAsync(new TournamentResultsPage(new TournamentResultsViewModel(int.Parse(tournament.TournamentId))));
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
@@ -35,7 +34,7 @@ namespace Ifpa.Views
         {
             base.OnAppearing();
 
-            if (viewModel.Results.Count == 0)
+            if (viewModel.PlayerVersusPlayer.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
         }
     }

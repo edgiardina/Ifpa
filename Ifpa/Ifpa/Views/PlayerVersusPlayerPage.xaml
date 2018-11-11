@@ -11,7 +11,7 @@
     </ContentPage.Resources>
     <ListView x:Name="MyListView"
             ItemsSource="{Binding Results}"
-            RefreshCommand="{Binding LoadItemsCommand}"
+            RefreshCommand="{Binding LoadItemsCommand}"              
             IsPullToRefreshEnabled="true"
             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
             ItemTapped="Handle_ItemTapped"
@@ -25,7 +25,7 @@
             <DataTemplate>
                 <ViewCell>
                     <StackLayout Orientation="Horizontal" Padding="10">
-                        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <FormattedString.Spans>

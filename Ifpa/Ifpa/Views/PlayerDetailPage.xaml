@@ -17,8 +17,8 @@
         <ToolbarItem Text="Set to My Stats" x:Name="StarButton" Clicked="StarButton_Clicked" Icon="star.png" />
     </ContentPage.ToolbarItems>
     <StackLayout Spacing="20" Padding="15">
-        <Image Source="{Binding PlayerAvatar, Mode=OneWay}" HeightRequest="165" />
         <Image Source="refresh.png" x:Name="RefreshIndicator" IsVisible="False" />
+        <Image Source="{Binding PlayerAvatar, Mode=OneWay}" HeightRequest="165" />
         <Label Text="{Binding Name, Mode=OneWay}" FontSize="16"/>
         <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
             <Label.FormattedText>
