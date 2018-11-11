@@ -17,9 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\ConfigureMyStatsPage.xaml.cs">
-      <DependentUpon>ConfigureMyStatsPage.xaml</DependentUpon>
-    </Compile>
     <Compile Update="Views\CalendarDetailPage.xaml.cs">
       <DependentUpon>CalendarDetailPage.xaml</DependentUpon>
     </Compile>

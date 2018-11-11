@@ -17,7 +17,7 @@ namespace Ifpa.Views
         {
             InitializeComponent();
 
-            BindingContext = this.viewModel = viewModel;            
+            BindingContext = this.viewModel = viewModel;
         }
 
         public PlayerDetailPage()
@@ -34,21 +34,24 @@ namespace Ifpa.Views
 
             if (LoadMyStats)
             {
+                //Hide Star on our own page
+                if(ToolbarItems.Count == 2)
+                    ToolbarItems.RemoveAt(1);
+
                 if (Application.Current.Properties.ContainsKey("PlayerId"))
                 {
                     try
                     {
-                        var id = Application.Current.Properties["PlayerId"] as string;
-                        viewModel.PlayerId = int.Parse(id);                                               
+                        viewModel.PlayerId = (int)Application.Current.Properties["PlayerId"];
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
-                        await Navigation.PushModalAsync(new NavigationPage(new ConfigureMyStatsPage()));
+                        await RedirectUserToPlayerSearch();
                     }
                 }
                 else
                 {
-                    await Navigation.PushModalAsync(new NavigationPage(new ConfigureMyStatsPage()));
+                    await RedirectUserToPlayerSearch();
                 }
             }
 
@@ -72,6 +75,37 @@ namespace Ifpa.Views
             await RefreshIndicator.RotateTo(360, 1250);
             RefreshIndicator.Rotation = 0;
             RefreshIndicator.IsVisible = false;
+        }
+
+        private async Task StarButton_Clicked(object sender, EventArgs e)
+        {
+            if (!Application.Current.Properties.ContainsKey("PlayerId"))
+            {
+                await ChangePlayerAndRedirect();
+            }
+            else
+            {
+                var result = await DisplayAlert("Caution", "You have already configured your Stats page, do you wish to change your Stats to this player?", "OK", "Cancel");
+                if(result)
+                {
+                    await ChangePlayerAndRedirect();
+                }
+            }
+        }
+
+        private async Task ChangePlayerAndRedirect()
+        {
+            Application.Current.Properties["PlayerId"] = viewModel.PlayerId;
+            await DisplayAlert("Congratulations", "You have now configured your Stats page!", "OK");
+            var masterPage = this.Parent.Parent as TabbedPage;
+            masterPage.CurrentPage = masterPage.Children[2];
+        }
+
+        private async Task RedirectUserToPlayerSearch()
+        {
+            await DisplayAlert("Configure your Stats", "Looks like you haven't configured your 'My Stats' page. Use the Player Search to find your Player, and press the Star to configure your Stats", "OK");
+            var masterPage = this.Parent.Parent as TabbedPage;
+            masterPage.CurrentPage = masterPage.Children[1];
         }
     }
 }

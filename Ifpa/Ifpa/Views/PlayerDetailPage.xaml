@@ -14,6 +14,7 @@
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Refresh" x:Name="RefreshButton" Clicked="Refresh_Clicked" Icon="refresh.png" />
+        <ToolbarItem Text="Set to My Stats" x:Name="StarButton" Clicked="StarButton_Clicked" Icon="star.png" />
     </ContentPage.ToolbarItems>
     <StackLayout Spacing="20" Padding="15">
         <Image Source="{Binding PlayerAvatar, Mode=OneWay}" HeightRequest="165" />
