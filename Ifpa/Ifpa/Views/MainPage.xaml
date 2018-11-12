@@ -3,6 +3,15 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:views="clr-namespace:Ifpa.Views"
             x:Class="Ifpa.Views.MainPage"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            android:TabbedPage.BarItemColor="#66FFFFFF"
+            android:TabbedPage.BarSelectedItemColor="White">
+    <TabbedPage.BarBackgroundColor>
+        <OnPlatform x:TypeArguments="Color">
+            <On Platform="Android" Value="{StaticResource NavigationPrimary}" />
+        </OnPlatform>
+    </TabbedPage.BarBackgroundColor>
     <TabbedPage.Children>
         <NavigationPage Title="Top 50" Icon="numbered_list.png">      
             <x:Arguments>
