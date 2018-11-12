@@ -16,25 +16,27 @@
         <ToolbarItem Text="Refresh" x:Name="RefreshButton" Clicked="Refresh_Clicked" Icon="refresh.png" />
         <ToolbarItem Text="Set to My Stats" x:Name="StarButton" Clicked="StarButton_Clicked" Icon="star.png" />
     </ContentPage.ToolbarItems>
-    <StackLayout Spacing="20" Padding="15">
-        <Image Source="refresh.png" x:Name="RefreshIndicator" IsVisible="False" />
-        <Image Source="{Binding PlayerAvatar, Mode=OneWay}" HeightRequest="165" />
-        <Label Text="{Binding Name, Mode=OneWay}" FontSize="16"/>
-        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Rank: " />
-                        <Span Text="{Binding Rank, Mode=OneWay}" />
-                        <Span Text=" " />
-                        <Span Text="{Binding TotalWpprs, Mode=OneWay}" />
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-            <Button WidthRequest="160" Margin="0,10,0,0" Text="Tournament Results" Clicked="TournamentResults_Button_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
-            <Button WidthRequest="160" Margin="0,10,0,0" Text="Player vs Player" Clicked="Pvp_Button_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
+    <ScrollView>
+        <StackLayout Spacing="20" Padding="15">
+            <Image Source="refresh.png" x:Name="RefreshIndicator" IsVisible="False" />
+            <Image Source="{Binding PlayerAvatar, Mode=OneWay}" HeightRequest="165" />
+            <Label Text="{Binding Name, Mode=OneWay}" FontSize="16"/>
+            <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Text="Rank: " />
+                            <Span Text="{Binding Rank, Mode=OneWay}" />
+                            <Span Text=" " />
+                            <Span Text="{Binding TotalWpprs, Mode=OneWay}" />
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Button WidthRequest="160" Margin="0,10,0,0" Text="Tournament Results" HorizontalOptions="CenterAndExpand" Clicked="TournamentResults_Button_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
+                <Button WidthRequest="160" Margin="0,10,0,0" Text="Player vs Player" HorizontalOptions="CenterAndExpand" Clicked="Pvp_Button_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
+            </StackLayout>
         </StackLayout>
-    </StackLayout>
+    </ScrollView>
 </ContentPage>
