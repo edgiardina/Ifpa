@@ -7,7 +7,7 @@
     <bitmap
       android:src="@drawable/ifpa_logo"
       android:tileMode="disabled"
-      android:gravity="center"
+      android:gravity="fill_horizontal"
         android:left="20dp"
         android:right="20dp"
       />
