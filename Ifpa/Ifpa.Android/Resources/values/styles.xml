@@ -3,6 +3,13 @@
 
   <style name="MainTheme" parent="MainTheme.Base">
   </style>
+  <style name="MainTheme.Splash" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:windowBackground">@drawable/splash_background</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowFullscreen">true</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:windowActionBar">true</item>
+  </style>
   <!-- Base theme applied no matter what API -->
   <style name="MainTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
     <!--If you are using revision 22.1 please use just windowNoTitle. Without android:-->

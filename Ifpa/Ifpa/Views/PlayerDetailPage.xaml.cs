@@ -49,10 +49,6 @@ namespace Ifpa.Views
                         await RedirectUserToPlayerSearch();
                     }
                 }
-                else
-                {
-                    await RedirectUserToPlayerSearch();
-                }
             }
 
             viewModel.LoadItemsCommand.Execute(null);

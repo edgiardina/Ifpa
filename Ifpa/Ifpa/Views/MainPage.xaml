@@ -6,7 +6,7 @@
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             android:TabbedPage.ToolbarPlacement="Bottom"
             android:TabbedPage.BarItemColor="#66FFFFFF"
-            android:TabbedPage.BarSelectedItemColor="White">
+            android:TabbedPage.BarSelectedItemColor="White" CurrentPageChanged="TabbedPage_CurrentPageChanged">
     <TabbedPage.BarBackgroundColor>
         <OnPlatform x:TypeArguments="Color">
             <On Platform="Android" Value="{StaticResource NavigationPrimary}" />

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <item>
+    <color android:color="#072C53"/>
+  </item>
+  <item >    
+    <bitmap
+      android:src="@drawable/ifpa_logo"
+      android:tileMode="disabled"
+      android:gravity="center"
+        android:left="20dp"
+        android:right="20dp"
+      />
+  </item>
+</layer-list>

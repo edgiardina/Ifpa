@@ -26,7 +26,6 @@
         <maps:Map WidthRequest="320" HeightRequest="200"
             x:Name="calendarMap"
             VerticalOptions="FillAndExpand"
-            IsShowingUser="true"
             MapType="Street" />
         <ListView x:Name="TournamentListView"
                      ItemsSource="{Binding CalendarDetails}"
