@@ -15,7 +15,7 @@
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" Margin="20,10">
                             <Label Text="Distance" />
-                            <Slider Margin="20,0,5,0" HorizontalOptions="FillAndExpand" Maximum="1000" Minimum="10" Value="250" ValueChanged="Slider_ValueChanged" x:Name="DistanceSlider" />
+                            <Slider MinimumTrackColor="#007AFF" MaximumTrackColor="Gray"  Margin="20,0,5,0" HorizontalOptions="FillAndExpand" Maximum="1000" Minimum="10" Value="250" ValueChanged="Slider_ValueChanged" x:Name="DistanceSlider" />
                             <Label Text="0" x:Name="DistanceText" />
                             <Label Text="Mi" />
                         </StackLayout>
