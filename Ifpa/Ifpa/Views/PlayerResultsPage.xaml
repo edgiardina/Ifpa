@@ -9,6 +9,12 @@
             <local:IntToOrdinalStringConverter x:Key="intToOrdinalString" />
         </ResourceDictionary>
     </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Active" x:Name="ActiveButton" Clicked="ActiveButton_Clicked" />
+        <ToolbarItem Text="Unused" x:Name="UnusedButton" Clicked="UnusedButton_Clicked"  />
+        <!-- Icon="active.png" -->
+        <ToolbarItem Text="Past" x:Name="PastButton" Clicked="PastButton_Clicked" />
+    </ContentPage.ToolbarItems>
     <ListView x:Name="MyListView"
             ItemsSource="{Binding Results}"
             RefreshCommand="{Binding LoadItemsCommand}"

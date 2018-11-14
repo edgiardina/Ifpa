@@ -38,5 +38,24 @@ namespace Ifpa.Views
             if (viewModel.Results.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
         }
+
+
+        private void ActiveButton_Clicked(object sender, System.EventArgs e)
+        {
+            viewModel.State = PlayerResultState.Active;
+            viewModel.LoadItemsCommand.Execute(null);
+        }
+
+        private void PastButton_Clicked(object sender, System.EventArgs e)
+        {
+            viewModel.State = PlayerResultState.Inactive;
+            viewModel.LoadItemsCommand.Execute(null);
+        }
+
+        private void UnusedButton_Clicked(object sender, System.EventArgs e)
+        {
+            viewModel.State = PlayerResultState.NonActive;
+            viewModel.LoadItemsCommand.Execute(null);
+        }
     }
 }

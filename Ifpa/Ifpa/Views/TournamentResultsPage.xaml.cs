@@ -38,5 +38,6 @@ namespace Ifpa.Views
             if (viewModel.Results.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
         }
+
     }
 }
