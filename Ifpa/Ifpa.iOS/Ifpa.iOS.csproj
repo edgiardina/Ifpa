@@ -237,4 +237,22 @@
   <ItemGroup>
     <BundleResource Include="Resources\star%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\active%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\active%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\inactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\inactive%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\inactive%403x.png" />
+  </ItemGroup>
 </Project>

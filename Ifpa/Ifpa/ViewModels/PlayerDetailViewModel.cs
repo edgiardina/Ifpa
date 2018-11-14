@@ -27,6 +27,10 @@ namespace Ifpa.ViewModels
 
         public string Rank => PlayerRecord.PlayerStats.CurrentWpprRank.OrdinalSuffix(); 
 
+        public string Rating => PlayerRecord.PlayerStats.RatingsRank.OrdinalSuffix();
+
+        public double RatingValue => PlayerRecord.PlayerStats.RatingsValue;
+
         public double TotalWpprs => PlayerRecord.PlayerStats.CurrentWpprValue;
 
         public string PlayerAvatar => $"https://www.ifpapinball.com/images/profiles/players/{PlayerId}.jpg";

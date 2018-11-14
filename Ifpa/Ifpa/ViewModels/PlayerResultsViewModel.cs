@@ -4,19 +4,29 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using PinballApi.Models.WPPR.Players;
+using System.Linq;
 
 namespace Ifpa.ViewModels
 {
+    public enum PlayerResultState
+    {
+        Active,
+        NonActive,
+        Inactive
+    }
+
     public class PlayerResultsViewModel : BaseViewModel
     {
         public ObservableCollection<Result> Results { get; set; }
         public Command LoadItemsCommand { get; set; }
 
+        public PlayerResultState State { get; set; }
+
         private int playerId;
 
         public PlayerResultsViewModel(int playerId)
         {
-            Title = "Player Results";
+            Title = "Results";
             this.playerId = playerId;
             Results = new ObservableCollection<Result>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
@@ -34,7 +44,7 @@ namespace Ifpa.ViewModels
                 Results.Clear();
                 var playerResults = await PinballRankingApi.GetPlayerResults(playerId);
 
-                foreach (var item in playerResults.Results)
+                foreach (var item in playerResults.Results.Where(n => n.WpprState == State.ToString()))
                 {                 
                     Results.Add(item);
                 }

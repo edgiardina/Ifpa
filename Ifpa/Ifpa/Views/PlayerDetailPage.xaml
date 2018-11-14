@@ -20,7 +20,20 @@
         <StackLayout Spacing="20" Padding="15">
             <Image Source="refresh.png" x:Name="RefreshIndicator" IsVisible="False" />
             <Image Source="{Binding PlayerAvatar, Mode=OneWay}" HeightRequest="165" />
-            <Label Text="{Binding Name, Mode=OneWay}" FontSize="16"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="{Binding Name, Mode=OneWay}" HorizontalOptions="StartAndExpand" FontSize="16"/>
+
+                <Label HorizontalOptions="End" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Player #: " />
+                                <Span Text="{Binding PlayerId, Mode=OneWay}" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
             <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
                 <Label.FormattedText>
                     <FormattedString>
@@ -29,6 +42,18 @@
                             <Span Text="{Binding Rank, Mode=OneWay}" />
                             <Span Text=" " />
                             <Span Text="{Binding TotalWpprs, Mode=OneWay}" />
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Text="Rating: " />
+                            <Span Text="{Binding Rating, Mode=OneWay}" />
+                            <Span Text=" " />
+                            <Span Text="{Binding RatingValue, Mode=OneWay}" />
                         </FormattedString.Spans>
                     </FormattedString>
                 </Label.FormattedText>
