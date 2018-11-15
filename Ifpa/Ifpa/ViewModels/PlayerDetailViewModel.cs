@@ -1,6 +1,7 @@
 ﻿using PinballApi.Extensions;
 using PinballApi.Models.WPPR.Players;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -11,6 +12,7 @@ namespace Ifpa.ViewModels
         public Command LoadItemsCommand { get; set; }
 
         public int PlayerId { get; set; }
+        public int LastTournamentId { get; set; }
         private PlayerRecord playerRecord = new PlayerRecord { Player = new Player { }, PlayerStats = new PlayerStats { } };
 
         public PlayerRecord PlayerRecord
@@ -46,6 +48,7 @@ namespace Ifpa.ViewModels
             try
             {
                 var playerData = await PinballRankingApi.GetPlayerRecord(PlayerId);
+                LastTournamentId = (await PinballRankingApi.GetPlayerResults(PlayerId)).Results.Max(n => n.TournamentId);
 
                 PlayerRecord = playerData;
                 Title = PlayerRecord.Player.Initials;

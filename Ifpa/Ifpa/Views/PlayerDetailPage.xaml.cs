@@ -3,6 +3,7 @@ using Xamarin.Forms.Xaml;
 using Ifpa.ViewModels;
 using System;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace Ifpa.Views
 {
@@ -38,11 +39,11 @@ namespace Ifpa.Views
                 if(ToolbarItems.Count == 2)
                     ToolbarItems.RemoveAt(1);
 
-                if (Application.Current.Properties.ContainsKey("PlayerId"))
+                if (Preferences.Get("PlayerId", 0) != 0)
                 {
                     try
                     {
-                        viewModel.PlayerId = (int)Application.Current.Properties["PlayerId"];
+                        viewModel.PlayerId = Preferences.Get("PlayerId", 0);
                     }
                     catch (Exception ex)
                     {
@@ -75,7 +76,7 @@ namespace Ifpa.Views
 
         private async Task StarButton_Clicked(object sender, EventArgs e)
         {
-            if (!Application.Current.Properties.ContainsKey("PlayerId"))
+            if (Preferences.Get("PlayerId", 0) == 0)
             {
                 await ChangePlayerAndRedirect();
             }
@@ -91,7 +92,8 @@ namespace Ifpa.Views
 
         private async Task ChangePlayerAndRedirect()
         {
-            Application.Current.Properties["PlayerId"] = viewModel.PlayerId;
+            Preferences.Set("PlayerId", viewModel.PlayerId);
+            Preferences.Set("LastTournamentId", viewModel.LastTournamentId);
             await DisplayAlert("Congratulations", "You have now configured your Stats page!", "OK");
             var masterPage = this.Parent.Parent as TabbedPage;
             masterPage.CurrentPage = masterPage.Children[2];
