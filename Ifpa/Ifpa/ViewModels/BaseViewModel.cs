@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Ifpa.Models;
 using PinballApi;
 
 namespace Ifpa.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public PinballRankingApi PinballRankingApi => new PinballRankingApi("585c0438147e11520622277d2ac7b298");
+        public PinballRankingApi PinballRankingApi => new PinballRankingApi(Constants.IfpaApiKey);
 
         bool isBusy = false;
         public bool IsBusy

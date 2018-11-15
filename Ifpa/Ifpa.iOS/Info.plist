@@ -41,5 +41,9 @@
 	<string>This app will use your location to show nearby tournaments</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.4</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+	</array>
 </dict>
 </plist>
