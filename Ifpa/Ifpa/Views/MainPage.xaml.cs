@@ -14,7 +14,7 @@ namespace Ifpa.Views
             InitializeComponent();
         }
 
-        private async Task TabbedPage_CurrentPageChanged(object sender, EventArgs e)
+        private async void TabbedPage_CurrentPageChanged(object sender, EventArgs e)
         {
             //If a user hasn't set up my stats, redirect to player search
 

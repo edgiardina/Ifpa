@@ -16,7 +16,7 @@ namespace Ifpa.Views
             InitializeComponent();
         }
 
-        private async Task CreatorLabel_Tapped(object sender, EventArgs e)
+        private async void CreatorLabel_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new PlayerDetailPage(new PlayerDetailViewModel(creatorIfpaNumber)));
         }

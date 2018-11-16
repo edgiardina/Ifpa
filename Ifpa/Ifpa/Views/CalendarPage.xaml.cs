@@ -121,7 +121,7 @@ namespace Ifpa.Views
             }
         }
 
-        private async Task TournamentListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void TournamentListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var calendar = e.SelectedItem as CalendarDetails;
             if (calendar == null)

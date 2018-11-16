@@ -47,12 +47,12 @@ namespace Ifpa.Views
             viewModel.LoadItemsCommand.Execute(null);
         }
 
-        private async Task WebsiteLabel_Tapped(object sender, EventArgs e)
+        private async void WebsiteLabel_Tapped(object sender, EventArgs e)
         {
             await Browser.OpenAsync(viewModel.Website, BrowserLaunchMode.SystemPreferred);
         }
 
-        private async Task Address_Tapped(object sender, EventArgs e)
+        private async void Address_Tapped(object sender, EventArgs e)
         {
             var placemark = new Placemark
             {
