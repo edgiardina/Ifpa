@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.0.4" package="com.edgiardina.Ifpa" android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="25" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.0.4" package="com.edgiardina.ifpa" android:installLocation="auto" android:versionCode="2">
+	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="26" />
 	<application android:label="IFPA Companion">
-		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAhcsdHwBiQZgzMSQk-zkmmFb7Mow-7tiQ" />
+		<meta-data android:name="com.google.android.geo.API_KEY" android:value="" />
 	</application>
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
 	<uses-feature android:name="android.hardware.location" android:required="false" />
 	<uses-feature android:name="android.hardware.location.gps" android:required="false" />
 	<uses-feature android:name="android.hardware.location.network" android:required="false" />
