@@ -23,7 +23,8 @@ namespace Ifpa.Views
             if (Preferences.Get("PlayerId", 0) == 0 && i == 2)
             {
                 this.CurrentPage = this.Children[1];
-                await DisplayAlert("Configure your Stats", "Looks like you haven't configured your 'My Stats' page. Use the Player Search to find your Player, and press the Star to configure your Stats", "OK");                
+                await DisplayAlert("Configure your Stats", "Looks like you haven't configured your 'My Stats' page. Use the Player Search to find your Player, and press the Star to configure your Stats", "OK");
+                await this.CurrentPage.Navigation.PopToRootAsync();
             }
         }
     }
