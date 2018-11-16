@@ -18,7 +18,7 @@
     </ContentPage.ToolbarItems>
     <ScrollView>
         <StackLayout Spacing="20" Padding="15">
-            <Image Source="refresh.png" x:Name="RefreshIndicator" IsVisible="False" />
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
             <Image Source="{Binding PlayerAvatar, Mode=OneWay}" HeightRequest="165" />
             <StackLayout Orientation="Horizontal">
                 <Label Text="{Binding Name, Mode=OneWay}" HorizontalOptions="StartAndExpand" FontSize="16"/>
@@ -34,6 +34,13 @@
                     </Label.FormattedText>
                 </Label>
             </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="{Binding Location, Mode=OneWay}" HorizontalOptions="StartAndExpand" FontSize="16"/>
+
+                <Image Source="{Binding CountryFlag, Mode=OneWay}" />
+                <Image Source="https://www.ifpapinball.com/images/confirmed.png" IsVisible="{Binding IsRegistered, Mode=OneWay}" />
+            </StackLayout>
+
             <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
                 <Label.FormattedText>
                     <FormattedString>
@@ -54,6 +61,18 @@
                             <Span Text="{Binding Rating, Mode=OneWay}" />
                             <Span Text=" " />
                             <Span Text="{Binding RatingValue, Mode=OneWay}" />
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Text="Eff percent: " />
+                            <Span Text="{Binding EffPercent, Mode=OneWay}" />
+                            <Span Text=" " />
+                            <Span Text="{Binding EfficiencyValue, Mode=OneWay}" />
                         </FormattedString.Spans>
                     </FormattedString>
                 </Label.FormattedText>

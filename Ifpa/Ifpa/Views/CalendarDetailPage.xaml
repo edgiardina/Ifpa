@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              x:Class="Ifpa.Views.CalendarDetailPage"
              Title="{Binding Title}">
 
@@ -19,17 +20,43 @@
                     <TapGestureRecognizer Tapped="WebsiteLabel_Tapped"/>
                 </Label.GestureRecognizers>
             </Label>
-            <Label Text="{Binding DirectorName, Mode=OneWay}" />
-            <Frame>
+            <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Text="Director: " />
+                            <Span Text="{Binding DirectorName, Mode=OneWay}" />
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Text="Date: " />
+                            <Span Text="{Binding TournamentDuration, Mode=OneWay}" />
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Frame Margin="0, 10">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Address_Tapped" />
                 </Frame.GestureRecognizers>
-                <StackLayout>
-                    <Label Text="{Binding Address1, Mode=OneWay}"   />
-                    <Label Text="{Binding Address2, Mode=OneWay}"   />
-                    <Label Text="{Binding City, Mode=OneWay}"    />
-                    <Label Text="{Binding State, Mode=OneWay}"    />
-                    <Label Text="{Binding CountryName, Mode=OneWay}"    />
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout WidthRequest="200">
+                        <Label Text="{Binding Address1, Mode=OneWay}"   />
+                        <Label Text="{Binding Address2, Mode=OneWay}"   />
+                        <Label Text="{Binding City, Mode=OneWay}"    />
+                        <Label Text="{Binding State, Mode=OneWay}"    />
+                        <Label Text="{Binding CountryName, Mode=OneWay}"    />
+                    </StackLayout>
+                    <maps:Map WidthRequest="80" HeightRequest="100"
+                        x:Name="calendarMap"                  
+                        VerticalOptions="FillAndExpand" MapType="Street" />
                 </StackLayout>
             </Frame>
             <Editor Text="{Binding Details, Mode=OneWay}" IsEnabled="False" HeightRequest="600"  />

@@ -4,6 +4,9 @@ using Ifpa.ViewModels;
 using System;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
+using Xamarin.Forms.Maps;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Ifpa.Views
 {
@@ -16,9 +19,26 @@ namespace Ifpa.Views
         {
             InitializeComponent();
 
-            BindingContext = this.viewModel = viewModel;            
+            BindingContext = this.viewModel = viewModel;
+            ((CalendarDetailViewModel)BindingContext).PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(async (s, e) => await CalendarDetailPage_PropertyChanged(s, e)) ;
         }
 
+        private async Task CalendarDetailPage_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            //when busy is flipped back to false it means we are done loading the address
+            if (e.PropertyName == "IsBusy" && viewModel.IsBusy == false)
+            {
+                var locations =  await Geocoding.GetLocationsAsync(viewModel.Address1 + " " + viewModel.City + ", " + viewModel.State);                                                        
+
+                var position = new Position(locations.First().Latitude, locations.First().Longitude);
+                calendarMap.MoveToRegion(new MapSpan(position, 0.1, 0.1));
+                calendarMap.Pins.Add(new Pin
+                {
+                    Label = viewModel.TournamentName,
+                    Position = position
+                });
+            }
+        }
 
         protected async override void OnAppearing()
         {

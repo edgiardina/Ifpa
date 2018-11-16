@@ -32,7 +32,6 @@ namespace Ifpa.Views
         private async void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
         {
             DistanceText.Text = ((int)DistanceSlider.Value).ToString();
-            await UpdateCalendarData();
         }
 
         protected async override void OnAppearing()
@@ -93,6 +92,8 @@ namespace Ifpa.Views
 
                     DistanceText.Text = ((int)DistanceSlider.Value).ToString();
                     await viewModel.ExecuteLoadItemsCommand(LocationEntry.Text, (int)DistanceSlider.Value);
+
+                    IsBusy = true;
 
                     foreach (var detail in viewModel.CalendarDetails)
                     {

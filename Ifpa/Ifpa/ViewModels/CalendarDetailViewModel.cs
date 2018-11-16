@@ -22,6 +22,8 @@ namespace Ifpa.ViewModels
         public DateTime EndDate { get; set; }
 
         public DateTime StartDate { get; set; }
+
+        public string TournamentDuration => $"{StartDate.ToString("d")}" + (StartDate != EndDate ? $" - {EndDate.ToString("d")}" : string.Empty );
         
         public string Website { get; set; }
 
@@ -74,6 +76,8 @@ namespace Ifpa.ViewModels
                 State = calendarEntry.State;
                 CountryName = calendarEntry.CountryName;
                 Details = calendarEntry.Details;
+                StartDate = calendarEntry.StartDate;
+                EndDate = calendarEntry.EndDate;
 
                 OnPropertyChanged(null);
             }

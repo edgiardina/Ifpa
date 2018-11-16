@@ -33,9 +33,19 @@ namespace Ifpa.ViewModels
 
         public double RatingValue => PlayerRecord.PlayerStats.RatingsValue;
 
+        public string EffPercent => PlayerRecord.PlayerStats.EfficiencyRank.OrdinalSuffix();
+
+        public double EfficiencyValue => PlayerRecord.PlayerStats.EfficiencyValue;
+
         public double TotalWpprs => PlayerRecord.PlayerStats.CurrentWpprValue;
 
         public string PlayerAvatar => $"https://www.ifpapinball.com/images/profiles/players/{PlayerId}.jpg";
+
+        public string CountryFlag => $"https://www.countryflags.io/{PlayerRecord.Player.CountryCode}/shiny/32.png";
+
+        public string Location => $"{PlayerRecord.Player.City} {PlayerRecord.Player.State} {PlayerRecord.Player.CountryName}";
+
+        public bool IsRegistered => PlayerRecord.Player.IfpaRegistered == "Y";
 
         public PlayerDetailViewModel(int playerId)
         {
@@ -47,6 +57,7 @@ namespace Ifpa.ViewModels
         {
             try
             {
+                IsBusy = true;
                 var playerData = await PinballRankingApi.GetPlayerRecord(PlayerId);
                 LastTournamentId = (await PinballRankingApi.GetPlayerResults(PlayerId)).Results.Max(n => n.TournamentId);
 
@@ -54,6 +65,10 @@ namespace Ifpa.ViewModels
                 Title = PlayerRecord.Player.Initials;
             }
             catch(Exception ex) { }
+            finally
+            {
+                IsBusy = false;
+            }
         }
 
     }
