@@ -15,6 +15,8 @@ namespace Ifpa.iOS
     [Register("AppDelegate")]
     public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
+
+        iOSNotificationService NotificationService = new iOSNotificationService();
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
         // method you should instantiate the window, load the UI into it and then make the window
@@ -45,7 +47,7 @@ namespace Ifpa.iOS
 
         public override async void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)
         {
-            if (notification.AlertAction == "New Tournament Result")
+            if (notification.AlertAction == NotificationService.NotificationTitle)
             {
                 //Navigate to My Stats
                 ((MainPage)(App.Current.MainPage)).CurrentPage = ((MainPage)(App.Current.MainPage)).Children[1];

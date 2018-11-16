@@ -3902,6 +3902,12 @@ namespace Ifpa.Droid
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f090050
+			public const int ApplicationName = 2131296336;
+			
+			// aapt resource value: 0x7f09004f
+			public const int Hello = 2131296335;
+			
 			// aapt resource value: 0x7f090026
 			public const int abc_action_bar_home_description = 2131296294;
 			
@@ -4000,6 +4006,12 @@ namespace Ifpa.Droid
 			
 			// aapt resource value: 0x7f090048
 			public const int bottom_sheet_behavior = 2131296328;
+			
+			// aapt resource value: 0x7f090052
+			public const int channel_description = 2131296338;
+			
+			// aapt resource value: 0x7f090051
+			public const int channel_name = 2131296337;
 			
 			// aapt resource value: 0x7f090049
 			public const int character_counter_pattern = 2131296329;
