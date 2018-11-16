@@ -8,6 +8,7 @@
         <ToolbarItem Text="My Location" Clicked="MyLocation_Clicked" Icon="location.png" />
     </ContentPage.ToolbarItems>
     <StackLayout>
+        <!--<ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />-->
         <TableView Intent="Settings" HeightRequest="300">
             <TableRoot>
                 <TableSection>
@@ -24,10 +25,10 @@
             </TableRoot>
         </TableView>
         <maps:Map WidthRequest="320" HeightRequest="200"
-            x:Name="calendarMap"
+            x:Name="calendarMap"                  
             VerticalOptions="FillAndExpand"
             MapType="Street" />
-        <ListView x:Name="TournamentListView"
+        <ListView x:Name="TournamentListView"                  
                      ItemsSource="{Binding CalendarDetails}"
                      VerticalOptions="FillAndExpand"
                      HasUnevenRows="true"       

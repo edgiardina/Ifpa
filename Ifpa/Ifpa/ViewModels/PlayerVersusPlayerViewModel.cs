@@ -38,7 +38,7 @@ namespace Ifpa.ViewModels
                 var groupedResults = pvpResults.Pvp
                                         .OrderBy(n => n.LastName)
                                         .ThenBy(n => n.FirstName)
-                                        .GroupBy(c => c.LastName[0])
+                                        .GroupBy(c => char.ToUpper(c.LastName[0]))
                                         .Select(g => new Grouping<char, PlayerVersusRecord>(g.Key, g));
 
                 foreach (var item in groupedResults)

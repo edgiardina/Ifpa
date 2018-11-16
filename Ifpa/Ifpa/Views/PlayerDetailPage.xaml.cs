@@ -67,11 +67,7 @@ namespace Ifpa.Views
 
         private async Task Refresh_Clicked(object sender, EventArgs e)
         {
-            RefreshIndicator.IsVisible = true;
             viewModel.LoadItemsCommand.Execute(null);
-            await RefreshIndicator.RotateTo(360, 1250);
-            RefreshIndicator.Rotation = 0;
-            RefreshIndicator.IsVisible = false;
         }
 
         private async Task StarButton_Clicked(object sender, EventArgs e)
