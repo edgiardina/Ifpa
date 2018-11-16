@@ -65,12 +65,12 @@ namespace Ifpa.Views
             await Navigation.PushAsync(new PlayerVersusPlayerPage(new PlayerVersusPlayerViewModel(viewModel.PlayerId)));
         }
 
-        private async Task Refresh_Clicked(object sender, EventArgs e)
+        private async void Refresh_Clicked(object sender, EventArgs e)
         {
             viewModel.LoadItemsCommand.Execute(null);
         }
 
-        private async Task StarButton_Clicked(object sender, EventArgs e)
+        private async void StarButton_Clicked(object sender, EventArgs e)
         {
             if (Preferences.Get("PlayerId", 0) == 0)
             {
