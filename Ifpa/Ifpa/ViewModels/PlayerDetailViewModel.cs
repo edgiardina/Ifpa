@@ -41,7 +41,7 @@ namespace Ifpa.ViewModels
 
         public string PlayerAvatar => $"https://www.ifpapinball.com/images/profiles/players/{PlayerId}.jpg";
 
-        public string CountryFlag => $"https://www.countryflags.io/{PlayerRecord.Player.CountryCode}/shiny/32.png";
+        public string CountryFlag => $"https://www.countryflags.io/{PlayerRecord.Player.CountryCode}/shiny/64.png";
 
         public string Location => $"{PlayerRecord.Player.City} {PlayerRecord.Player.State} {PlayerRecord.Player.CountryName}";
 

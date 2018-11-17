@@ -37,8 +37,8 @@
             <StackLayout Orientation="Horizontal">
                 <Label Text="{Binding Location, Mode=OneWay}" HorizontalOptions="StartAndExpand" FontSize="16"/>
 
-                <Image Source="{Binding CountryFlag, Mode=OneWay}" />
-                <Image Source="https://www.ifpapinball.com/images/confirmed.png" IsVisible="{Binding IsRegistered, Mode=OneWay}" />
+                <Image Source="{Binding CountryFlag, Mode=OneWay}" HeightRequest="16" />
+                <Image Source="https://www.ifpapinball.com/images/confirmed.png" HeightRequest="12" WidthRequest="12" IsVisible="{Binding IsRegistered, Mode=OneWay}" />
             </StackLayout>
 
             <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">

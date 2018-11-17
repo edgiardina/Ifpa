@@ -28,7 +28,7 @@ namespace Ifpa.Droid
             var pending = PendingIntent.GetBroadcast(this, 0, alarmIntent, PendingIntentFlags.UpdateCurrent);
 
             var alarmManager = GetSystemService(AlarmService).JavaCast<AlarmManager>();
-            alarmManager.Set(AlarmType.ElapsedRealtime, SystemClock.ElapsedRealtime() + 3 * 1000, pending);
+            alarmManager.SetInexactRepeating(AlarmType.ElapsedRealtime, SystemClock.ElapsedRealtime() + 3 * 1000, AlarmManager.IntervalFifteenMinutes, pending);
         }
 
         protected override void OnStart()
