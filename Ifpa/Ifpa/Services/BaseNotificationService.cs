@@ -20,8 +20,6 @@ namespace Ifpa.Services
 
             if (playerId > 0)
             {
-                var needsNotification = false;
-
                 try
                 {
                     var results = await PinballRankingApi.GetPlayerResults(playerId);
@@ -32,11 +30,6 @@ namespace Ifpa.Services
                     if (latestTournamentPosted > lastTournamentChecked)
                     {
                         Preferences.Set("LastTournamentId", latestTournamentPosted);
-                        needsNotification = true;
-                    }
-
-                    if (needsNotification)
-                    {
                         SendNotification();
                     }
                 }

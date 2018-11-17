@@ -1,10 +1,8 @@
 ﻿using Android.App;
 using Android.Content;
-using Android.Content.Res;
 using Android.OS;
-using Android.Support.V4.App;
-using Android.Support.V7.App;
 using Ifpa.Services;
+using Java.Lang;
 
 namespace Ifpa.Droid
 {
@@ -14,50 +12,67 @@ namespace Ifpa.Droid
         static readonly string CHANNEL_ID = "location_notification";
         internal static readonly string COUNT_KEY = "count";
 
-        public AndroidNotificationService()
+        private readonly Context context;
+
+        public AndroidNotificationService(Context context)
         {
+            this.context = context;
             CreateNotificationChannel();
         }
 
         void CreateNotificationChannel()
         {
-            //if (Build.VERSION.SdkInt < BuildVersionCodes.)
-            //{
-            //    // Notification channels are new in API 26 (and not a part of the
-            //    // support library). There is no need to create a notification
-            //    // channel on older versions of Android.
-            //    return;
-            //}
+            if (Build.VERSION.SdkInt < BuildVersionCodes.O)
+            {
+                // Notification channels are new in API 26 (and not a part of the
+                // support library). There is no need to create a notification
+                // channel on older versions of Android.
+                return;
+            }
 
-            //var channelName = Resources.GetString(Resource.String.channel_name);
-            //var channelDescription = Resources.GetString(Resource.String.channel_description);
-            //var channel = new NotificationChannel(CHANNEL_ID, channelName, NotificationImportance.Default)
-            //{
-            //    Description = channelDescription
-            //};
+            var channelName = context.GetString(Resource.String.channel_name);
+            var channelDescription = context.GetString(Resource.String.channel_description);
+            var channel = new NotificationChannel(CHANNEL_ID, channelName, NotificationImportance.Default)
+            {
+                Description = channelDescription
+            };
 
-            //var notificationManager = (NotificationManager)GetSystemService(NotificationService);
-            //notificationManager.CreateNotificationChannel(channel);
+            var notificationManager = (NotificationManager)context.GetSystemService(Context.NotificationService);
+            notificationManager.CreateNotificationChannel(channel);
         }
 
         public override void SendNotification()
         {
-            //// Instantiate the builder and set notification elements:
-            //NotificationCompat.Builder builder = new Android.Support.V7.App.NotificationCompat.Builder(this, CHANNEL_ID)
-            //                                            .SetContentTitle(NotificationTitle)
-            //                                            .SetContentText(NotificationDescription)
-            //                                            .SetSmallIcon(Resource.Drawable.cast_ic_notification_0);
+            // When the user clicks the notification, SecondActivity will start up.
+            var resultIntent = new Intent(context, typeof(MainActivity));
+            
+            // Construct a back stack for cross-task navigation:
+            var stackBuilder = TaskStackBuilder.Create(context);
+            stackBuilder.AddParentStack(Class.FromType(typeof(MainActivity)));
+            stackBuilder.AddNextIntent(resultIntent);
 
-            //// Build the notification:
-            //Notification notification = builder.Build();
+            // Create the PendingIntent with the back stack:
+            var resultPendingIntent = stackBuilder.GetPendingIntent(0, PendingIntentFlags.UpdateCurrent);
 
-            //// Get the notification manager:
-            //NotificationManager notificationManager =
-            //    GetSystemService(Context.NotificationService) as NotificationManager;
 
-            //// Publish the notification:
-            //const int notificationId = 0;
-            //notificationManager.Notify(notificationId, notification);
+            // Instantiate the builder and set notification elements:
+            Notification.Builder builder = new Notification.Builder(context, CHANNEL_ID)
+                                                        .SetContentTitle(NotificationTitle)
+                                                        .SetContentText(NotificationDescription)                                                        
+                                                        .SetSmallIcon(Resource.Drawable.notification_icon)
+                                                        .SetAutoCancel(true) // Dismiss the notification from the notification area when the user clicks on it
+                                                        .SetContentIntent(resultPendingIntent); 
+
+            // Build the notification:
+            Notification notification = builder.Build();
+
+            // Get the notification manager:
+            NotificationManager notificationManager =
+                context.GetSystemService(Context.NotificationService) as NotificationManager;
+
+            // Publish the notification:
+            const int notificationId = 0;
+            notificationManager.Notify(notificationId, notification);
         }
     }
 }
