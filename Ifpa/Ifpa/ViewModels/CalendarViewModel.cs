@@ -17,8 +17,7 @@ namespace Ifpa.ViewModels
         public CalendarViewModel()
         {
             Title = "Calendar";
-            CalendarDetails = new ObservableCollection<CalendarDetails>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand("Chicago, Illinois", 100));
+            CalendarDetails = new ObservableCollection<CalendarDetails>();            
         }
 
         public async Task ExecuteLoadItemsCommand(string address, int distance)
