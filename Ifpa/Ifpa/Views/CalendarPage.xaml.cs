@@ -40,7 +40,18 @@ namespace Ifpa.Views
 
             if (viewModel.CalendarDetails.Count == 0)
             {
-                await PollAndUpdateUserLocation();
+                var lastCalendarLocation = Preferences.Get("LastCalendarLocation", "Unset");
+                var lastCalendarDistance = Preferences.Get("LastCalendarDistance", 0);
+                if (lastCalendarLocation == "Unset" || lastCalendarDistance == 0)
+                {
+                    await PollAndUpdateUserLocation();
+                }
+                else
+                {
+                    DistanceSlider.Value = lastCalendarDistance;
+                    LocationEntry.Text = lastCalendarLocation;
+                }
+                
                 await UpdateCalendarData();
             }
         }
@@ -116,6 +127,9 @@ namespace Ifpa.Views
                     //don't let the calendar crash our entire app
                     Debug.WriteLine(e.Message);
                 }
+
+                Preferences.Set("LastCalendarLocation", LocationEntry.Text);
+                Preferences.Set("LastCalendarDistance", (int)DistanceSlider.Value);
 
                 IsBusy = false;
             }
