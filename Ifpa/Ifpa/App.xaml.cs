@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Ifpa.Views;
+using Xamarin.Essentials;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Ifpa
@@ -20,6 +21,7 @@ namespace Ifpa
         protected override void OnStart()
         {
             // Handle when your app starts
+            VersionTracking.Track();
         }
 
         protected override void OnSleep()

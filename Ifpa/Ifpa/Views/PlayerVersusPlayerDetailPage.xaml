@@ -35,7 +35,7 @@
                                     <FormattedString>
                                         <FormattedString.Spans>
                                             <Span Text="P1: " />
-                                            <Span Text="{Binding P1FinishPosition, Converter=intToOrdinalString}" />
+                                            <Span Text="{Binding P1FinishPosition, Converter={StaticResource intToOrdinalString}}" />
                                         </FormattedString.Spans>
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -45,7 +45,7 @@
                                     <FormattedString>
                                         <FormattedString.Spans>
                                             <Span Text="P2: " />
-                                            <Span Text="{Binding P2FinishPosition, Converter=intToOrdinalString}" />
+                                            <Span Text="{Binding P2FinishPosition, Converter={StaticResource intToOrdinalString}}" />
                                         </FormattedString.Spans>
                                     </FormattedString>
                                 </Label.FormattedText>

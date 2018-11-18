@@ -110,12 +110,6 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ifpa\Ifpa.csproj">
-      <Project>{B66A5A31-A549-4FDF-A222-A48F7660103F}</Project>
-      <Name>Ifpa</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\ifpa_logo.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +144,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\notification_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ifpa\Ifpa.csproj">
+      <Project>{924ed4a9-0c09-4cd9-b460-7656504673da}</Project>
+      <Name>Ifpa</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

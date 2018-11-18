@@ -1,6 +1,5 @@
 ﻿using Ifpa.ViewModels;
 using System;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,9 +10,13 @@ namespace Ifpa.Views
     {
         private int creatorIfpaNumber = 16927;
 
+        AboutViewModel viewModel;
+
         public AboutPage()
         {
             InitializeComponent();
+
+            BindingContext = this.viewModel = new AboutViewModel();
         }
 
         private async void CreatorLabel_Tapped(object sender, EventArgs e)

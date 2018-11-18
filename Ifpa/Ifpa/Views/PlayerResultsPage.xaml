@@ -36,7 +36,7 @@
                             </StackLayout>                            
                         </StackLayout>
                         <StackLayout HorizontalOptions="EndAndExpand">
-                            <Label LineBreakMode="NoWrap" HorizontalTextAlignment="Center" Text="{Binding Position, Converter=intToOrdinalString}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
+                            <Label LineBreakMode="NoWrap" HorizontalTextAlignment="Center" Text="{Binding Position, Converter={StaticResource intToOrdinalString}}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
                             <Label LineBreakMode="NoWrap" HorizontalTextAlignment="Center" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding CurrentPoints, StringFormat='{0:0.00}'}" />
                         </StackLayout>
                     </StackLayout>
