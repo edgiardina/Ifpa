@@ -1,7 +1,4 @@
-﻿using System;
-using System.Windows.Input;
-
-using Xamarin.Forms;
+﻿using Xamarin.Essentials;
 
 namespace Ifpa.ViewModels
 {
@@ -10,10 +7,8 @@ namespace Ifpa.ViewModels
         public AboutViewModel()
         {
             Title = "About";
-
-            OpenWebCommand = new Command(() => Device.OpenUri(new Uri("https://xamarin.com/platform")));
         }
 
-        public ICommand OpenWebCommand { get; }
+        public string CurrentVersion => VersionTracking.CurrentVersion;
     }
 }
