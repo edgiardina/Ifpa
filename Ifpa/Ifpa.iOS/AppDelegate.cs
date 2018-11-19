@@ -40,6 +40,7 @@ namespace Ifpa.iOS
         public override async void PerformFetch(UIApplication application, Action<UIBackgroundFetchResult> completionHandler)
         {
             await NotificationService.NotifyIfUserHasNewlySubmittedTourneyResults();
+            await NotificationService.NotifyIfUsersRankChanged();
 
             // Inform system of fetch results
             completionHandler(UIBackgroundFetchResult.NewData);
@@ -47,7 +48,7 @@ namespace Ifpa.iOS
 
         public override async void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)
         {
-            if (notification.AlertAction == NotificationService.NotificationTitle)
+            if (notification.AlertAction == NotificationService.NewTournamentNotificationTitle)
             {
                 //Navigate to My Stats
                 ((MainPage)(App.Current.MainPage)).CurrentPage = ((MainPage)(App.Current.MainPage)).Children[1];
@@ -57,10 +58,15 @@ namespace Ifpa.iOS
 
                 //Press Tournament Results Button.
                 await (((MainPage)(App.Current.MainPage)).CurrentPage).Navigation.PushAsync(new PlayerResultsPage(new PlayerResultsViewModel(playerId)));
-
-                // reset our badge
-                UIApplication.SharedApplication.ApplicationIconBadgeNumber = 0;
             }
+            else if(notification.AlertAction == NotificationService.NewRankNotificationTitle)
+            {
+                //Navigate to My Stats
+                ((MainPage)(App.Current.MainPage)).CurrentPage = ((MainPage)(App.Current.MainPage)).Children[1];
+            }
+
+            // reset our badge
+            UIApplication.SharedApplication.ApplicationIconBadgeNumber = 0;
         }
     }
 }

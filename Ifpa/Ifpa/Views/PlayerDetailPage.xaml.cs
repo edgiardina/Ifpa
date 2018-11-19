@@ -90,6 +90,7 @@ namespace Ifpa.Views
         {
             Preferences.Set("PlayerId", viewModel.PlayerId);
             Preferences.Set("LastTournamentId", viewModel.LastTournamentId);
+            Preferences.Set("CurrentWpprRank", viewModel.PlayerRecord.PlayerStats.CurrentWpprRank);
             await DisplayAlert("Congratulations", "You have now configured your Stats page!", "OK");
             var masterPage = this.Parent.Parent as TabbedPage;
             masterPage.CurrentPage = masterPage.Children[2];

@@ -11,7 +11,7 @@ namespace Ifpa.iOS
 {
     public class iOSNotificationService : BaseNotificationService
     { 
-        public override void SendNotification()
+        public override void SendNotification(string title, string description)
         {
             // Check for new data, and display it
             var notification = new UILocalNotification();
@@ -20,8 +20,8 @@ namespace Ifpa.iOS
             notification.FireDate = NSDate.FromTimeIntervalSinceNow(5);
 
             // configure the alert
-            notification.AlertAction = NotificationTitle;
-            notification.AlertBody = NotificationDescription;
+            notification.AlertAction = title;
+            notification.AlertBody = description;
 
             // modify the badge
             notification.ApplicationIconBadgeNumber = 1;

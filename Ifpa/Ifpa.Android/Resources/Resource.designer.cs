@@ -4214,11 +4214,8 @@ namespace Ifpa.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f090050
-			public const int ApplicationName = 2131296336;
-			
 			// aapt resource value: 0x7f09004f
-			public const int Hello = 2131296335;
+			public const int ApplicationName = 2131296335;
 			
 			// aapt resource value: 0x7f090026
 			public const int abc_action_bar_home_description = 2131296294;
@@ -4318,12 +4315,6 @@ namespace Ifpa.Droid
 			
 			// aapt resource value: 0x7f090048
 			public const int bottom_sheet_behavior = 2131296328;
-			
-			// aapt resource value: 0x7f090052
-			public const int channel_description = 2131296338;
-			
-			// aapt resource value: 0x7f090051
-			public const int channel_name = 2131296337;
 			
 			// aapt resource value: 0x7f090049
 			public const int character_counter_pattern = 2131296329;
@@ -4457,11 +4448,23 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f09004e
 			public const int path_password_strike_through = 2131296334;
 			
+			// aapt resource value: 0x7f090053
+			public const int rank_channel_description = 2131296339;
+			
+			// aapt resource value: 0x7f090052
+			public const int rank_channel_name = 2131296338;
+			
 			// aapt resource value: 0x7f090039
 			public const int search_menu_title = 2131296313;
 			
 			// aapt resource value: 0x7f09003a
 			public const int status_bar_notification_info_overflow = 2131296314;
+			
+			// aapt resource value: 0x7f090051
+			public const int tournament_channel_description = 2131296337;
+			
+			// aapt resource value: 0x7f090050
+			public const int tournament_channel_name = 2131296336;
 			
 			static String()
 			{

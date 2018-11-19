@@ -8,8 +8,8 @@ namespace Ifpa.Droid
 {
     public class AndroidNotificationService : BaseNotificationService
     {
-        static readonly int NOTIFICATION_ID = 1000;
-        static readonly string CHANNEL_ID = "location_notification";
+        static readonly string TOURNAMENT_CHANNEL_ID = "tournament_notification";
+        static readonly string RANK_CHANNEL_ID = "rank_notification";
         internal static readonly string COUNT_KEY = "count";
 
         private readonly Context context;
@@ -17,10 +17,10 @@ namespace Ifpa.Droid
         public AndroidNotificationService(Context context)
         {
             this.context = context;
-            CreateNotificationChannel();
+            CreateNotificationChannels();
         }
 
-        void CreateNotificationChannel()
+        void CreateNotificationChannels()
         {
             if (Build.VERSION.SdkInt < BuildVersionCodes.O)
             {
@@ -30,18 +30,26 @@ namespace Ifpa.Droid
                 return;
             }
 
-            var channelName = context.GetString(Resource.String.channel_name);
-            var channelDescription = context.GetString(Resource.String.channel_description);
-            var channel = new NotificationChannel(CHANNEL_ID, channelName, NotificationImportance.Default)
+            var channelName = context.GetString(Resource.String.tournament_channel_name);
+            var channelDescription = context.GetString(Resource.String.tournament_channel_description);
+            var channel = new NotificationChannel(TOURNAMENT_CHANNEL_ID, channelName, NotificationImportance.Default)
             {
                 Description = channelDescription
             };
 
+            var channelName2 = context.GetString(Resource.String.rank_channel_name);
+            var channelDescription2 = context.GetString(Resource.String.rank_channel_description);
+            var channel2 = new NotificationChannel(RANK_CHANNEL_ID, channelName2, NotificationImportance.Default)
+            {
+                Description = channelDescription2
+            };
+
             var notificationManager = (NotificationManager)context.GetSystemService(Context.NotificationService);
             notificationManager.CreateNotificationChannel(channel);
+            notificationManager.CreateNotificationChannel(channel2);
         }
 
-        public override void SendNotification()
+        public override void SendNotification(string title, string description)
         {
             // When the user clicks the notification, SecondActivity will start up.
             var resultIntent = new Intent(context, typeof(MainActivity));
@@ -56,9 +64,9 @@ namespace Ifpa.Droid
 
 
             // Instantiate the builder and set notification elements:
-            Notification.Builder builder = new Notification.Builder(context, CHANNEL_ID)
-                                                        .SetContentTitle(NotificationTitle)
-                                                        .SetContentText(NotificationDescription)                                                        
+            Notification.Builder builder = new Notification.Builder(context, TOURNAMENT_CHANNEL_ID)
+                                                        .SetContentTitle(title)
+                                                        .SetContentText(description)                                                        
                                                         .SetSmallIcon(Resource.Drawable.notification_icon)
                                                         .SetAutoCancel(true) // Dismiss the notification from the notification area when the user clicks on it
                                                         .SetContentIntent(resultPendingIntent); 

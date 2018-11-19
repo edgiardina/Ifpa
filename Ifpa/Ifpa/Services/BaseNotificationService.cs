@@ -11,8 +11,11 @@ namespace Ifpa.Services
     {
         private PinballRankingApi PinballRankingApi => new PinballRankingApi(Constants.IfpaApiKey);
 
-        public readonly string NotificationTitle = "New Tournament Result";
-        protected readonly string NotificationDescription = "A new tournament result has been posted to your IFPA profile";
+        public readonly string NewTournamentNotificationTitle = "New Tournament Result";
+        protected readonly string NewTournamentNotificationDescription = "A new tournament result has been posted to your IFPA profile";
+
+        public readonly string NewRankNotificationTitle = "IFPA Rank Change";
+        protected readonly string NewRankNotificationDescription = "Your IFPA rank has changed!";
 
         public async Task NotifyIfUserHasNewlySubmittedTourneyResults()
         {
@@ -30,7 +33,7 @@ namespace Ifpa.Services
                     if (latestTournamentPosted > lastTournamentChecked)
                     {
                         Preferences.Set("LastTournamentId", latestTournamentPosted);
-                        SendNotification();
+                        SendNotification(NewTournamentNotificationTitle, NewTournamentNotificationDescription);
                     }
                 }
                 catch (Exception ex)
@@ -40,6 +43,33 @@ namespace Ifpa.Services
             }
         }
 
-        public abstract void SendNotification();
+        public async Task NotifyIfUsersRankChanged()
+        {
+            var playerId = Preferences.Get("PlayerId", 0);
+
+            if (playerId > 0)
+            {
+                try
+                {
+                    var results = await PinballRankingApi.GetPlayerRecord(playerId);
+
+                    var currentWpprRank = results.PlayerStats.CurrentWpprRank;
+                    var lastRecordedWpprRank = Preferences.Get("CurrentWpprRank", 0);
+
+                    if (currentWpprRank > lastRecordedWpprRank && lastRecordedWpprRank != 0)
+                    {
+                        SendNotification(NewRankNotificationTitle, NewRankNotificationDescription);
+                    }
+
+                    Preferences.Set("CurrentWpprRank", currentWpprRank);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+
+        public abstract void SendNotification(string title, string description);
     }
 }
