@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-  <string name="Hello">Hello World, Click Me!</string>
   <string name="ApplicationName">IFPA Companion</string>
-
-  <string name="channel_name">Tournament Results Notifications</string>
-  <string name="channel_description">Notifications when your IFPA Profile is listed in a new Tournament Result submission</string>
+  <string name="tournament_channel_name">Tournament Results Notifications</string>
+  <string name="tournament_channel_description">Notifications when your IFPA Profile is listed in a new Tournament Result submission</string>
+  <string name="rank_channel_name">WPPR Rank Change Notifications</string>
+  <string name="rank_channel_description">Notifications when your IFPA Profile\'s rank changes</string>
 </resources>

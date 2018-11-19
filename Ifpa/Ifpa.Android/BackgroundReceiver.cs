@@ -17,6 +17,7 @@ namespace Ifpa.Droid
             NotificationService = new AndroidNotificationService(context);
 
             await NotificationService.NotifyIfUserHasNewlySubmittedTourneyResults();
+            await NotificationService.NotifyIfUsersRankChanged();
 
             wakeLock.Release();
         }
