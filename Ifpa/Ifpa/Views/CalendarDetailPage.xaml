@@ -13,6 +13,9 @@
             <Color x:Key="LightTextColor">#999999</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add To Calendar" x:Name="AddToCalendarButton" Clicked="AddToCalendarButton_Clicked" Icon="calendar_add.png" />
+    </ContentPage.ToolbarItems>
     <ScrollView>
         <StackLayout Padding="15">
             <Label Text="{Binding Website, Mode=OneWay}" TextColor="Blue" >

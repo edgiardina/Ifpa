@@ -7,6 +7,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms.Maps;
 using System.Linq;
 using System.Collections.Generic;
+using Ifpa.Interfaces;
 
 namespace Ifpa.Views
 {
@@ -64,6 +65,20 @@ namespace Ifpa.Views
             var options = new MapsLaunchOptions { Name = viewModel.TournamentName };
 
             await Maps.OpenAsync(placemark, options);
+        }
+
+        private async void AddToCalendarButton_Clicked(object sender, EventArgs e)
+        {
+            var result = await DependencyService.Get<IReminderService>().CreateReminder(this.viewModel);
+
+            if(result)
+            {
+                await DisplayAlert("Success", "Tournament added to your Calendar", "OK");
+            }
+            else
+            {
+                await DisplayAlert("Error", "Unable to add Tournament to your Calendar", "OK");
+            }
         }
     }
 }
