@@ -67,6 +67,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AndroidReminderService.cs" />
     <Compile Include="BackgroundReceiver.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="AndroidNotificationService.cs" />
@@ -80,6 +81,7 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\calendar_add.png" />
     <AndroidResource Include="Resources\layout\Tabbar.axml" />
     <AndroidResource Include="Resources\layout\Toolbar.axml" />
     <AndroidResource Include="Resources\mipmap-hdpi\Icon.png">

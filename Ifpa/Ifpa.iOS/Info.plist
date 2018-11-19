@@ -39,6 +39,8 @@
 	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app will use your location to show nearby tournaments</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>This app will allow you to add an IFPA sanctioned tournament from the app to your local device's calendar</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.5</string>
 	<key>UIBackgroundModes</key>

@@ -79,6 +79,7 @@
     <LaunchForBackgroundFetch>false</LaunchForBackgroundFetch>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="iOSReminderService.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
@@ -259,5 +260,14 @@
       <Project>{924ed4a9-0c09-4cd9-b460-7656504673da}</Project>
       <Name>Ifpa</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\calendar_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\calendar_add%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\calendar_add%403x.png" />
   </ItemGroup>
 </Project>
