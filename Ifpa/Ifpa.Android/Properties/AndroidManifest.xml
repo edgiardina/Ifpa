@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.0.4" package="com.edgiardina.ifpa" android:installLocation="auto" android:versionCode="2">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.0.6" package="com.edgiardina.ifpa" android:installLocation="auto" android:versionCode="3">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="26" />
 	<application android:label="IFPA Companion">
 		<meta-data android:name="com.google.android.geo.API_KEY" android:value="" />
