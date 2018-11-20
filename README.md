@@ -1,5 +1,5 @@
 # IFPA Companion
-An app for the International Flipper Pinball Association's rankings
+A cross-platform mobile app for the International Flipper Pinball Association's rankings
 
 For iOS 
 
