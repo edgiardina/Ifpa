@@ -35,10 +35,12 @@ namespace Ifpa.ViewModels
             {
                 Results.Clear();
                 var pvpResults = await PinballRankingApi.GetPlayerComparisons(PlayerId);
+                var lastNames = pvpResults.Pvp
+                                        .OrderBy(n => n.LastName).Select(n => n.LastName).ToList();
                 var groupedResults = pvpResults.Pvp
                                         .OrderBy(n => n.LastName)
                                         .ThenBy(n => n.FirstName)
-                                        .GroupBy(c => char.ToUpper(c.LastName[0]))
+                                        .GroupBy(c => char.ToUpper(c.LastName.FirstOrDefault()))
                                         .Select(g => new Grouping<char, PlayerVersusRecord>(g.Key, g));
 
                 foreach (var item in groupedResults)
