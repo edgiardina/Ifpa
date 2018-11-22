@@ -32,9 +32,10 @@ namespace Ifpa.Services
 
                     if (latestTournamentPosted > lastTournamentChecked)
                     {
-                        Preferences.Set("LastTournamentId", latestTournamentPosted);
                         SendNotification(NewTournamentNotificationTitle, NewTournamentNotificationDescription);
                     }
+                    
+                    Preferences.Set("LastTournamentId", latestTournamentPosted);
                 }
                 catch (Exception ex)
                 {
