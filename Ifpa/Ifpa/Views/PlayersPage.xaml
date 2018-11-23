@@ -28,7 +28,7 @@
                                 <Label VerticalTextAlignment="Center" Text="{Binding CurrentWpprRank, Converter={StaticResource intToOrdinalString}}" 
                        LineBreakMode="NoWrap" 
                        Style="{DynamicResource ListItemTextStyle}" 
-                       FontSize="24" />
+                       FontSize="24" WidthRequest="58" />
                                 <StackLayout Padding="10" Orientation="Vertical">
                                     <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
                                         <Label.FormattedText>
