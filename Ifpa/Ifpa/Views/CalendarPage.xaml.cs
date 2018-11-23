@@ -9,6 +9,7 @@ using Ifpa.ViewModels;
 using Xamarin.Forms.Maps;
 using System.Diagnostics;
 using PinballApi.Models.WPPR.Calendar;
+using Ifpa.Models;
 
 namespace Ifpa.Views
 {
@@ -99,7 +100,8 @@ namespace Ifpa.Views
                     calendarMap.Pins.Clear();
 
                     var location = await Geocoding.GetLocationsAsync(LocationEntry.Text);
-                    calendarMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(location.First().Latitude, location.First().Longitude), new Distance(DistanceSlider.Value * 1609.344)));
+                    calendarMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(location.First().Latitude, location.First().Longitude), 
+                                                                         new Distance(DistanceSlider.Value * Constants.MetersInAMile)));
 
                     DistanceText.Text = ((int)DistanceSlider.Value).ToString();
                     await viewModel.ExecuteLoadItemsCommand(LocationEntry.Text, (int)DistanceSlider.Value);
