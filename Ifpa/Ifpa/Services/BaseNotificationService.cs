@@ -57,7 +57,7 @@ namespace Ifpa.Services
                     var currentWpprRank = results.PlayerStats.CurrentWpprRank;
                     var lastRecordedWpprRank = Preferences.Get("CurrentWpprRank", 0);
 
-                    if (currentWpprRank > lastRecordedWpprRank && lastRecordedWpprRank != 0)
+                    if (currentWpprRank != lastRecordedWpprRank && lastRecordedWpprRank != 0)
                     {
                         SendNotification(NewRankNotificationTitle, NewRankNotificationDescription);
                     }
