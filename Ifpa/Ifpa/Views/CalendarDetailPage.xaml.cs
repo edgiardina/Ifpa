@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms.Maps;
 using System.Linq;
-using System.Collections.Generic;
 using Ifpa.Interfaces;
 
 namespace Ifpa.Views
