@@ -41,8 +41,8 @@
                      HasUnevenRows="true">
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="10">
-                            <Label Text="{Binding EndDate, StringFormat='{0:d}'}" LineBreakMode="NoWrap" />
+                        <StackLayout Orientation="Horizontal" Padding="10" >
+                            <Label HorizontalOptions="Start" MinimumWidthRequest="90" Text="{Binding EndDate, StringFormat='{0:d}'}" LineBreakMode="NoWrap" />
                             <Label Text="{Binding TournamentName}" />
                         </StackLayout>
                     </ViewCell>
