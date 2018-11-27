@@ -42,9 +42,9 @@ namespace Ifpa.ViewModels
                                         .ThenBy(n => n.FirstName)
                                         .GroupBy(c => char.ToUpper(c.LastName.FirstOrDefault()))
                                         .Select(g => new Grouping<char, PlayerVersusRecord>(g.Key, g));
-
+                
                 foreach (var item in groupedResults)
-                {                 
+                {  
                     Results.Add(item);
                 }
             }

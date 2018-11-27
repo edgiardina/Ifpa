@@ -6,7 +6,7 @@
              Title="{Binding Title}">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local:IntToOrdinalStringConverter x:Key="intToOrdinalString" />
+            <local:PlayerVersusRecordStringConverter x:Key="pvpString" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ListView x:Name="MyListView"
@@ -17,7 +17,7 @@
             ItemTapped="Handle_ItemTapped"
             CachingStrategy="RecycleElement"
             HasUnevenRows="true"
-            IsGroupingEnabled="True"
+            IsGroupingEnabled="True"              
             GroupDisplayBinding="{Binding Key}"
             GroupShortNameBinding="{Binding Key}">
         <!--Custom View Cells-->
@@ -36,7 +36,8 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" HorizontalTextAlignment="End">
+                        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" HorizontalTextAlignment="End"                               
+                               TextColor="{Binding Path=., Converter={StaticResource pvpString}}">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <FormattedString.Spans>

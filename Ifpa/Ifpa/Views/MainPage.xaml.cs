@@ -11,21 +11,40 @@ namespace Ifpa.Views
     {
         public MainPage()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
-        private async void TabbedPage_CurrentPageChanged(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-            //If a user hasn't set up my stats, redirect to player search
+            base.OnAppearing();
 
-            var i = this.Children.IndexOf(this.CurrentPage);
-
-            if (Preferences.Get("PlayerId", 0) == 0 && i == 2)
+            if (Application.Current.Properties.ContainsKey("tab_state"))
             {
-                this.CurrentPage = this.Children[1];
-                await DisplayAlert("Configure your Stats", "Looks like you haven't configured your 'My Stats' page. Use the Player Search to find your Player, and press the Star to configure your Stats", "OK");
-                await this.CurrentPage.Navigation.PopToRootAsync();
+                CurrentPage = Children[Int32.Parse(Application.Current.Properties["tab_state"].ToString())];
             }
         }
+        
+        protected override void OnCurrentPageChanged()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var i = this.Children.IndexOf(this.CurrentPage);
+
+                Application.Current.Properties["tab_state"] = i;
+
+                await Application.Current.SavePropertiesAsync();
+
+                //If a user hasn't set up my stats, redirect to player search
+                if (Preferences.Get("PlayerId", 0) == 0 && i == 2)
+                {
+                    this.CurrentPage = this.Children[1];
+                    await DisplayAlert("Configure your Stats", "Looks like you haven't configured your 'My Stats' page. Use the Player Search to find your Player, and press the Star to configure your Stats", "OK");
+                    await this.CurrentPage.Navigation.PopToRootAsync();
+                }
+            });
+
+            base.OnCurrentPageChanged();
+        }
+
     }
 }
