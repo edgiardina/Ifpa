@@ -14,7 +14,6 @@ namespace Ifpa
         {
             InitializeComponent();
 
-
             MainPage = new MainPage();
         }
 

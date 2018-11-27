@@ -6,6 +6,9 @@
         <ResourceDictionary>
             <!--Global Styles-->
             <Color x:Key="NavigationPrimary">#2F4E6E</Color>
+            <Color x:Key="WinningRecord">#04B45F</Color>
+            <Color x:Key="LosingRecord">#FE2E2E</Color>
+            <Color x:Key="TieRecord">#333333</Color>
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="BarTextColor" Value="White" />
