@@ -89,7 +89,7 @@ namespace Ifpa.Views
         private async Task ChangePlayerAndRedirect()
         {
             Preferences.Set("PlayerId", viewModel.PlayerId);
-            Preferences.Set("LastTournamentId", viewModel.LastTournamentId);
+            Preferences.Set("LastTournamentCount", viewModel.LastTournamentCount);
             Preferences.Set("CurrentWpprRank", viewModel.PlayerRecord.PlayerStats.CurrentWpprRank);
             await DisplayAlert("Congratulations", "You have now configured your Stats page!", "OK");
             var masterPage = this.Parent.Parent as TabbedPage;

@@ -12,7 +12,7 @@ namespace Ifpa.ViewModels
         public Command LoadItemsCommand { get; set; }
 
         public int PlayerId { get; set; }
-        public int LastTournamentId { get; set; }
+        public int LastTournamentCount { get; set; }
         private PlayerRecord playerRecord = new PlayerRecord { Player = new Player { }, PlayerStats = new PlayerStats { } };
 
         public PlayerRecord PlayerRecord
@@ -59,7 +59,7 @@ namespace Ifpa.ViewModels
             {
                 IsBusy = true;
                 var playerData = await PinballRankingApi.GetPlayerRecord(PlayerId);
-                LastTournamentId = (await PinballRankingApi.GetPlayerResults(PlayerId)).Results.Max(n => n.TournamentId);
+                LastTournamentCount = (await PinballRankingApi.GetPlayerResults(PlayerId)).ResultsCount;
 
                 PlayerRecord = playerData;
                 Title = PlayerRecord.Player.Initials;

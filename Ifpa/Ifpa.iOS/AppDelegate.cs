@@ -51,7 +51,7 @@ namespace Ifpa.iOS
             if (notification.AlertAction == NotificationService.NewTournamentNotificationTitle)
             {
                 //Navigate to My Stats
-                ((MainPage)(App.Current.MainPage)).CurrentPage = ((MainPage)(App.Current.MainPage)).Children[1];
+                ((MainPage)(App.Current.MainPage)).CurrentPage = ((MainPage)(App.Current.MainPage)).Children[2];
 
                 var plist = NSUserDefaults.StandardUserDefaults;
                 var playerId = Convert.ToInt32(plist.IntForKey("PlayerId"));
@@ -62,7 +62,7 @@ namespace Ifpa.iOS
             else if(notification.AlertAction == NotificationService.NewRankNotificationTitle)
             {
                 //Navigate to My Stats
-                ((MainPage)(App.Current.MainPage)).CurrentPage = ((MainPage)(App.Current.MainPage)).Children[1];
+                ((MainPage)(App.Current.MainPage)).CurrentPage = ((MainPage)(App.Current.MainPage)).Children[2];           
             }
 
             // reset our badge
