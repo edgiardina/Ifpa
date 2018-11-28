@@ -27,15 +27,15 @@ namespace Ifpa.Services
                 {
                     var results = await PinballRankingApi.GetPlayerResults(playerId);
 
-                    var latestTournamentPosted = results.Results.Max(n => n.TournamentId);
-                    var lastTournamentChecked = Preferences.Get("LastTournamentId", latestTournamentPosted);
+                    var numberOfTournaments = results.ResultsCount;
+                    var lastTournamentCount = Preferences.Get("LastTournamentCount", numberOfTournaments);
 
-                    if (latestTournamentPosted > lastTournamentChecked)
+                    if (numberOfTournaments > lastTournamentCount)
                     {
                         SendNotification(NewTournamentNotificationTitle, NewTournamentNotificationDescription);
                     }
                     
-                    Preferences.Set("LastTournamentId", latestTournamentPosted);
+                    Preferences.Set("LastTournamentCount", numberOfTournaments);
                 }
                 catch (Exception ex)
                 {
