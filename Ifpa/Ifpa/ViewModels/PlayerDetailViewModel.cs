@@ -2,6 +2,7 @@
 using PinballApi.Models.WPPR.Players;
 using System;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -27,7 +28,7 @@ namespace Ifpa.ViewModels
 
         public string Name => PlayerRecord.Player.FirstName + " " + PlayerRecord.Player.LastName;
 
-        public string Rank => PlayerRecord.PlayerStats.CurrentWpprRank.OrdinalSuffix(); 
+        public string Rank => PlayerRecord.PlayerStats.CurrentWpprRank.OrdinalSuffix();
 
         public string Rating => PlayerRecord.PlayerStats.RatingsRank.OrdinalSuffix();
 
@@ -39,7 +40,22 @@ namespace Ifpa.ViewModels
 
         public double TotalWpprs => PlayerRecord.PlayerStats.CurrentWpprValue;
 
-        public string PlayerAvatar => $"https://www.ifpapinball.com/images/profiles/players/{PlayerId}.jpg";
+        public string PlayerAvatar
+        {
+            get
+            {
+                var actualUrl = $"https://www.ifpapinball.com/images/profiles/players/{PlayerId}.jpg";
+                var httpClient = new HttpClient();                
+
+                var uri = new Uri(actualUrl);
+                using (var response = httpClient.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead).Result)
+                {
+                    if (!response.IsSuccessStatusCode)
+                        return "https://www.ifpapinball.com/images/noplayerpic.png";
+                }
+                return actualUrl;
+            }
+        }
 
         public string CountryFlag => $"https://www.countryflags.io/{PlayerRecord.Player.CountryCode}/shiny/64.png";
 
@@ -56,7 +72,8 @@ namespace Ifpa.ViewModels
         async Task ExecuteLoadItemsCommand()
         {
             try
-            {
+            {         
+
                 IsBusy = true;
                 var playerData = await PinballRankingApi.GetPlayerRecord(PlayerId);
                 LastTournamentCount = (await PinballRankingApi.GetPlayerResults(PlayerId)).ResultsCount;

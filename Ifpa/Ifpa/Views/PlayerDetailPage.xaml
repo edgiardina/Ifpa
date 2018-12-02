@@ -19,7 +19,7 @@
     <ScrollView>
         <StackLayout Spacing="20" Padding="15">
             <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
-            <Image Source="{Binding PlayerAvatar, Mode=OneWay}" HeightRequest="165" />
+            <Image Source="{Binding PlayerAvatar, Mode=OneWay}" HeightRequest="165" x:Name="AvatarImage" />
             <StackLayout Orientation="Horizontal">
                 <Label Text="{Binding Name, Mode=OneWay}" HorizontalOptions="StartAndExpand" FontSize="16"/>
 
