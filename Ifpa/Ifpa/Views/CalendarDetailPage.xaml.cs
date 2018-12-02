@@ -37,6 +37,7 @@ namespace Ifpa.Views
                     Label = viewModel.TournamentName,
                     Position = position
                 });
+                calendarMap.IsVisible = true;
             }
         }
 

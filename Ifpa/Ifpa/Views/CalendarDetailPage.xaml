@@ -58,8 +58,8 @@
                         <Label Text="{Binding CountryName, Mode=OneWay}"    />
                     </StackLayout>
                     <maps:Map WidthRequest="80" HeightRequest="100"
-                        x:Name="calendarMap"                  
-                        VerticalOptions="FillAndExpand" MapType="Street" />
+                        x:Name="calendarMap" HasScrollEnabled="False" HasZoomEnabled="False"              
+                        VerticalOptions="FillAndExpand" MapType="Street" IsVisible="False" />
                 </StackLayout>
             </Frame>
             <Editor Text="{Binding Details, Mode=OneWay}" IsEnabled="False" HeightRequest="600"  />
