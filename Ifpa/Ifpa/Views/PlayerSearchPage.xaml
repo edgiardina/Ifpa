@@ -1,9 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Ifpa.Views.PlayerSearchPage"
+             x:Class="Ifpa.Views.PlayerSearchPage"             
+             xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
               Title="{Binding Title}"
              x:Name="SearchPlayersPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:IntToOrdinalStringConverter x:Key="intToOrdinalString" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
             <SearchBar x:Name="SearchBar" SearchCommand="{Binding SearchCommand}" SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"></SearchBar>
@@ -47,10 +53,10 @@
                                         </Label.FormattedText>
                                     </Label>
                                 </StackLayout>
-                                <Label HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" Text="{Binding WpprRank}" 
+                                <Label HorizontalOptions="EndAndExpand" Text="{Binding WpprRank, Converter={StaticResource intToOrdinalString}}" 
                                    LineBreakMode="NoWrap" 
                                    Style="{DynamicResource ListItemTextStyle}" 
-                                   FontSize="24" />
+                                   FontSize="18" WidthRequest="80" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
