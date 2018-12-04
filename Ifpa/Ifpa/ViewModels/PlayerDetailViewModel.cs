@@ -59,7 +59,7 @@ namespace Ifpa.ViewModels
 
         public string CountryFlag => $"https://www.countryflags.io/{PlayerRecord.Player.CountryCode}/shiny/64.png";
 
-        public string Location => $"{PlayerRecord.Player.City} {PlayerRecord.Player.State} {PlayerRecord.Player.CountryName}";
+        public string Location => $"{PlayerRecord.Player.City} {PlayerRecord.Player.State} {PlayerRecord.Player.CountryName}".Trim();
 
         public bool IsRegistered => PlayerRecord.Player.IfpaRegistered == "Y";
 
