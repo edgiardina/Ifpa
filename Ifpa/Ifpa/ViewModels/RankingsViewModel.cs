@@ -7,14 +7,20 @@ using PinballApi.Models.WPPR.Rankings;
 
 namespace Ifpa.ViewModels
 {
-    public class PlayersViewModel : BaseViewModel
+    public class RankingsViewModel : BaseViewModel
     {
         public ObservableCollection<Ranking> Players { get; set; }
         public Command LoadItemsCommand { get; set; }
 
-        public PlayersViewModel()
+        public int StartingPosition { get; set; }
+        public int CountOfItemsToFetch { get; set; }
+        
+
+        public RankingsViewModel()
         {
-            Title = "Top 50";
+            Title = "Rankings";
+            CountOfItemsToFetch = 50;
+            StartingPosition = 1;
             Players = new ObservableCollection<Ranking>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
@@ -29,7 +35,7 @@ namespace Ifpa.ViewModels
             try
             {
                 Players.Clear();
-                var items = await PinballRankingApi.GetRankings();
+                var items = await PinballRankingApi.GetRankings(StartingPosition, CountOfItemsToFetch);
                 foreach (var item in items.Rankings)
                 {
                     Players.Add(item);
