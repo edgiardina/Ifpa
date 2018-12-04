@@ -13,9 +13,9 @@
         </OnPlatform>
     </TabbedPage.BarBackgroundColor>
     <TabbedPage.Children>
-        <NavigationPage Title="Top 50" Icon="numbered_list.png">      
+        <NavigationPage Title="Rankings" Icon="numbered_list.png">      
             <x:Arguments>
-                <views:PlayersPage />
+                <views:RankingsPage />
             </x:Arguments>
         </NavigationPage>
 

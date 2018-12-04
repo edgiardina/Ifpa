@@ -6,15 +6,15 @@ using PinballApi.Models.WPPR.Rankings;
 namespace Ifpa.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PlayersPage : ContentPage
+    public partial class RankingsPage : ContentPage
     {
-        PlayersViewModel viewModel;
+        RankingsViewModel viewModel;
 
-        public PlayersPage()
+        public RankingsPage()
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new PlayersViewModel();
+            BindingContext = viewModel = new RankingsViewModel();
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
