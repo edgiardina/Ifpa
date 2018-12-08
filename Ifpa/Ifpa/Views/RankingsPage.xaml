@@ -12,6 +12,10 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
+            <Picker ItemsSource="{Binding Countries, Mode=OneWay}" 
+                    ItemDisplayBinding="{Binding CountryName}" 
+                    SelectedItem="{Binding CountryToShow, Mode=TwoWay}"
+                    SelectedIndexChanged="Picker_SelectedIndexChanged"/>
             <ListView x:Name="PlayersListView" 
                 ItemsSource="{Binding Players}"
                 VerticalOptions="FillAndExpand"

@@ -4,17 +4,25 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using PinballApi.Models.WPPR.Rankings;
+using System.Collections.Generic;
+using PinballApi.Models.WPPR.Statistics;
+using System.Linq;
 
 namespace Ifpa.ViewModels
 {
     public class RankingsViewModel : BaseViewModel
     {
         public ObservableCollection<Ranking> Players { get; set; }
+        public ObservableCollection<PlayersByCountryStat> Countries { get; set; }
+
+        public PlayersByCountryStat CountryToShow { get; set; } 
+
         public Command LoadItemsCommand { get; set; }
 
         public int StartingPosition { get; set; }
         public int CountOfItemsToFetch { get; set; }
-        
+
+        public readonly PlayersByCountryStat OverallRankings = new PlayersByCountryStat { CountryName = "Overall" };        
 
         public RankingsViewModel()
         {
@@ -22,6 +30,8 @@ namespace Ifpa.ViewModels
             CountOfItemsToFetch = 50;
             StartingPosition = 1;
             Players = new ObservableCollection<Ranking>();
+            Countries = new ObservableCollection<PlayersByCountryStat>();
+            CountryToShow = OverallRankings;
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
 
@@ -34,12 +44,25 @@ namespace Ifpa.ViewModels
 
             try
             {
+                if (Countries.Count == 0)
+                {
+                    Countries.Add(OverallRankings);
+                    var playersByCountry = await PinballRankingApi.GetPlayersByCountryStat();
+                    foreach (var stat in playersByCountry.OrderBy(n => n.CountryName))
+                    {
+                        Countries.Add(stat);
+                    }
+                    CountryToShow = OverallRankings;
+                    OnPropertyChanged(nameof(CountryToShow));
+                }
+
                 Players.Clear();
-                var items = await PinballRankingApi.GetRankings(StartingPosition, CountOfItemsToFetch);
+                var items = await PinballRankingApi.GetRankings(StartingPosition, CountOfItemsToFetch, countryName: CountryToShow == OverallRankings ? null : CountryToShow?.CountryName);
                 foreach (var item in items.Rankings)
                 {
                     Players.Add(item);
                 }
+
             }
             catch (Exception ex)
             {

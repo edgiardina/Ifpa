@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PinballApi" Version="1.0.31" />
+    <PackageReference Include="PinballApi" Version="1.0.32" />
     <PackageReference Include="Xamarin.Essentials" Version="0.11.0-preview" />
     <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
     <PackageReference Include="Xamarin.Forms.Maps" Version="3.4.0.1008975" />  
