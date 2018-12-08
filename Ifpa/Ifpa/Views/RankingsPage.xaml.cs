@@ -36,5 +36,11 @@ namespace Ifpa.Views
             if (viewModel.Players.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
         }
+
+        private void Picker_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            viewModel.LoadItemsCommand.Execute(null);
+        }
+
     }
 }
