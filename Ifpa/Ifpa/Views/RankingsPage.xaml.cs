@@ -42,5 +42,11 @@ namespace Ifpa.Views
             viewModel.LoadItemsCommand.Execute(null);
         }
 
+        private void Stepper_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            //todo: remember these values
+            viewModel.LoadItemsCommand.Execute(null);
+        }
+
     }
 }

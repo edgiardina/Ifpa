@@ -19,8 +19,19 @@ namespace Ifpa.ViewModels
 
         public Command LoadItemsCommand { get; set; }
 
-        public int StartingPosition { get; set; }
-        public int CountOfItemsToFetch { get; set; }
+        private int startingPosition;
+        public int StartingPosition
+        {
+            get { return startingPosition; }
+            set { startingPosition = value; OnPropertyChanged(nameof(StartingPosition)); }
+        }
+
+        private int countOfItemsToFetch;
+        public int CountOfItemsToFetch
+        {
+            get { return countOfItemsToFetch; }
+            set { countOfItemsToFetch = value; OnPropertyChanged(nameof(CountOfItemsToFetch)); }
+        }
 
         public readonly PlayersByCountryStat OverallRankings = new PlayersByCountryStat { CountryName = "Overall" };        
 
