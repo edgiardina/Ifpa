@@ -63,7 +63,7 @@ namespace Ifpa.ViewModels
                     {
                         Countries.Add(stat);
                     }
-                    CountryToShow = OverallRankings;
+                    CountryToShow = Countries.Single(n => n.CountryName == CountryToShow.CountryName);
                     OnPropertyChanged(nameof(CountryToShow));
                 }
 
