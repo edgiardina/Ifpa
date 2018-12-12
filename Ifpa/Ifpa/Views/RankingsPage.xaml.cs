@@ -2,6 +2,8 @@
 using Xamarin.Forms.Xaml;
 using Ifpa.ViewModels;
 using PinballApi.Models.WPPR.Rankings;
+using Xamarin.Essentials;
+using PinballApi.Models.WPPR.Statistics;
 
 namespace Ifpa.Views
 {
@@ -34,17 +36,28 @@ namespace Ifpa.Views
             base.OnAppearing();
 
             if (viewModel.Players.Count == 0)
+            {
+                viewModel.CountOfItemsToFetch = Preferences.Get("PlayerCount", viewModel.CountOfItemsToFetch);
+                viewModel.StartingPosition = Preferences.Get("StartingRank", viewModel.StartingPosition);
+                viewModel.CountryToShow = new PlayersByCountryStat { CountryName = Preferences.Get("CountryName", viewModel.OverallRankings.CountryName) };
+
                 viewModel.LoadItemsCommand.Execute(null);
+            }
         }
 
         private void Picker_SelectedIndexChanged(object sender, System.EventArgs e)
         {
+            Preferences.Set("CountryName", viewModel.CountryToShow.CountryName);
             viewModel.LoadItemsCommand.Execute(null);
         }
 
         private void Stepper_ValueChanged(object sender, ValueChangedEventArgs e)
         {
-            //todo: remember these values
+            if (viewModel.Players.Count > 0)
+            {
+                Preferences.Set("PlayerCount", viewModel.CountOfItemsToFetch);
+                Preferences.Set("StartingRank", viewModel.StartingPosition);
+            }
             viewModel.LoadItemsCommand.Execute(null);
         }
 

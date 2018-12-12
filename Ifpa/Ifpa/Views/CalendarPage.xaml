@@ -8,11 +8,10 @@
         <ToolbarItem Text="My Location" Clicked="MyLocation_Clicked" Icon="location.png" />
     </ContentPage.ToolbarItems>
     <StackLayout>
-        <!--<ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />-->
         <TableView Intent="Settings" HeightRequest="300">
             <TableRoot>
                 <TableSection>
-                    <EntryCell Label="Location" Placeholder="Chicago, Illinois" Text="Chicago, Illinois" x:Name="LocationEntry" />                       
+                    <EntryCell Label="Location" Placeholder="Chicago, Illinois" Text="Chicago, Illinois" x:Name="LocationEntry" />
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" Margin="20,10">
                             <Label Text="Distance" />
@@ -48,8 +47,6 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-
         </ListView>
-
     </StackLayout>
 </ContentPage>

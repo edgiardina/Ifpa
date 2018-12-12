@@ -13,9 +13,9 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <TableView HeightRequest="250">
+            <TableView HeightRequest="255">
                 <TableRoot>
-                    <TableSection>
+                    <TableSection Title="Filter">
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Margin="20,10">
                                 <Label Text="Country" WidthRequest="150" />
@@ -38,7 +38,7 @@
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Margin="20,10">
                                 <Label Text="Starting Rank" WidthRequest="150" />
-                                <Label Text="{Binding StartingPosition}"  HorizontalOptions="CenterAndExpand" />
+                                <Label Text="{Binding StartingPosition}" HorizontalOptions="CenterAndExpand" />
                                 <Stepper Maximum="10000" Minimum="1"
                                      Increment="100"
                                      Value="{Binding StartingPosition, Mode=TwoWay}"
