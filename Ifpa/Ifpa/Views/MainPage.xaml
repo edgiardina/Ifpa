@@ -13,6 +13,12 @@
         </OnPlatform>
     </TabbedPage.BarBackgroundColor>
     <TabbedPage.Children>
+        <NavigationPage Title="News" Icon="news.png">
+            <x:Arguments>
+                <views:NewsPage />
+            </x:Arguments>
+        </NavigationPage>
+        
         <NavigationPage Title="Rankings" Icon="numbered_list.png">      
             <x:Arguments>
                 <views:RankingsPage />
