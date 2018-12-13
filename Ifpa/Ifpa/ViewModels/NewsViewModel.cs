@@ -32,9 +32,9 @@ namespace Ifpa.ViewModels
             try
             {
                 NewsItems.Clear();
-                var tournamentResults = await Parse(Constants.IfpaRssFeedUrl);
+                var newsItems = await Parse(Constants.IfpaRssFeedUrl);
 
-                foreach (var item in tournamentResults)
+                foreach (var item in newsItems)
                 {                 
                     NewsItems.Add(item);                    
                 }                
