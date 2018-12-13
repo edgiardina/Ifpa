@@ -1,4 +1,5 @@
 ﻿using Ifpa.ViewModels;
+using Microsoft.Toolkit.Parsers.Rss;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -24,9 +25,15 @@ namespace Ifpa.Views
                 viewModel.LoadItemsCommand.Execute(null);
         }
 
-        private void ItemsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void ItemsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            var newsItem = e.SelectedItem as RssSchema;
+            if (newsItem == null)
+                return;
 
+            ItemsListView.SelectedItem = null;
+
+            await Navigation.PushAsync(new NewsDetailPage(new NewsDetailViewModel(newsItem.FeedUrl)));
         }
     }
 }
