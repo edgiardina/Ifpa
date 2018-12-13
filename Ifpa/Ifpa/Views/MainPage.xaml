@@ -12,13 +12,7 @@
             <On Platform="Android" Value="{StaticResource NavigationPrimary}" />
         </OnPlatform>
     </TabbedPage.BarBackgroundColor>
-    <TabbedPage.Children>
-        <NavigationPage Title="News" Icon="news.png">
-            <x:Arguments>
-                <views:NewsPage />
-            </x:Arguments>
-        </NavigationPage>
-        
+    <TabbedPage.Children>        
         <NavigationPage Title="Rankings" Icon="numbered_list.png">      
             <x:Arguments>
                 <views:RankingsPage />
@@ -43,9 +37,9 @@
             </x:Arguments>
         </NavigationPage>
 
-        <NavigationPage Title="About" Icon="tab_about.png">     
+        <NavigationPage Title="More" Icon="more.png">
             <x:Arguments>
-                <views:AboutPage />
+                <views:MoreItemsPage />
             </x:Arguments>
         </NavigationPage>
     </TabbedPage.Children>
