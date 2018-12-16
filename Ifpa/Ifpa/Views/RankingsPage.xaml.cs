@@ -61,5 +61,9 @@ namespace Ifpa.Views
             viewModel.LoadItemsCommand.Execute(null);
         }
 
+        private void ToolbarItem_Clicked(object sender, System.EventArgs e)
+        {
+            FilterTable.IsVisible = !FilterTable.IsVisible;
+        }
     }
 }

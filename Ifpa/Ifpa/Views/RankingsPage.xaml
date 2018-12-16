@@ -11,9 +11,12 @@
             <local:PlayerListViewIndexConverter x:Key="playerListViewIndexConverter" />         
         </ResourceDictionary>        
     </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Filter" Clicked="ToolbarItem_Clicked" Icon="filter.png" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <TableView HeightRequest="255">
+            <TableView HeightRequest="255" IsVisible="False" x:Name="FilterTable">
                 <TableRoot>
                     <TableSection Title="Filter">
                         <ViewCell>
