@@ -16,14 +16,15 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <TableView HeightRequest="255" IsVisible="False" x:Name="FilterTable">
+            <TableView HeightRequest="300" IsVisible="False" x:Name="FilterTable">
                 <TableRoot>
                     <TableSection Title="Filter">
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Margin="20,10">
                                 <Label Text="Country" WidthRequest="150" />
                                 <Picker HorizontalOptions="FillAndExpand" ItemsSource="{Binding Countries, Mode=OneWay}" 
-                                    ItemDisplayBinding="{Binding CountryName}" 
+                                    ItemDisplayBinding="{Binding CountryName}"
+                                        HeightRequest="30"
                                     SelectedItem="{Binding CountryToShow, Mode=TwoWay}"
                                     SelectedIndexChanged="Picker_SelectedIndexChanged"/>
                             </StackLayout>
