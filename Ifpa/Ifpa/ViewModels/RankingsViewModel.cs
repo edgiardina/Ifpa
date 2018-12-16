@@ -23,14 +23,14 @@ namespace Ifpa.ViewModels
         public int StartingPosition
         {
             get { return startingPosition; }
-            set { startingPosition = value; OnPropertyChanged(nameof(StartingPosition)); }
+            set { SetProperty(ref startingPosition, value); }
         }
 
         private int countOfItemsToFetch;
         public int CountOfItemsToFetch
         {
             get { return countOfItemsToFetch; }
-            set { countOfItemsToFetch = value; OnPropertyChanged(nameof(CountOfItemsToFetch)); }
+            set { SetProperty(ref countOfItemsToFetch, value); }
         }
 
         public readonly PlayersByCountryStat OverallRankings = new PlayersByCountryStat { CountryName = "Overall" };        
