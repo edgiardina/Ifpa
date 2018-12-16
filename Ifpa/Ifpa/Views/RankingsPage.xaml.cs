@@ -17,6 +17,7 @@ namespace Ifpa.Views
             InitializeComponent();
 
             BindingContext = viewModel = new RankingsViewModel();
+            PlayerListViewIndexConverter.BindingContext = viewModel;
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)

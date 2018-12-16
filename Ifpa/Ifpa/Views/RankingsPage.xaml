@@ -8,7 +8,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:IntToOrdinalStringConverter x:Key="intToOrdinalString" />
-            <local:PlayerListViewIndexConverter x:Key="playerListViewIndexConverter" />         
+            <local:PlayerListViewIndexConverter x:Key="playerListViewIndexConverter" x:Name="PlayerListViewIndexConverter" StartingRank="{Binding StartingPosition, Mode=TwoWay}" />         
         </ResourceDictionary>        
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
@@ -42,8 +42,9 @@
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Margin="20,10">
                                 <Label Text="Starting Rank" WidthRequest="150" />
-                                <Label Text="{Binding StartingPosition}" HorizontalOptions="CenterAndExpand" />
+                                <Label Text="{Binding StartingPosition}" x:Name="StartingPositionLabel" HorizontalOptions="CenterAndExpand" />
                                 <Stepper Maximum="10000" Minimum="1"
+                                     x:Name="StartingRankStepper"
                                      Increment="100"
                                      Value="{Binding StartingPosition, Mode=TwoWay}"
                                      ValueChanged="Stepper_ValueChanged" />
@@ -54,12 +55,13 @@
             </TableView>
             
             <ListView x:Name="PlayersListView" 
-                ItemsSource="{Binding Players}"
-                VerticalOptions="FillAndExpand"
+                 ItemsSource="{Binding Players}"
+                 VerticalOptions="FillAndExpand"
                  HasUnevenRows="true"
                  RefreshCommand="{Binding LoadItemsCommand}"
                  IsPullToRefreshEnabled="true"
                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                 
                  CachingStrategy="RecycleElement"
                  ItemSelected="OnItemSelected">
                 <ListView.ItemTemplate>
@@ -67,9 +69,9 @@
                         <ViewCell>
                             <StackLayout Padding="10,0,10,0" Orientation="Horizontal" >
                                 <Label VerticalTextAlignment="Center" Text="{Binding ., Converter={StaticResource playerListViewIndexConverter}, ConverterParameter={x:Reference PlayersListView}}" 
-                       LineBreakMode="NoWrap" 
-                       Style="{DynamicResource ListItemTextStyle}" 
-                       FontSize="24" WidthRequest="58" />
+                                   LineBreakMode="NoWrap" 
+                                   Style="{DynamicResource ListItemTextStyle}" 
+                                   FontSize="24" WidthRequest="58" />
                                 <StackLayout Padding="10" Orientation="Vertical">
                                     <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
                                         <Label.FormattedText>

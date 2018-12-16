@@ -6,17 +6,34 @@ using Xamarin.Forms;
 
 namespace Ifpa.ViewModels.Converters
 {
-    public class PlayerListViewIndexConverter : IValueConverter
+    public class PlayerListViewIndexConverter : BindableObject, IValueConverter
     {
+
+        public int StartingRank
+        {
+            get
+            {
+                return (int)GetValue(StartingRankProperty);
+            }
+            set
+            {
+                SetValue(StartingRankProperty, value);
+            }
+        }
+
+        public static BindableProperty StartingRankProperty =
+                    BindableProperty.Create(nameof(StartingRank), typeof(int), typeof(int), 1);
+
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null || parameter == null) return Color.White;
-            return (((ListView)parameter).ItemsSource.Cast<object>().ToList().IndexOf(value) + 1).OrdinalSuffix();
+            return (((ListView)parameter).ItemsSource.Cast<object>().ToList().IndexOf(value) + StartingRank).OrdinalSuffix();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return int.Parse(((string)value).Substring(((string)value).Length - 3));
+            throw new NotImplementedException();
         }
     }
 }
