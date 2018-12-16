@@ -38,7 +38,7 @@ namespace Ifpa.ViewModels
         public RankingsViewModel()
         {
             Title = "Rankings";
-            CountOfItemsToFetch = 50;
+            CountOfItemsToFetch = 100;
             StartingPosition = 1;
             Players = new ObservableCollection<Ranking>();
             Countries = new ObservableCollection<PlayersByCountryStat>();
