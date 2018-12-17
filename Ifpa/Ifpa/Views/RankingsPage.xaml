@@ -16,36 +16,41 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <TableView HeightRequest="300" IsVisible="False" x:Name="FilterTable">
+            <TableView IsVisible="False" x:Name="FilterTable" HasUnevenRows="True">
+                <TableView.HeightRequest>
+                    <OnPlatform iOS="260" Android="475" />
+                </TableView.HeightRequest>
                 <TableRoot>
                     <TableSection Title="Filter">
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal" Margin="20,10">
-                                <Label Text="Country" WidthRequest="150" />
+                            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                                <Label Text="Country" WidthRequest="120" Margin="20,10" />
                                 <Picker HorizontalOptions="FillAndExpand" ItemsSource="{Binding Countries, Mode=OneWay}" 
-                                    ItemDisplayBinding="{Binding CountryName}"
-                                        HeightRequest="30"
+                                    ItemDisplayBinding="{Binding CountryName}"                                         
                                     SelectedItem="{Binding CountryToShow, Mode=TwoWay}"
+                                    Margin="0,6,10,6"
                                     SelectedIndexChanged="Picker_SelectedIndexChanged"/>
                             </StackLayout>
                         </ViewCell>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal" Margin="20,10">
-                                <Label Text="Players" WidthRequest="150" />
-                                <Label Text="{Binding CountOfItemsToFetch}" HorizontalOptions="CenterAndExpand" />
+                            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                                <Label Text="Players" WidthRequest="120"  Margin="20,10"  />
+                                <Label Text="{Binding CountOfItemsToFetch}"  HorizontalOptions="CenterAndExpand"  Margin="0,10" />
                                 <Stepper Maximum="500" Minimum="10" 
                                      Increment="10"
+                                     Margin="0,6,10,6"
                                      Value="{Binding CountOfItemsToFetch, Mode=TwoWay}"
                                      ValueChanged="Stepper_ValueChanged" />
                             </StackLayout>
                         </ViewCell>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal" Margin="20,10">
-                                <Label Text="Starting Rank" WidthRequest="150" />
-                                <Label Text="{Binding StartingPosition}" x:Name="StartingPositionLabel" HorizontalOptions="CenterAndExpand" />
+                            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                                <Label Text="Starting Rank" WidthRequest="120" Margin="20,10" />
+                                <Label Text="{Binding StartingPosition}"  Margin="20,10" x:Name="StartingPositionLabel" HorizontalOptions="CenterAndExpand" />
                                 <Stepper Maximum="10000" Minimum="1"
                                      x:Name="StartingRankStepper"
                                      Increment="100"
+                                     Margin="0,6,10,6"
                                      Value="{Binding StartingPosition, Mode=TwoWay}"
                                      ValueChanged="Stepper_ValueChanged" />
                             </StackLayout>
@@ -71,7 +76,7 @@
                                 <Label VerticalTextAlignment="Center" Text="{Binding ., Converter={StaticResource playerListViewIndexConverter}, ConverterParameter={x:Reference PlayersListView}}" 
                                    LineBreakMode="NoWrap" 
                                    Style="{DynamicResource ListItemTextStyle}" 
-                                   FontSize="24" WidthRequest="58" />
+                                   FontSize="24" MinimumWidthRequest="58" HorizontalOptions="Start" />
                                 <StackLayout Padding="10" Orientation="Vertical">
                                     <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
                                         <Label.FormattedText>
