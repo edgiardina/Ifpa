@@ -288,4 +288,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\more%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\filter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\filter%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\filter%403x.png" />
+  </ItemGroup>
 </Project>
