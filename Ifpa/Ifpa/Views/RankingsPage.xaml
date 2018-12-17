@@ -8,27 +8,75 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:IntToOrdinalStringConverter x:Key="intToOrdinalString" />
-        </ResourceDictionary>
+            <local:PlayerListViewIndexConverter x:Key="playerListViewIndexConverter" x:Name="PlayerListViewIndexConverter" StartingRank="{Binding StartingPosition, Mode=TwoWay}" />         
+        </ResourceDictionary>        
     </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Filter" Clicked="ToolbarItem_Clicked" Icon="filter.png" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
+            <TableView IsVisible="False" x:Name="FilterTable" HasUnevenRows="True">
+                <TableView.HeightRequest>
+                    <OnPlatform iOS="260" Android="475" />
+                </TableView.HeightRequest>
+                <TableRoot>
+                    <TableSection Title="Filter">
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                                <Label Text="Country" WidthRequest="120" Margin="20,10" />
+                                <Picker HorizontalOptions="FillAndExpand" ItemsSource="{Binding Countries, Mode=OneWay}" 
+                                    ItemDisplayBinding="{Binding CountryName}"                                         
+                                    SelectedItem="{Binding CountryToShow, Mode=TwoWay}"
+                                    Margin="0,6,10,6"
+                                    SelectedIndexChanged="Picker_SelectedIndexChanged"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                                <Label Text="Players" WidthRequest="120"  Margin="20,10"  />
+                                <Label Text="{Binding CountOfItemsToFetch}"  HorizontalOptions="CenterAndExpand"  Margin="0,10" />
+                                <Stepper Maximum="500" Minimum="10" 
+                                     Increment="10"
+                                     Margin="0,6,10,6"
+                                     Value="{Binding CountOfItemsToFetch, Mode=TwoWay}"
+                                     ValueChanged="Stepper_ValueChanged" />
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                                <Label Text="Starting Rank" WidthRequest="120" Margin="20,10" />
+                                <Label Text="{Binding StartingPosition}"  Margin="20,10" x:Name="StartingPositionLabel" HorizontalOptions="CenterAndExpand" />
+                                <Stepper Maximum="10000" Minimum="1"
+                                     x:Name="StartingRankStepper"
+                                     Increment="100"
+                                     Margin="0,6,10,6"
+                                     Value="{Binding StartingPosition, Mode=TwoWay}"
+                                     ValueChanged="Stepper_ValueChanged" />
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+            
             <ListView x:Name="PlayersListView" 
-                ItemsSource="{Binding Players}"
-                VerticalOptions="FillAndExpand"
+                 ItemsSource="{Binding Players}"
+                 VerticalOptions="FillAndExpand"
                  HasUnevenRows="true"
                  RefreshCommand="{Binding LoadItemsCommand}"
                  IsPullToRefreshEnabled="true"
                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                 
                  CachingStrategy="RecycleElement"
                  ItemSelected="OnItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10" Orientation="Horizontal" >
-                                <Label VerticalTextAlignment="Center" Text="{Binding CurrentWpprRank, Converter={StaticResource intToOrdinalString}}" 
-                       LineBreakMode="NoWrap" 
-                       Style="{DynamicResource ListItemTextStyle}" 
-                       FontSize="24" WidthRequest="58" />
+                            <StackLayout Padding="10,0,10,0" Orientation="Horizontal" >
+                                <Label VerticalTextAlignment="Center" Text="{Binding ., Converter={StaticResource playerListViewIndexConverter}, ConverterParameter={x:Reference PlayersListView}}" 
+                                   LineBreakMode="NoWrap" 
+                                   Style="{DynamicResource ListItemTextStyle}" 
+                                   FontSize="24" MinimumWidthRequest="58" HorizontalOptions="Start" />
                                 <StackLayout Padding="10" Orientation="Vertical">
                                     <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
                                         <Label.FormattedText>
@@ -36,7 +84,7 @@
                                                 <FormattedString.Spans>
                                                     <Span Text="{Binding FirstName}" />
                                                     <Span Text=" " />
-                                                    <Span Text="{Binding LastName}" />
+                                                    <Span Text="{Binding LastName}" />                                                    
                                                 </FormattedString.Spans>
                                             </FormattedString>
                                         </Label.FormattedText>
@@ -55,6 +103,18 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
+                                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Text="Overall WPPR Rank:" />
+                                                    <Span Text=" " />
+                                                    <Span Text="{Binding CurrentWpprRank, Converter={StaticResource intToOrdinalString}}" />
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>
