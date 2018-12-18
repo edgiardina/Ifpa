@@ -63,9 +63,9 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                    <Button WidthRequest="160" Margin="10,20,10,20" Text="Learn More" Clicked="LearnMore_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
-                    <Button WidthRequest="160" Margin="10,20,10,20" Text="Leave a Review" Clicked="ReviewButton_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Button WidthRequest="160" Margin="0,10,0,0" HorizontalOptions="CenterAndExpand"  Text="Learn More" Clicked="LearnMore_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
+                    <Button WidthRequest="160" Margin="0,10,0,0" HorizontalOptions="CenterAndExpand"  Text="Leave a Review" Clicked="ReviewButton_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
                 </StackLayout>
             </StackLayout>
         </ScrollView>
