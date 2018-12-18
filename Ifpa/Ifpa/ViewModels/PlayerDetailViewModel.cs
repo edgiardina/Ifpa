@@ -38,7 +38,31 @@ namespace Ifpa.ViewModels
 
         public double? EfficiencyValue => PlayerRecord.PlayerStats.EfficiencyValue;
 
-        public double TotalWpprs => PlayerRecord.PlayerStats.CurrentWpprValue;
+        public double CurrentWpprValue => PlayerRecord.PlayerStats.CurrentWpprValue;
+
+        public string LastMonthRank => PlayerRecord.PlayerStats.LastMonthRank.OrdinalSuffix();
+
+        public string LastYearRank => PlayerRecord.PlayerStats.LastYearRank.OrdinalSuffix();
+
+        public string HighestRank => PlayerRecord.PlayerStats.HighestRank.OrdinalSuffix();
+
+        public DateTime HighestRankDate => PlayerRecord.PlayerStats.HighestRankDate;
+
+        public double TotalWpprs => PlayerRecord.PlayerStats.WpprPointsAllTime;
+
+        public string BestFinish => PlayerRecord.PlayerStats.BestFinish.OrdinalSuffix();
+
+        public int BestFinishCount => PlayerRecord.PlayerStats.BestFinishCount;
+
+        public int AvgFinish => PlayerRecord.PlayerStats.AverageFinish;
+
+        public int AvgFinishLastYear => PlayerRecord.PlayerStats.AverageFinishLastYear;
+
+        public int TotalEvents => PlayerRecord.PlayerStats.TotalEventsAllTime;
+
+        public int TotalActiveEvents => PlayerRecord.PlayerStats.TotalActiveEvents;
+        
+        public int EventsOutsideCountry => PlayerRecord.PlayerStats.TotalEventsAway;
 
         public string PlayerAvatar
         {
@@ -62,7 +86,7 @@ namespace Ifpa.ViewModels
         public string Location => $"{PlayerRecord.Player.City} {PlayerRecord.Player.State} {PlayerRecord.Player.CountryName}".Trim();
 
         public bool IsRegistered => PlayerRecord.Player.IfpaRegistered == "Y";
-
+        
         public PlayerDetailViewModel(int playerId)
         {
             this.PlayerId = playerId;
