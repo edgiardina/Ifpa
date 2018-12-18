@@ -1,6 +1,7 @@
 ﻿using PinballApi.Extensions;
 using PinballApi.Models.WPPR.Players;
 using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -25,6 +26,9 @@ namespace Ifpa.ViewModels
                 OnPropertyChanged(null);
             }
         }
+        public ObservableCollection<RankHistory> PlayerRankHistory { get; set; }
+
+        public ObservableCollection<RatingHistory> PlayerRatingHistory { get; set; }
 
         public string Name => PlayerRecord.Player.FirstName + " " + PlayerRecord.Player.LastName;
 
@@ -90,6 +94,8 @@ namespace Ifpa.ViewModels
         public PlayerDetailViewModel(int playerId)
         {
             this.PlayerId = playerId;
+            PlayerRankHistory = new ObservableCollection<RankHistory>();
+            PlayerRatingHistory = new ObservableCollection<RatingHistory>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
 
@@ -100,7 +106,10 @@ namespace Ifpa.ViewModels
 
                 IsBusy = true;
                 var playerData = await PinballRankingApi.GetPlayerRecord(PlayerId);
+                var playerHistoryData = await PinballRankingApi.GetPlayerHistory(PlayerId);
                 LastTournamentCount = (await PinballRankingApi.GetPlayerResults(PlayerId)).ResultsCount;
+                PlayerRankHistory = new ObservableCollection<RankHistory>(playerHistoryData.RankHistory);
+                PlayerRatingHistory = new ObservableCollection<RatingHistory>(playerHistoryData.RatingHistory);
 
                 PlayerRecord = playerData;
                 Title = PlayerRecord.Player.Initials;

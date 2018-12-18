@@ -2,8 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ifpa.Views.PlayerDetailPage"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              Title="{Binding Title}">
-
     <ContentPage.Resources>
         <ResourceDictionary>
             <!--Page Level Resources: Compatibile with Xamarin Live Player -->
@@ -16,202 +16,230 @@
         <ToolbarItem Text="Refresh" x:Name="RefreshButton" Clicked="Refresh_Clicked" Icon="refresh.png" />
         <ToolbarItem Text="Set to My Stats" x:Name="StarButton" Clicked="StarButton_Clicked" Icon="star.png" />
     </ContentPage.ToolbarItems>
-    <ScrollView>
-        <StackLayout Spacing="20" Padding="15" BackgroundColor="#F1F1F1">
-            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+    <StackLayout Spacing="20" Padding="15" BackgroundColor="#F1F1F1">
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
 
-            <StackLayout Orientation="Horizontal">
-                <Image Source="{Binding PlayerAvatar, Mode=OneWay}" HorizontalOptions="Start" WidthRequest="120" x:Name="AvatarImage" />
+        <StackLayout Orientation="Horizontal">
+            <Image Source="{Binding PlayerAvatar, Mode=OneWay}" HorizontalOptions="Start" WidthRequest="120" x:Name="AvatarImage" />
 
-                <Frame Padding="5" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" Margin="10,0,0,0">
-                    <StackLayout Orientation="Vertical">
-                        <Label Text="{Binding Name, Mode=OneWay}" FontSize="20"/>
+            <Frame Padding="5" HasShadow="True" CornerRadius="5" HorizontalOptions="FillAndExpand" Margin="10,0,0,0">
+                <StackLayout Orientation="Vertical">
+                    <Label Text="{Binding Name, Mode=OneWay}" FontSize="20"/>
 
-                        <StackLayout Orientation="Horizontal">
-                            <Label LineBreakMode="NoWrap" HorizontalOptions="StartAndExpand" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <FormattedString.Spans>
-                                            <Span Text="Player #: " />
-                                            <Span Text="{Binding PlayerId, Mode=OneWay}" />
-                                        </FormattedString.Spans>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Image Source="https://www.ifpapinball.com/images/confirmed.png" HeightRequest="12" WidthRequest="12" IsVisible="{Binding IsRegistered, Mode=OneWay}" 
+                    <StackLayout Orientation="Horizontal">
+                        <Label LineBreakMode="NoWrap" HorizontalOptions="StartAndExpand" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="Player #: " />
+                                        <Span Text="{Binding PlayerId, Mode=OneWay}" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Image Source="https://www.ifpapinball.com/images/confirmed.png" HeightRequest="12" WidthRequest="12" IsVisible="{Binding IsRegistered, Mode=OneWay}" 
                                    HorizontalOptions="End"/>
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding Location, Mode=OneWay}" HorizontalOptions="StartAndExpand" FontSize="16"/>
-                            <Image Source="{Binding CountryFlag, Mode=OneWay}" HeightRequest="16" />
-                        </StackLayout>
                     </StackLayout>
-                </Frame>
-
-            </StackLayout>
-
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                <Button WidthRequest="160" Margin="0,10,0,0" Text="Tournament Results" HorizontalOptions="CenterAndExpand" Clicked="TournamentResults_Button_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
-                <Button WidthRequest="160" Margin="0,10,0,0" Text="Player vs Player" HorizontalOptions="CenterAndExpand" Clicked="Pvp_Button_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
-            </StackLayout>
-
-            <Frame Padding="5" Margin="2" HasShadow="True" CornerRadius="5">
-                <StackLayout Orientation="Vertical">
-                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="Rank: " />
-                                    <Span Text="{Binding Rank, Mode=OneWay}" />
-                                    <Span Text=" " />
-                                    <Span Text="{Binding CurrentWpprValue, Mode=OneWay}" />
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="Rating: " />
-                                    <Span Text="{Binding Rating, Mode=OneWay}" />
-                                    <Span Text=" " />
-                                    <Span Text="{Binding RatingValue, Mode=OneWay}" />
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="Eff percent: " />
-                                    <Span Text="{Binding EffPercent, Mode=OneWay}" />
-                                    <Span Text=" " />
-                                    <Span Text="{Binding EfficiencyValue, Mode=OneWay}" />
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </StackLayout>
-            </Frame>
-
-            <Frame Padding="5" Margin="2" HasShadow="True" CornerRadius="5">
-                <StackLayout Orientation="Vertical">
-                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="Last Month's Rank: " />
-                                    <Span Text="{Binding LastMonthRank, Mode=OneWay}" />
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="Last Year's Rank: " />
-                                    <Span Text="{Binding LastYearRank, Mode=OneWay}" />
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="Highest Rank: " />
-                                    <Span Text="{Binding HighestRank, Mode=OneWay}" />
-                                    <Span Text=" " />
-                                    <Span Text="{Binding HighestRankDate, StringFormat='{0:MMMM  yyyy}', Mode=OneWay}" />
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="Total WPPRs: " />
-                                    <Span Text="{Binding TotalWpprs, Mode=OneWay}" />
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </StackLayout>
-            </Frame>
-
-
-            <Frame Padding="5" Margin="2" HasShadow="True" CornerRadius="5">
-                <StackLayout Orientation="Vertical">
-                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="Best Finish: " />
-                                    <Span Text="{Binding BestFinish, Mode=OneWay}" />
-                                    <Span Text=" (" />
-                                    <Span Text="{Binding BestFinishCount, Mode=OneWay}" />
-                                    <Span Text=" times)" />
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="Avg Finish: " />
-                                    <Span Text="{Binding AvgFinish, Mode=OneWay}" />
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="Avg Finish Last Year: " />
-                                    <Span Text="{Binding AvgFinishLastYear, Mode=OneWay}" />
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="Total Events: " />
-                                    <Span Text="{Binding TotalEvents, Mode=OneWay}" />
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="Total Active Events: " />
-                                    <Span Text="{Binding TotalActiveEvents, Mode=OneWay}" />
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="Events Outside Country: " />
-                                    <Span Text="{Binding EventsOutsideCountry, Mode=OneWay}" />
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding Location, Mode=OneWay}" HorizontalOptions="StartAndExpand" FontSize="16"/>
+                        <Image Source="{Binding CountryFlag, Mode=OneWay}" HeightRequest="16" />
+                    </StackLayout>
                 </StackLayout>
             </Frame>
         </StackLayout>
-    </ScrollView>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <Button WidthRequest="160" Margin="0,10,0,0" Text="Tournament Results" HorizontalOptions="CenterAndExpand" Clicked="TournamentResults_Button_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
+            <Button WidthRequest="160" Margin="0,10,0,0" Text="Player vs Player" HorizontalOptions="CenterAndExpand" Clicked="Pvp_Button_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
+        </StackLayout>
+
+        <ScrollView>
+            <StackLayout Spacing="20">
+                <Frame Padding="5" Margin="2" HasShadow="True" CornerRadius="5">
+                    <StackLayout Orientation="Vertical">
+                        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="Rank: " />
+                                        <Span Text="{Binding Rank, Mode=OneWay}" />
+                                        <Span Text=" " />
+                                        <Span Text="{Binding CurrentWpprValue, Mode=OneWay}" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="Rating: " />
+                                        <Span Text="{Binding Rating, Mode=OneWay}" />
+                                        <Span Text=" " />
+                                        <Span Text="{Binding RatingValue, Mode=OneWay}" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="Eff percent: " />
+                                        <Span Text="{Binding EffPercent, Mode=OneWay}" />
+                                        <Span Text=" " />
+                                        <Span Text="{Binding EfficiencyValue, Mode=OneWay}" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Padding="5" Margin="2" HasShadow="True" CornerRadius="5">
+                    <StackLayout Orientation="Vertical">
+                        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="Last Month's Rank: " />
+                                        <Span Text="{Binding LastMonthRank, Mode=OneWay}" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="Last Year's Rank: " />
+                                        <Span Text="{Binding LastYearRank, Mode=OneWay}" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="Highest Rank: " />
+                                        <Span Text="{Binding HighestRank, Mode=OneWay}" />
+                                        <Span Text=" " />
+                                        <Span Text="{Binding HighestRankDate, StringFormat='{0:MMMM  yyyy}', Mode=OneWay}" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="Total WPPRs: " />
+                                        <Span Text="{Binding TotalWpprs, Mode=OneWay}" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                </Frame>
+
+
+                <Frame Padding="5" Margin="2" HasShadow="True" CornerRadius="5">
+                    <StackLayout Orientation="Vertical">
+                        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="Best Finish: " />
+                                        <Span Text="{Binding BestFinish, Mode=OneWay}" />
+                                        <Span Text=" (" />
+                                        <Span Text="{Binding BestFinishCount, Mode=OneWay}" />
+                                        <Span Text=" times)" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="Avg Finish: " />
+                                        <Span Text="{Binding AvgFinish, Mode=OneWay}" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="Avg Finish Last Year: " />
+                                        <Span Text="{Binding AvgFinishLastYear, Mode=OneWay}" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="Total Events: " />
+                                        <Span Text="{Binding TotalEvents, Mode=OneWay}" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="Total Active Events: " />
+                                        <Span Text="{Binding TotalActiveEvents, Mode=OneWay}" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="Events Outside Country: " />
+                                        <Span Text="{Binding EventsOutsideCountry, Mode=OneWay}" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                    </StackLayout>
+                </Frame>
+                <StackLayout HeightRequest="400">
+                    <chart:SfChart HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <chart:SfChart.Title>
+                            <chart:ChartTitle Text="Rank Progress"/>
+                        </chart:SfChart.Title>
+                        <chart:SfChart.PrimaryAxis>
+                            <chart:DateTimeAxis/>
+                        </chart:SfChart.PrimaryAxis>
+                        <chart:SfChart.SecondaryAxis>
+                            <chart:NumericalAxis IsInversed="True" />
+                        </chart:SfChart.SecondaryAxis>
+                        <chart:LineSeries ItemsSource="{Binding PlayerRankHistory}" XBindingPath="RankDate" YBindingPath="RankPosition"/>
+                    </chart:SfChart>
+                    <chart:SfChart HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <chart:SfChart.Title>
+                            <chart:ChartTitle Text="Rating Progress"/>
+                        </chart:SfChart.Title>
+                        <chart:SfChart.PrimaryAxis>
+                            <chart:DateTimeAxis/>
+                        </chart:SfChart.PrimaryAxis>
+                        <chart:SfChart.SecondaryAxis>
+                            <chart:NumericalAxis />
+                        </chart:SfChart.SecondaryAxis>
+                        <chart:LineSeries ItemsSource="{Binding PlayerRatingHistory}" XBindingPath="RatingDate" YBindingPath="Rating"/>
+                    </chart:SfChart>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
 </ContentPage>
