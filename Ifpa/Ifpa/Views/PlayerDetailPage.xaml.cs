@@ -28,7 +28,7 @@ namespace Ifpa.Views
             InitializeComponent();
 
             LoadMyStats = true;
-            BindingContext = this.viewModel = new PlayerDetailViewModel(0);
+            BindingContext = this.viewModel = new PlayerDetailViewModel(0);            
         }
 
         protected async override void OnAppearing()
@@ -37,10 +37,8 @@ namespace Ifpa.Views
 
             if (LoadMyStats)
             {
-                ToolbarItems.Remove(ToolbarItems.SingleOrDefault(n => n.Text == "Set to My Stats"));
-                
-               // DependencyService.Get<IToolbarItemBadgeService>().SetBadge(this, ToolbarItems.SingleOrDefault(n => n.Text == "Activity Feed"), "1", Color.Red, Color.White);                
-
+                ToolbarItems.Remove(ToolbarItems.SingleOrDefault(n => n.Text == "Set to My Stats"));                        
+                             
                 if (Preferences.Get("PlayerId", 0) != 0)
                 {
                     try
@@ -52,6 +50,7 @@ namespace Ifpa.Views
                         await RedirectUserToPlayerSearch();
                     }
                 }
+                viewModel.PostPlayerLoadCommand = new Command(async () => await PostPlayerLoad());
             }
             else
             {
@@ -59,6 +58,16 @@ namespace Ifpa.Views
             }
 
             viewModel.LoadItemsCommand.Execute(null);
+        }     
+        
+        /// <summary>
+        /// Do tasks we need the UI to be fully re-drawn for.
+        /// </summary>
+        /// <returns></returns>
+        private async Task PostPlayerLoad()
+        {
+            var numOfUnread = await App.ActivityFeed.GetUnreadActivityCount();
+            DependencyService.Get<IToolbarItemBadgeService>().SetBadge(this, ToolbarItems.SingleOrDefault(n => n.Text == "Activity Feed"), numOfUnread.ToString(), Color.Red, Color.White);
         }
 
         private async void TournamentResults_Button_Clicked(object sender, EventArgs e)

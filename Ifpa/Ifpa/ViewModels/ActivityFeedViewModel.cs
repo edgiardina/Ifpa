@@ -29,7 +29,11 @@ namespace Ifpa.ViewModels
             try
             {
                 var activityFeedItems = await App.ActivityFeed.GetActivityFeedRecords();
-                ActivityFeedItems = new ObservableCollection<ActivityFeedItem>(activityFeedItems);    
+                ActivityFeedItems.Clear();
+                foreach(var item in activityFeedItems)
+                {
+                    ActivityFeedItems.Add(item);
+                }
             }
             catch (Exception ex)
             {
