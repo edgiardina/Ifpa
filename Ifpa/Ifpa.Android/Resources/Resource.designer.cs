@@ -2229,6 +2229,9 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0b00a3
 			public const int notification_top_pad_large_text = 2131427491;
 			
+			// aapt resource value: 0x7f0b00a4
+			public const int textsize_badge_count = 2131427492;
+			
 			// aapt resource value: 0x7f0b0062
 			public const int tooltip_corner_radius = 2131427426;
 			

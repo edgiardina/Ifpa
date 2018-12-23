@@ -4,6 +4,8 @@ using Ifpa.ViewModels;
 using System;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
+using System.Linq;
+using Ifpa.Services;
 
 namespace Ifpa.Views
 {
@@ -35,9 +37,9 @@ namespace Ifpa.Views
 
             if (LoadMyStats)
             {
-                //Hide Star on our own page
-                if(ToolbarItems.Count == 2)
-                    ToolbarItems.RemoveAt(1);
+                ToolbarItems.Remove(ToolbarItems.SingleOrDefault(n => n.Text == "Set to My Stats"));
+                
+               // DependencyService.Get<IToolbarItemBadgeService>().SetBadge(this, ToolbarItems.SingleOrDefault(n => n.Text == "Activity Feed"), "1", Color.Red, Color.White);                
 
                 if (Preferences.Get("PlayerId", 0) != 0)
                 {
@@ -50,6 +52,10 @@ namespace Ifpa.Views
                         await RedirectUserToPlayerSearch();
                     }
                 }
+            }
+            else
+            {
+                ToolbarItems.Remove(ToolbarItems.SingleOrDefault(n => n.Text == "Activity Feed"));
             }
 
             viewModel.LoadItemsCommand.Execute(null);
@@ -79,7 +85,7 @@ namespace Ifpa.Views
             else
             {
                 var result = await DisplayAlert("Caution", "You have already configured your Stats page, do you wish to change your Stats to this player?", "OK", "Cancel");
-                if(result)
+                if (result)
                 {
                     await ChangePlayerAndRedirect();
                 }
@@ -88,9 +94,14 @@ namespace Ifpa.Views
 
         private async Task ChangePlayerAndRedirect()
         {
+            //TODO: perhaps we should create a SelectedPlayer model/service singleton
             Preferences.Set("PlayerId", viewModel.PlayerId);
             Preferences.Set("LastTournamentCount", viewModel.LastTournamentCount);
             Preferences.Set("CurrentWpprRank", viewModel.PlayerRecord.PlayerStats.CurrentWpprRank);
+
+            //Clear Activity Log as we are switching players
+            await App.ActivityFeed.ClearActivityFeed();
+
             await DisplayAlert("Congratulations", "You have now configured your Stats page!", "OK");
             var masterPage = this.Parent.Parent as TabbedPage;
             masterPage.CurrentPage = masterPage.Children[2];
@@ -101,6 +112,11 @@ namespace Ifpa.Views
             await DisplayAlert("Configure your Stats", "Looks like you haven't configured your 'My Stats' page. Use the Player Search to find your Player, and press the Star to configure your Stats", "OK");
             var masterPage = this.Parent.Parent as TabbedPage;
             masterPage.CurrentPage = masterPage.Children[1];
+        }
+
+        private async void ActivityFeedButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ActivityFeedPage());
         }
     }
 }

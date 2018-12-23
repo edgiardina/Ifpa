@@ -1,5 +1,6 @@
 ﻿using Android.Content;
 using Android.OS;
+using Ifpa.Droid.Services;
 
 namespace Ifpa.Droid
 {
