@@ -48,8 +48,12 @@ namespace Ifpa.Views
 
         private void Picker_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            Preferences.Set("CountryName", viewModel.CountryToShow.CountryName);
-            viewModel.LoadItemsCommand.Execute(null);
+            //don't fire selectedIndexChanged when we are adding countries first time in
+            if (viewModel.Countries.Count > 0 && !viewModel.IsBusy)
+            {
+                Preferences.Set("CountryName", viewModel.CountryToShow.CountryName);
+                viewModel.LoadItemsCommand.Execute(null);
+            }
         }
 
         private void Stepper_ValueChanged(object sender, ValueChangedEventArgs e)
