@@ -12,6 +12,7 @@ namespace Ifpa.ViewModels
     public class PlayerDetailViewModel : BaseViewModel
     {
         public Command LoadItemsCommand { get; set; }
+        public Command PostPlayerLoadCommand { get; set; }
 
         public int PlayerId { get; set; }
         public int LastTournamentCount { get; set; }
@@ -113,6 +114,12 @@ namespace Ifpa.ViewModels
 
                 PlayerRecord = playerData;
                 Title = PlayerRecord.Player.Initials;
+
+
+                if (PostPlayerLoadCommand != null)
+                {
+                    PostPlayerLoadCommand.Execute(null);
+                }
             }
             catch(Exception ex) { }
             finally

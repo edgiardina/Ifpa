@@ -23,9 +23,10 @@ namespace Ifpa.iOS.Services
 
                 var rightButtomItems = vc?.ParentViewController?.NavigationItem?.RightBarButtonItems;
                 var idx = page.ToolbarItems.IndexOf(item);
+                var reverseItemIndex = rightButtomItems.GetUpperBound(0) - idx;
                 if (rightButtomItems != null && rightButtomItems.Length > idx)
                 {
-                    var barItem = rightButtomItems[idx];
+                    var barItem = rightButtomItems[reverseItemIndex];
                     if (barItem != null)
                     {
                         barItem.UpdateBadge(value, backgroundColor.ToUIColor(), textColor.ToUIColor());

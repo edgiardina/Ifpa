@@ -71,7 +71,7 @@ namespace Ifpa.iOS.Utils
                 font = UIFont.MonospacedDigitSystemFontOfSize(fontSize, UIFontWeight.Regular);
             }
 
-            var view = barButtonItem.PerformSelector(new Selector("view")) as UIView;
+            var view = barButtonItem.ValueForKey(new NSString(@"view")) as UIView;
             var bLayer = GetBadgeLayer(barButtonItem);
             bLayer?.RemoveFromSuperLayer();
 
@@ -88,7 +88,7 @@ namespace Ifpa.iOS.Utils
             }
 
             //x position is offset from right-hand side
-            var x = barButtonItem.Width - width + offset.X;
+            var x = view.Frame.Width - width + offset.X;
 
             var badgeFrame = new CGRect(new CGPoint(x: x, y: offset.Y), size: new CGSize(width: width, height: height));
 
