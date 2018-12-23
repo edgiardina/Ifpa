@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
 using Foundation;
+using Ifpa.iOS.Services;
 using Ifpa.ViewModels;
 using Ifpa.Views;
 using UIKit;

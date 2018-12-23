@@ -4,7 +4,7 @@ using Android.OS;
 using Ifpa.Services;
 using Java.Lang;
 
-namespace Ifpa.Droid
+namespace Ifpa.Droid.Services
 {
     public class AndroidNotificationService : BaseNotificationService
     {

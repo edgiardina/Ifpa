@@ -1,14 +1,14 @@
 ﻿using EventKit;
 using Foundation;
 using Ifpa.Interfaces;
-using Ifpa.iOS;
+using Ifpa.iOS.Services;
 using Ifpa.ViewModels;
 using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(iOSReminderService))]
-namespace Ifpa.iOS
+namespace Ifpa.iOS.Services
 {
     public class iOSReminderService : IReminderService
     {

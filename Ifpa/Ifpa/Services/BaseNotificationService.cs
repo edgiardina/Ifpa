@@ -33,6 +33,20 @@ namespace Ifpa.Services
                     if (numberOfTournaments > lastTournamentCount)
                     {
                         SendNotification(NewTournamentNotificationTitle, NewTournamentNotificationDescription);
+
+                        for (int i = numberOfTournaments; i < lastTournamentCount; i++)
+                        {
+                            var record = new ActivityFeedItem
+                            {
+                                CreatedDateTime = DateTime.Now,
+                                HasBeenSeen = false,
+                                RecordID = results.Results[i].TournamentId,
+                                IntOne = results.Results[i].Position,
+                                ActivityType = ActivityFeedType.TournamentResult
+                            };
+
+                            await App.ActivityFeed.CreateActivityFeedRecord(record);
+                        }
                     }
                     
                     Preferences.Set("LastTournamentCount", numberOfTournaments);
@@ -60,6 +74,17 @@ namespace Ifpa.Services
                     if (currentWpprRank != lastRecordedWpprRank && lastRecordedWpprRank != 0)
                     {
                         SendNotification(NewRankNotificationTitle, NewRankNotificationDescription);
+
+                        var record = new ActivityFeedItem
+                        {
+                            CreatedDateTime = DateTime.Now,
+                            HasBeenSeen = false,
+                            IntOne = currentWpprRank,
+                            IntTwo = lastRecordedWpprRank,
+                            ActivityType = ActivityFeedType.RankChange
+                        };
+
+                        await App.ActivityFeed.CreateActivityFeedRecord(record);
                     }
 
                     Preferences.Set("CurrentWpprRank", currentWpprRank);

@@ -12,6 +12,7 @@
   <ItemGroup>
     <PackageReference Include="PinballApi" Version="1.0.32" />
     <PackageReference Include="Microsoft.Toolkit.Parsers" Version="5.0.0" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.5.231" />
     <PackageReference Include="Syncfusion.Licensing" Version="16.4.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="16.4.0.42" />
     <PackageReference Include="Xamarin.Essentials" Version="0.11.0-preview" />
@@ -59,6 +60,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Views\ActivityFeedPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\CalendarPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
