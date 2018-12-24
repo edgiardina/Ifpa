@@ -18,9 +18,6 @@ namespace Ifpa.iOS.Services
             notification.AlertAction = title;
             notification.AlertBody = description;
 
-            // modify the badge
-            notification.ApplicationIconBadgeNumber = 1;
-
             // set the sound to be the default sound
             notification.SoundName = UILocalNotification.DefaultSoundName;
 

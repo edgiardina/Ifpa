@@ -67,7 +67,10 @@ namespace Ifpa.Views
         private async Task PostPlayerLoad()
         {
             var numOfUnread = await App.ActivityFeed.GetUnreadActivityCount();
-            DependencyService.Get<IToolbarItemBadgeService>().SetBadge(this, ToolbarItems.SingleOrDefault(n => n.Text == "Activity Feed"), numOfUnread.ToString(), Color.Red, Color.White);
+            if (numOfUnread > 0)
+            {
+                DependencyService.Get<IToolbarItemBadgeService>().SetBadge(this, ToolbarItems.SingleOrDefault(n => n.Text == "Activity Feed"), numOfUnread.ToString(), Color.Red, Color.White);
+            }
         }
 
         private async void TournamentResults_Button_Clicked(object sender, EventArgs e)
