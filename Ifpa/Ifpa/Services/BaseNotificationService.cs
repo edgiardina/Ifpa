@@ -1,9 +1,11 @@
 ﻿using Ifpa.Models;
 using PinballApi;
+using Plugin.Badge;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace Ifpa.Services
 {
@@ -46,6 +48,7 @@ namespace Ifpa.Services
                             };
 
                             await App.ActivityFeed.CreateActivityFeedRecord(record);
+                            await UpdateBadgeIfNeeded();
                         }
                     }
                     
@@ -85,6 +88,8 @@ namespace Ifpa.Services
                         };
 
                         await App.ActivityFeed.CreateActivityFeedRecord(record);
+                        var unreads = await App.ActivityFeed.GetUnreadActivityCount();
+                        await UpdateBadgeIfNeeded();
                     }
 
                     Preferences.Set("CurrentWpprRank", currentWpprRank);
@@ -93,6 +98,15 @@ namespace Ifpa.Services
                 {
                     Console.WriteLine(ex.Message);
                 }
+            }
+        }
+
+        private async Task UpdateBadgeIfNeeded()
+        {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                var unreads = await App.ActivityFeed.GetUnreadActivityCount();
+                CrossBadge.Current.SetBadge(unreads);
             }
         }
 

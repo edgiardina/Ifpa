@@ -15,13 +15,17 @@
                 RankChangeTemplate="{StaticResource rankChangeTemplate}"
                 TournamentResultTemplate="{StaticResource tournamentResultTemplate}" />
     </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Mark All Seen" Clicked="ToolbarItem_Clicked" />
+        <ToolbarItem Text="+" Clicked="ToolbarItem_Clicked_1" />
+    </ContentPage.ToolbarItems>
     <ListView x:Name="ActivityFeedListView"
-              ItemSelected="ActivityFeedListView_ItemSelected"
+            ItemSelected="ActivityFeedListView_ItemSelected"
             ItemTemplate="{StaticResource activityFeedDataTemplateSelector}"
             ItemsSource="{Binding ActivityFeedItems}"      
             CachingStrategy="RecycleElement"
             RefreshCommand="{Binding LoadItemsCommand}"
             IsPullToRefreshEnabled="true"
-            RowHeight="90"
+            HasUnevenRows="True"
             IsRefreshing="{Binding IsBusy, Mode=OneWay}" />
 </ContentPage>

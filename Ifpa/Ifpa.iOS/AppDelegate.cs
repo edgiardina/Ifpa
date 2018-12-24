@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Foundation;
 using Ifpa.iOS.Services;
 using Ifpa.ViewModels;
@@ -47,25 +48,11 @@ namespace Ifpa.iOS
 
         public override async void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)
         {
-            if (notification.AlertAction == NotificationService.NewTournamentNotificationTitle)
-            {
-                //Navigate to My Stats
-                ((MainPage)(App.Current.MainPage)).CurrentPage = ((MainPage)(App.Current.MainPage)).Children[2];
+            //Navigate to My Stats
+            ((MainPage)(App.Current.MainPage)).CurrentPage = ((MainPage)(App.Current.MainPage)).Children.Single(n => n.Title == "My Stats");
 
-                var plist = NSUserDefaults.StandardUserDefaults;
-                var playerId = Convert.ToInt32(plist.IntForKey("PlayerId"));
-
-                //Press Tournament Results Button.
-                await (((MainPage)(App.Current.MainPage)).CurrentPage).Navigation.PushAsync(new PlayerResultsPage(new PlayerResultsViewModel(playerId)));
-            }
-            else if(notification.AlertAction == NotificationService.NewRankNotificationTitle)
-            {
-                //Navigate to My Stats
-                ((MainPage)(App.Current.MainPage)).CurrentPage = ((MainPage)(App.Current.MainPage)).Children[2];           
-            }
-
-            // reset our badge
-            UIApplication.SharedApplication.ApplicationIconBadgeNumber = 0;
+            //Press Tournament Results Button.
+            await (((MainPage)(App.Current.MainPage)).CurrentPage).Navigation.PushAsync(new ActivityFeedPage());
         }
     }
 }
