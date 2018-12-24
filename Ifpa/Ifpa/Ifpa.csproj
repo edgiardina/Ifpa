@@ -21,6 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\DataTemplates\ActivityFeedTournamentResultViewCell.xaml.cs">
+      <DependentUpon>ActivityFeedTournamentResultViewCell.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\MoreItemsPage.xaml.cs">
       <DependentUpon>MoreItemsPage.xaml</DependentUpon>
     </Compile>
@@ -64,6 +67,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CalendarPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DataTemplates\ActivityFeedRankChangeViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\MoreItemsPage.xaml">
