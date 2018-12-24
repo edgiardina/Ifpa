@@ -311,4 +311,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\activity_feed%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ribbon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rankchange.png" />
+  </ItemGroup>
 </Project>

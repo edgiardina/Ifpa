@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
+          x:Class="Ifpa.Views.DataTemplates.ActivityFeedRankChangeViewCell">
+    <ViewCell.View>
+        <StackLayout Orientation="Horizontal" Padding="10">
+            <Image Source="rankchange.png" HeightRequest="25" />
+            <StackLayout Padding="10,0,0,0">
+                <StackLayout.Resources>
+                    <ResourceDictionary>
+                        <local:IntToOrdinalStringConverter x:Key="intToOrdinalString" />
+                        <local:BoolConverter x:Key="inverter"/>
+                    </ResourceDictionary>
+                </StackLayout.Resources>
+                <Label Text="Rank Changed" FontAttributes="Bold" />
+                <Label Style="{DynamicResource ListItemTextStyle}" FontSize="Small">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Your rank changed from " />
+                                <Span Text="{Binding IntTwo, Mode=OneWay, Converter={StaticResource intToOrdinalString}}" />
+                                <Span Text=" to " />
+                                <Span Text="{Binding IntOne, Mode=OneWay, Converter={StaticResource intToOrdinalString}}" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label LineBreakMode="NoWrap" FontSize="Micro" Text="{Binding CreatedDateTime, StringFormat='{0:d}'}" Style="{DynamicResource ListItemTextStyle}" />
+            </StackLayout>
+            <!--TODO: , Converter={StaticResource inverter}-->
+            <BoxView Color="CornflowerBlue"
+                 IsVisible="{Binding HasBeenSeen}"
+                 CornerRadius="11"                     
+                 WidthRequest="12"
+                 HeightRequest="12"
+                 VerticalOptions="Center"
+                 HorizontalOptions="EndAndExpand" />
+        </StackLayout>
+    </ViewCell.View>
+</ViewCell>

@@ -1,5 +1,5 @@
-﻿using Ifpa.ViewModels;
-
+﻿using Ifpa.Models;
+using Ifpa.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -25,5 +25,21 @@ namespace Ifpa.Views
                 activityFeedViewModel.LoadItemsCommand.Execute(null);
         }
 
+        private async void ActivityFeedListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                var item = (ActivityFeedItem)e.SelectedItem;
+                item.HasBeenSeen = true;
+                await App.ActivityFeed.UpdateActivityFeedRecord(item);
+
+                if (item.ActivityType == ActivityFeedType.TournamentResult)
+                {
+                    await Navigation.PushAsync(new TournamentResultsPage(new TournamentResultsViewModel(item.RecordID.Value)));
+                }
+
+                ActivityFeedListView.SelectedItem = null;
+            }
+        }
     }
 }

@@ -26,6 +26,14 @@ namespace Ifpa.Services
             return await database.InsertAsync(item);
         }
 
+        public async Task UpdateActivityFeedRecord(ActivityFeedItem item)
+        {
+            if(item.ID > 0)
+            {
+                await database.UpdateAsync(item);
+            }
+        }
+
         public async Task ClearActivityFeed()
         {
             await database.DeleteAllAsync<ActivityFeedItem>();
