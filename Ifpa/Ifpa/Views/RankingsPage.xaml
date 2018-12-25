@@ -77,7 +77,7 @@
                                    LineBreakMode="NoWrap" 
                                    Style="{DynamicResource ListItemTextStyle}" 
                                    FontSize="24" MinimumWidthRequest="58" HorizontalOptions="Start" />
-                                <StackLayout Padding="10" Orientation="Vertical">
+                                <StackLayout Padding="10" Orientation="Vertical" HorizontalOptions="FillAndExpand">
                                     <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
                                         <Label.FormattedText>
                                             <FormattedString>
@@ -103,18 +103,20 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <FormattedString.Spans>
-                                                    <Span Text="Overall WPPR Rank:" />
-                                                    <Span Text=" " />
-                                                    <Span Text="{Binding CurrentWpprRank, Converter={StaticResource intToOrdinalString}}" />
-                                                </FormattedString.Spans>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label HorizontalOptions="StartAndExpand" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10" HorizontalTextAlignment="Start">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="Overall WPPR Rank:" />
+                                                        <Span Text=" " />
+                                                        <Span Text="{Binding CurrentWpprRank, Converter={StaticResource intToOrdinalString}}" />
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label HorizontalOptions="CenterAndExpand"  Text="{Binding WpprPoints, StringFormat='{0:N2}'}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10" />
+                                    </StackLayout>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>
