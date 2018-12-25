@@ -70,16 +70,18 @@ namespace Ifpa.Views
         }
 
         //Testing shim. 
-        private void ToolbarItem_Clicked_1(object sender, System.EventArgs e)
+        private async void ToolbarItem_Clicked_1(object sender, System.EventArgs e)
         {
-            activityFeedViewModel.ActivityFeedItems.Add(new ActivityFeedItem
+            var newItem = new ActivityFeedItem
             {
                 ActivityType = ActivityFeedType.TournamentResult,
                 RecordID = 28089,
                 CreatedDateTime = DateTime.Now,
                 HasBeenSeen = false
-            });
+            };
+            await App.ActivityFeed.CreateActivityFeedRecord(newItem);            
             CrossBadge.Current.SetBadge(1);
+            activityFeedViewModel.LoadItemsCommand.Execute(null);
         }
     }
 }
