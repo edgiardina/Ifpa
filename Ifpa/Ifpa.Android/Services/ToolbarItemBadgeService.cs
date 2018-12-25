@@ -22,6 +22,11 @@ namespace Ifpa.Droid.Services
                         if (toolbar.Menu.Size() > idx)
                         {
                             var menuItem = toolbar.Menu.GetItem(idx);
+
+                            //Item might try to get badge'd when its not on screen so the FindViewById returns us the wrong one.
+                            if (menuItem.TitleFormatted.ToString() != item.Text)
+                                return;
+
                             BadgeDrawable.SetBadgeText(CrossCurrentActivity.Current.Activity, menuItem, value, backgroundColor.ToAndroid(), textColor.ToAndroid());
                         }
                     }
