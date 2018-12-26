@@ -17,7 +17,7 @@
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Mark All Seen" Clicked="ToolbarItem_Clicked" />
-        <ToolbarItem Text="+" Clicked="ToolbarItem_Clicked_1" />
+        <!--<ToolbarItem Text="+" Clicked="ToolbarItem_Clicked_1" />-->
     </ContentPage.ToolbarItems>
     <ListView x:Name="ActivityFeedListView"
             ItemSelected="ActivityFeedListView_ItemSelected"
