@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Android.App;
 using Android.Content;
 using Android.Provider;
-using Ifpa.Droid;
+using Ifpa.Droid.Services;
 using Ifpa.Interfaces;
 using Ifpa.ViewModels;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(AndroidReminderService))]
-namespace Ifpa.Droid
+namespace Ifpa.Droid.Services
 {
     public class AndroidReminderService : IReminderService
     {

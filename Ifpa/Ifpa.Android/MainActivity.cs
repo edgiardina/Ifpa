@@ -7,6 +7,7 @@ using Android.Support.V4.Content;
 using Android;
 using Android.Content;
 using Android.Runtime;
+using Plugin.CurrentActivity;
 
 namespace Ifpa.Droid
 {
@@ -23,8 +24,9 @@ namespace Ifpa.Droid
             global::Xamarin.FormsMaps.Init(this, savedInstanceState);
             LoadApplication(new App());
 
-            var alarmIntent = new Intent(this, typeof(BackgroundReceiver));
+            CrossCurrentActivity.Current.Init(this, savedInstanceState);
 
+            var alarmIntent = new Intent(this, typeof(BackgroundReceiver));
             var pending = PendingIntent.GetBroadcast(this, 0, alarmIntent, PendingIntentFlags.UpdateCurrent);
 
             var alarmManager = GetSystemService(AlarmService).JavaCast<AlarmManager>();

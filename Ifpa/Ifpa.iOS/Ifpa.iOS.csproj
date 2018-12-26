@@ -79,12 +79,14 @@
     <LaunchForBackgroundFetch>true</LaunchForBackgroundFetch>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="iOSReminderService.cs" />
+    <Compile Include="Services\iOSReminderService.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Services\ToolbarItemBadgeService.cs" />
+    <Compile Include="Utils\BarButtonItemExtensions.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
-    <Compile Include="iOSNotificationService.cs" />
+    <Compile Include="Services\iOSNotificationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -299,5 +301,20 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\filter%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\activity_feed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\activity_feed%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\activity_feed%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ribbon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rankchange.png" />
   </ItemGroup>
 </Project>
