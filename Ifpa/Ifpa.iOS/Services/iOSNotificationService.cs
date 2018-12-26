@@ -1,13 +1,8 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Foundation;
-using Ifpa.Models;
+﻿using Foundation;
 using Ifpa.Services;
-using PinballApi;
 using UIKit;
 
-namespace Ifpa.iOS
+namespace Ifpa.iOS.Services
 {
     public class iOSNotificationService : BaseNotificationService
     { 
@@ -22,9 +17,6 @@ namespace Ifpa.iOS
             // configure the alert
             notification.AlertAction = title;
             notification.AlertBody = description;
-
-            // modify the badge
-            notification.ApplicationIconBadgeNumber = 1;
 
             // set the sound to be the default sound
             notification.SoundName = UILocalNotification.DefaultSoundName;
