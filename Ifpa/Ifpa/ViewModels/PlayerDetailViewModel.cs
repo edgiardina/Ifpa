@@ -88,7 +88,8 @@ namespace Ifpa.ViewModels
 
         public string CountryFlag => $"https://www.countryflags.io/{PlayerRecord.Player.CountryCode}/shiny/64.png";
 
-        public string Location => $"{PlayerRecord.Player.City} {PlayerRecord.Player.State} {PlayerRecord.Player.CountryName}".Trim();
+        //Replace call at the end so that if a player is missing the 'state' we don't have an unsightly double space.
+        public string Location => $"{PlayerRecord.Player.City} {PlayerRecord.Player.State} {PlayerRecord.Player.CountryName}".Trim().Replace("  ", " ");
 
         public bool IsRegistered => PlayerRecord.Player.IfpaRegistered == "Y";
         

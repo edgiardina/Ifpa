@@ -90,19 +90,7 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <FormattedString.Spans>
-                                                    <Span Text="{Binding City}" />
-                                                    <Span Text=" " />
-                                                    <Span Text="{Binding State}" />
-                                                    <Span Text=" " />
-                                                    <Span Text="{Binding CountryName}" />
-                                                </FormattedString.Spans>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
+                                    <Label Text="{Binding Location}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" />
                                     <StackLayout Orientation="Horizontal">
                                         <Label HorizontalOptions="StartAndExpand" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10" HorizontalTextAlignment="Start">
                                             <Label.FormattedText>
