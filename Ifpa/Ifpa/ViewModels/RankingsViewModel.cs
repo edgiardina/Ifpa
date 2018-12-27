@@ -4,15 +4,15 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using PinballApi.Models.WPPR.Rankings;
-using System.Collections.Generic;
 using PinballApi.Models.WPPR.Statistics;
 using System.Linq;
+using Ifpa.Models;
 
 namespace Ifpa.ViewModels
 {
     public class RankingsViewModel : BaseViewModel
     {
-        public ObservableCollection<Ranking> Players { get; set; }
+        public ObservableCollection<RankingWithFormattedLocation> Players { get; set; }
         public ObservableCollection<PlayersByCountryStat> Countries { get; set; }
 
         public PlayersByCountryStat CountryToShow { get; set; } 
@@ -40,7 +40,7 @@ namespace Ifpa.ViewModels
             Title = "Rankings";
             CountOfItemsToFetch = 100;
             StartingPosition = 1;
-            Players = new ObservableCollection<Ranking>();
+            Players = new ObservableCollection<RankingWithFormattedLocation>();
             Countries = new ObservableCollection<PlayersByCountryStat>();
             CountryToShow = OverallRankings;
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
@@ -71,7 +71,7 @@ namespace Ifpa.ViewModels
                 var items = await PinballRankingApi.GetRankings(StartingPosition, CountOfItemsToFetch, countryName: CountryToShow == OverallRankings ? null : CountryToShow?.CountryName);
                 foreach (var item in items.Rankings)
                 {
-                    Players.Add(item);
+                    Players.Add(new RankingWithFormattedLocation(item));
                 }
 
             }
