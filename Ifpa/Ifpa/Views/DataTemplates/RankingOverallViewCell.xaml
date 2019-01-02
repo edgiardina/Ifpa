@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
+          x:Class="Ifpa.Views.DataTemplates.RankingOverallViewCell">
+    <ViewCell.View>
+        <StackLayout Padding="10,0,10,0" Orientation="Horizontal" >
+            <StackLayout.Resources>
+                <local:PlayerListViewIndexConverter x:Key="playerListViewIndexConverter" x:Name="PlayerListViewIndexConverter" StartingRank="{Binding StartingPosition, Mode=TwoWay}" ListViewItem="{Binding PlayersListView}" />
+            </StackLayout.Resources>
+            <Label VerticalTextAlignment="Center" Text="{Binding ., Converter={StaticResource playerListViewIndexConverter}}" 
+                                   LineBreakMode="NoWrap" 
+                                   Style="{DynamicResource ListItemTextStyle}" 
+                                   FontSize="24" MinimumWidthRequest="58" HorizontalOptions="Start" />
+            <StackLayout Padding="10" Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="{Binding FirstName}" />
+                                <Span Text=" " />
+                                <Span Text="{Binding LastName}" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding Location}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" />
+
+                    <Label HorizontalOptions="CenterAndExpand" Text="{Binding WpprPoints, StringFormat='{0:N2}'}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10" />
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ViewCell.View>
+</ViewCell>

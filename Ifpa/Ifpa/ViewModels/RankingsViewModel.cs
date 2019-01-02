@@ -15,7 +15,9 @@ namespace Ifpa.ViewModels
         public ObservableCollection<RankingWithFormattedLocation> Players { get; set; }
         public ObservableCollection<PlayersByCountryStat> Countries { get; set; }
 
-        public PlayersByCountryStat CountryToShow { get; set; } 
+        public PlayersByCountryStat CountryToShow { get; set; }
+
+        public bool IsOverallRankings => CountryToShow.CountryName == OverallRankings.CountryName;
 
         public Command LoadItemsCommand { get; set; }
 
@@ -68,12 +70,13 @@ namespace Ifpa.ViewModels
                 }
 
                 Players.Clear();
-                var items = await PinballRankingApi.GetRankings(StartingPosition, CountOfItemsToFetch, countryName: CountryToShow == OverallRankings ? null : CountryToShow?.CountryName);
+                var items = await PinballRankingApi.GetRankings(StartingPosition, CountOfItemsToFetch, countryName: IsOverallRankings ? null : CountryToShow?.CountryName);
                 foreach (var item in items.Rankings)
                 {
                     Players.Add(new RankingWithFormattedLocation(item));
                 }
 
+                OnPropertyChanged(nameof(IsOverallRankings));
             }
             catch (Exception ex)
             {
