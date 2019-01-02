@@ -88,7 +88,6 @@ namespace Ifpa.Services
                         };
 
                         await App.ActivityFeed.CreateActivityFeedRecord(record);
-                        var unreads = await App.ActivityFeed.GetUnreadActivityCount();
                         await UpdateBadgeIfNeeded();
                     }
 
