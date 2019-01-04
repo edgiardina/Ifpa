@@ -36,14 +36,16 @@ namespace Ifpa.Services
                     {
                         SendNotification(NewTournamentNotificationTitle, NewTournamentNotificationDescription);
 
-                        for (int i = numberOfTournaments; i < lastTournamentCount; i++)
+                        for (int i = lastTournamentCount; i < numberOfTournaments; i++)
                         {
+                            var index = numberOfTournaments - i - 1;
+
                             var record = new ActivityFeedItem
                             {
                                 CreatedDateTime = DateTime.Now,
                                 HasBeenSeen = false,
-                                RecordID = results.Results[i].TournamentId,
-                                IntOne = results.Results[i].Position,
+                                RecordID = results.Results[index].TournamentId,
+                                IntOne = results.Results[index].Position,
                                 ActivityType = ActivityFeedType.TournamentResult
                             };
                             
