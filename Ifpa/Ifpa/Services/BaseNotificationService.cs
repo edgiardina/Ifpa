@@ -46,13 +46,13 @@ namespace Ifpa.Services
                                 IntOne = results.Results[i].Position,
                                 ActivityType = ActivityFeedType.TournamentResult
                             };
+                            
+                            Preferences.Set("LastTournamentCount", numberOfTournaments);
 
                             await App.ActivityFeed.CreateActivityFeedRecord(record);
                             await UpdateBadgeIfNeeded();
                         }
-                    }
-                    
-                    Preferences.Set("LastTournamentCount", numberOfTournaments);
+                    }                    
                 }
                 catch (Exception ex)
                 {
@@ -86,12 +86,12 @@ namespace Ifpa.Services
                             IntTwo = lastRecordedWpprRank,
                             ActivityType = ActivityFeedType.RankChange
                         };
+                        
+                        Preferences.Set("CurrentWpprRank", currentWpprRank);
 
                         await App.ActivityFeed.CreateActivityFeedRecord(record);
-                        await UpdateBadgeIfNeeded();
+                        await UpdateBadgeIfNeeded();                        
                     }
-
-                    Preferences.Set("CurrentWpprRank", currentWpprRank);
                 }
                 catch (Exception ex)
                 {
