@@ -114,11 +114,13 @@ namespace Ifpa.iOS.Utils
         }
         public static void UpdateBadge(this UIBarButtonItem barButtonItem, string text, UIColor backgroundColor, UIColor textColor)
         {
+            var hideBadge = string.IsNullOrEmpty(text) || text == "0";
+
             var bLayer = GetBadgeLayer(barButtonItem);
 
             if (bLayer != null)
             {
-                bLayer.Hidden = string.IsNullOrEmpty(text) || text == "0";
+                bLayer.Hidden = hideBadge;
                 if (bLayer.Hidden)
                 {
                     return;
@@ -130,7 +132,7 @@ namespace Ifpa.iOS.Utils
             {
                 textLayer.String = text;
             }
-            else
+            else if(!hideBadge)
             {
                 barButtonItem.AddBadge(text, backgroundColor, textColor);
             }
