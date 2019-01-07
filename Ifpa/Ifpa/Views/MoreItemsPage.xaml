@@ -9,6 +9,7 @@
             <ListView.ItemsSource>
                 <x:Array Type="{x:Type local:MoreItemsMenuItem}">
                     <local:MoreItemsMenuItem Title="News" IconSource="news.png" TargetType="{x:Type local:NewsPage}" />
+                    <local:MoreItemsMenuItem Title="Rules" IconSource="rules.png" TargetType="{x:Type local:RulesPage}" />
                     <local:MoreItemsMenuItem Title="About" IconSource="tab_about.png" TargetType="{x:Type local:AboutPage}" />
                 </x:Array>
             </ListView.ItemsSource>
