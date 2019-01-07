@@ -317,4 +317,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\rankchange.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rules.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rules%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rules%403x.png" />
+  </ItemGroup>
 </Project>
