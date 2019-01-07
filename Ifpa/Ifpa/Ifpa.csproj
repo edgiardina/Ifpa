@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.8.11" />
     <PackageReference Include="PinballApi" Version="1.0.32" />
     <PackageReference Include="Microsoft.Toolkit.Parsers" Version="5.0.0" />
     <PackageReference Include="sqlite-net-pcl" Version="1.5.231" />
@@ -30,6 +31,9 @@
     </Compile>
     <Compile Update="Views\MoreItemsMenuItem.cs">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\RulesPage.xaml.cs">
+      <DependentUpon>RulesPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\NewsDetailPage.xaml.cs">
       <DependentUpon>NewsDetailPage.xaml</DependentUpon>
