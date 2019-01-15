@@ -2,7 +2,6 @@
 using PinballApi;
 using Plugin.Badge;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -21,13 +20,11 @@ namespace Ifpa.Services
 
         public async Task NotifyIfUserHasNewlySubmittedTourneyResults()
         {
-            var playerId = Preferences.Get("PlayerId", 0);
-
-            if (playerId > 0)
+            if (Settings.HasConfiguredMyStats && Settings.NotifyOnTournamentResult)
             {
                 try
                 {
-                    var results = await PinballRankingApi.GetPlayerResults(playerId);
+                    var results = await PinballRankingApi.GetPlayerResults(Settings.MyStatsPlayerId);
 
                     var numberOfTournaments = results.ResultsCount;
                     var lastTournamentCount = Preferences.Get("LastTournamentCount", numberOfTournaments);
@@ -49,7 +46,7 @@ namespace Ifpa.Services
                                 ActivityType = ActivityFeedType.TournamentResult
                             };
                             
-                            Preferences.Set("LastTournamentCount", numberOfTournaments);
+                            Settings.MyStatsLastTournamentCount = numberOfTournaments;
 
                             await App.ActivityFeed.CreateActivityFeedRecord(record);
                             await UpdateBadgeIfNeeded();
@@ -65,16 +62,14 @@ namespace Ifpa.Services
 
         public async Task NotifyIfUsersRankChanged()
         {
-            var playerId = Preferences.Get("PlayerId", 0);
-
-            if (playerId > 0)
+            if (Settings.HasConfiguredMyStats && Settings.NotifyOnRankChange)
             {
                 try
                 {
-                    var results = await PinballRankingApi.GetPlayerRecord(playerId);
+                    var results = await PinballRankingApi.GetPlayerRecord(Settings.MyStatsPlayerId);
 
                     var currentWpprRank = results.PlayerStats.CurrentWpprRank;
-                    var lastRecordedWpprRank = Preferences.Get("CurrentWpprRank", 0);
+                    var lastRecordedWpprRank = Settings.MyStatsCurrentWpprRank;
 
                     if (currentWpprRank != lastRecordedWpprRank && lastRecordedWpprRank != 0)
                     {
@@ -89,7 +84,7 @@ namespace Ifpa.Services
                             ActivityType = ActivityFeedType.RankChange
                         };
                         
-                        Preferences.Set("CurrentWpprRank", currentWpprRank);
+                        Settings.MyStatsCurrentWpprRank = currentWpprRank;
 
                         await App.ActivityFeed.CreateActivityFeedRecord(record);
                         await UpdateBadgeIfNeeded();                        
