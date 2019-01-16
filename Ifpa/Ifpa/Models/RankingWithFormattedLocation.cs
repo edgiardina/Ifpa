@@ -8,7 +8,6 @@ namespace Ifpa.Models
     /// </summary>
     public class RankingWithFormattedLocation : Ranking
     {
-
         public RankingWithFormattedLocation(Ranking item)
         {
 
