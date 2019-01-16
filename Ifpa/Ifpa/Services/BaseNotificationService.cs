@@ -2,9 +2,7 @@
 using PinballApi;
 using Plugin.Badge;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Ifpa.Services
@@ -21,20 +19,21 @@ namespace Ifpa.Services
 
         public async Task NotifyIfUserHasNewlySubmittedTourneyResults()
         {
-            var playerId = Preferences.Get("PlayerId", 0);
-
-            if (playerId > 0)
+            if (Settings.HasConfiguredMyStats)
             {
                 try
                 {
-                    var results = await PinballRankingApi.GetPlayerResults(playerId);
+                    var results = await PinballRankingApi.GetPlayerResults(Settings.MyStatsPlayerId);
 
                     var numberOfTournaments = results.ResultsCount;
-                    var lastTournamentCount = Preferences.Get("LastTournamentCount", numberOfTournaments);
+                    var lastTournamentCount = Settings.MyStatsLastTournamentCount != 0 ? Settings.MyStatsLastTournamentCount : numberOfTournaments;
 
                     if (numberOfTournaments > lastTournamentCount)
                     {
-                        SendNotification(NewTournamentNotificationTitle, NewTournamentNotificationDescription);
+                        if (Settings.NotifyOnTournamentResult)
+                        {
+                            SendNotification(NewTournamentNotificationTitle, NewTournamentNotificationDescription);
+                        }
 
                         for (int i = lastTournamentCount; i < numberOfTournaments; i++)
                         {
@@ -48,13 +47,14 @@ namespace Ifpa.Services
                                 IntOne = results.Results[index].Position,
                                 ActivityType = ActivityFeedType.TournamentResult
                             };
-                            
-                            Preferences.Set("LastTournamentCount", numberOfTournaments);
+
+                            Settings.MyStatsLastTournamentCount = numberOfTournaments;
 
                             await App.ActivityFeed.CreateActivityFeedRecord(record);
+
                             await UpdateBadgeIfNeeded();
                         }
-                    }                    
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -65,20 +65,21 @@ namespace Ifpa.Services
 
         public async Task NotifyIfUsersRankChanged()
         {
-            var playerId = Preferences.Get("PlayerId", 0);
-
-            if (playerId > 0)
+            if (Settings.HasConfiguredMyStats)
             {
                 try
                 {
-                    var results = await PinballRankingApi.GetPlayerRecord(playerId);
+                    var results = await PinballRankingApi.GetPlayerRecord(Settings.MyStatsPlayerId);
 
                     var currentWpprRank = results.PlayerStats.CurrentWpprRank;
-                    var lastRecordedWpprRank = Preferences.Get("CurrentWpprRank", 0);
+                    var lastRecordedWpprRank = Settings.MyStatsCurrentWpprRank;
 
                     if (currentWpprRank != lastRecordedWpprRank && lastRecordedWpprRank != 0)
                     {
-                        SendNotification(NewRankNotificationTitle, NewRankNotificationDescription);
+                        if (Settings.NotifyOnRankChange)
+                        {
+                            SendNotification(NewRankNotificationTitle, NewRankNotificationDescription);
+                        }
 
                         var record = new ActivityFeedItem
                         {
@@ -88,11 +89,12 @@ namespace Ifpa.Services
                             IntTwo = lastRecordedWpprRank,
                             ActivityType = ActivityFeedType.RankChange
                         };
-                        
-                        Preferences.Set("CurrentWpprRank", currentWpprRank);
+
+                        Settings.MyStatsCurrentWpprRank = currentWpprRank;
 
                         await App.ActivityFeed.CreateActivityFeedRecord(record);
-                        await UpdateBadgeIfNeeded();                        
+
+                        await UpdateBadgeIfNeeded();
                     }
                 }
                 catch (Exception ex)

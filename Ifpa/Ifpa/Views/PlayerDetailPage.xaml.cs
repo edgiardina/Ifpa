@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using System.Linq;
 using Ifpa.Services;
+using Ifpa.Models;
 
 namespace Ifpa.Views
 {
@@ -39,11 +40,11 @@ namespace Ifpa.Views
             {
                 ToolbarItems.Remove(ToolbarItems.SingleOrDefault(n => n.Text == "Set to My Stats"));                        
                              
-                if (Preferences.Get("PlayerId", 0) != 0)
+                if (Settings.HasConfiguredMyStats)
                 {
                     try
                     {
-                        viewModel.PlayerId = Preferences.Get("PlayerId", 0);
+                        viewModel.PlayerId = Settings.MyStatsPlayerId;
                     }
                     catch (Exception ex)
                     {
@@ -87,7 +88,7 @@ namespace Ifpa.Views
 
         private async void StarButton_Clicked(object sender, EventArgs e)
         {
-            if (Preferences.Get("PlayerId", 0) == 0)
+            if (!Settings.HasConfiguredMyStats)
             {
                 await ChangePlayerAndRedirect();
             }
@@ -103,10 +104,7 @@ namespace Ifpa.Views
 
         private async Task ChangePlayerAndRedirect()
         {
-            //TODO: perhaps we should create a SelectedPlayer model/service singleton
-            Preferences.Set("PlayerId", viewModel.PlayerId);
-            Preferences.Set("LastTournamentCount", viewModel.LastTournamentCount);
-            Preferences.Set("CurrentWpprRank", viewModel.PlayerRecord.PlayerStats.CurrentWpprRank);
+            Settings.SetMyStatsPlayer(viewModel.PlayerId, viewModel.LastTournamentCount, viewModel.PlayerRecord.PlayerStats.CurrentWpprRank);
 
             //Clear Activity Log as we are switching players
             await App.ActivityFeed.ClearActivityFeed();
