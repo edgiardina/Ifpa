@@ -3,7 +3,6 @@ using PinballApi;
 using Plugin.Badge;
 using System;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Ifpa.Services
@@ -20,7 +19,7 @@ namespace Ifpa.Services
 
         public async Task NotifyIfUserHasNewlySubmittedTourneyResults()
         {
-            if (Settings.HasConfiguredMyStats && Settings.NotifyOnTournamentResult)
+            if (Settings.HasConfiguredMyStats)
             {
                 try
                 {
@@ -31,7 +30,10 @@ namespace Ifpa.Services
 
                     if (numberOfTournaments > lastTournamentCount)
                     {
-                        SendNotification(NewTournamentNotificationTitle, NewTournamentNotificationDescription);
+                        if (Settings.NotifyOnTournamentResult)
+                        {
+                            SendNotification(NewTournamentNotificationTitle, NewTournamentNotificationDescription);
+                        }
 
                         for (int i = lastTournamentCount; i < numberOfTournaments; i++)
                         {
@@ -45,13 +47,14 @@ namespace Ifpa.Services
                                 IntOne = results.Results[index].Position,
                                 ActivityType = ActivityFeedType.TournamentResult
                             };
-                            
+
                             Settings.MyStatsLastTournamentCount = numberOfTournaments;
 
                             await App.ActivityFeed.CreateActivityFeedRecord(record);
+
                             await UpdateBadgeIfNeeded();
                         }
-                    }                    
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -62,7 +65,7 @@ namespace Ifpa.Services
 
         public async Task NotifyIfUsersRankChanged()
         {
-            if (Settings.HasConfiguredMyStats && Settings.NotifyOnRankChange)
+            if (Settings.HasConfiguredMyStats)
             {
                 try
                 {
@@ -73,7 +76,10 @@ namespace Ifpa.Services
 
                     if (currentWpprRank != lastRecordedWpprRank && lastRecordedWpprRank != 0)
                     {
-                        SendNotification(NewRankNotificationTitle, NewRankNotificationDescription);
+                        if (Settings.NotifyOnRankChange)
+                        {
+                            SendNotification(NewRankNotificationTitle, NewRankNotificationDescription);
+                        }
 
                         var record = new ActivityFeedItem
                         {
@@ -83,11 +89,12 @@ namespace Ifpa.Services
                             IntTwo = lastRecordedWpprRank,
                             ActivityType = ActivityFeedType.RankChange
                         };
-                        
+
                         Settings.MyStatsCurrentWpprRank = currentWpprRank;
 
                         await App.ActivityFeed.CreateActivityFeedRecord(record);
-                        await UpdateBadgeIfNeeded();                        
+
+                        await UpdateBadgeIfNeeded();
                     }
                 }
                 catch (Exception ex)
