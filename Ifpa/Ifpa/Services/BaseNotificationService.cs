@@ -27,7 +27,7 @@ namespace Ifpa.Services
                     var results = await PinballRankingApi.GetPlayerResults(Settings.MyStatsPlayerId);
 
                     var numberOfTournaments = results.ResultsCount;
-                    var lastTournamentCount = Preferences.Get("LastTournamentCount", numberOfTournaments);
+                    var lastTournamentCount = Settings.MyStatsLastTournamentCount != 0 ? Settings.MyStatsLastTournamentCount : numberOfTournaments;
 
                     if (numberOfTournaments > lastTournamentCount)
                     {
