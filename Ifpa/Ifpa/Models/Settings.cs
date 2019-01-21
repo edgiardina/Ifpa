@@ -47,22 +47,15 @@ namespace Ifpa.Models
             private set => Preferences.Set("PlayerId", value);
         }
 
-        public static int MyStatsLastTournamentCount
-        {
-            get => Preferences.Get("LastTournamentCount", 0);
-            set => Preferences.Set("LastTournamentCount", value);
-        }
-
         public static int MyStatsCurrentWpprRank
         {
             get => Preferences.Get("CurrentWpprRank", 0);
             set => Preferences.Set("CurrentWpprRank", value);
         }
 
-        public static void SetMyStatsPlayer(int playerId, int lastTournamentCount, int currentWpprRank)
+        public static void SetMyStatsPlayer(int playerId, int currentWpprRank)
         {
             MyStatsPlayerId = playerId;
-            MyStatsLastTournamentCount = lastTournamentCount;
             MyStatsCurrentWpprRank = currentWpprRank;
         }
 
