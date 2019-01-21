@@ -9,6 +9,9 @@
             <local:IntToOrdinalStringConverter x:Key="intToOrdinalString" />
         </ResourceDictionary>
     </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+         <ToolbarItem Text="Share" x:Name="ShareButton" Clicked="ShareButton_Clicked" Icon="share.png" />
+    </ContentPage.ToolbarItems>
     <ListView x:Name="MyListView"
             ItemsSource="{Binding Results}"
             RefreshCommand="{Binding LoadItemsCommand}"

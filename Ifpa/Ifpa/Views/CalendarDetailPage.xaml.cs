@@ -80,5 +80,15 @@ namespace Ifpa.Views
                 await DisplayAlert("Error", "Unable to add Tournament to your Calendar", "OK");
             }
         }
+
+
+        private async void ShareButton_Clicked(object sender, EventArgs e)
+        {
+            await Share.RequestAsync(new ShareTextRequest
+            {
+                Uri = $"https://www.ifpapinball.com/tournaments/view.php?t={viewModel.TournamentId}",
+                Title = "Share Upcoming Tournament"
+            });
+        }
     }
 }

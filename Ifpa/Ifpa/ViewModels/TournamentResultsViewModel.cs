@@ -12,12 +12,12 @@ namespace Ifpa.ViewModels
         public ObservableCollection<Result> Results { get; set; }
         public Command LoadItemsCommand { get; set; }
 
-        private int tournamentId;
+        public int TournamentId { get; set; }
 
         public TournamentResultsViewModel(int tournamentId)
         {
             Title = "Tournament Results";
-            this.tournamentId = tournamentId;
+            this.TournamentId = tournamentId;
             Results = new ObservableCollection<Result>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
@@ -32,7 +32,7 @@ namespace Ifpa.ViewModels
             try
             {
                 Results.Clear();
-                var tournamentResults = await PinballRankingApi.GetTournamentResults(tournamentId);
+                var tournamentResults = await PinballRankingApi.GetTournamentResults(TournamentId);
 
                 foreach (var item in tournamentResults.Results)
                 {                 
