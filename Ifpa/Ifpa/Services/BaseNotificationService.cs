@@ -25,12 +25,17 @@ namespace Ifpa.Services
                 try
                 {
                     var results = await PinballRankingApi.GetPlayerResults(Settings.MyStatsPlayerId);
-
+                    
                     var unseenTournaments = await Settings.FindUnseenTournaments(results.Results);
 
                     if (unseenTournaments.Any())
                     {
-                        if (Settings.NotifyOnTournamentResult)
+                        // Five here is a proxy for 
+                        // "did we switch users and therefore are adding all historical events to activity log"
+                        // We need historical data to know when a user should get alerted due to a new tournament
+                        var isHistoricalEventPopulation = unseenTournaments.Count() >= 5;
+
+                        if (Settings.NotifyOnTournamentResult && !isHistoricalEventPopulation)
                         {
                             SendNotification(NewTournamentNotificationTitle, NewTournamentNotificationDescription);
                         }
@@ -41,8 +46,8 @@ namespace Ifpa.Services
 
                             var record = new ActivityFeedItem
                             {
-                                CreatedDateTime = DateTime.Now,
-                                HasBeenSeen = false,
+                                CreatedDateTime = isHistoricalEventPopulation ? result.EventDate : DateTime.Now,
+                                HasBeenSeen = isHistoricalEventPopulation,
                                 RecordID = result.TournamentId,
                                 IntOne = result.Position,
                                 ActivityType = ActivityFeedType.TournamentResult
