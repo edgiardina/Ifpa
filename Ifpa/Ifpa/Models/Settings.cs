@@ -1,9 +1,30 @@
-﻿using Xamarin.Essentials;
+﻿using Ifpa.Services;
+using PinballApi.Models.WPPR.Players;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace Ifpa.Models
 {
     public static class Settings
     {
+        static ActivityFeedDatabase activityFeed;
+
+        public static ActivityFeedDatabase ActivityFeed
+        {
+            get
+            {
+                if (activityFeed == null)
+                {
+                    activityFeed = new ActivityFeedDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ActivityFeedSQLite.db3"));
+                }
+                return activityFeed;
+            }
+        }
+
         public static bool NotifyOnRankChange
         {
             get => Preferences.Get("NotifyOnRankChange", true);
@@ -26,25 +47,22 @@ namespace Ifpa.Models
             private set => Preferences.Set("PlayerId", value);
         }
 
-        public static int MyStatsLastTournamentCount
-        {
-            get => Preferences.Get("LastTournamentCount", 0);
-            set => Preferences.Set("LastTournamentCount", value);
-        }
-
         public static int MyStatsCurrentWpprRank
         {
             get => Preferences.Get("CurrentWpprRank", 0);
             set => Preferences.Set("CurrentWpprRank", value);
         }
 
-        public static void SetMyStatsPlayer(int playerId, int lastTournamentCount, int currentWpprRank)
+        public static void SetMyStatsPlayer(int playerId, int currentWpprRank)
         {
             MyStatsPlayerId = playerId;
-            MyStatsLastTournamentCount = lastTournamentCount;
             MyStatsCurrentWpprRank = currentWpprRank;
         }
 
+        public static async Task<IEnumerable<int>> FindUnseenTournaments(IList<Result> results)
+        {
+            return await ActivityFeed.ParseNewTournaments(results.Select(n => n.TournamentId));
+        }
 
     }
 }

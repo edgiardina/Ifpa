@@ -3,7 +3,6 @@ using Xamarin.Forms.Xaml;
 using Ifpa.ViewModels;
 using System;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
 using System.Linq;
 using Ifpa.Services;
 using Ifpa.Models;
@@ -67,7 +66,7 @@ namespace Ifpa.Views
         /// <returns></returns>
         private async Task PostPlayerLoad()
         {
-            var numOfUnread = await App.ActivityFeed.GetUnreadActivityCount();            
+            var numOfUnread = await Settings.ActivityFeed.GetUnreadActivityCount();            
             DependencyService.Get<IToolbarItemBadgeService>().SetBadge(this, ToolbarItems.SingleOrDefault(n => n.Text == "Activity Feed"), numOfUnread.ToString(), Color.Red, Color.White);            
         }
 
@@ -104,10 +103,10 @@ namespace Ifpa.Views
 
         private async Task ChangePlayerAndRedirect()
         {
-            Settings.SetMyStatsPlayer(viewModel.PlayerId, viewModel.LastTournamentCount, viewModel.PlayerRecord.PlayerStats.CurrentWpprRank);
+            Settings.SetMyStatsPlayer(viewModel.PlayerId, viewModel.PlayerRecord.PlayerStats.CurrentWpprRank);
 
             //Clear Activity Log as we are switching players
-            await App.ActivityFeed.ClearActivityFeed();
+            await Settings.ActivityFeed.ClearActivityFeed();
 
             await DisplayAlert("Congratulations", "You have now configured your Stats page!", "OK");
             var masterPage = this.Parent.Parent as TabbedPage;

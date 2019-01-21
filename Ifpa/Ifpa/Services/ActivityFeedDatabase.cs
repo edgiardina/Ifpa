@@ -1,8 +1,7 @@
 ﻿using Ifpa.Models;
 using SQLite;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Ifpa.Services
@@ -42,6 +41,12 @@ namespace Ifpa.Services
         public async Task<int> GetUnreadActivityCount()
         {
             return await database.Table<ActivityFeedItem>().CountAsync(n => !n.HasBeenSeen);
+        }
+
+        public async Task<IEnumerable<int>> ParseNewTournaments(IEnumerable<int> tournamentIds)
+        {
+            var tournamentsSeen = await database.Table<ActivityFeedItem>().Where(n => n.ActivityType == ActivityFeedType.TournamentResult).ToListAsync();
+            return tournamentIds.Except(tournamentsSeen.Select(n => n.RecordID.Value));
         }
     }
 }
