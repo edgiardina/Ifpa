@@ -103,7 +103,7 @@ namespace Ifpa.Views
 
         private async Task ChangePlayerAndRedirect()
         {
-            Settings.SetMyStatsPlayer(viewModel.PlayerId, viewModel.LastTournamentCount, viewModel.PlayerRecord.PlayerStats.CurrentWpprRank);
+            Settings.SetMyStatsPlayer(viewModel.PlayerId, viewModel.PlayerRecord.PlayerStats.CurrentWpprRank);
 
             //Clear Activity Log as we are switching players
             await Settings.ActivityFeed.ClearActivityFeed();

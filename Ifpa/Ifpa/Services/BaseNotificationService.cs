@@ -26,17 +26,14 @@ namespace Ifpa.Services
                 {
                     var results = await PinballRankingApi.GetPlayerResults(Settings.MyStatsPlayerId);
 
-                    var numberOfTournaments = results.ResultsCount;
-                    var lastTournamentCount = Settings.MyStatsLastTournamentCount != 0 ? Settings.MyStatsLastTournamentCount : numberOfTournaments;
+                    var unseenTournaments = await Settings.FindUnseenTournaments(results.Results);
 
-                    if (numberOfTournaments > lastTournamentCount)
+                    if (unseenTournaments.Any())
                     {
                         if (Settings.NotifyOnTournamentResult)
                         {
                             SendNotification(NewTournamentNotificationTitle, NewTournamentNotificationDescription);
                         }
-
-                        var unseenTournaments = await Settings.FindUnseenTournaments(results.Results);
 
                         foreach (var unseenTournament in unseenTournaments.OrderBy(n => n))
                         {
@@ -50,8 +47,6 @@ namespace Ifpa.Services
                                 IntOne = result.Position,
                                 ActivityType = ActivityFeedType.TournamentResult
                             };
-
-                            Settings.MyStatsLastTournamentCount = numberOfTournaments;
 
                             await Settings.ActivityFeed.CreateActivityFeedRecord(record);
 
