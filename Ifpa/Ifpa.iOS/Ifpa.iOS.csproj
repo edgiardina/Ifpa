@@ -335,4 +335,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\settings%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\share.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\share%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\share%403x.png" />
+  </ItemGroup>
 </Project>

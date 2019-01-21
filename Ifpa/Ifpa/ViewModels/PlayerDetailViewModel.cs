@@ -114,8 +114,7 @@ namespace Ifpa.ViewModels
                 PlayerRatingHistory = new ObservableCollection<RatingHistory>(playerHistoryData.RatingHistory);
 
                 PlayerRecord = playerData;
-                Title = PlayerRecord.Player.Initials;
-
+                Title = PlayerRecord.Player.Initials.ToUpper();
 
                 if (PostPlayerLoadCommand != null)
                 {

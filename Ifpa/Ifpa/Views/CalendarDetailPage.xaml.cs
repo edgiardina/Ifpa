@@ -62,9 +62,9 @@ namespace Ifpa.Views
                 Thoroughfare = viewModel.Address1,
                 Locality = viewModel.City
             };
-            var options = new MapsLaunchOptions { Name = viewModel.TournamentName };
+            var options = new MapLaunchOptions { Name = viewModel.TournamentName };
 
-            await Maps.OpenAsync(placemark, options);
+            await Xamarin.Essentials.Map.OpenAsync(placemark, options);
         }
 
         private async void AddToCalendarButton_Clicked(object sender, EventArgs e)

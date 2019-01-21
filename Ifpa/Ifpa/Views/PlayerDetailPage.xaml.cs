@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using Ifpa.Services;
 using Ifpa.Models;
+using Xamarin.Essentials;
 
 namespace Ifpa.Views
 {
@@ -123,6 +124,15 @@ namespace Ifpa.Views
         private async void ActivityFeedButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ActivityFeedPage());
+        }
+
+        private async void ShareButton_Clicked(object sender, EventArgs e)
+        {
+            await Share.RequestAsync(new ShareTextRequest
+            {
+                Uri = $"https://www.ifpapinball.com/player.php?p={viewModel.PlayerId}",
+                Title = "Share Player"
+            });
         }
     }
 }
