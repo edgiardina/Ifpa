@@ -1,30 +1,14 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Ifpa.Views;
 using Xamarin.Essentials;
 using Ifpa.Models;
-using System.IO;
-using Ifpa.Services;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Ifpa
 {
     public partial class App : Application
     {
-        static ActivityFeedDatabase activityFeed;
-
-        public static ActivityFeedDatabase ActivityFeed
-        {
-            get
-            {
-                if (activityFeed == null)
-                {
-                    activityFeed = new ActivityFeedDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ActivityFeedSQLite.db3"));
-                }
-                return activityFeed;
-            }
-        }
         public App()
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(Constants.SyncFusionLicenseKey);

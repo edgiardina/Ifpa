@@ -2,6 +2,7 @@
 using PinballApi;
 using Plugin.Badge;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -35,22 +36,24 @@ namespace Ifpa.Services
                             SendNotification(NewTournamentNotificationTitle, NewTournamentNotificationDescription);
                         }
 
-                        for (int i = lastTournamentCount; i < numberOfTournaments; i++)
+                        var unseenTournaments = await Settings.FindUnseenTournaments(results.Results);
+
+                        foreach (var unseenTournament in unseenTournaments.OrderBy(n => n))
                         {
-                            var index = numberOfTournaments - i - 1;
+                            var result = results.Results.Single(n => n.TournamentId == unseenTournament);
 
                             var record = new ActivityFeedItem
                             {
                                 CreatedDateTime = DateTime.Now,
                                 HasBeenSeen = false,
-                                RecordID = results.Results[index].TournamentId,
-                                IntOne = results.Results[index].Position,
+                                RecordID = result.TournamentId,
+                                IntOne = result.Position,
                                 ActivityType = ActivityFeedType.TournamentResult
                             };
 
                             Settings.MyStatsLastTournamentCount = numberOfTournaments;
 
-                            await App.ActivityFeed.CreateActivityFeedRecord(record);
+                            await Settings.ActivityFeed.CreateActivityFeedRecord(record);
 
                             await UpdateBadgeIfNeeded();
                         }
@@ -92,7 +95,7 @@ namespace Ifpa.Services
 
                         Settings.MyStatsCurrentWpprRank = currentWpprRank;
 
-                        await App.ActivityFeed.CreateActivityFeedRecord(record);
+                        await Settings.ActivityFeed.CreateActivityFeedRecord(record);
 
                         await UpdateBadgeIfNeeded();
                     }
@@ -108,7 +111,7 @@ namespace Ifpa.Services
         {
             if (Device.RuntimePlatform == Device.iOS)
             {
-                var unreads = await App.ActivityFeed.GetUnreadActivityCount();
+                var unreads = await Settings.ActivityFeed.GetUnreadActivityCount();
                 CrossBadge.Current.SetBadge(unreads);
             }
         }
