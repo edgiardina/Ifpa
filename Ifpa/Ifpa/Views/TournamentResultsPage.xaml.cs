@@ -1,7 +1,7 @@
 ﻿using Ifpa.ViewModels;
 using PinballApi.Models.WPPR.Tournaments;
-using System.Collections.ObjectModel;
-
+using System;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -37,6 +37,15 @@ namespace Ifpa.Views
 
             if (viewModel.Results.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
+        }
+
+        private async void ShareButton_Clicked(object sender, EventArgs e)
+        {
+            await Share.RequestAsync(new ShareTextRequest
+            {
+                Uri = $"https://www.ifpapinball.com/tournaments/view.php?t={viewModel.TournamentId}",
+                Title = "Share Tournament Results"
+            });
         }
 
     }
