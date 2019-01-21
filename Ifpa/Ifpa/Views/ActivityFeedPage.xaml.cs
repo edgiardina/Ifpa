@@ -2,7 +2,6 @@
 using Ifpa.ViewModels;
 using Plugin.Badge;
 using System;
-using System.ComponentModel;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -35,7 +34,7 @@ namespace Ifpa.Views
             {
                 var item = (ActivityFeedItem)e.SelectedItem;
                 item.HasBeenSeen = true;
-                await App.ActivityFeed.UpdateActivityFeedRecord(item);                
+                await Settings.ActivityFeed.UpdateActivityFeedRecord(item);                
 
                 if (item.ActivityType == ActivityFeedType.TournamentResult)
                 {
@@ -44,7 +43,7 @@ namespace Ifpa.Views
 
                 if (Device.RuntimePlatform == Device.iOS)
                 {
-                    var remainingUnreads = await App.ActivityFeed.GetUnreadActivityCount();
+                    var remainingUnreads = await Settings.ActivityFeed.GetUnreadActivityCount();
                     CrossBadge.Current.SetBadge(remainingUnreads);
                 }
 
@@ -58,7 +57,7 @@ namespace Ifpa.Views
             foreach (var i in activityFeedViewModel.ActivityFeedItems.Where(n => !n.HasBeenSeen))
             {
                 i.HasBeenSeen = true;
-                await App.ActivityFeed.UpdateActivityFeedRecord(i);
+                await Settings.ActivityFeed.UpdateActivityFeedRecord(i);
             }           
             
             if (Device.RuntimePlatform == Device.iOS)
@@ -79,7 +78,7 @@ namespace Ifpa.Views
                 CreatedDateTime = DateTime.Now,
                 HasBeenSeen = false
             };
-            await App.ActivityFeed.CreateActivityFeedRecord(newItem);            
+            await Settings.ActivityFeed.CreateActivityFeedRecord(newItem);            
             CrossBadge.Current.SetBadge(1);
             activityFeedViewModel.LoadItemsCommand.Execute(null);
         }

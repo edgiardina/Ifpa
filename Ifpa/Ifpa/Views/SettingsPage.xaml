@@ -4,7 +4,7 @@
              x:Class="Ifpa.Views.SettingsPage" 
              Title="Settings">
     <ContentPage.Content>
-        <TableView Intent="Settings">
+        <TableView Intent="Settings" HasUnevenRows="True">
             <TableSection Title="Notifications">
                 <SwitchCell Text="IFPA Rank Change" On="{Binding NotifyOnRankChange, Mode=TwoWay}" />
                 <SwitchCell Text="Tournament Result Posted" On="{Binding NotifyOnTournamentResult, Mode=TwoWay}" />

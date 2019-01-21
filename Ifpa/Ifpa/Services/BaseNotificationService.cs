@@ -2,6 +2,7 @@
 using PinballApi;
 using Plugin.Badge;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -24,33 +25,35 @@ namespace Ifpa.Services
                 try
                 {
                     var results = await PinballRankingApi.GetPlayerResults(Settings.MyStatsPlayerId);
+                    
+                    var unseenTournaments = await Settings.FindUnseenTournaments(results.Results);
 
-                    var numberOfTournaments = results.ResultsCount;
-                    var lastTournamentCount = Settings.MyStatsLastTournamentCount != 0 ? Settings.MyStatsLastTournamentCount : numberOfTournaments;
-
-                    if (numberOfTournaments > lastTournamentCount)
+                    if (unseenTournaments.Any())
                     {
-                        if (Settings.NotifyOnTournamentResult)
+                        // Five here is a proxy for 
+                        // "did we switch users and therefore are adding all historical events to activity log"
+                        // We need historical data to know when a user should get alerted due to a new tournament
+                        var isHistoricalEventPopulation = unseenTournaments.Count() >= 5;
+
+                        if (Settings.NotifyOnTournamentResult && !isHistoricalEventPopulation)
                         {
                             SendNotification(NewTournamentNotificationTitle, NewTournamentNotificationDescription);
                         }
 
-                        for (int i = lastTournamentCount; i < numberOfTournaments; i++)
+                        foreach (var unseenTournament in unseenTournaments.OrderBy(n => n))
                         {
-                            var index = numberOfTournaments - i - 1;
+                            var result = results.Results.Single(n => n.TournamentId == unseenTournament);
 
                             var record = new ActivityFeedItem
                             {
-                                CreatedDateTime = DateTime.Now,
-                                HasBeenSeen = false,
-                                RecordID = results.Results[index].TournamentId,
-                                IntOne = results.Results[index].Position,
+                                CreatedDateTime = isHistoricalEventPopulation ? result.EventDate : DateTime.Now,
+                                HasBeenSeen = isHistoricalEventPopulation,
+                                RecordID = result.TournamentId,
+                                IntOne = result.Position,
                                 ActivityType = ActivityFeedType.TournamentResult
                             };
 
-                            Settings.MyStatsLastTournamentCount = numberOfTournaments;
-
-                            await App.ActivityFeed.CreateActivityFeedRecord(record);
+                            await Settings.ActivityFeed.CreateActivityFeedRecord(record);
 
                             await UpdateBadgeIfNeeded();
                         }
@@ -92,7 +95,7 @@ namespace Ifpa.Services
 
                         Settings.MyStatsCurrentWpprRank = currentWpprRank;
 
-                        await App.ActivityFeed.CreateActivityFeedRecord(record);
+                        await Settings.ActivityFeed.CreateActivityFeedRecord(record);
 
                         await UpdateBadgeIfNeeded();
                     }
@@ -108,7 +111,7 @@ namespace Ifpa.Services
         {
             if (Device.RuntimePlatform == Device.iOS)
             {
-                var unreads = await App.ActivityFeed.GetUnreadActivityCount();
+                var unreads = await Settings.ActivityFeed.GetUnreadActivityCount();
                 CrossBadge.Current.SetBadge(unreads);
             }
         }
