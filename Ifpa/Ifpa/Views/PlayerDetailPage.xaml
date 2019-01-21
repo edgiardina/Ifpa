@@ -222,7 +222,7 @@
                             <chart:DateTimeAxis/>
                         </chart:SfChart.PrimaryAxis>
                         <chart:SfChart.SecondaryAxis>
-                            <chart:NumericalAxis IsInversed="True" />
+                            <chart:LogarithmicAxis IsInversed="True" />
                         </chart:SfChart.SecondaryAxis>
                         <chart:LineSeries ItemsSource="{Binding PlayerRankHistory}" XBindingPath="RankDate" YBindingPath="RankPosition"/>
                     </chart:SfChart>
