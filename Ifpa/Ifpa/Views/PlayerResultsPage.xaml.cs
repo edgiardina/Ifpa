@@ -39,22 +39,20 @@ namespace Ifpa.Views
                 viewModel.LoadItemsCommand.Execute(null);
         }
 
-
-        private void ActiveButton_Clicked(object sender, System.EventArgs e)
+        private void SfTabView_SelectionChanged(object sender, Syncfusion.XForms.TabView.SelectionChangedEventArgs e)
         {
-            viewModel.State = PlayerResultState.Active;
-            viewModel.LoadItemsCommand.Execute(null);
-        }
-
-        private void PastButton_Clicked(object sender, System.EventArgs e)
-        {
-            viewModel.State = PlayerResultState.Inactive;
-            viewModel.LoadItemsCommand.Execute(null);
-        }
-
-        private void UnusedButton_Clicked(object sender, System.EventArgs e)
-        {
-            viewModel.State = PlayerResultState.NonActive;
+            switch(e.Name)
+            {
+                case "Active":
+                    viewModel.State = PlayerResultState.Active;
+                    break;
+                case "Unused":
+                    viewModel.State = PlayerResultState.NonActive;
+                    break;
+                case "Past":
+                    viewModel.State = PlayerResultState.Inactive;
+                    break;
+            }          
             viewModel.LoadItemsCommand.Execute(null);
         }
     }
