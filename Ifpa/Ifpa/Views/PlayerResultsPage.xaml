@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
+             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              x:Class="Ifpa.Views.PlayerResultsPage"
              Title="{Binding Title}">
     <ContentPage.Resources>
@@ -9,12 +10,27 @@
             <local:IntToOrdinalStringConverter x:Key="intToOrdinalString" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Active" x:Name="ActiveButton" Clicked="ActiveButton_Clicked" Order="Secondary" />
-        <ToolbarItem Text="Unused" x:Name="UnusedButton" Clicked="UnusedButton_Clicked" Order="Secondary" />
-        <ToolbarItem Text="Past" x:Name="PastButton" Clicked="PastButton_Clicked" Order="Secondary" />
-    </ContentPage.ToolbarItems>
-    <ListView x:Name="MyListView"
+    <StackLayout>
+        <tabView:SfTabView VisibleHeaderCount="3" SelectionChanged="SfTabView_SelectionChanged" 
+                            HeightRequest="50" TabHeaderBackgroundColor="#66FFFFFF">
+            <tabView:SfTabItem Title="Active">
+                <tabView:SfTabItem.Content>
+                    <Label />
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+            <tabView:SfTabItem Title="Unused">
+                <tabView:SfTabItem.Content>
+                    <Label />
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+            <tabView:SfTabItem Title="Past">
+                <tabView:SfTabItem.Content>
+                    <Label />
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+        </tabView:SfTabView>
+
+        <ListView x:Name="MyListView"
             ItemsSource="{Binding Results}"
             RefreshCommand="{Binding LoadItemsCommand}"
             IsPullToRefreshEnabled="true"
@@ -22,25 +38,26 @@
             ItemTapped="Handle_ItemTapped"
             CachingStrategy="RecycleElement"
             HasUnevenRows="true">
-        <!--Custom View Cells-->
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout Orientation="Horizontal" Padding="10">
-                        <StackLayout HorizontalOptions="Start">
-                            <Label Text="{Binding TournamentName}"  FontSize="16" Style="{DynamicResource ListItemTextStyle}" />
-                            <StackLayout Orientation="Horizontal">
-                                <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding EventName}" />
-                                <Label Text="{Binding EventDate, StringFormat='{0:d}'}" FontSize="12" />
-                            </StackLayout>                            
+            <!--Custom View Cells-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="10">
+                            <StackLayout HorizontalOptions="Start">
+                                <Label Text="{Binding TournamentName}"  FontSize="16" Style="{DynamicResource ListItemTextStyle}" />
+                                <StackLayout Orientation="Horizontal">
+                                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding EventName}" />
+                                    <Label Text="{Binding EventDate, StringFormat='{0:d}'}" FontSize="12" />
+                                </StackLayout>
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="EndAndExpand" MinimumWidthRequest="120">
+                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Text="{Binding Position, Converter={StaticResource intToOrdinalString}}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
+                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding CurrentPoints, StringFormat='{0:0.00}'}" />
+                            </StackLayout>
                         </StackLayout>
-                        <StackLayout HorizontalOptions="EndAndExpand" MinimumWidthRequest="120">
-                            <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Text="{Binding Position, Converter={StaticResource intToOrdinalString}}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
-                            <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding CurrentPoints, StringFormat='{0:0.00}'}" />
-                        </StackLayout>
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>

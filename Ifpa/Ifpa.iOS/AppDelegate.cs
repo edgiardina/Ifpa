@@ -2,7 +2,6 @@
 using System.Linq;
 using Foundation;
 using Ifpa.iOS.Services;
-using Ifpa.ViewModels;
 using Ifpa.Views;
 using UIKit;
 
@@ -28,6 +27,7 @@ namespace Ifpa.iOS
             global::Xamarin.Forms.Forms.Init();
             global::Xamarin.FormsMaps.Init();
             Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer.Init();
+            Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
             LoadApplication(new App());
 
             UIApplication.SharedApplication.RegisterUserNotificationSettings(UIUserNotificationSettings.GetSettingsForTypes(UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound, null));
