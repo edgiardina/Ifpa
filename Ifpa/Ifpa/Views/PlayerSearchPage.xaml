@@ -12,7 +12,8 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <SearchBar x:Name="SearchBar" SearchCommand="{Binding SearchCommand}" SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"></SearchBar>
+            <SearchBar x:Name="SearchBar" SearchCommand="{Binding SearchCommand}" HeightRequest="60"
+                       SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}" />
             <ListView x:Name="PlayersListView" 
                 ItemsSource="{Binding Players}"
                 VerticalOptions="FillAndExpand"
