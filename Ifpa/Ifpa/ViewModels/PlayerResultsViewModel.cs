@@ -28,6 +28,7 @@ namespace Ifpa.ViewModels
         {
             Title = "Results";
             this.playerId = playerId;
+            State = PlayerResultState.Active;
             Results = new ObservableCollection<Result>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
