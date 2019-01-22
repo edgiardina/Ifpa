@@ -70,34 +70,6 @@ namespace Ifpa.Droid
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.sfchart_others_label = global::Ifpa.Droid.Resource.String.sfchart_others_label;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.w = global::Ifpa.Droid.Resource.String.w;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.week = global::Ifpa.Droid.Resource.String.week;
-			global::Syncfusion.Android.TabView.Resource.Attribute.tabHeaderBackgroundColor = global::Ifpa.Droid.Resource.Attribute.tabHeaderBackgroundColor;
-			global::Syncfusion.Android.TabView.Resource.Attribute.tabHeaderPosition = global::Ifpa.Droid.Resource.Attribute.tabHeaderPosition;
-			global::Syncfusion.Android.TabView.Resource.Attribute.tabHeight = global::Ifpa.Droid.Resource.Attribute.tabHeight;
-			global::Syncfusion.Android.TabView.Resource.Attribute.tabViewBackColor = global::Ifpa.Droid.Resource.Attribute.tabViewBackColor;
-			global::Syncfusion.Android.TabView.Resource.Attribute.tabViewColor = global::Ifpa.Droid.Resource.Attribute.tabViewColor;
-			global::Syncfusion.Android.TabView.Resource.Attribute.tabViewOverflowMode = global::Ifpa.Droid.Resource.Attribute.tabViewOverflowMode;
-			global::Syncfusion.Android.TabView.Resource.Attribute.tabViewPosition = global::Ifpa.Droid.Resource.Attribute.tabViewPosition;
-			global::Syncfusion.Android.TabView.Resource.Attribute.tabViewSelectedIndex = global::Ifpa.Droid.Resource.Attribute.tabViewSelectedIndex;
-			global::Syncfusion.Android.TabView.Resource.Attribute.tabViewStrokeThickness = global::Ifpa.Droid.Resource.Attribute.tabViewStrokeThickness;
-			global::Syncfusion.Android.TabView.Resource.Attribute.tabWidth = global::Ifpa.Droid.Resource.Attribute.tabWidth;
-			global::Syncfusion.Android.TabView.Resource.Drawable.ripple_effect = global::Ifpa.Droid.Resource.Drawable.ripple_effect;
-			global::Syncfusion.Android.TabView.Resource.Id.bottom = global::Ifpa.Droid.Resource.Id.bottom;
-			global::Syncfusion.Android.TabView.Resource.Id.centerbutton = global::Ifpa.Droid.Resource.Id.centerbutton;
-			global::Syncfusion.Android.TabView.Resource.Id.dropdown = global::Ifpa.Droid.Resource.Id.dropdown;
-			global::Syncfusion.Android.TabView.Resource.Id.fill = global::Ifpa.Droid.Resource.Id.fill;
-			global::Syncfusion.Android.TabView.Resource.Id.scroll = global::Ifpa.Droid.Resource.Id.scroll;
-			global::Syncfusion.Android.TabView.Resource.Id.top = global::Ifpa.Droid.Resource.Id.top;
-			global::Syncfusion.Android.TabView.Resource.Styleable.SfTabView = global::Ifpa.Droid.Resource.Styleable.SfTabView;
-			global::Syncfusion.Android.TabView.Resource.Styleable.SfTabView_tabHeaderBackgroundColor = global::Ifpa.Droid.Resource.Styleable.SfTabView_tabHeaderBackgroundColor;
-			global::Syncfusion.Android.TabView.Resource.Styleable.SfTabView_tabHeaderPosition = global::Ifpa.Droid.Resource.Styleable.SfTabView_tabHeaderPosition;
-			global::Syncfusion.Android.TabView.Resource.Styleable.SfTabView_tabHeight = global::Ifpa.Droid.Resource.Styleable.SfTabView_tabHeight;
-			global::Syncfusion.Android.TabView.Resource.Styleable.SfTabView_tabViewBackColor = global::Ifpa.Droid.Resource.Styleable.SfTabView_tabViewBackColor;
-			global::Syncfusion.Android.TabView.Resource.Styleable.SfTabView_tabViewColor = global::Ifpa.Droid.Resource.Styleable.SfTabView_tabViewColor;
-			global::Syncfusion.Android.TabView.Resource.Styleable.SfTabView_tabViewOverflowMode = global::Ifpa.Droid.Resource.Styleable.SfTabView_tabViewOverflowMode;
-			global::Syncfusion.Android.TabView.Resource.Styleable.SfTabView_tabViewPosition = global::Ifpa.Droid.Resource.Styleable.SfTabView_tabViewPosition;
-			global::Syncfusion.Android.TabView.Resource.Styleable.SfTabView_tabViewSelectedIndex = global::Ifpa.Droid.Resource.Styleable.SfTabView_tabViewSelectedIndex;
-			global::Syncfusion.Android.TabView.Resource.Styleable.SfTabView_tabViewStrokeThickness = global::Ifpa.Droid.Resource.Styleable.SfTabView_tabViewStrokeThickness;
-			global::Syncfusion.Android.TabView.Resource.Styleable.SfTabView_tabWidth = global::Ifpa.Droid.Resource.Styleable.SfTabView_tabWidth;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::Ifpa.Droid.Resource.Attribute.actionBarSize;
 		}
 		
@@ -1165,15 +1137,6 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f01016e
 			public const int tabGravity = 2130772334;
 			
-			// aapt resource value: 0x7f010197
-			public const int tabHeaderBackgroundColor = 2130772375;
-			
-			// aapt resource value: 0x7f010198
-			public const int tabHeaderPosition = 2130772376;
-			
-			// aapt resource value: 0x7f010195
-			public const int tabHeight = 2130772373;
-			
 			// aapt resource value: 0x7f010169
 			public const int tabIndicatorColor = 2130772329;
 			
@@ -1212,27 +1175,6 @@ namespace Ifpa.Droid
 			
 			// aapt resource value: 0x7f010172
 			public const int tabTextColor = 2130772338;
-			
-			// aapt resource value: 0x7f010190
-			public const int tabViewBackColor = 2130772368;
-			
-			// aapt resource value: 0x7f010191
-			public const int tabViewColor = 2130772369;
-			
-			// aapt resource value: 0x7f010199
-			public const int tabViewOverflowMode = 2130772377;
-			
-			// aapt resource value: 0x7f010193
-			public const int tabViewPosition = 2130772371;
-			
-			// aapt resource value: 0x7f010194
-			public const int tabViewSelectedIndex = 2130772372;
-			
-			// aapt resource value: 0x7f010192
-			public const int tabViewStrokeThickness = 2130772370;
-			
-			// aapt resource value: 0x7f010196
-			public const int tabWidth = 2130772374;
 			
 			// aapt resource value: 0x7f01006c
 			public const int textAllCaps = 2130772076;
@@ -2582,26 +2524,26 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f020054
 			public const int avd_hide_password = 2130837588;
 			
+			// aapt resource value: 0x7f02015c
+			public const int avd_hide_password_1 = 2130837852;
+			
 			// aapt resource value: 0x7f02015d
-			public const int avd_hide_password_1 = 2130837853;
+			public const int avd_hide_password_2 = 2130837853;
 			
 			// aapt resource value: 0x7f02015e
-			public const int avd_hide_password_2 = 2130837854;
-			
-			// aapt resource value: 0x7f02015f
-			public const int avd_hide_password_3 = 2130837855;
+			public const int avd_hide_password_3 = 2130837854;
 			
 			// aapt resource value: 0x7f020055
 			public const int avd_show_password = 2130837589;
 			
+			// aapt resource value: 0x7f02015f
+			public const int avd_show_password_1 = 2130837855;
+			
 			// aapt resource value: 0x7f020160
-			public const int avd_show_password_1 = 2130837856;
+			public const int avd_show_password_2 = 2130837856;
 			
 			// aapt resource value: 0x7f020161
-			public const int avd_show_password_2 = 2130837857;
-			
-			// aapt resource value: 0x7f020162
-			public const int avd_show_password_3 = 2130837858;
+			public const int avd_show_password_3 = 2130837857;
 			
 			// aapt resource value: 0x7f020056
 			public const int calendar = 2130837590;
@@ -3338,11 +3280,11 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f02014a
 			public const int notification_icon_background = 2130837834;
 			
-			// aapt resource value: 0x7f02015b
-			public const int notification_template_icon_bg = 2130837851;
+			// aapt resource value: 0x7f02015a
+			public const int notification_template_icon_bg = 2130837850;
 			
-			// aapt resource value: 0x7f02015c
-			public const int notification_template_icon_low_bg = 2130837852;
+			// aapt resource value: 0x7f02015b
+			public const int notification_template_icon_low_bg = 2130837851;
 			
 			// aapt resource value: 0x7f02014b
 			public const int notification_tile_bg = 2130837835;
@@ -3363,34 +3305,31 @@ namespace Ifpa.Droid
 			public const int ribbon = 2130837840;
 			
 			// aapt resource value: 0x7f020151
-			public const int ripple_effect = 2130837841;
+			public const int rules = 2130837841;
 			
 			// aapt resource value: 0x7f020152
-			public const int rules = 2130837842;
+			public const int search = 2130837842;
 			
 			// aapt resource value: 0x7f020153
-			public const int search = 2130837843;
+			public const int settings = 2130837843;
 			
 			// aapt resource value: 0x7f020154
-			public const int settings = 2130837844;
+			public const int share = 2130837844;
 			
 			// aapt resource value: 0x7f020155
-			public const int share = 2130837845;
+			public const int splash_background = 2130837845;
 			
 			// aapt resource value: 0x7f020156
-			public const int splash_background = 2130837846;
+			public const int star = 2130837846;
 			
 			// aapt resource value: 0x7f020157
-			public const int star = 2130837847;
+			public const int tab_about = 2130837847;
 			
 			// aapt resource value: 0x7f020158
-			public const int tab_about = 2130837848;
+			public const int tooltip_frame_dark = 2130837848;
 			
 			// aapt resource value: 0x7f020159
-			public const int tooltip_frame_dark = 2130837849;
-			
-			// aapt resource value: 0x7f02015a
-			public const int tooltip_frame_light = 2130837850;
+			public const int tooltip_frame_light = 2130837849;
 			
 			static Drawable()
 			{
@@ -3423,41 +3362,41 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c0041
 			public const int SYM = 2131492929;
 			
-			// aapt resource value: 0x7f0c00d3
-			public const int action0 = 2131493075;
+			// aapt resource value: 0x7f0c00d1
+			public const int action0 = 2131493073;
 			
-			// aapt resource value: 0x7f0c0087
-			public const int action_bar = 2131492999;
+			// aapt resource value: 0x7f0c0085
+			public const int action_bar = 2131492997;
 			
 			// aapt resource value: 0x7f0c0001
 			public const int action_bar_activity_content = 2131492865;
 			
-			// aapt resource value: 0x7f0c0086
-			public const int action_bar_container = 2131492998;
+			// aapt resource value: 0x7f0c0084
+			public const int action_bar_container = 2131492996;
 			
-			// aapt resource value: 0x7f0c0082
-			public const int action_bar_root = 2131492994;
+			// aapt resource value: 0x7f0c0080
+			public const int action_bar_root = 2131492992;
 			
 			// aapt resource value: 0x7f0c0002
 			public const int action_bar_spinner = 2131492866;
 			
-			// aapt resource value: 0x7f0c0066
-			public const int action_bar_subtitle = 2131492966;
+			// aapt resource value: 0x7f0c0064
+			public const int action_bar_subtitle = 2131492964;
 			
-			// aapt resource value: 0x7f0c0065
-			public const int action_bar_title = 2131492965;
+			// aapt resource value: 0x7f0c0063
+			public const int action_bar_title = 2131492963;
 			
-			// aapt resource value: 0x7f0c00d0
-			public const int action_container = 2131493072;
+			// aapt resource value: 0x7f0c00ce
+			public const int action_container = 2131493070;
 			
-			// aapt resource value: 0x7f0c0088
-			public const int action_context_bar = 2131493000;
+			// aapt resource value: 0x7f0c0086
+			public const int action_context_bar = 2131492998;
 			
-			// aapt resource value: 0x7f0c00d7
-			public const int action_divider = 2131493079;
+			// aapt resource value: 0x7f0c00d5
+			public const int action_divider = 2131493077;
 			
-			// aapt resource value: 0x7f0c00d1
-			public const int action_image = 2131493073;
+			// aapt resource value: 0x7f0c00cf
+			public const int action_image = 2131493071;
 			
 			// aapt resource value: 0x7f0c0003
 			public const int action_menu_divider = 2131492867;
@@ -3465,23 +3404,23 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c0004
 			public const int action_menu_presenter = 2131492868;
 			
-			// aapt resource value: 0x7f0c0084
-			public const int action_mode_bar = 2131492996;
+			// aapt resource value: 0x7f0c0082
+			public const int action_mode_bar = 2131492994;
 			
-			// aapt resource value: 0x7f0c0083
-			public const int action_mode_bar_stub = 2131492995;
+			// aapt resource value: 0x7f0c0081
+			public const int action_mode_bar_stub = 2131492993;
 			
-			// aapt resource value: 0x7f0c0067
-			public const int action_mode_close_button = 2131492967;
+			// aapt resource value: 0x7f0c0065
+			public const int action_mode_close_button = 2131492965;
 			
-			// aapt resource value: 0x7f0c00d2
-			public const int action_text = 2131493074;
+			// aapt resource value: 0x7f0c00d0
+			public const int action_text = 2131493072;
 			
-			// aapt resource value: 0x7f0c00e0
-			public const int actions = 2131493088;
+			// aapt resource value: 0x7f0c00de
+			public const int actions = 2131493086;
 			
-			// aapt resource value: 0x7f0c0068
-			public const int activity_chooser_view_content = 2131492968;
+			// aapt resource value: 0x7f0c0066
+			public const int activity_chooser_view_content = 2131492966;
 			
 			// aapt resource value: 0x7f0c0036
 			public const int add = 2131492918;
@@ -3492,8 +3431,8 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c0022
 			public const int adjust_width = 2131492898;
 			
-			// aapt resource value: 0x7f0c007b
-			public const int alertTitle = 2131492987;
+			// aapt resource value: 0x7f0c0079
+			public const int alertTitle = 2131492985;
 			
 			// aapt resource value: 0x7f0c005b
 			public const int all = 2131492955;
@@ -3501,8 +3440,8 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c0042
 			public const int always = 2131492930;
 			
-			// aapt resource value: 0x7f0c00a0
-			public const int annotationLayout = 2131493024;
+			// aapt resource value: 0x7f0c009e
+			public const int annotationLayout = 2131493022;
 			
 			// aapt resource value: 0x7f0c005f
 			public const int async = 2131492959;
@@ -3510,8 +3449,8 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c0026
 			public const int auto = 2131492902;
 			
-			// aapt resource value: 0x7f0c009d
-			public const int axisLayout = 2131493021;
+			// aapt resource value: 0x7f0c009b
+			public const int axisLayout = 2131493019;
 			
 			// aapt resource value: 0x7f0c0039
 			public const int beginning = 2131492921;
@@ -3522,14 +3461,14 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c0047
 			public const int bottom = 2131492935;
 			
-			// aapt resource value: 0x7f0c00e4
-			public const int bottom_labels = 2131493092;
+			// aapt resource value: 0x7f0c00e2
+			public const int bottom_labels = 2131493090;
 			
-			// aapt resource value: 0x7f0c006e
-			public const int buttonPanel = 2131492974;
+			// aapt resource value: 0x7f0c006c
+			public const int buttonPanel = 2131492972;
 			
-			// aapt resource value: 0x7f0c00d4
-			public const int cancel_action = 2131493076;
+			// aapt resource value: 0x7f0c00d2
+			public const int cancel_action = 2131493074;
 			
 			// aapt resource value: 0x7f0c004e
 			public const int center = 2131492942;
@@ -3540,20 +3479,17 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c0050
 			public const int center_vertical = 2131492944;
 			
-			// aapt resource value: 0x7f0c0063
-			public const int centerbutton = 2131492963;
+			// aapt resource value: 0x7f0c009d
+			public const int chartBehaviorLayout = 2131493021;
 			
-			// aapt resource value: 0x7f0c009f
-			public const int chartBehaviorLayout = 2131493023;
+			// aapt resource value: 0x7f0c00a1
+			public const int chartLegendScrollView = 2131493025;
 			
-			// aapt resource value: 0x7f0c00a3
-			public const int chartLegendScrollView = 2131493027;
+			// aapt resource value: 0x7f0c007c
+			public const int checkbox = 2131492988;
 			
-			// aapt resource value: 0x7f0c007e
-			public const int checkbox = 2131492990;
-			
-			// aapt resource value: 0x7f0c00dc
-			public const int chronometer = 2131493084;
+			// aapt resource value: 0x7f0c00da
+			public const int chronometer = 2131493082;
 			
 			// aapt resource value: 0x7f0c0057
 			public const int clip_horizontal = 2131492951;
@@ -3564,65 +3500,62 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c0043
 			public const int collapseActionView = 2131492931;
 			
-			// aapt resource value: 0x7f0c00aa
-			public const int container = 2131493034;
+			// aapt resource value: 0x7f0c00a8
+			public const int container = 2131493032;
 			
-			// aapt resource value: 0x7f0c00e5
-			public const int content = 2131493093;
+			// aapt resource value: 0x7f0c00e3
+			public const int content = 2131493091;
 			
-			// aapt resource value: 0x7f0c0071
-			public const int contentPanel = 2131492977;
+			// aapt resource value: 0x7f0c006f
+			public const int contentPanel = 2131492975;
 			
-			// aapt resource value: 0x7f0c00ab
-			public const int coordinator = 2131493035;
+			// aapt resource value: 0x7f0c00a9
+			public const int coordinator = 2131493033;
 			
-			// aapt resource value: 0x7f0c0078
-			public const int custom = 2131492984;
+			// aapt resource value: 0x7f0c0076
+			public const int custom = 2131492982;
 			
-			// aapt resource value: 0x7f0c0077
-			public const int customPanel = 2131492983;
+			// aapt resource value: 0x7f0c0075
+			public const int customPanel = 2131492981;
 			
 			// aapt resource value: 0x7f0c0027
 			public const int dark = 2131492903;
 			
-			// aapt resource value: 0x7f0c009b
-			public const int dataMarkerLayout = 2131493019;
+			// aapt resource value: 0x7f0c0099
+			public const int dataMarkerLayout = 2131493017;
 			
-			// aapt resource value: 0x7f0c0085
-			public const int decor_content_parent = 2131492997;
+			// aapt resource value: 0x7f0c0083
+			public const int decor_content_parent = 2131492995;
 			
-			// aapt resource value: 0x7f0c006b
-			public const int default_activity_button = 2131492971;
+			// aapt resource value: 0x7f0c0069
+			public const int default_activity_button = 2131492969;
 			
-			// aapt resource value: 0x7f0c00ad
-			public const int design_bottom_sheet = 2131493037;
-			
-			// aapt resource value: 0x7f0c00b4
-			public const int design_menu_item_action_area = 2131493044;
-			
-			// aapt resource value: 0x7f0c00b3
-			public const int design_menu_item_action_area_stub = 2131493043;
+			// aapt resource value: 0x7f0c00ab
+			public const int design_bottom_sheet = 2131493035;
 			
 			// aapt resource value: 0x7f0c00b2
-			public const int design_menu_item_text = 2131493042;
+			public const int design_menu_item_action_area = 2131493042;
 			
 			// aapt resource value: 0x7f0c00b1
-			public const int design_navigation_view = 2131493041;
+			public const int design_menu_item_action_area_stub = 2131493041;
+			
+			// aapt resource value: 0x7f0c00b0
+			public const int design_menu_item_text = 2131493040;
+			
+			// aapt resource value: 0x7f0c00af
+			public const int design_navigation_view = 2131493039;
 			
 			// aapt resource value: 0x7f0c002b
 			public const int disableHome = 2131492907;
 			
-			// aapt resource value: 0x7f0c0064
-			public const int dropdown = 2131492964;
-			
-			// aapt resource value: 0x7f0c0089
-			public const int edit_query = 2131493001;
+			// aapt resource value: 0x7f0c0087
+			public const int edit_query = 2131492999;
 			
 			// aapt resource value: 0x7f0c003a
 			public const int end = 2131492922;
 			
-			// aapt resource value: 0x7f0c00e2
-			public const int end_padder = 2131493090;
+			// aapt resource value: 0x7f0c00e0
+			public const int end_padder = 2131493088;
 			
 			// aapt resource value: 0x7f0c0049
 			public const int enterAlways = 2131492937;
@@ -3633,11 +3566,11 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c004b
 			public const int exitUntilCollapsed = 2131492939;
 			
-			// aapt resource value: 0x7f0c0069
-			public const int expand_activities_button = 2131492969;
+			// aapt resource value: 0x7f0c0067
+			public const int expand_activities_button = 2131492967;
 			
-			// aapt resource value: 0x7f0c007d
-			public const int expanded_menu = 2131492989;
+			// aapt resource value: 0x7f0c007b
+			public const int expanded_menu = 2131492987;
 			
 			// aapt resource value: 0x7f0c0059
 			public const int fill = 2131492953;
@@ -3657,11 +3590,11 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c000a
 			public const int ghost_view = 2131492874;
 			
-			// aapt resource value: 0x7f0c0098
-			public const int gridLineLayout = 2131493016;
+			// aapt resource value: 0x7f0c0096
+			public const int gridLineLayout = 2131493014;
 			
-			// aapt resource value: 0x7f0c00e6
-			public const int gridLinesLayout = 2131493094;
+			// aapt resource value: 0x7f0c00e4
+			public const int gridLinesLayout = 2131493092;
 			
 			// aapt resource value: 0x7f0c0005
 			public const int home = 2131492869;
@@ -3672,14 +3605,14 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c001c
 			public const int hybrid = 2131492892;
 			
-			// aapt resource value: 0x7f0c006d
-			public const int icon = 2131492973;
+			// aapt resource value: 0x7f0c006b
+			public const int icon = 2131492971;
 			
-			// aapt resource value: 0x7f0c00a6
-			public const int iconView = 2131493030;
+			// aapt resource value: 0x7f0c00a4
+			public const int iconView = 2131493028;
 			
-			// aapt resource value: 0x7f0c00e1
-			public const int icon_group = 2131493089;
+			// aapt resource value: 0x7f0c00df
+			public const int icon_group = 2131493087;
 			
 			// aapt resource value: 0x7f0c0023
 			public const int icon_only = 2131492899;
@@ -3687,11 +3620,11 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c0044
 			public const int ifRoom = 2131492932;
 			
-			// aapt resource value: 0x7f0c006a
-			public const int image = 2131492970;
+			// aapt resource value: 0x7f0c0068
+			public const int image = 2131492968;
 			
-			// aapt resource value: 0x7f0c00dd
-			public const int info = 2131493085;
+			// aapt resource value: 0x7f0c00db
+			public const int info = 2131493083;
 			
 			// aapt resource value: 0x7f0c0062
 			public const int italic = 2131492962;
@@ -3699,29 +3632,29 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c0000
 			public const int item_touch_helper_previous_elevation = 2131492864;
 			
-			// aapt resource value: 0x7f0c00a7
-			public const int label = 2131493031;
+			// aapt resource value: 0x7f0c00a5
+			public const int label = 2131493029;
 			
-			// aapt resource value: 0x7f0c00a9
-			public const int largeLabel = 2131493033;
+			// aapt resource value: 0x7f0c00a7
+			public const int largeLabel = 2131493031;
 			
 			// aapt resource value: 0x7f0c0052
 			public const int left = 2131492946;
 			
+			// aapt resource value: 0x7f0c00a0
+			public const int legendHeader = 2131493024;
+			
+			// aapt resource value: 0x7f0c00a3
+			public const int legendItemsLayout = 2131493027;
+			
+			// aapt resource value: 0x7f0c009c
+			public const int legendLayout = 2131493020;
+			
 			// aapt resource value: 0x7f0c00a2
-			public const int legendHeader = 2131493026;
+			public const int legendScrollView = 2131493026;
 			
-			// aapt resource value: 0x7f0c00a5
-			public const int legendItemsLayout = 2131493029;
-			
-			// aapt resource value: 0x7f0c009e
-			public const int legendLayout = 2131493022;
-			
-			// aapt resource value: 0x7f0c00a4
-			public const int legendScrollView = 2131493028;
-			
-			// aapt resource value: 0x7f0c00a1
-			public const int legendViewGroup = 2131493025;
+			// aapt resource value: 0x7f0c009f
+			public const int legendViewGroup = 2131493023;
 			
 			// aapt resource value: 0x7f0c0028
 			public const int light = 2131492904;
@@ -3735,17 +3668,17 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c0029
 			public const int listMode = 2131492905;
 			
-			// aapt resource value: 0x7f0c006c
-			public const int list_item = 2131492972;
-			
-			// aapt resource value: 0x7f0c00ec
-			public const int masked = 2131493100;
-			
-			// aapt resource value: 0x7f0c00d6
-			public const int media_actions = 2131493078;
+			// aapt resource value: 0x7f0c006a
+			public const int list_item = 2131492970;
 			
 			// aapt resource value: 0x7f0c00ea
-			public const int message = 2131493098;
+			public const int masked = 2131493098;
+			
+			// aapt resource value: 0x7f0c00d4
+			public const int media_actions = 2131493076;
+			
+			// aapt resource value: 0x7f0c00e8
+			public const int message = 2131493096;
 			
 			// aapt resource value: 0x7f0c003b
 			public const int middle = 2131492923;
@@ -3753,86 +3686,86 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c005c
 			public const int mini = 2131492956;
 			
-			// aapt resource value: 0x7f0c00c2
-			public const int mr_art = 2131493058;
+			// aapt resource value: 0x7f0c00c0
+			public const int mr_art = 2131493056;
 			
-			// aapt resource value: 0x7f0c00b7
-			public const int mr_chooser_list = 2131493047;
-			
-			// aapt resource value: 0x7f0c00ba
-			public const int mr_chooser_route_desc = 2131493050;
+			// aapt resource value: 0x7f0c00b5
+			public const int mr_chooser_list = 2131493045;
 			
 			// aapt resource value: 0x7f0c00b8
-			public const int mr_chooser_route_icon = 2131493048;
-			
-			// aapt resource value: 0x7f0c00b9
-			public const int mr_chooser_route_name = 2131493049;
+			public const int mr_chooser_route_desc = 2131493048;
 			
 			// aapt resource value: 0x7f0c00b6
-			public const int mr_chooser_title = 2131493046;
+			public const int mr_chooser_route_icon = 2131493046;
 			
-			// aapt resource value: 0x7f0c00bf
-			public const int mr_close = 2131493055;
+			// aapt resource value: 0x7f0c00b7
+			public const int mr_chooser_route_name = 2131493047;
 			
-			// aapt resource value: 0x7f0c00c5
-			public const int mr_control_divider = 2131493061;
-			
-			// aapt resource value: 0x7f0c00cb
-			public const int mr_control_playback_ctrl = 2131493067;
-			
-			// aapt resource value: 0x7f0c00ce
-			public const int mr_control_subtitle = 2131493070;
-			
-			// aapt resource value: 0x7f0c00cd
-			public const int mr_control_title = 2131493069;
-			
-			// aapt resource value: 0x7f0c00cc
-			public const int mr_control_title_container = 2131493068;
-			
-			// aapt resource value: 0x7f0c00c0
-			public const int mr_custom_control = 2131493056;
-			
-			// aapt resource value: 0x7f0c00c1
-			public const int mr_default_control = 2131493057;
-			
-			// aapt resource value: 0x7f0c00bc
-			public const int mr_dialog_area = 2131493052;
-			
-			// aapt resource value: 0x7f0c00bb
-			public const int mr_expandable_area = 2131493051;
-			
-			// aapt resource value: 0x7f0c00cf
-			public const int mr_group_expand_collapse = 2131493071;
-			
-			// aapt resource value: 0x7f0c00c3
-			public const int mr_media_main_control = 2131493059;
-			
-			// aapt resource value: 0x7f0c00be
-			public const int mr_name = 2131493054;
-			
-			// aapt resource value: 0x7f0c00c4
-			public const int mr_playback_control = 2131493060;
+			// aapt resource value: 0x7f0c00b4
+			public const int mr_chooser_title = 2131493044;
 			
 			// aapt resource value: 0x7f0c00bd
-			public const int mr_title_bar = 2131493053;
+			public const int mr_close = 2131493053;
 			
-			// aapt resource value: 0x7f0c00c6
-			public const int mr_volume_control = 2131493062;
-			
-			// aapt resource value: 0x7f0c00c7
-			public const int mr_volume_group_list = 2131493063;
+			// aapt resource value: 0x7f0c00c3
+			public const int mr_control_divider = 2131493059;
 			
 			// aapt resource value: 0x7f0c00c9
-			public const int mr_volume_item_icon = 2131493065;
+			public const int mr_control_playback_ctrl = 2131493065;
+			
+			// aapt resource value: 0x7f0c00cc
+			public const int mr_control_subtitle = 2131493068;
+			
+			// aapt resource value: 0x7f0c00cb
+			public const int mr_control_title = 2131493067;
 			
 			// aapt resource value: 0x7f0c00ca
-			public const int mr_volume_slider = 2131493066;
+			public const int mr_control_title_container = 2131493066;
+			
+			// aapt resource value: 0x7f0c00be
+			public const int mr_custom_control = 2131493054;
+			
+			// aapt resource value: 0x7f0c00bf
+			public const int mr_default_control = 2131493055;
+			
+			// aapt resource value: 0x7f0c00ba
+			public const int mr_dialog_area = 2131493050;
+			
+			// aapt resource value: 0x7f0c00b9
+			public const int mr_expandable_area = 2131493049;
+			
+			// aapt resource value: 0x7f0c00cd
+			public const int mr_group_expand_collapse = 2131493069;
+			
+			// aapt resource value: 0x7f0c00c1
+			public const int mr_media_main_control = 2131493057;
+			
+			// aapt resource value: 0x7f0c00bc
+			public const int mr_name = 2131493052;
+			
+			// aapt resource value: 0x7f0c00c2
+			public const int mr_playback_control = 2131493058;
+			
+			// aapt resource value: 0x7f0c00bb
+			public const int mr_title_bar = 2131493051;
+			
+			// aapt resource value: 0x7f0c00c4
+			public const int mr_volume_control = 2131493060;
+			
+			// aapt resource value: 0x7f0c00c5
+			public const int mr_volume_group_list = 2131493061;
+			
+			// aapt resource value: 0x7f0c00c7
+			public const int mr_volume_item_icon = 2131493063;
+			
+			// aapt resource value: 0x7f0c00c8
+			public const int mr_volume_slider = 2131493064;
 			
 			// aapt resource value: 0x7f0c0031
 			public const int multiply = 2131492913;
 			
-			// aapt resource value: 0x7f0c00b0
-			public const int navigation_header_container = 2131493040;
+			// aapt resource value: 0x7f0c00ae
+			public const int navigation_header_container = 2131493038;
 			
 			// aapt resource value: 0x7f0c0045
 			public const int never = 2131492933;
@@ -3843,20 +3776,20 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c001e
 			public const int normal = 2131492894;
 			
-			// aapt resource value: 0x7f0c00df
-			public const int notification_background = 2131493087;
+			// aapt resource value: 0x7f0c00dd
+			public const int notification_background = 2131493085;
 			
-			// aapt resource value: 0x7f0c00d9
-			public const int notification_main_column = 2131493081;
+			// aapt resource value: 0x7f0c00d7
+			public const int notification_main_column = 2131493079;
 			
-			// aapt resource value: 0x7f0c00d8
-			public const int notification_main_column_container = 2131493080;
+			// aapt resource value: 0x7f0c00d6
+			public const int notification_main_column_container = 2131493078;
 			
 			// aapt resource value: 0x7f0c0055
 			public const int parallax = 2131492949;
 			
-			// aapt resource value: 0x7f0c0070
-			public const int parentPanel = 2131492976;
+			// aapt resource value: 0x7f0c006e
+			public const int parentPanel = 2131492974;
 			
 			// aapt resource value: 0x7f0c000b
 			public const int parent_matrix = 2131492875;
@@ -3870,20 +3803,20 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c0007
 			public const int progress_horizontal = 2131492871;
 			
-			// aapt resource value: 0x7f0c0080
-			public const int radio = 2131492992;
+			// aapt resource value: 0x7f0c007e
+			public const int radio = 2131492990;
 			
 			// aapt resource value: 0x7f0c0053
 			public const int right = 2131492947;
 			
-			// aapt resource value: 0x7f0c00de
-			public const int right_icon = 2131493086;
+			// aapt resource value: 0x7f0c00dc
+			public const int right_icon = 2131493084;
 			
-			// aapt resource value: 0x7f0c00da
-			public const int right_side = 2131493082;
+			// aapt resource value: 0x7f0c00d8
+			public const int right_side = 2131493080;
 			
-			// aapt resource value: 0x7f0c0096
-			public const int rootLayout = 2131493014;
+			// aapt resource value: 0x7f0c0094
+			public const int rootLayout = 2131493012;
 			
 			// aapt resource value: 0x7f0c001f
 			public const int satellite = 2131492895;
@@ -3903,56 +3836,56 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c004c
 			public const int scroll = 2131492940;
 			
-			// aapt resource value: 0x7f0c0076
-			public const int scrollIndicatorDown = 2131492982;
+			// aapt resource value: 0x7f0c0074
+			public const int scrollIndicatorDown = 2131492980;
 			
-			// aapt resource value: 0x7f0c0072
-			public const int scrollIndicatorUp = 2131492978;
+			// aapt resource value: 0x7f0c0070
+			public const int scrollIndicatorUp = 2131492976;
 			
-			// aapt resource value: 0x7f0c0073
-			public const int scrollView = 2131492979;
+			// aapt resource value: 0x7f0c0071
+			public const int scrollView = 2131492977;
 			
 			// aapt resource value: 0x7f0c005e
 			public const int scrollable = 2131492958;
 			
-			// aapt resource value: 0x7f0c008b
-			public const int search_badge = 2131493003;
+			// aapt resource value: 0x7f0c0089
+			public const int search_badge = 2131493001;
+			
+			// aapt resource value: 0x7f0c0088
+			public const int search_bar = 2131493000;
 			
 			// aapt resource value: 0x7f0c008a
-			public const int search_bar = 2131493002;
-			
-			// aapt resource value: 0x7f0c008c
-			public const int search_button = 2131493004;
-			
-			// aapt resource value: 0x7f0c0091
-			public const int search_close_btn = 2131493009;
-			
-			// aapt resource value: 0x7f0c008d
-			public const int search_edit_frame = 2131493005;
-			
-			// aapt resource value: 0x7f0c0093
-			public const int search_go_btn = 2131493011;
-			
-			// aapt resource value: 0x7f0c008e
-			public const int search_mag_icon = 2131493006;
+			public const int search_button = 2131493002;
 			
 			// aapt resource value: 0x7f0c008f
-			public const int search_plate = 2131493007;
+			public const int search_close_btn = 2131493007;
 			
-			// aapt resource value: 0x7f0c0090
-			public const int search_src_text = 2131493008;
+			// aapt resource value: 0x7f0c008b
+			public const int search_edit_frame = 2131493003;
 			
-			// aapt resource value: 0x7f0c0094
-			public const int search_voice_btn = 2131493012;
+			// aapt resource value: 0x7f0c0091
+			public const int search_go_btn = 2131493009;
 			
-			// aapt resource value: 0x7f0c0095
-			public const int select_dialog_listview = 2131493013;
+			// aapt resource value: 0x7f0c008c
+			public const int search_mag_icon = 2131493004;
 			
-			// aapt resource value: 0x7f0c009a
-			public const int seriesLayout = 2131493018;
+			// aapt resource value: 0x7f0c008d
+			public const int search_plate = 2131493005;
 			
-			// aapt resource value: 0x7f0c007f
-			public const int shortcut = 2131492991;
+			// aapt resource value: 0x7f0c008e
+			public const int search_src_text = 2131493006;
+			
+			// aapt resource value: 0x7f0c0092
+			public const int search_voice_btn = 2131493010;
+			
+			// aapt resource value: 0x7f0c0093
+			public const int select_dialog_listview = 2131493011;
+			
+			// aapt resource value: 0x7f0c0098
+			public const int seriesLayout = 2131493016;
+			
+			// aapt resource value: 0x7f0c007d
+			public const int shortcut = 2131492989;
 			
 			// aapt resource value: 0x7f0c002d
 			public const int showCustom = 2131492909;
@@ -3963,23 +3896,23 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c002f
 			public const int showTitle = 2131492911;
 			
-			// aapt resource value: 0x7f0c00e8
-			public const int sliding_tabs = 2131493096;
+			// aapt resource value: 0x7f0c00e6
+			public const int sliding_tabs = 2131493094;
 			
-			// aapt resource value: 0x7f0c00a8
-			public const int smallLabel = 2131493032;
+			// aapt resource value: 0x7f0c00a6
+			public const int smallLabel = 2131493030;
 			
-			// aapt resource value: 0x7f0c00af
-			public const int snackbar_action = 2131493039;
+			// aapt resource value: 0x7f0c00ad
+			public const int snackbar_action = 2131493037;
 			
-			// aapt resource value: 0x7f0c00ae
-			public const int snackbar_text = 2131493038;
+			// aapt resource value: 0x7f0c00ac
+			public const int snackbar_text = 2131493036;
 			
 			// aapt resource value: 0x7f0c004d
 			public const int snap = 2131492941;
 			
-			// aapt resource value: 0x7f0c006f
-			public const int spacer = 2131492975;
+			// aapt resource value: 0x7f0c006d
+			public const int spacer = 2131492973;
 			
 			// aapt resource value: 0x7f0c0008
 			public const int split_action_bar = 2131492872;
@@ -3999,23 +3932,23 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c0054
 			public const int start = 2131492948;
 			
-			// aapt resource value: 0x7f0c00d5
-			public const int status_bar_latest_event_content = 2131493077;
+			// aapt resource value: 0x7f0c00d3
+			public const int status_bar_latest_event_content = 2131493075;
 			
-			// aapt resource value: 0x7f0c0099
-			public const int stripLinesLayout = 2131493017;
+			// aapt resource value: 0x7f0c0097
+			public const int stripLinesLayout = 2131493015;
 			
-			// aapt resource value: 0x7f0c0081
-			public const int submenuarrow = 2131492993;
+			// aapt resource value: 0x7f0c007f
+			public const int submenuarrow = 2131492991;
 			
-			// aapt resource value: 0x7f0c0092
-			public const int submit_area = 2131493010;
+			// aapt resource value: 0x7f0c0090
+			public const int submit_area = 2131493008;
 			
 			// aapt resource value: 0x7f0c002a
 			public const int tabMode = 2131492906;
 			
-			// aapt resource value: 0x7f0c009c
-			public const int technicalIndicatorLayout = 2131493020;
+			// aapt resource value: 0x7f0c009a
+			public const int technicalIndicatorLayout = 2131493018;
 			
 			// aapt resource value: 0x7f0c0020
 			public const int terrain = 2131492896;
@@ -4026,14 +3959,14 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c001a
 			public const int text2 = 2131492890;
 			
-			// aapt resource value: 0x7f0c0075
-			public const int textSpacerNoButtons = 2131492981;
+			// aapt resource value: 0x7f0c0073
+			public const int textSpacerNoButtons = 2131492979;
 			
-			// aapt resource value: 0x7f0c0074
-			public const int textSpacerNoTitle = 2131492980;
+			// aapt resource value: 0x7f0c0072
+			public const int textSpacerNoTitle = 2131492978;
 			
-			// aapt resource value: 0x7f0c00b5
-			public const int text_input_password_toggle = 2131493045;
+			// aapt resource value: 0x7f0c00b3
+			public const int text_input_password_toggle = 2131493043;
 			
 			// aapt resource value: 0x7f0c0014
 			public const int textinput_counter = 2131492884;
@@ -4041,38 +3974,38 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c0015
 			public const int textinput_error = 2131492885;
 			
-			// aapt resource value: 0x7f0c00e7
-			public const int thumbLayout = 2131493095;
+			// aapt resource value: 0x7f0c00e5
+			public const int thumbLayout = 2131493093;
 			
-			// aapt resource value: 0x7f0c00db
-			public const int time = 2131493083;
+			// aapt resource value: 0x7f0c00d9
+			public const int time = 2131493081;
 			
 			// aapt resource value: 0x7f0c001b
 			public const int title = 2131492891;
 			
-			// aapt resource value: 0x7f0c007c
-			public const int titleDividerNoCustom = 2131492988;
-			
-			// aapt resource value: 0x7f0c0097
-			public const int titleLayout = 2131493015;
-			
 			// aapt resource value: 0x7f0c007a
-			public const int title_template = 2131492986;
+			public const int titleDividerNoCustom = 2131492986;
 			
-			// aapt resource value: 0x7f0c00e9
-			public const int toolbar = 2131493097;
+			// aapt resource value: 0x7f0c0095
+			public const int titleLayout = 2131493013;
+			
+			// aapt resource value: 0x7f0c0078
+			public const int title_template = 2131492984;
+			
+			// aapt resource value: 0x7f0c00e7
+			public const int toolbar = 2131493095;
 			
 			// aapt resource value: 0x7f0c0048
 			public const int top = 2131492936;
 			
-			// aapt resource value: 0x7f0c0079
-			public const int topPanel = 2131492985;
+			// aapt resource value: 0x7f0c0077
+			public const int topPanel = 2131492983;
 			
-			// aapt resource value: 0x7f0c00e3
-			public const int top_labels = 2131493091;
+			// aapt resource value: 0x7f0c00e1
+			public const int top_labels = 2131493089;
 			
-			// aapt resource value: 0x7f0c00ac
-			public const int touch_outside = 2131493036;
+			// aapt resource value: 0x7f0c00aa
+			public const int touch_outside = 2131493034;
 			
 			// aapt resource value: 0x7f0c000f
 			public const int transition_current_scene = 2131492879;
@@ -4101,11 +4034,11 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c0016
 			public const int view_offset_helper = 2131492886;
 			
-			// aapt resource value: 0x7f0c00eb
-			public const int visible = 2131493099;
+			// aapt resource value: 0x7f0c00e9
+			public const int visible = 2131493097;
 			
-			// aapt resource value: 0x7f0c00c8
-			public const int volume_item_container = 2131493064;
+			// aapt resource value: 0x7f0c00c6
+			public const int volume_item_container = 2131493062;
 			
 			// aapt resource value: 0x7f0c0025
 			public const int wide = 2131492901;
@@ -7750,48 +7683,6 @@ namespace Ifpa.Droid
 			
 			// aapt resource value: 12
 			public const int SearchView_voiceIcon = 12;
-			
-			public static int[] SfTabView = new int[] {
-					2130772368,
-					2130772369,
-					2130772370,
-					2130772371,
-					2130772372,
-					2130772373,
-					2130772374,
-					2130772375,
-					2130772376,
-					2130772377};
-			
-			// aapt resource value: 7
-			public const int SfTabView_tabHeaderBackgroundColor = 7;
-			
-			// aapt resource value: 8
-			public const int SfTabView_tabHeaderPosition = 8;
-			
-			// aapt resource value: 5
-			public const int SfTabView_tabHeight = 5;
-			
-			// aapt resource value: 0
-			public const int SfTabView_tabViewBackColor = 0;
-			
-			// aapt resource value: 1
-			public const int SfTabView_tabViewColor = 1;
-			
-			// aapt resource value: 9
-			public const int SfTabView_tabViewOverflowMode = 9;
-			
-			// aapt resource value: 3
-			public const int SfTabView_tabViewPosition = 3;
-			
-			// aapt resource value: 4
-			public const int SfTabView_tabViewSelectedIndex = 4;
-			
-			// aapt resource value: 2
-			public const int SfTabView_tabViewStrokeThickness = 2;
-			
-			// aapt resource value: 6
-			public const int SfTabView_tabWidth = 6;
 			
 			public static int[] SignInButton = new int[] {
 					2130771994,
