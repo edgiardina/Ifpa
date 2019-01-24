@@ -15,3 +15,5 @@ Google Maps API Key (For Android Only)
 
 IFPA API Key https://www.ifpapinball.com/api/documentation/
 
+Syncfusion License Key 
+Syncfusion License is currently community (free) https://www.syncfusion.com/products/communitylicense
