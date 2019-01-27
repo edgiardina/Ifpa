@@ -15,11 +15,16 @@
         <ToolbarItem Text="Filter" Clicked="ToolbarItem_Clicked" Icon="filter.png" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <TableView IsVisible="False" x:Name="FilterTable" HasUnevenRows="True">
-                <TableView.HeightRequest>
-                    <OnPlatform iOS="260" Android="475" />
-                </TableView.HeightRequest>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TableView IsVisible="False" x:Name="FilterTable" HasUnevenRows="True" Grid.Row="0" Intent="Form">
                 <TableRoot>
                     <TableSection Title="Filter">
                         <ViewCell>
@@ -34,8 +39,8 @@
                         </ViewCell>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-                                <Label Text="Players" WidthRequest="120"  Margin="20,10"  />
-                                <Label Text="{Binding CountOfItemsToFetch}"  HorizontalOptions="CenterAndExpand"  Margin="0,10" />
+                                <Label Text="Players" Margin="20,10" />
+                                <Label Text="{Binding CountOfItemsToFetch}" HorizontalTextAlignment="End" LineBreakMode="NoWrap" HorizontalOptions="FillAndExpand"  Margin="0,10,10,0" />
                                 <Stepper Maximum="500" Minimum="10" 
                                      Increment="10"
                                      Margin="0,6,10,6"
@@ -45,8 +50,8 @@
                         </ViewCell>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-                                <Label Text="Starting Rank" WidthRequest="120" Margin="20,10" />
-                                <Label Text="{Binding StartingPosition}"  Margin="20,10" x:Name="StartingPositionLabel" HorizontalOptions="CenterAndExpand" />
+                                <Label Text="Starting Rank" Margin="20,10" />
+                                <Label Text="{Binding StartingPosition}" HorizontalTextAlignment="End"  LineBreakMode="NoWrap" Margin="0,10,10,0" x:Name="StartingPositionLabel" HorizontalOptions="FillAndExpand" />
                                 <Stepper Maximum="10000" Minimum="1"
                                      x:Name="StartingRankStepper"
                                      Increment="100"
@@ -61,7 +66,7 @@
             
             <ListView x:Name="PlayersListView" 
                  ItemsSource="{Binding Players}"
-                 VerticalOptions="FillAndExpand"
+                 Grid.Row="1"
                  HasUnevenRows="true"
                  RefreshCommand="{Binding LoadItemsCommand}"
                  IsPullToRefreshEnabled="true"
@@ -111,6 +116,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
