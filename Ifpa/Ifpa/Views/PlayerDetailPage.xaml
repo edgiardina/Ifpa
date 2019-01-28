@@ -55,12 +55,17 @@
                 </StackLayout>
             </Frame>
         </Grid>
-
-        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-            <Button WidthRequest="160" Margin="0,10,0,0" Text="Tournament Results" HorizontalOptions="CenterAndExpand" Clicked="TournamentResults_Button_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
-            <Button WidthRequest="160" Margin="0,10,0,0" Text="Player vs Player" HorizontalOptions="CenterAndExpand" Clicked="Pvp_Button_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
-        </StackLayout>
-
+        <Grid Margin="0,10,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" WidthRequest="160" Padding="10,0,10,0" Text="Tournament Results" HorizontalOptions="CenterAndExpand" Clicked="TournamentResults_Button_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
+            <Button Grid.Column="1" WidthRequest="160" Padding="10,0,10,0" Text="Player vs Player" HorizontalOptions="CenterAndExpand" Clicked="Pvp_Button_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />     
+        </Grid>
         <ScrollView>
             <StackLayout Spacing="20">
                 <Frame Padding="5" Margin="2" HasShadow="True" CornerRadius="5">
