@@ -38,8 +38,9 @@ namespace Ifpa.Views
 
             if (LoadMyStats)
             {
-                ToolbarItems.Remove(ToolbarItems.SingleOrDefault(n => n.Text == "Set to My Stats"));                        
-                             
+                ToolbarItems.Remove(ToolbarItems.SingleOrDefault(n => n.Text == "Set to My Stats"));
+                ToolbarItems.Remove(ToolbarItems.SingleOrDefault(n => n.Text == "Favorite"));
+
                 if (Settings.HasConfiguredMyStats)
                 {
                     try
@@ -67,7 +68,7 @@ namespace Ifpa.Views
         /// <returns></returns>
         private async Task PostPlayerLoad()
         {
-            var numOfUnread = await Settings.ActivityFeed.GetUnreadActivityCount();            
+            var numOfUnread = await Settings.LocalDatabase.GetUnreadActivityCount();            
             DependencyService.Get<IToolbarItemBadgeService>().SetBadge(this, ToolbarItems.SingleOrDefault(n => n.Text == "Activity Feed"), numOfUnread.ToString(), Color.Red, Color.White);            
         }
 
@@ -107,7 +108,7 @@ namespace Ifpa.Views
             Settings.SetMyStatsPlayer(viewModel.PlayerId, viewModel.PlayerRecord.PlayerStats.CurrentWpprRank);
 
             //Clear Activity Log as we are switching players
-            await Settings.ActivityFeed.ClearActivityFeed();
+            await Settings.LocalDatabase.ClearActivityFeed();
 
             await DisplayAlert("Congratulations", "You have now configured your Stats page!", "OK");
             var masterPage = this.Parent.Parent as TabbedPage;
@@ -133,6 +134,21 @@ namespace Ifpa.Views
                 Uri = $"https://www.ifpapinball.com/player.php?p={viewModel.PlayerId}",
                 Title = "Share Player"
             });
+        }
+
+        private async void FavoriteButton_Clicked(object sender, EventArgs e)
+        {
+
+            if (await Settings.LocalDatabase.HasFavorite(viewModel.PlayerId))
+            {
+                await Settings.LocalDatabase.RemoveFavorite(viewModel.PlayerId);
+                await DisplayAlert("Favorite Removed", "This player has been removed from your favorites!", "OK");
+            }
+            else
+            {
+                await Settings.LocalDatabase.AddFavorite(viewModel.PlayerId);
+                await DisplayAlert("Favorite Added", "This player has been added to your favorites!", "OK");
+            }
         }
     }
 }
