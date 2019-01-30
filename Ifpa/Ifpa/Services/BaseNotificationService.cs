@@ -53,7 +53,7 @@ namespace Ifpa.Services
                                 ActivityType = ActivityFeedType.TournamentResult
                             };
 
-                            await Settings.ActivityFeed.CreateActivityFeedRecord(record);
+                            await Settings.LocalDatabase.CreateActivityFeedRecord(record);
 
                             await UpdateBadgeIfNeeded();
                         }
@@ -95,7 +95,7 @@ namespace Ifpa.Services
 
                         Settings.MyStatsCurrentWpprRank = currentWpprRank;
 
-                        await Settings.ActivityFeed.CreateActivityFeedRecord(record);
+                        await Settings.LocalDatabase.CreateActivityFeedRecord(record);
 
                         await UpdateBadgeIfNeeded();
                     }
@@ -111,7 +111,7 @@ namespace Ifpa.Services
         {
             if (Device.RuntimePlatform == Device.iOS)
             {
-                var unreads = await Settings.ActivityFeed.GetUnreadActivityCount();
+                var unreads = await Settings.LocalDatabase.GetUnreadActivityCount();
                 CrossBadge.Current.SetBadge(unreads);
             }
         }
