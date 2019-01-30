@@ -344,4 +344,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\share%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\favorite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\favorite%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\favorite%403x.png" />
+  </ItemGroup>
 </Project>
