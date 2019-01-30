@@ -10,7 +10,6 @@ namespace Ifpa.Models
     {
         public RankingWithFormattedLocation(Ranking item)
         {
-
             BestFinish = item.BestFinish;
             EventCount = item.EventCount;
             EfficiencyPercent = item.EfficiencyPercent;

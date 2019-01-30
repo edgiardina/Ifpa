@@ -34,7 +34,7 @@ namespace Ifpa.Views
             {
                 var item = (ActivityFeedItem)e.SelectedItem;
                 item.HasBeenSeen = true;
-                await Settings.ActivityFeed.UpdateActivityFeedRecord(item);                
+                await Settings.LocalDatabase.UpdateActivityFeedRecord(item);                
 
                 if (item.ActivityType == ActivityFeedType.TournamentResult)
                 {
@@ -43,7 +43,7 @@ namespace Ifpa.Views
 
                 if (Device.RuntimePlatform == Device.iOS)
                 {
-                    var remainingUnreads = await Settings.ActivityFeed.GetUnreadActivityCount();
+                    var remainingUnreads = await Settings.LocalDatabase.GetUnreadActivityCount();
                     CrossBadge.Current.SetBadge(remainingUnreads);
                 }
 
@@ -57,7 +57,7 @@ namespace Ifpa.Views
             foreach (var i in activityFeedViewModel.ActivityFeedItems.Where(n => !n.HasBeenSeen))
             {
                 i.HasBeenSeen = true;
-                await Settings.ActivityFeed.UpdateActivityFeedRecord(i);
+                await Settings.LocalDatabase.UpdateActivityFeedRecord(i);
             }           
             
             if (Device.RuntimePlatform == Device.iOS)
@@ -78,7 +78,7 @@ namespace Ifpa.Views
                 CreatedDateTime = DateTime.Now,
                 HasBeenSeen = false
             };
-            await Settings.ActivityFeed.CreateActivityFeedRecord(newItem);            
+            await Settings.LocalDatabase.CreateActivityFeedRecord(newItem);            
             CrossBadge.Current.SetBadge(1);
             activityFeedViewModel.LoadItemsCommand.Execute(null);
         }

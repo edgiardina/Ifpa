@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Ifpa.Views.PlayerSearchPage"             
+             x:Class="Ifpa.Views.FavoritesPage"             
              xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
               Title="{Binding Title}"
-             x:Name="FavoritesPage">
+             x:Name="SearchPlayersPage">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:IntToOrdinalStringConverter x:Key="intToOrdinalString" />
@@ -12,8 +12,6 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <SearchBar x:Name="SearchBar" SearchCommand="{Binding SearchCommand}" HeightRequest="60"
-                       SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}" />
             <ListView x:Name="PlayersListView" 
                 ItemsSource="{Binding Players}"
                 VerticalOptions="FillAndExpand"
