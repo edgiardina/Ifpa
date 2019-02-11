@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             x:Class="Ifpa.Views.StatsPage"
+             Title="Stats">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="15" BackgroundColor="#F1F1F1">
+                <chart:SfChart VerticalOptions="FillAndExpand" HeightRequest="300">
+                    <chart:SfChart.Title>
+                        <chart:ChartTitle Text="Players By Country"/>
+                    </chart:SfChart.Title>
+                    <chart:SfChart.ChartBehaviors>
+                        <chart:ChartTooltipBehavior />
+                    </chart:SfChart.ChartBehaviors>          
+                    <chart:PieSeries EnableAnimation="True" ExplodeOnTouch="True" ItemsSource="{Binding PlayersByCountry}" XBindingPath="CountryName" YBindingPath="Count">
+                        <chart:PieSeries.DataMarker>
+                            <chart:ChartDataMarker ShowLabel="true" LabelContent="YValue" />
+                        </chart:PieSeries.DataMarker>
+                    </chart:PieSeries>             
+                </chart:SfChart>
+                <chart:SfChart VerticalOptions="FillAndExpand" HeightRequest="300">
+                    <chart:SfChart.Title>
+                        <chart:ChartTitle Text="Events By Year"/>
+                    </chart:SfChart.Title>
+                    <chart:SfChart.PrimaryAxis>
+                        <chart:NumericalAxis />
+                    </chart:SfChart.PrimaryAxis>
+                    <chart:SfChart.SecondaryAxis>
+                        <chart:NumericalAxis />
+                    </chart:SfChart.SecondaryAxis>
+                    <chart:ColumnSeries ItemsSource="{Binding EventsByYear}" XBindingPath="Year" YBindingPath="Count"/>
+                </chart:SfChart>
+                <chart:SfChart VerticalOptions="FillAndExpand" HeightRequest="300">
+                    <chart:SfChart.Title>
+                        <chart:ChartTitle Text="Players By Year"/>
+                    </chart:SfChart.Title>
+                    <chart:SfChart.PrimaryAxis>
+                        <chart:NumericalAxis/>
+                    </chart:SfChart.PrimaryAxis>
+                    <chart:SfChart.SecondaryAxis>
+                        <chart:NumericalAxis />
+                    </chart:SfChart.SecondaryAxis>
+                    <chart:ColumnSeries ItemsSource="{Binding PlayersByYear}" XBindingPath="Year" YBindingPath="Count"/>
+                </chart:SfChart>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
