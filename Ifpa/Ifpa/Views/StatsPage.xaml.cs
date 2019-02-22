@@ -1,4 +1,5 @@
 ﻿using Ifpa.ViewModels;
+using PinballApi.Models.WPPR.Statistics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -21,6 +22,30 @@ namespace Ifpa.Views
             base.OnAppearing();
 
             viewModel.LoadItemsCommand.Execute(null);
+        }
+
+        private async void PlayersListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var player = e.SelectedItem as PointsThisYearStat;
+            if (player == null)
+                return;
+
+            await Navigation.PushAsync(new PlayerDetailPage(new PlayerDetailViewModel(player.PlayerId)));
+
+            // Manually deselect item.
+            PlayersListView.SelectedItem = null;
+        }
+
+        private async void MostEventsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var player = e.SelectedItem as MostEventsStat;
+            if (player == null)
+                return;
+
+            await Navigation.PushAsync(new PlayerDetailPage(new PlayerDetailViewModel(player.PlayerId)));
+
+            // Manually deselect item.
+            MostEventsListView.SelectedItem = null;
         }
     }
 }
