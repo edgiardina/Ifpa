@@ -12,15 +12,19 @@
                     <ScrollView>
                         <StackLayout Spacing="20" Padding="15" BackgroundColor="#F1F1F1">
                             <chart:SfChart VerticalOptions="FillAndExpand" HeightRequest="300">
+                                <chart:SfChart.Legend>
+                                    <chart:ChartLegend OverflowMode="Wrap"/>
+                                </chart:SfChart.Legend>
                                 <chart:SfChart.Title>
                                     <chart:ChartTitle Text="Players By Country"/>
                                 </chart:SfChart.Title>
                                 <chart:SfChart.ChartBehaviors>
                                     <chart:ChartTooltipBehavior />
                                 </chart:SfChart.ChartBehaviors>
-                                <chart:PieSeries EnableAnimation="True" ExplodeOnTouch="True" ItemsSource="{Binding PlayersByCountry}" XBindingPath="CountryName" YBindingPath="Count">
+                                <chart:PieSeries GroupMode="Percentage" GroupTo="2" EnableAnimation="True" ExplodeOnTouch="True" DataMarkerPosition="OutsideExtended"  
+                                                 ItemsSource="{Binding PlayersByCountry}" XBindingPath="CountryName" YBindingPath="Count">
                                     <chart:PieSeries.DataMarker>
-                                        <chart:ChartDataMarker ShowLabel="true" LabelContent="YValue" />
+                                        <chart:ChartDataMarker ShowLabel="true" LabelContent="YValue"  />
                                     </chart:PieSeries.DataMarker>
                                 </chart:PieSeries>
                             </chart:SfChart>
