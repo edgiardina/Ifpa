@@ -17,6 +17,12 @@ namespace Ifpa.ViewModels
 
         public ObservableCollection<PlayersByYearStat> PlayersByYear { get; set; }
 
+        public ObservableCollection<PointsThisYearStat> MostPointsPlayers { get; set; }
+
+        public ObservableCollection<MostEventsStat> MostEventsPlayers { get; set; }
+
+        public ObservableCollection<BiggestMoversStat> BiggestMovers { get; set; }
+
         public Command LoadItemsCommand { get; set; }
 
         public StatsViewModel()
@@ -25,6 +31,9 @@ namespace Ifpa.ViewModels
             PlayersByCountry = new ObservableCollection<PlayersByCountryStat>();
             EventsByYear = new ObservableCollection<EventsByYearStat>();
             PlayersByYear = new ObservableCollection<PlayersByYearStat>();
+            MostPointsPlayers = new ObservableCollection<PointsThisYearStat>();
+            MostEventsPlayers = new ObservableCollection<MostEventsStat>();
+            BiggestMovers = new ObservableCollection<BiggestMoversStat>();
 
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
@@ -41,6 +50,9 @@ namespace Ifpa.ViewModels
                 PlayersByCountry.Clear();
                 EventsByYear.Clear();
                 PlayersByYear.Clear();
+                MostPointsPlayers.Clear();
+                MostEventsPlayers.Clear();
+                BiggestMovers.Clear();
 
                 var playersByCountry = await PinballRankingApi.GetPlayersByCountryStat();
                 foreach (var item in playersByCountry)
@@ -58,6 +70,24 @@ namespace Ifpa.ViewModels
                 foreach (var item in playersByYear)
                 {
                     PlayersByYear.Add(item);
+                }
+
+                var mostPointsPlayers = await PinballRankingApi.GetPointsThisYearStats();
+                foreach(var item in mostPointsPlayers)
+                {
+                    MostPointsPlayers.Add(item);
+                }
+
+                var mostEventsPlayers = await PinballRankingApi.GetMostEventsStats();
+                foreach(var item in mostEventsPlayers)
+                {
+                    MostEventsPlayers.Add(item);
+                }
+
+                var biggestMovers = await PinballRankingApi.GetBiggestMoversStat();
+                foreach(var item in biggestMovers)
+                {
+                    BiggestMovers.Add(item);
                 }
 
             }
