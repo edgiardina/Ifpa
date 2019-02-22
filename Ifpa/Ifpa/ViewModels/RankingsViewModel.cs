@@ -67,7 +67,7 @@ namespace Ifpa.ViewModels
                 }
 
                 Players.Clear();
-                var items = await PinballRankingApi.GetRankings(StartingPosition, CountOfItemsToFetch, countryName: CountryToShow == OverallRankings ? null : CountryToShow?.CountryName);
+                var items = await PinballRankingApi.GetRankings(StartingPosition, CountOfItemsToFetch, countryName: CountryToShow.CountryName == OverallRankings.CountryName ? null : CountryToShow?.CountryName);
                 foreach (var item in items.Rankings)
                 {
                     Players.Add(new RankingWithFormattedLocation(item));
