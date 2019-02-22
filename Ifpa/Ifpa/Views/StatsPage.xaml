@@ -6,7 +6,7 @@
              x:Class="Ifpa.Views.StatsPage"
              Title="Stats">
     <ContentPage.Content>
-        <tabView:SfTabView HeightRequest="50" TabHeaderBackgroundColor="#66FFFFFF">
+        <tabView:SfTabView VisibleHeaderCount="4" HeightRequest="50" TabHeaderBackgroundColor="#66FFFFFF">
             <tabView:SfTabItem Title="Aggregates">
                 <tabView:SfTabItem.Content>
                     <ScrollView>
