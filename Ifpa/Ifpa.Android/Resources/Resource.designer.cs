@@ -2524,26 +2524,26 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f020054
 			public const int avd_hide_password = 2130837588;
 			
-			// aapt resource value: 0x7f02015e
-			public const int avd_hide_password_1 = 2130837854;
-			
 			// aapt resource value: 0x7f02015f
-			public const int avd_hide_password_2 = 2130837855;
+			public const int avd_hide_password_1 = 2130837855;
 			
 			// aapt resource value: 0x7f020160
-			public const int avd_hide_password_3 = 2130837856;
+			public const int avd_hide_password_2 = 2130837856;
+			
+			// aapt resource value: 0x7f020161
+			public const int avd_hide_password_3 = 2130837857;
 			
 			// aapt resource value: 0x7f020055
 			public const int avd_show_password = 2130837589;
 			
-			// aapt resource value: 0x7f020161
-			public const int avd_show_password_1 = 2130837857;
-			
 			// aapt resource value: 0x7f020162
-			public const int avd_show_password_2 = 2130837858;
+			public const int avd_show_password_1 = 2130837858;
 			
 			// aapt resource value: 0x7f020163
-			public const int avd_show_password_3 = 2130837859;
+			public const int avd_show_password_2 = 2130837859;
+			
+			// aapt resource value: 0x7f020164
+			public const int avd_show_password_3 = 2130837860;
 			
 			// aapt resource value: 0x7f020056
 			public const int calendar = 2130837590;
@@ -3286,11 +3286,11 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f02014c
 			public const int notification_icon_background = 2130837836;
 			
-			// aapt resource value: 0x7f02015c
-			public const int notification_template_icon_bg = 2130837852;
-			
 			// aapt resource value: 0x7f02015d
-			public const int notification_template_icon_low_bg = 2130837853;
+			public const int notification_template_icon_bg = 2130837853;
+			
+			// aapt resource value: 0x7f02015e
+			public const int notification_template_icon_low_bg = 2130837854;
 			
 			// aapt resource value: 0x7f02014d
 			public const int notification_tile_bg = 2130837837;
@@ -3329,13 +3329,16 @@ namespace Ifpa.Droid
 			public const int star = 2130837848;
 			
 			// aapt resource value: 0x7f020159
-			public const int tab_about = 2130837849;
+			public const int stats = 2130837849;
 			
 			// aapt resource value: 0x7f02015a
-			public const int tooltip_frame_dark = 2130837850;
+			public const int tab_about = 2130837850;
 			
 			// aapt resource value: 0x7f02015b
-			public const int tooltip_frame_light = 2130837851;
+			public const int tooltip_frame_dark = 2130837851;
+			
+			// aapt resource value: 0x7f02015c
+			public const int tooltip_frame_light = 2130837852;
 			
 			static Drawable()
 			{
