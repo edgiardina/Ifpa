@@ -47,5 +47,32 @@
 	<array>
 		<string>fetch</string>
 	</array>
+  <key>UIApplicationShortcutItems</key>
+  <array>
+    <dict>
+      <key>UIApplicationShortcutItemIconType</key>
+      <string>UIApplicationShortcutIconTypeSearch</string>    
+      <key>UIApplicationShortcutItemTitle</key>
+      <string>Player Search</string>
+      <key>UIApplicationShortcutItemType</key>
+      <string>com.edgiardina.ifpa.000</string>
+    </dict>
+    <dict>
+      <key>UIApplicationShortcutItemIconType</key>
+      <string>UIApplicationShortcutIconTypeContact</string>   
+      <key>UIApplicationShortcutItemTitle</key>
+      <string>My Stats</string>
+      <key>UIApplicationShortcutItemType</key>
+      <string>com.edgiardina.ifpa.001</string>
+    </dict>
+    <dict>
+      <key>UIApplicationShortcutItemIconType</key>
+      <string>UIApplicationShortcutIconTypeDate</string>      
+      <key>UIApplicationShortcutItemTitle</key>
+      <string>Calendar</string>
+      <key>UIApplicationShortcutItemType</key>
+      <string>com.edgiardina.ifpa.002</string>
+    </dict>
+  </array>
 </dict>
 </plist>
