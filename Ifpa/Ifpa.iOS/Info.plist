@@ -26,7 +26,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.edgiardina.ifpa</string>
 	<key>CFBundleVersion</key>
-	<string>1.4.2</string>
+	<string>1.4.3</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
@@ -42,37 +42,37 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>This app will allow you to add an IFPA sanctioned tournament from the app to your local device&apos;s calendar</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.4.2</string>
+	<string>1.4.3</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
 	</array>
-  <key>UIApplicationShortcutItems</key>
-  <array>
-    <dict>
-      <key>UIApplicationShortcutItemIconType</key>
-      <string>UIApplicationShortcutIconTypeSearch</string>    
-      <key>UIApplicationShortcutItemTitle</key>
-      <string>Player Search</string>
-      <key>UIApplicationShortcutItemType</key>
-      <string>com.edgiardina.ifpa.000</string>
-    </dict>
-    <dict>
-      <key>UIApplicationShortcutItemIconType</key>
-      <string>UIApplicationShortcutIconTypeContact</string>   
-      <key>UIApplicationShortcutItemTitle</key>
-      <string>My Stats</string>
-      <key>UIApplicationShortcutItemType</key>
-      <string>com.edgiardina.ifpa.001</string>
-    </dict>
-    <dict>
-      <key>UIApplicationShortcutItemIconType</key>
-      <string>UIApplicationShortcutIconTypeDate</string>      
-      <key>UIApplicationShortcutItemTitle</key>
-      <string>Calendar</string>
-      <key>UIApplicationShortcutItemType</key>
-      <string>com.edgiardina.ifpa.002</string>
-    </dict>
-  </array>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeSearch</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Player Search</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.edgiardina.ifpa.000</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeContact</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>My Stats</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.edgiardina.ifpa.001</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeDate</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Calendar</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.edgiardina.ifpa.002</string>
+		</dict>
+	</array>
 </dict>
 </plist>
