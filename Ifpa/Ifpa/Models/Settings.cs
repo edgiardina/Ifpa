@@ -25,6 +25,12 @@ namespace Ifpa.Models
             }
         }
 
+        public static int CurrentTabIndex
+        {
+            get => Preferences.Get("CurrentTabIndex", 0);
+            set => Preferences.Set("CurrentTabIndex", value);
+        }
+
         public static bool NotifyOnRankChange
         {
             get => Preferences.Get("NotifyOnRankChange", true);

@@ -2,6 +2,8 @@
 using System.Linq;
 using Foundation;
 using Ifpa.iOS.Services;
+using Ifpa.iOS.Utils;
+using Ifpa.Models;
 using Ifpa.Views;
 using UIKit;
 
@@ -28,10 +30,17 @@ namespace Ifpa.iOS
             global::Xamarin.FormsMaps.Init();
             Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer.Init();
             Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
+
+
+            // Get possible shortcut item
+            if (options != null)
+            {
+                LaunchedShortcutItem = options[UIApplication.LaunchOptionsShortcutItemKey] as UIApplicationShortcutItem;
+            }
+
             LoadApplication(new App());
 
             UIApplication.SharedApplication.RegisterUserNotificationSettings(UIUserNotificationSettings.GetSettingsForTypes(UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound, null));
-
             UIApplication.SharedApplication.SetMinimumBackgroundFetchInterval(UIApplication.BackgroundFetchIntervalMinimum);
 
             return base.FinishedLaunching(app, options);
@@ -54,5 +63,56 @@ namespace Ifpa.iOS
             //Press Tournament Results Button.
             await (((MainPage)(App.Current.MainPage)).CurrentPage).Navigation.PushAsync(new ActivityFeedPage());
         }
+
+        #region QuickActions
+        public UIApplicationShortcutItem LaunchedShortcutItem { get; set; }
+
+        public bool HandleShortcutItem(UIApplicationShortcutItem shortcutItem)
+        {
+            var handled = false;
+
+            // Anything to process?
+            if (shortcutItem == null) return false;
+
+            // Take action based on the shortcut type
+            switch (shortcutItem.Type)
+            {
+                case ShortcutIdentifier.PlayerSearch:
+                    Settings.CurrentTabIndex = 1;
+                    handled = true;
+                    break;
+                case ShortcutIdentifier.MyStats:
+                    Settings.CurrentTabIndex = 2;
+                    handled = true;
+                    break;
+                case ShortcutIdentifier.Calendar:
+                    Settings.CurrentTabIndex = 3;
+                    handled = true;
+                    break;
+            }
+
+             ((MainPage)(App.Current.MainPage)).SwitchTabToLastSelectedTab();
+
+            // Return results
+            return handled;
+        }
+
+
+        public override void OnActivated(UIApplication application)
+        {
+            // Handle any shortcut item being selected
+            HandleShortcutItem(LaunchedShortcutItem);
+
+            // Clear shortcut after it's been handled
+            LaunchedShortcutItem = null;
+        }
+
+        public override void PerformActionForShortcutItem(UIApplication application, UIApplicationShortcutItem shortcutItem, UIOperationHandler completionHandler)
+        {
+            // Perform action
+            completionHandler(HandleShortcutItem(shortcutItem));
+        }
+
+        #endregion
     }
 }

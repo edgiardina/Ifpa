@@ -84,6 +84,7 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Services\ToolbarItemBadgeService.cs" />
     <Compile Include="Utils\BarButtonItemExtensions.cs" />
+    <Compile Include="Utils\ShortcutIdentifier.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Services\iOSNotificationService.cs" />

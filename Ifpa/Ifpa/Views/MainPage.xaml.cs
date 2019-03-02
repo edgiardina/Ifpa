@@ -10,26 +10,28 @@ namespace Ifpa.Views
     {
         public MainPage()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            if (Application.Current.Properties.ContainsKey("tab_state"))
-            {
-                CurrentPage = Children[Int32.Parse(Application.Current.Properties["tab_state"].ToString())];
-            }
+            SwitchTabToLastSelectedTab();
         }
-        
+
+        public void SwitchTabToLastSelectedTab()
+        {
+            CurrentPage = Children[Settings.CurrentTabIndex];
+        }
+
         protected override void OnCurrentPageChanged()
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
                 var i = this.Children.IndexOf(this.CurrentPage);
 
-                Application.Current.Properties["tab_state"] = i;
+                Settings.CurrentTabIndex = i;
 
                 await Application.Current.SavePropertiesAsync();
 
