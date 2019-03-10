@@ -21,7 +21,7 @@ namespace Ifpa.Droid
 
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            global::Xamarin.FormsMaps.Init(this, savedInstanceState);
+            //global::Xamarin.
             LoadApplication(new App());
 
             CrossCurrentActivity.Current.Init(this, savedInstanceState);

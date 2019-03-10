@@ -8,6 +8,7 @@
             <TableSection Title="Notifications">
                 <SwitchCell Text="IFPA Rank Change" On="{Binding NotifyOnRankChange, Mode=TwoWay}" />
                 <SwitchCell Text="Tournament Result Posted" On="{Binding NotifyOnTournamentResult, Mode=TwoWay}" />
+                <SwitchCell Text="New News Item" On="{Binding NotifyOnNewBlogPost, Mode=TwoWay}" />
             </TableSection>
         </TableView>
     </ContentPage.Content>
