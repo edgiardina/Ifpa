@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ifpa.iOS", "Ifpa\Ifpa.iOS\I
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ifpa", "Ifpa\Ifpa\Ifpa.csproj", "{924ED4A9-0C09-4CD9-B460-7656504673DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ifpa.iOS.RankExtension", "Ifpa\Ifpa.iOS.RankExtension\Ifpa.iOS.RankExtension.csproj", "{B3F995E8-AB25-481E-A550-3477DD0C2F23}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,16 @@ Global
 		{924ED4A9-0C09-4CD9-B460-7656504673DA}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{924ED4A9-0C09-4CD9-B460-7656504673DA}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{924ED4A9-0C09-4CD9-B460-7656504673DA}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
+		{B3F995E8-AB25-481E-A550-3477DD0C2F23}.Debug|Any CPU.ActiveCfg = Debug|iPhone
+		{B3F995E8-AB25-481E-A550-3477DD0C2F23}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{B3F995E8-AB25-481E-A550-3477DD0C2F23}.Debug|iPhone.Build.0 = Debug|iPhone
+		{B3F995E8-AB25-481E-A550-3477DD0C2F23}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{B3F995E8-AB25-481E-A550-3477DD0C2F23}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{B3F995E8-AB25-481E-A550-3477DD0C2F23}.Release|Any CPU.ActiveCfg = Release|iPhone
+		{B3F995E8-AB25-481E-A550-3477DD0C2F23}.Release|iPhone.ActiveCfg = Release|iPhone
+		{B3F995E8-AB25-481E-A550-3477DD0C2F23}.Release|iPhone.Build.0 = Release|iPhone
+		{B3F995E8-AB25-481E-A550-3477DD0C2F23}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{B3F995E8-AB25-481E-A550-3477DD0C2F23}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
