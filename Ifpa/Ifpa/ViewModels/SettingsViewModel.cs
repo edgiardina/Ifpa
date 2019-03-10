@@ -22,5 +22,15 @@ namespace Ifpa.ViewModels
                 OnPropertyChanged(nameof(NotifyOnTournamentResult));
             }
         }
+
+        public bool NotifyOnNewBlogPost
+        {
+            get => Settings.NotifyOnNewBlogPost;
+            set
+            {
+                Settings.NotifyOnTournamentResult = value;
+                OnPropertyChanged(nameof(NotifyOnNewBlogPost));
+            }
+        }
     }
 }
