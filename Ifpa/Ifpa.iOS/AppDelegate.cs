@@ -51,6 +51,7 @@ namespace Ifpa.iOS
         {
             await NotificationService.NotifyIfUserHasNewlySubmittedTourneyResults();
             await NotificationService.NotifyIfUsersRankChanged();
+            await NotificationService.NotifyIfNewBlogItemPosted();
 
             // Inform system of fetch results
             completionHandler(UIBackgroundFetchResult.NewData);
