@@ -28,7 +28,7 @@ namespace Ifpa.ViewModels
             get => Settings.NotifyOnNewBlogPost;
             set
             {
-                Settings.NotifyOnTournamentResult = value;
+                Settings.NotifyOnNewBlogPost = value;
                 OnPropertyChanged(nameof(NotifyOnNewBlogPost));
             }
         }
