@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Ifpa.iOS")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("IFPA Companion App for iOS")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Ifpa.iOS")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyCopyright("Copyright © 2019 Ed Giardina")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

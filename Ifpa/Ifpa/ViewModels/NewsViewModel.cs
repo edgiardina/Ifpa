@@ -4,9 +4,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Microsoft.Toolkit.Parsers.Rss;
-using System.Collections.Generic;
-using System.Net.Http;
-using Ifpa.Models;
+using Ifpa.Services;
 
 namespace Ifpa.ViewModels
 {
@@ -14,9 +12,13 @@ namespace Ifpa.ViewModels
     {
         public ObservableCollection<RssSchema> NewsItems { get; set; }
         public Command LoadItemsCommand { get; set; }
+
+        private BlogPostService blogPostService { get; set; }
         
         public NewsViewModel()
         {
+            blogPostService = new BlogPostService();
+
             Title = "News";
             NewsItems = new ObservableCollection<RssSchema>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
@@ -32,7 +34,7 @@ namespace Ifpa.ViewModels
             try
             {
                 NewsItems.Clear();
-                var newsItems = await Parse(Constants.IfpaRssFeedUrl);
+                var newsItems = await blogPostService.GetBlogPosts();
 
                 foreach (var item in newsItems)
                 {                 
@@ -49,20 +51,6 @@ namespace Ifpa.ViewModels
             }
         }
 
-        private async Task<IEnumerable<RssSchema>> Parse(string url)
-        {
-            string feed = null;
 
-            using (var client = new HttpClient())
-            {
-                feed = await client.GetStringAsync(url);
-            }
-
-            if (feed == null) return new List<RssSchema>();
-
-            var parser = new RssParser();
-            var rss = parser.Parse(feed);
-            return rss;
-        }
     }
 }
