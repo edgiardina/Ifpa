@@ -77,10 +77,17 @@ namespace Ifpa.ViewModels
                 var httpClient = new HttpClient();                
 
                 var uri = new Uri(actualUrl);
-                using (var response = httpClient.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead).Result)
+                try
                 {
-                    if (!response.IsSuccessStatusCode)
-                        return "https://www.ifpapinball.com/images/noplayerpic.png";
+                    using (var response = httpClient.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead).Result)
+                    {
+                        if (!response.IsSuccessStatusCode)
+                            return "https://www.ifpapinball.com/images/noplayerpic.png";
+                    }
+                }
+                catch
+                {
+                    return "https://www.ifpapinball.com/images/noplayerpic.png";
                 }
                 return actualUrl;
             }
