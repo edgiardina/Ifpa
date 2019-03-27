@@ -4,6 +4,7 @@ using Foundation;
 using Ifpa.iOS.Services;
 using Ifpa.iOS.Utils;
 using Ifpa.Models;
+using Ifpa.Services;
 using Ifpa.Views;
 using UIKit;
 
@@ -50,6 +51,7 @@ namespace Ifpa.iOS
         {
             await NotificationService.NotifyIfUserHasNewlySubmittedTourneyResults();
             await NotificationService.NotifyIfUsersRankChanged();
+            await NotificationService.NotifyIfNewBlogItemPosted();
 
             // Inform system of fetch results
             completionHandler(UIBackgroundFetchResult.NewData);
@@ -57,11 +59,22 @@ namespace Ifpa.iOS
 
         public override async void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)
         {
-            //Navigate to My Stats
-            ((MainPage)(App.Current.MainPage)).CurrentPage = ((MainPage)(App.Current.MainPage)).Children.Single(n => n.Title == "My Stats");
+            if (notification.AlertAction != BaseNotificationService.NewBlogPostTitle)
+            {
+                //Navigate to My Stats
+                ((MainPage)(App.Current.MainPage)).CurrentPage = ((MainPage)(App.Current.MainPage)).Children.Single(n => n.Title == "My Stats");
 
-            //Press Tournament Results Button.
-            await (((MainPage)(App.Current.MainPage)).CurrentPage).Navigation.PushAsync(new ActivityFeedPage());
+                //Press Tournament Results Button.
+                await (((MainPage)(App.Current.MainPage)).CurrentPage).Navigation.PushAsync(new ActivityFeedPage());
+            }
+            else
+            {
+                //Navigate to More
+                ((MainPage)(App.Current.MainPage)).CurrentPage = ((MainPage)(App.Current.MainPage)).Children.Single(n => n.Title == "More");
+
+                //Open News
+                await (((MainPage)(App.Current.MainPage)).CurrentPage).Navigation.PushAsync(new NewsPage());
+            }
         }
 
         #region QuickActions

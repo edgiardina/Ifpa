@@ -42,6 +42,18 @@ namespace Ifpa.Models
             set => Preferences.Set("NotifyOnTournamentResult", value);
         }
 
+        public static bool NotifyOnNewBlogPost
+        {
+            get => Preferences.Get("NotifyOnNewBlogPost", false);
+            set => Preferences.Set("NotifyOnNewBlogPost", value);
+        }
+
+        public static int LastBlogPostGuid
+        {
+            get => Preferences.Get("LastBlogPostGuid", 0);
+            set => Preferences.Set("LastBlogPostGuid", value);
+        }
+
         public static bool HasConfiguredMyStats
         {
             get => MyStatsPlayerId != 0;

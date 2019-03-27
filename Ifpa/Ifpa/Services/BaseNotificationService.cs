@@ -1,4 +1,5 @@
 ﻿using Ifpa.Models;
+using Ifpa.ViewModels;
 using PinballApi;
 using Plugin.Badge;
 using System;
@@ -17,6 +18,9 @@ namespace Ifpa.Services
 
         public readonly string NewRankNotificationTitle = "IFPA Rank Change";
         protected readonly string NewRankNotificationDescription = "Your IFPA rank has changed!";
+
+        public static string NewBlogPostTitle = "New Blog Post";
+        protected readonly string NewBlogPostDescription = "A new IFPA blog post has been published";
 
         public async Task NotifyIfUserHasNewlySubmittedTourneyResults()
         {
@@ -99,6 +103,36 @@ namespace Ifpa.Services
 
                         await UpdateBadgeIfNeeded();
                     }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+
+        public async Task NotifyIfNewBlogItemPosted()
+        {
+            if(Settings.NotifyOnNewBlogPost)
+            {
+                try
+                {
+                    var blogPostService = new BlogPostService();
+
+                    var latestPosts = await blogPostService.GetBlogPosts();
+
+                    var latestGuidInPosts = blogPostService.ParseGuidFromInternalId(latestPosts.First().InternalID);
+
+                    if (latestGuidInPosts > Settings.LastBlogPostGuid)
+                    {
+                        if(Settings.LastBlogPostGuid > 0)
+                        {
+                            SendNotification(NewBlogPostTitle, NewBlogPostDescription);
+                        }
+
+                        Settings.LastBlogPostGuid = latestGuidInPosts;
+                    }
+
                 }
                 catch (Exception ex)
                 {
