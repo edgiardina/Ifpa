@@ -74,7 +74,9 @@ namespace Ifpa.ViewModels
             get
             {
                 var actualUrl = $"https://www.ifpapinball.com/images/profiles/players/{PlayerId}.jpg";
-                var httpClient = new HttpClient();                
+                var httpClient = new HttpClient();
+                //5 second timeout
+                httpClient.Timeout = new TimeSpan(0, 0, 5);
 
                 var uri = new Uri(actualUrl);
                 try
