@@ -48,6 +48,8 @@
     <EnableLLVM>false</EnableLLVM>
     <BundleAssemblies>false</BundleAssemblies>
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <AndroidSupportedAbis />
+    <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
