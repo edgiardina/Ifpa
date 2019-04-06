@@ -52,10 +52,19 @@ namespace Ifpa.Views
                         await RedirectUserToPlayerSearch();
                     }
                 }
+
                 viewModel.PostPlayerLoadCommand = new Command(async () => await PostPlayerLoad());
             }
             else
             {
+                if (Settings.HasConfiguredMyStats)
+                {
+                    ToolbarItems.Remove(ToolbarItems.SingleOrDefault(n => n.Text == "Set to My Stats"));
+                }
+                else
+                {
+                    ToolbarItems.Remove(ToolbarItems.SingleOrDefault(n => n.Text == "Favorite"));
+                }
                 ToolbarItems.Remove(ToolbarItems.SingleOrDefault(n => n.Text == "Activity Feed"));
             }
 
@@ -105,10 +114,7 @@ namespace Ifpa.Views
 
         private async Task ChangePlayerAndRedirect()
         {
-            Settings.SetMyStatsPlayer(viewModel.PlayerId, viewModel.PlayerRecord.PlayerStats.CurrentWpprRank);
-
-            //Clear Activity Log as we are switching players
-            await Settings.LocalDatabase.ClearActivityFeed();
+            await Settings.SetMyStatsPlayer(viewModel.PlayerId, viewModel.PlayerRecord.PlayerStats.CurrentWpprRank);
 
             await DisplayAlert("Congratulations", "You have now configured your Stats page!", "OK");
             var masterPage = this.Parent.Parent as TabbedPage;
