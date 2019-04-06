@@ -3,13 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ifpa.Views.SettingsPage" 
              Title="Settings">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--Page Level Resources: Compatibile with Xamarin Live Player -->
+            <Color x:Key="Primary">#2F4E6E</Color>
+            <Color x:Key="Accent">#072C53</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <TableView Intent="Settings" HasUnevenRows="True">
-            <TableSection Title="Notifications">
-                <SwitchCell Text="IFPA Rank Change" On="{Binding NotifyOnRankChange, Mode=TwoWay}" />
-                <SwitchCell Text="Tournament Result Posted" On="{Binding NotifyOnTournamentResult, Mode=TwoWay}" />
-                <SwitchCell Text="News Item Posted" On="{Binding NotifyOnNewBlogPost, Mode=TwoWay}" />
-            </TableSection>
-        </TableView>
+        <StackLayout Orientation="Vertical">
+            <TableView Intent="Settings" HasUnevenRows="True">
+                <TableSection Title="Notifications">
+                    <SwitchCell Text="IFPA Rank Change" On="{Binding NotifyOnRankChange, Mode=TwoWay}" />
+                    <SwitchCell Text="Tournament Result Posted" On="{Binding NotifyOnTournamentResult, Mode=TwoWay}" />
+                    <SwitchCell Text="News Item Posted" On="{Binding NotifyOnNewBlogPost, Mode=TwoWay}" />
+                </TableSection>
+                <TableSection Title="'My Stats' Player">
+                    <ViewCell>
+                        <Button Padding="10,0,10,0" Margin="0,10,0,10" HorizontalOptions="CenterAndExpand" Text="Clear Selected Player" Clicked="Button_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
+                    </ViewCell>
+                </TableSection>
+            </TableView>            
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
