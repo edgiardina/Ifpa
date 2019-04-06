@@ -71,8 +71,11 @@ namespace Ifpa.Models
             set => Preferences.Set("CurrentWpprRank", value);
         }
 
-        public static void SetMyStatsPlayer(int playerId, int currentWpprRank)
+        public static async Task SetMyStatsPlayer(int playerId, int currentWpprRank)
         {
+            //Clear Activity Log as we are switching players
+            await Settings.LocalDatabase.ClearActivityFeed();
+
             MyStatsPlayerId = playerId;
             MyStatsCurrentWpprRank = currentWpprRank;
         }
