@@ -17,8 +17,8 @@
         <ToolbarItem Text="Favorite" x:Name="FavoriteButton" Clicked="FavoriteButton_Clicked">
             <ToolbarItem.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">                    
-                    <On Platform="Android">favorite_white.png</On>
-                    <On Platform="iOS">favorite.png</On>
+                    <On Platform="Android">favorite_outline.png</On>
+                    <On Platform="iOS">favorite-outline.png</On>
                 </OnPlatform>
             </ToolbarItem.Icon>
         </ToolbarItem>

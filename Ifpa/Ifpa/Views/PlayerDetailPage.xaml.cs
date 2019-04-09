@@ -29,7 +29,7 @@ namespace Ifpa.Views
             InitializeComponent();
 
             LoadMyStats = true;
-            BindingContext = this.viewModel = new PlayerDetailViewModel(0);            
+            BindingContext = this.viewModel = new PlayerDetailViewModel(0);
         }
 
         protected async override void OnAppearing()
@@ -60,6 +60,12 @@ namespace Ifpa.Views
                 if (Settings.HasConfiguredMyStats)
                 {
                     ToolbarItems.Remove(ToolbarItems.SingleOrDefault(n => n.Text == "Set to My Stats"));
+
+                    //if player is in the existing favorites list, fill the heart icon.
+                    if (await Settings.LocalDatabase.HasFavorite(viewModel.PlayerId))
+                    {
+                        SetCorrectFavoriteIcon(true);
+                    }
                 }
                 else
                 {
@@ -69,16 +75,16 @@ namespace Ifpa.Views
             }
 
             viewModel.LoadItemsCommand.Execute(null);
-        }     
-        
+        }
+
         /// <summary>
         /// Do tasks we need the UI to be fully re-drawn for.
         /// </summary>
         /// <returns></returns>
         private async Task PostPlayerLoad()
         {
-            var numOfUnread = await Settings.LocalDatabase.GetUnreadActivityCount();            
-            DependencyService.Get<IToolbarItemBadgeService>().SetBadge(this, ToolbarItems.SingleOrDefault(n => n.Text == "Activity Feed"), numOfUnread.ToString(), Color.Red, Color.White);            
+            var numOfUnread = await Settings.LocalDatabase.GetUnreadActivityCount();
+            DependencyService.Get<IToolbarItemBadgeService>().SetBadge(this, ToolbarItems.SingleOrDefault(n => n.Text == "Activity Feed"), numOfUnread.ToString(), Color.Red, Color.White);
         }
 
         private async void TournamentResults_Button_Clicked(object sender, EventArgs e)
@@ -148,13 +154,45 @@ namespace Ifpa.Views
             if (await Settings.LocalDatabase.HasFavorite(viewModel.PlayerId))
             {
                 await Settings.LocalDatabase.RemoveFavorite(viewModel.PlayerId);
+                SetCorrectFavoriteIcon(false);
                 await DisplayAlert("Favorite Removed", "This player has been removed from your favorites!", "OK");
             }
             else
             {
                 await Settings.LocalDatabase.AddFavorite(viewModel.PlayerId);
+                SetCorrectFavoriteIcon(true);                
                 await DisplayAlert("Favorite Added", "This player has been added to your favorites!", "OK");
             }
         }
+
+        private void SetCorrectFavoriteIcon(bool isFavorite = true)
+        {
+            if (isFavorite)
+            {
+                //if player is in the existing favorites list, fill the heart icon.
+                ToolbarItems.SingleOrDefault(n => n.Text == "Favorite").Icon = "favorite.png";
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    ToolbarItems.SingleOrDefault(n => n.Text == "Favorite").Icon = "favorite_white.png";
+                }
+                else
+                {
+                    ToolbarItems.SingleOrDefault(n => n.Text == "Favorite").Icon = "favorite.png";
+                }
+            }
+            else
+            {                
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    ToolbarItems.SingleOrDefault(n => n.Text == "Favorite").Icon = "favorite_outline.png";
+                }
+                else
+                {
+                    ToolbarItems.SingleOrDefault(n => n.Text == "Favorite").Icon = "favorite-outline.png";
+                }
+            }
+        }
     }
+
+
 }
