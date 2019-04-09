@@ -42,6 +42,7 @@ namespace Ifpa.Services
                         if (Settings.NotifyOnTournamentResult && !isHistoricalEventPopulation)
                         {
                             SendNotification(NewTournamentNotificationTitle, NewTournamentNotificationDescription);
+                            await UpdateBadgeIfNeeded();
                         }
 
                         foreach (var unseenTournament in unseenTournaments.OrderBy(n => n))
@@ -58,8 +59,6 @@ namespace Ifpa.Services
                             };
 
                             await Settings.LocalDatabase.CreateActivityFeedRecord(record);
-
-                            await UpdateBadgeIfNeeded();
                         }
                     }
                 }
@@ -86,6 +85,7 @@ namespace Ifpa.Services
                         if (Settings.NotifyOnRankChange)
                         {
                             SendNotification(NewRankNotificationTitle, NewRankNotificationDescription);
+                            await UpdateBadgeIfNeeded();
                         }
 
                         var record = new ActivityFeedItem
@@ -99,9 +99,7 @@ namespace Ifpa.Services
 
                         Settings.MyStatsCurrentWpprRank = currentWpprRank;
 
-                        await Settings.LocalDatabase.CreateActivityFeedRecord(record);
-
-                        await UpdateBadgeIfNeeded();
+                        await Settings.LocalDatabase.CreateActivityFeedRecord(record);                        
                     }
                 }
                 catch (Exception ex)
