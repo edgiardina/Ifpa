@@ -8,21 +8,39 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:IntToOrdinalStringConverter x:Key="intToOrdinalString" />
+            <local:BoolConverter x:Key="BoolConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <SearchBar x:Name="SearchBar" SearchCommand="{Binding SearchCommand}" HeightRequest="60"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <SearchBar Grid.Row="0" x:Name="SearchBar" SearchCommand="{Binding SearchCommand}" HeightRequest="60"
+                       IsSpellCheckEnabled="False"
+                       MaxLength="100"
+                       Keyboard="Text"                       
                        SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}" />
+            
+            <Label Grid.Row="1" 
+                IsVisible="{Binding IsPopulated, Converter={StaticResource BoolConverter}}"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"
+                FontAttributes="Italic"
+                Text="No players found." />
+
             <ListView x:Name="PlayersListView" 
+                Grid.Row="1" 
+                IsVisible="{Binding IsPopulated}"
                 ItemsSource="{Binding Players}"
                 VerticalOptions="FillAndExpand"
-                 HasUnevenRows="true"
-                 RefreshCommand="{Binding LoadItemsCommand}"
-                 IsPullToRefreshEnabled="true"
-                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                 CachingStrategy="RecycleElement"
-                 ItemSelected="OnItemSelected">
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadItemsCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+                ItemSelected="OnItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -63,6 +81,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

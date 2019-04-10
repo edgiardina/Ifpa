@@ -76,7 +76,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
-    <LaunchForBackgroundFetch>true</LaunchForBackgroundFetch>
+    <LaunchForBackgroundFetch>false</LaunchForBackgroundFetch>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Services\iOSReminderService.cs" />

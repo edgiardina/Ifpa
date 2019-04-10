@@ -2,7 +2,6 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using Xamarin.Forms;
-using PinballApi.Models.WPPR.Players;
 using Ifpa.Models;
 using System.Linq;
 using System.Collections.Generic;
@@ -12,7 +11,8 @@ namespace Ifpa.ViewModels
     public class FavoritesViewModel : BaseViewModel
     {
         public ObservableCollection<PlayerWithWpprRank> Players { get; set; }
-        
+        public bool IsPopulated => Players != null && Players.Count > 0;
+
         public FavoritesViewModel()
         {
             Title = "Favorites";
@@ -49,6 +49,8 @@ namespace Ifpa.ViewModels
                         {
                             Players.Add(player);
                         }
+
+                        OnPropertyChanged("IsPopulated");
                     }
                     catch (Exception ex)
                     {

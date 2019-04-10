@@ -10,7 +10,9 @@ namespace Ifpa.ViewModels
     public class PlayerSearchViewModel : BaseViewModel
     {
         public ObservableCollection<Search> Players { get; set; }
-        
+
+        public bool IsPopulated => Players != null && Players.Count > 0;
+
         public PlayerSearchViewModel()
         {
             Title = "Player Search";
@@ -32,11 +34,17 @@ namespace Ifpa.ViewModels
                     try
                     {
                         Players.Clear();
-                        var items = await PinballRankingApi.SearchForPlayerByName(text);
-                        foreach (var item in items.Search)
+
+                        if (text.Trim().Length > 0)
                         {
-                            Players.Add(item);
+                            var items = await PinballRankingApi.SearchForPlayerByName(text);
+                            foreach (var item in items.Search)
+                            {
+                                Players.Add(item);
+                            }
                         }
+
+                        OnPropertyChanged("IsPopulated");
                     }
                     catch (Exception ex)
                     {
