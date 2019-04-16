@@ -1,9 +1,9 @@
 ﻿using HtmlAgilityPack;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
-using System.Text;
+using System.Reflection;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -34,10 +34,11 @@ namespace Ifpa.ViewModels
                 var doc = web.Load(url);
 
                 var rulesHtmlContent = doc.DocumentNode.Descendants("div")
-                                         .First(x => x.Attributes.AttributesWithName("class").Any() && x.Attributes["class"].Value == "postblock");                                       
+                                         .First(x => x.Attributes.AttributesWithName("class").Any() && x.Attributes["class"].Value == "postblock");
 
-                //TODO: make this HTML and CSS in discrete files 
-                RulesContent.Html = "<html><head><style>img {display:block; clear:both;  margin: auto; margin-botton:10px !important;}</style></head><body style='font-family:sans-serif;'>" + rulesHtmlContent.InnerHtml + "</body></html>";
+                var htmlShim = await GetHtmlRulesShim();
+
+                RulesContent.Html = htmlShim.Replace("{rules}", rulesHtmlContent.InnerHtml);
                 OnPropertyChanged(nameof(RulesContent));
             }
             catch (Exception ex)
@@ -47,6 +48,16 @@ namespace Ifpa.ViewModels
             finally
             {
                 IsBusy = false;
+            }
+        }
+
+        private async Task<string> GetHtmlRulesShim()
+        {
+            var assembly = IntrospectionExtensions.GetTypeInfo(typeof(RulesViewModel)).Assembly;
+            Stream stream = assembly.GetManifestResourceStream("Ifpa.Content.Rules.html");       
+            using (var reader = new StreamReader(stream))
+            {
+                return await reader.ReadToEndAsync();
             }
         }
 
