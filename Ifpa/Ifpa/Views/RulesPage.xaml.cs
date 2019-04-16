@@ -59,7 +59,7 @@ namespace Ifpa.Views
         private async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {            
             var markSearchTerm = $@"instance.mark('{e.NewTextValue}');";
-            var scrollToMark = @"jumpTo();";
+            var scrollToMark = $@"jumpTo('{e.NewTextValue}');";
 
             try
             {
@@ -71,8 +71,21 @@ namespace Ifpa.Views
             {
                 Console.WriteLine(ex.Message);
             }
-        }    
+        }
 
-        
+        private async void SearchBar_SearchButtonPressed(object sender, EventArgs e)
+        {
+            var searchTerm = ((SearchBar)sender).Text;
+            var scrollToMark = $@"jumpTo('{searchTerm}');";
+
+            try
+            {
+                await RulesWebView.EvaluateJavaScriptAsync(scrollToMark);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }

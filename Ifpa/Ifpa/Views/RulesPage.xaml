@@ -12,6 +12,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <SearchBar Grid.Row="0" x:Name="SearchBar" HeightRequest="60"
+                   SearchButtonPressed="SearchBar_SearchButtonPressed"
                    TextChanged="SearchBar_TextChanged"
                        IsSpellCheckEnabled="False"
                        IsVisible="False"
