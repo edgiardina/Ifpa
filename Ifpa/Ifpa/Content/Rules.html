@@ -23,10 +23,23 @@
     <script type="text/javascript">
         var context = document.getElementById('rules');
         var instance = new Mark(context);
+        var lastSearchTerm = "";
+        var lastIndex = 0;
 
-        function jumpTo()
+        function jumpTo(searchTerm)
         {
-            document.getElementsByTagName('mark')[0].scrollIntoView();  
+            var totalFound = document.getElementsByTagName('mark').length;
+            if (lastSearchTerm == searchTerm)
+            {
+                lastIndex++;
+                if (lastIndex > totalFound - 1) {
+                    lastIndex = 0;
+                }
+            }
+
+            lastSearchTerm = searchTerm;
+
+            document.getElementsByTagName('mark')[lastIndex].scrollIntoView();  
         }
     </script>
 </body>
