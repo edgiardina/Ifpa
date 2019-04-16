@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js"></script>
+    <style>
+        img {
+            display: block;
+            clear: both;
+            margin: auto;
+            margin-botton: 10px !important;
+        }
+
+        mark {
+            background: orange;
+            color: black;
+        }
+    </style>
+</head>
+<body style="font-family:sans-serif;">
+    <div id="rules">
+        {rules}
+    </div>
+    <script type="text/javascript">
+        var context = document.getElementById('rules');
+        var instance = new Mark(context);
+
+        function jumpTo()
+        {
+            document.getElementsByTagName('mark')[0].scrollIntoView();  
+        }
+    </script>
+</body>
+</html>

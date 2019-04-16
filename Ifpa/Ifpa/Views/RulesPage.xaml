@@ -3,7 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ifpa.Views.RulesPage"
              Title="Rules">
-    <StackLayout VerticalOptions="FillAndExpand">
-        <WebView Source="{Binding RulesContent}" VerticalOptions="FillAndExpand" Navigating="WebView_Navigating"  />
-    </StackLayout>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Search" Clicked="ToolbarItem_Clicked" Icon="search.png" />
+    </ContentPage.ToolbarItems>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <SearchBar Grid.Row="0" x:Name="SearchBar" HeightRequest="60"
+                   TextChanged="SearchBar_TextChanged"
+                       IsSpellCheckEnabled="False"
+                       IsVisible="False"
+                       MaxLength="100"
+                       Keyboard="Text" />
+        <WebView Grid.Row="1" Source="{Binding RulesContent}" VerticalOptions="FillAndExpand" Navigating="WebView_Navigating" x:Name="RulesWebView"  />
+    </Grid>
 </ContentPage>

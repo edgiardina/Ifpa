@@ -11,6 +11,8 @@ namespace Ifpa.Views
     {
         RulesViewModel viewModel;
 
+        string unmarkExistingMarks = "instance.unmark();";
+
         public RulesPage()
         {
             InitializeComponent();
@@ -43,5 +45,34 @@ namespace Ifpa.Views
                 e.Cancel = true;
             }
         }
+
+        private async void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            SearchBar.IsVisible = !SearchBar.IsVisible;
+
+            if (!SearchBar.IsVisible)
+            {
+                await RulesWebView.EvaluateJavaScriptAsync(unmarkExistingMarks);
+            }
+        }
+
+        private async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {            
+            var markSearchTerm = $@"instance.mark('{e.NewTextValue}');";
+            var scrollToMark = @"jumpTo();";
+
+            try
+            {
+                await RulesWebView.EvaluateJavaScriptAsync(unmarkExistingMarks);
+                await RulesWebView.EvaluateJavaScriptAsync(markSearchTerm);
+                await RulesWebView.EvaluateJavaScriptAsync(scrollToMark);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }    
+
+        
     }
 }
