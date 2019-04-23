@@ -1,8 +1,7 @@
 ﻿using PinballApi.Extensions;
-using PinballApi.Models.WPPR.Players;
+using PinballApi.Models.WPPR.v1.Players;
 using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Forms;

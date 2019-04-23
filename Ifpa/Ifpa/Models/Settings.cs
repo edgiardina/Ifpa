@@ -1,5 +1,5 @@
 ﻿using Ifpa.Services;
-using PinballApi.Models.WPPR.Players;
+using PinballApi.Models.WPPR.v1.Players;
 using System;
 using System.Collections.Generic;
 using System.IO;
