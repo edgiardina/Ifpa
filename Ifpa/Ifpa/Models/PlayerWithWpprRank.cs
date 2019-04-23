@@ -1,4 +1,4 @@
-﻿using PinballApi.Models.WPPR.Players;
+﻿using PinballApi.Models.WPPR.v1.Players;
 
 namespace Ifpa.Models
 {

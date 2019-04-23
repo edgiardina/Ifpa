@@ -1,5 +1,5 @@
 ﻿using Ifpa.ViewModels;
-using PinballApi.Models.WPPR.Tournaments;
+using PinballApi.Models.WPPR.v1.Tournaments;
 using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;

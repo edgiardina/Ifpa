@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using Ifpa.ViewModels;
 using Xamarin.Forms.Maps;
 using System.Diagnostics;
-using PinballApi.Models.WPPR.Calendar;
+using PinballApi.Models.WPPR.v1.Calendar;
 using Ifpa.Models;
 
 namespace Ifpa.Views

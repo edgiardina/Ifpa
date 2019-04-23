@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using PinballApi.Models.WPPR.Players;
+using PinballApi.Models.WPPR.v1.Players;
 using System.Linq;
 
 namespace Ifpa.ViewModels

@@ -1,4 +1,4 @@
-﻿using PinballApi.Models.WPPR.Rankings;
+﻿using PinballApi.Models.WPPR.v1.Rankings;
 
 namespace Ifpa.Models
 {
