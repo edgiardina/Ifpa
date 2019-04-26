@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ifpa.Views.PlayerDetailPage"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
              Title="{Binding Title}">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -10,6 +11,7 @@
             <Color x:Key="Primary">#2F4E6E</Color>
             <Color x:Key="Accent">#072C53</Color>
             <Color x:Key="LightTextColor">#999999</Color>
+            <local:BoolConverter x:Key="BoolConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
@@ -27,7 +29,8 @@
     </ContentPage.ToolbarItems>
     <StackLayout Spacing="20" Padding="15" BackgroundColor="#F1F1F1">
         <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
-
+        <StackLayout IsVisible="{Binding IsBusy, Converter={StaticResource BoolConverter}}">
+            
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -262,5 +265,6 @@
 
             </StackLayout>
         </ScrollView>
+        </StackLayout>
     </StackLayout>
 </ContentPage>
