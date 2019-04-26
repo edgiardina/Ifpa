@@ -20,7 +20,7 @@ namespace Ifpa.Views
         public PlayerDetailPage(PlayerDetailViewModel viewModel)
         {
             InitializeComponent();
-
+            viewModel.IsBusy = true;
             BindingContext = this.viewModel = viewModel;
         }
 
@@ -29,7 +29,10 @@ namespace Ifpa.Views
             InitializeComponent();
 
             LoadMyStats = true;
+
             BindingContext = this.viewModel = new PlayerDetailViewModel(0);
+
+            viewModel.IsBusy = true;
         }
 
         protected async override void OnAppearing()

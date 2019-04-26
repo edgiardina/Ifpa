@@ -11,7 +11,9 @@ namespace Ifpa.ViewModels
     public class FavoritesViewModel : BaseViewModel
     {
         public ObservableCollection<PlayerWithWpprRank> Players { get; set; }
-        public bool IsPopulated => Players != null && Players.Count > 0;
+        public bool IsPopulated => Players.Count > 0 || dataNotLoaded;
+
+        private bool dataNotLoaded = true;
 
         public FavoritesViewModel()
         {
@@ -30,6 +32,8 @@ namespace Ifpa.ViewModels
                         return;
 
                     IsBusy = true;
+
+                    dataNotLoaded = false;
 
                     try
                     {

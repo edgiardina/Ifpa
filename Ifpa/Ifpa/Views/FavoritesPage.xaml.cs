@@ -32,7 +32,6 @@ namespace Ifpa.Views
         protected override void OnAppearing()
         {
             viewModel.LoadItemsCommand.Execute(null);
-
             base.OnAppearing();
         }
     }
