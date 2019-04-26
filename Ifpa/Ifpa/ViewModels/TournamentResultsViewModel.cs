@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using PinballApi.Models.WPPR.Tournaments;
+using PinballApi.Models.WPPR.v1.Tournaments;
 
 namespace Ifpa.ViewModels
 {

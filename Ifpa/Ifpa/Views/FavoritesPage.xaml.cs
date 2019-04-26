@@ -1,8 +1,7 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Ifpa.ViewModels;
-using PinballApi.Models.WPPR.Rankings;
-using PinballApi.Models.WPPR.Players;
+using PinballApi.Models.WPPR.v1.Players;
 
 namespace Ifpa.Views
 {

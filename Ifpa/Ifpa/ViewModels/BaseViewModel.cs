@@ -9,7 +9,7 @@ namespace Ifpa.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public PinballRankingApi PinballRankingApi => new PinballRankingApi(Constants.IfpaApiKey);
+        public PinballRankingApiV1 PinballRankingApi => new PinballRankingApiV1(Constants.IfpaApiKey);
 
         bool isBusy = false;
         public bool IsBusy
