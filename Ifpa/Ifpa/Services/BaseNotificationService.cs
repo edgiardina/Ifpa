@@ -11,7 +11,7 @@ namespace Ifpa.Services
 {
     public abstract class BaseNotificationService
     {
-        private PinballRankingApi PinballRankingApi => new PinballRankingApi(Constants.IfpaApiKey);
+        private PinballRankingApiV1 PinballRankingApi => new PinballRankingApiV1(Constants.IfpaApiKey);
 
         public readonly string NewTournamentNotificationTitle = "New Tournament Result";
         protected readonly string NewTournamentNotificationDescription = "A new tournament result has been posted to your IFPA profile";

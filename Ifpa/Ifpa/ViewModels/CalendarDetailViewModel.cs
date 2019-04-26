@@ -1,6 +1,5 @@
 ﻿using System;
 using Xamarin.Forms;
-using PinballApi.Models.WPPR.Calendar;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Diagnostics;
