@@ -20,7 +20,7 @@ namespace Ifpa.Services
         protected readonly string NewRankNotificationDescription = "Your IFPA rank has changed!";
 
         public static string NewBlogPostTitle = "New Blog Post";
-        protected readonly string NewBlogPostDescription = "A new IFPA blog post has been published";
+        protected readonly string NewBlogPostDescription = @"Blog post ""{0}"" has been published!";
 
         public async Task NotifyIfUserHasNewlySubmittedTourneyResults()
         {
@@ -119,13 +119,15 @@ namespace Ifpa.Services
 
                     var latestPosts = await blogPostService.GetBlogPosts();
 
-                    var latestGuidInPosts = blogPostService.ParseGuidFromInternalId(latestPosts.First().InternalID);
+                    var latestGuidInPosts = latestPosts.Max(n => blogPostService.ParseGuidFromInternalId(n.InternalID));
+
+                    var latestPost = latestPosts.Single(n => n.InternalID.EndsWith(latestGuidInPosts.ToString()));
 
                     if (latestGuidInPosts > Settings.LastBlogPostGuid)
                     {
                         if(Settings.LastBlogPostGuid > 0)
                         {
-                            SendNotification(NewBlogPostTitle, NewBlogPostDescription);
+                            SendNotification(NewBlogPostTitle, string.Format(NewBlogPostDescription, latestPost.Title));
                         }
 
                         Settings.LastBlogPostGuid = latestGuidInPosts;
