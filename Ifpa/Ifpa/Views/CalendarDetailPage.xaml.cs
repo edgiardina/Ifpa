@@ -21,6 +21,8 @@ namespace Ifpa.Views
 
             BindingContext = this.viewModel = viewModel;
             ((CalendarDetailViewModel)BindingContext).PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(async (s, e) => await CalendarDetailPage_PropertyChanged(s, e)) ;
+
+            viewModel.LoadItemsCommand.Execute(null);
         }
 
         private async Task CalendarDetailPage_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -43,9 +45,7 @@ namespace Ifpa.Views
 
         protected async override void OnAppearing()
         {
-            base.OnAppearing();          
-
-            viewModel.LoadItemsCommand.Execute(null);
+            base.OnAppearing();                      
         }
 
         private async void WebsiteLabel_Tapped(object sender, EventArgs e)
