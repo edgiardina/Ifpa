@@ -43,11 +43,6 @@ namespace Ifpa.Views
             }
         }
 
-        protected async override void OnAppearing()
-        {
-            base.OnAppearing();                      
-        }
-
         private async void WebsiteLabel_Tapped(object sender, EventArgs e)
         {
             await Browser.OpenAsync(viewModel.Website, BrowserLaunchMode.SystemPreferred);

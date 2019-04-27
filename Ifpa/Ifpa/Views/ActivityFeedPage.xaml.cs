@@ -18,14 +18,7 @@ namespace Ifpa.Views
             InitializeComponent();
 
             BindingContext = activityFeedViewModel = new ActivityFeedViewModel();
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            if (activityFeedViewModel.ActivityFeedItems.Count == 0)
-                activityFeedViewModel.LoadItemsCommand.Execute(null);
+            activityFeedViewModel.LoadItemsCommand.Execute(null);
         }
 
         private async void ActivityFeedListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
