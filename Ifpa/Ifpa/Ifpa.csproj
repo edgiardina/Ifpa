@@ -44,6 +44,9 @@
     <Compile Update="Views\FavoritesPage.xaml.cs">
       <DependentUpon>FavoritesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\PlayerChampionshipSeriesPage.xaml.cs">
+      <DependentUpon>PlayerChampionshipSeriesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\RulesPage.xaml.cs">
       <DependentUpon>RulesPage.xaml</DependentUpon>
     </Compile>
