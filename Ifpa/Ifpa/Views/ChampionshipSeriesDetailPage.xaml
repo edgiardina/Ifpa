@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
+             x:Class="Ifpa.Views.ChampionshipSeriesDetailPage"
+             Title="{Binding Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:IntToOrdinalStringConverter x:Key="intToOrdinalString" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout>       
+
+        <ListView x:Name="MyListView"
+            ItemsSource="{Binding StateProvinceStandings}"
+            RefreshCommand="{Binding LoadItemsCommand}"
+            IsPullToRefreshEnabled="true"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            ItemTapped="Handle_ItemTapped"
+            CachingStrategy="RecycleElement"
+            HasUnevenRows="true">
+            <!--Custom View Cells-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10,0,10,0" Orientation="Horizontal" >
+                            <Label VerticalTextAlignment="Center" Text="{Binding Position, Converter={StaticResource intToOrdinalString}}" 
+                                   LineBreakMode="NoWrap" 
+                                   Style="{DynamicResource ListItemTextStyle}" 
+                                   FontSize="24" MinimumWidthRequest="58" HorizontalOptions="Start" />
+                            <StackLayout Padding="10" Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <FormattedString.Spans>
+                                                <Span Text="{Binding FirstName}" />
+                                                <Span Text=" " />
+                                                <Span Text="{Binding LastName}" />
+                                            </FormattedString.Spans>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                
+                                    <Label HorizontalOptions="StartAndExpand" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10" HorizontalTextAlignment="Start">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Text="Event Count:" />
+                                                    <Span Text=" " />
+                                                    <Span Text="{Binding EventCount}" />
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label HorizontalOptions="StartAndExpand" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10" HorizontalTextAlignment="Start">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Text="Win Count:" />
+                                                    <Span Text=" " />
+                                                    <Span Text="{Binding WinCount}" />
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label HorizontalOptions="CenterAndExpand"  Text="{Binding WpprPoints, StringFormat='{0:N2}'}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10" />
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
