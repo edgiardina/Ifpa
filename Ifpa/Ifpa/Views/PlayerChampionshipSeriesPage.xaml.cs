@@ -1,4 +1,5 @@
 ﻿using Ifpa.ViewModels;
+using PinballApi.Models.v2.WPPR;
 using PinballApi.Models.WPPR.v1.Players;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
@@ -21,14 +22,14 @@ namespace Ifpa.Views
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            //var tournament = e.Item as Result;
-            //if (tournament == null)
-            //    return;
+            var state = e.Item as ChampionshipSeries;
+            if (state == null)
+                return;
 
-            //await Navigation.PushAsync(new TournamentResultsPage(new TournamentResultsViewModel(tournament.TournamentId)));
+            await Navigation.PushAsync(new ChampionshipSeriesDetailPage(new ChampionshipSeriesDetailViewModel(state.GroupCode)));
 
-            ////Deselect Item
-            //((ListView)sender).SelectedItem = null;
+            //Deselect Item
+            ((ListView)sender).SelectedItem = null;
         }
         protected override void OnAppearing()
         {
