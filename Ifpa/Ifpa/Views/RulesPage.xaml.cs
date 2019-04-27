@@ -18,14 +18,12 @@ namespace Ifpa.Views
             InitializeComponent();
 
             BindingContext = this.viewModel = new RulesViewModel();
+            viewModel.LoadItemsCommand.Execute(null);
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            if (viewModel.RulesContent == null)
-                viewModel.LoadItemsCommand.Execute(null);
         }
 
         private void WebView_Navigating(object sender, WebNavigatingEventArgs e)
@@ -81,6 +79,7 @@ namespace Ifpa.Views
             try
             {
                 await RulesWebView.EvaluateJavaScriptAsync(scrollToMark);
+                SearchBar.Focus();
             }
             catch (Exception ex)
             {
