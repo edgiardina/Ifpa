@@ -1,5 +1,6 @@
 ﻿using Ifpa.ViewModels;
 using PinballApi.Models.WPPR.v1.Players;
+using PinballApi.Models.WPPR.v2.Players;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -43,13 +44,13 @@ namespace Ifpa.Views
             switch(e.Name)
             {
                 case "Active":
-                    viewModel.State = PlayerResultState.Active;
+                    viewModel.State = ResultType.Active;
                     break;
                 case "Unused":
-                    viewModel.State = PlayerResultState.NonActive;
+                    viewModel.State = ResultType.NonActive;
                     break;
                 case "Past":
-                    viewModel.State = PlayerResultState.Inactive;
+                    viewModel.State = ResultType.Inactive;
                     break;
             }          
             viewModel.LoadItemsCommand.Execute(null);

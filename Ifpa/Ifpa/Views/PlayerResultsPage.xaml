@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              x:Class="Ifpa.Views.PlayerResultsPage"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              Title="{Binding Title}">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -11,6 +12,24 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout>
+        <buttons:SfChipGroup Type="Choice"  IsVisible="{Binding ShowRankingTypeChoice}">
+            <buttons:SfChipGroup.ChipLayout>
+                <FlexLayout 
+						HorizontalOptions="Center" 
+						VerticalOptions="Center" 
+						Direction="Row" 
+						Wrap="Wrap"
+						JustifyContent="Center"
+						AlignContent="SpaceEvenly" 
+						AlignItems="Center"/>
+            </buttons:SfChipGroup.ChipLayout>
+            <buttons:SfChipGroup.Items>
+                <buttons:SfChip Text="Main"/>
+                <buttons:SfChip Text="Women"/>
+                <buttons:SfChip Text="Youth"/>
+            </buttons:SfChipGroup.Items>
+        </buttons:SfChipGroup>
+
         <tabView:SfTabView VisibleHeaderCount="3" SelectionChanged="SfTabView_SelectionChanged" 
                             HeightRequest="50" TabHeaderBackgroundColor="#66FFFFFF">
             <tabView:SfTabItem Title="Active">
