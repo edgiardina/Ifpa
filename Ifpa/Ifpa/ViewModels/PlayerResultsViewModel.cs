@@ -3,24 +3,20 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using PinballApi.Models.WPPR.v1.Players;
-using System.Linq;
+using PinballApi.Models.WPPR.v2.Players;
+using PinballApi.Models.WPPR.v2;
 
 namespace Ifpa.ViewModels
 {
-    public enum PlayerResultState
-    {
-        Active,
-        NonActive,
-        Inactive
-    }
-
     public class PlayerResultsViewModel : BaseViewModel
     {
-        public ObservableCollection<Result> Results { get; set; }
+        public ObservableCollection<PlayerResult> Results { get; set; }
         public Command LoadItemsCommand { get; set; }
 
-        public PlayerResultState State { get; set; }
+        public ResultType State { get; set; }
+        public RankingType RankingType { get; set; }
+
+        public bool ShowRankingTypeChoice { get; set; }
 
         private int playerId;
 
@@ -28,8 +24,10 @@ namespace Ifpa.ViewModels
         {
             Title = "Results";
             this.playerId = playerId;
-            State = PlayerResultState.Active;
-            Results = new ObservableCollection<Result>();
+            State = ResultType.Active;
+            RankingType = RankingType.Main;
+            ShowRankingTypeChoice = false;
+            Results = new ObservableCollection<PlayerResult>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
 
@@ -42,13 +40,22 @@ namespace Ifpa.ViewModels
 
             try
             {
-                Results.Clear();
-                var playerResults = await PinballRankingApi.GetPlayerResults(playerId);
+                var player = await PinballRankingApiV2.GetPlayer(playerId);
 
-                foreach (var item in playerResults.Results.Where(n => n.WpprState == State.ToString()))
+                //TODO: it would be better to get a list of all categories a player is eligible for
+                if (player.Gender == Gender.Female || (player.Age.HasValue && player.Age.Value < 18))
+                {
+                    ShowRankingTypeChoice = true;
+                    OnPropertyChanged(nameof(ShowRankingTypeChoice));
+                }
+
+                Results.Clear();
+                var playerResults = await PinballRankingApiV2.GetPlayerResults(playerId, RankingType, State);
+
+                foreach (var item in playerResults.Results)
                 {                 
                     Results.Add(item);
-                }
+                }               
             }
             catch (Exception ex)
             {

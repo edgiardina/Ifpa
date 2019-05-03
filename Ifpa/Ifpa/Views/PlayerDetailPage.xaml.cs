@@ -100,11 +100,6 @@ namespace Ifpa.Views
             await Navigation.PushAsync(new PlayerVersusPlayerPage(new PlayerVersusPlayerViewModel(viewModel.PlayerId)));
         }
 
-        private async void Refresh_Clicked(object sender, EventArgs e)
-        {
-            viewModel.LoadItemsCommand.Execute(null);
-        }
-
         private async void StarButton_Clicked(object sender, EventArgs e)
         {
             if (!Settings.HasConfiguredMyStats)
