@@ -32,6 +32,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\ChampionshipSeriesPage.xaml.cs">
+      <DependentUpon>ChampionshipSeriesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\DataTemplates\ActivityFeedTournamentResultViewCell.xaml.cs">
       <DependentUpon>ActivityFeedTournamentResultViewCell.xaml</DependentUpon>
     </Compile>
