@@ -11,6 +11,8 @@ namespace Ifpa.ViewModels
     public class ChampionshipSeriesDetailViewModel : BaseViewModel
     {
         public ObservableCollection<PlayerStanding> StateProvinceStandings { get; set; }
+        public ObservableCollection<NacsStateProvinceStatistics> StateProvinceStatistics { get; set; }
+        public ObservableCollection<NacsPayout> StateProvincePayouts { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         private string stateProvinceAbbreviation;
@@ -19,8 +21,10 @@ namespace Ifpa.ViewModels
         {
             this.stateProvinceAbbreviation = stateProvinceAbbreviation;
             StateProvinceStandings = new ObservableCollection<PlayerStanding>();
+            StateProvinceStatistics = new ObservableCollection<NacsStateProvinceStatistics>();
+            StateProvincePayouts = new ObservableCollection<NacsPayout>();
 
-            Title = $"{stateProvinceAbbreviation} Standings";
+            Title = $"{stateProvinceAbbreviation} Championship Series";
 
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
@@ -36,12 +40,25 @@ namespace Ifpa.ViewModels
             try
             {
                 StateProvinceStandings.Clear();
+                StateProvinceStatistics.Clear();
+                StateProvincePayouts.Clear();
+
                 var stateProvinceChampionshipSeries = await PinballRankingApiV2.GetNacsStateProvinceStandings(stateProvinceAbbreviation);
 
                 foreach (var item in stateProvinceChampionshipSeries.PlayerStandings)
                 {
                     StateProvinceStandings.Add(item);
-                }                
+                }
+
+                foreach (var item in stateProvinceChampionshipSeries.Statistics)
+                {
+                    StateProvinceStatistics.Add(item);
+                }
+
+                foreach (var item in stateProvinceChampionshipSeries.Payouts)
+                {
+                    StateProvincePayouts.Add(item);
+                }
             }
             catch (Exception ex)
             {
