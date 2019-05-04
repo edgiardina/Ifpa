@@ -14,13 +14,13 @@ namespace Ifpa.Services
         private PinballRankingApiV1 PinballRankingApi => new PinballRankingApiV1(Constants.IfpaApiKey);
 
         public readonly string NewTournamentNotificationTitle = "New Tournament Result";
-        protected readonly string NewTournamentNotificationDescription = "A new tournament result has been posted to your IFPA profile";
+        protected readonly string NewTournamentNotificationDescription = @"Tournament results for ""{0}"" have been posted to your IFPA profile";
 
         public readonly string NewRankNotificationTitle = "IFPA Rank Change";
-        protected readonly string NewRankNotificationDescription = "Your IFPA rank has changed!";
+        protected readonly string NewRankNotificationDescription = "Your IFPA rank has changed";
 
         public static string NewBlogPostTitle = "New Blog Post";
-        protected readonly string NewBlogPostDescription = @"Blog post ""{0}"" has been published!";
+        protected readonly string NewBlogPostDescription = @"Blog post ""{0}"" has been published";
 
         public async Task NotifyIfUserHasNewlySubmittedTourneyResults()
         {
@@ -39,12 +39,6 @@ namespace Ifpa.Services
                         // We need historical data to know when a user should get alerted due to a new tournament
                         var isHistoricalEventPopulation = unseenTournaments.Count() >= 5;
 
-                        if (Settings.NotifyOnTournamentResult && !isHistoricalEventPopulation)
-                        {
-                            SendNotification(NewTournamentNotificationTitle, NewTournamentNotificationDescription);
-                            await UpdateBadgeIfNeeded();
-                        }
-
                         foreach (var unseenTournament in unseenTournaments.OrderBy(n => n))
                         {
                             var result = results.Results.Single(n => n.TournamentId == unseenTournament);
@@ -59,6 +53,12 @@ namespace Ifpa.Services
                             };
 
                             await Settings.LocalDatabase.CreateActivityFeedRecord(record);
+                            
+                            if (Settings.NotifyOnTournamentResult && !isHistoricalEventPopulation)
+                            {
+                                SendNotification(NewTournamentNotificationTitle, string.Format(NewTournamentNotificationDescription, result.TournamentName));
+                                await UpdateBadgeIfNeeded();
+                            }
                         }
                     }
                 }
