@@ -21,6 +21,8 @@ namespace Ifpa.Views
 
             BindingContext = this.viewModel = viewModel;
             ((CalendarDetailViewModel)BindingContext).PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(async (s, e) => await CalendarDetailPage_PropertyChanged(s, e)) ;
+
+            viewModel.LoadItemsCommand.Execute(null);
         }
 
         private async Task CalendarDetailPage_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -28,24 +30,23 @@ namespace Ifpa.Views
             //when busy is flipped back to false it means we are done loading the address
             if (e.PropertyName == "IsBusy" && viewModel.IsBusy == false)
             {
-                var locations =  await Geocoding.GetLocationsAsync(viewModel.Address1 + " " + viewModel.City + ", " + viewModel.State);                                                        
-
-                var position = new Position(locations.First().Latitude, locations.First().Longitude);
-                calendarMap.MoveToRegion(new MapSpan(position, 0.1, 0.1));
-                calendarMap.Pins.Add(new Pin
+                try
                 {
-                    Label = viewModel.TournamentName,
-                    Position = position
-                });
-                calendarMap.IsVisible = true;
+                    var locations = await Geocoding.GetLocationsAsync(viewModel.Address1 + " " + viewModel.City + ", " + viewModel.State);
+
+                    var position = new Position(locations.First().Latitude, locations.First().Longitude);
+                    calendarMap.MoveToRegion(new MapSpan(position, 0.1, 0.1));
+                    calendarMap.Pins.Add(new Pin
+                    {
+                        Label = viewModel.TournamentName,
+                        Position = position
+                    });
+
+                    calendarMap.IsVisible = true;
+                }
+                //unable to geocode position on the map, ignore. 
+                catch { }                
             }
-        }
-
-        protected async override void OnAppearing()
-        {
-            base.OnAppearing();          
-
-            viewModel.LoadItemsCommand.Execute(null);
         }
 
         private async void WebsiteLabel_Tapped(object sender, EventArgs e)
