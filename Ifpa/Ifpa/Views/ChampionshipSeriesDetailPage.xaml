@@ -40,33 +40,33 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                
-                                    <Label HorizontalOptions="StartAndExpand" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10" HorizontalTextAlignment="Start">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <FormattedString.Spans>
-                                                    <Span Text="Event Count:" />
-                                                    <Span Text=" " />
-                                                    <Span Text="{Binding EventCount}" />
-                                                </FormattedString.Spans>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label HorizontalOptions="StartAndExpand" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10" HorizontalTextAlignment="Start">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <FormattedString.Spans>
-                                                    <Span Text="Win Count:" />
-                                                    <Span Text=" " />
-                                                    <Span Text="{Binding WinCount}" />
-                                                </FormattedString.Spans>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Label HorizontalOptions="CenterAndExpand"  Text="{Binding WpprPoints, StringFormat='{0:N2}'}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10" />
-                                </StackLayout>
+                                <Label HorizontalOptions="StartAndExpand"  Text="{Binding WpprPoints, StringFormat='{0:N2}'}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10" />
                             </StackLayout>
+
+                            <StackLayout Orientation="Vertical" Padding="10">
+                                <Label HorizontalOptions="StartAndExpand" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" HorizontalTextAlignment="Start">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <FormattedString.Spans>
+                                                <Span Text="Event Count:" />
+                                                <Span Text=" " />
+                                                <Span Text="{Binding EventCount}" />
+                                            </FormattedString.Spans>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label HorizontalOptions="StartAndExpand" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" HorizontalTextAlignment="Start">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <FormattedString.Spans>
+                                                <Span Text="Win Count:" />
+                                                <Span Text=" " />
+                                                <Span Text="{Binding WinCount}" />
+                                            </FormattedString.Spans>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>                         
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
