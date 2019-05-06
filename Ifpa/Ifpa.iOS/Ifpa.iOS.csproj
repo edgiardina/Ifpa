@@ -372,4 +372,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\favorite-outline%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\trophy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\trophy%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\trophy%403x.png" />
+  </ItemGroup>
 </Project>
