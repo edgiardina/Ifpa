@@ -100,11 +100,6 @@ namespace Ifpa.Views
             await Navigation.PushAsync(new PlayerVersusPlayerPage(new PlayerVersusPlayerViewModel(viewModel.PlayerId)));
         }
 
-        private async void Refresh_Clicked(object sender, EventArgs e)
-        {
-            viewModel.LoadItemsCommand.Execute(null);
-        }
-
         private async void StarButton_Clicked(object sender, EventArgs e)
         {
             if (!Settings.HasConfiguredMyStats)
@@ -194,6 +189,11 @@ namespace Ifpa.Views
                     ToolbarItems.SingleOrDefault(n => n.Text == "Favorite").Icon = "favorite-outline.png";
                 }
             }
+        }
+
+        private async void NACS_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PlayerChampionshipSeriesPage(new PlayerChampionshipSeriesViewModel(viewModel.PlayerId)));
         }
     }
 
