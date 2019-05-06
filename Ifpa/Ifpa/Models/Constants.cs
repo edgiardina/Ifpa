@@ -12,5 +12,6 @@ namespace Ifpa.Models
         public static string PlayStoreAppId => "com.edgiardina.ifpa";
         public static double MetersInAMile => 1609.344;
         public static string IfpaRssFeedUrl => "https://www.ifpapinball.com/feed/";
+        public static string PlayerProfileNoPicUrl => "https://www.ifpapinball.com/images/noplayerpic.png";
     }
 }

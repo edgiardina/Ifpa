@@ -1,10 +1,9 @@
-﻿using PinballApi.Extensions;
+﻿using Ifpa.Models;
+using PinballApi.Extensions;
 using PinballApi.Models.v2.WPPR;
 using PinballApi.Models.WPPR.v2.Players;
 using System;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -74,7 +73,10 @@ namespace Ifpa.ViewModels
         {
             get
             {
-                return PlayerRecord.ProfilePhoto?.ToString();
+                if (PlayerRecord.ProfilePhoto != null)
+                    return PlayerRecord.ProfilePhoto?.ToString();
+                else
+                    return Constants.PlayerProfileNoPicUrl;
             }
         }
 
