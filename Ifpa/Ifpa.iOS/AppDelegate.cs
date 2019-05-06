@@ -34,6 +34,8 @@ namespace Ifpa.iOS
             Syncfusion.XForms.iOS.Buttons.SfChipRenderer.Init();
             Syncfusion.XForms.iOS.Buttons.SfChipGroupRenderer.Init();
             
+            Syncfusion.XForms.iOS.Expander.SfExpanderRenderer.Init();
+
 
             // Get possible shortcut item
             if (options != null)

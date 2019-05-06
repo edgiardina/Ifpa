@@ -3,13 +3,15 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using PinballApi.Models.WPPR.v1.Tournaments;
+using PinballApi.Models.WPPR.v2.Tournaments;
 
 namespace Ifpa.ViewModels
 {
     public class TournamentResultsViewModel : BaseViewModel
     {
-        public ObservableCollection<Result> Results { get; set; }
+        public ObservableCollection<TournamentResult> Results { get; set; }
+
+        public Tournament TournamentDetails { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         public int TournamentId { get; set; }
@@ -18,7 +20,7 @@ namespace Ifpa.ViewModels
         {
             Title = "Tournament Results";
             this.TournamentId = tournamentId;
-            Results = new ObservableCollection<Result>();
+            Results = new ObservableCollection<TournamentResult>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
 
@@ -32,14 +34,16 @@ namespace Ifpa.ViewModels
             try
             {
                 Results.Clear();
-                var tournamentResults = await PinballRankingApi.GetTournamentResults(TournamentId);
+                var tournamentResults = await PinballRankingApiV2.GetTournamentResults(TournamentId);
+                TournamentDetails = await PinballRankingApiV2.GetTournament(TournamentId);
 
                 foreach (var item in tournamentResults.Results)
                 {                 
                     Results.Add(item);
                 }
 
-                Title = tournamentResults.TournamentName;
+                Title = TournamentDetails.TournamentName;
+                OnPropertyChanged(nameof(TournamentDetails));
             }
             catch (Exception ex)
             {
