@@ -24,6 +24,7 @@
     <PackageReference Include="sqlite-net-pcl" Version="1.5.231" />
     <PackageReference Include="Syncfusion.Licensing" Version="17.1.0.43" />
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="17.1.0.43" />
+    <PackageReference Include="Syncfusion.Xamarin.Expander" Version="17.1.0.43" />
     <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="17.1.0.43" />
     <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="17.1.0.43" />
     <PackageReference Include="Xamarin.Badge.Plugin" Version="2.0.0" />
