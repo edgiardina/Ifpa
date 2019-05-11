@@ -3,7 +3,8 @@ using Xamarin.Forms.Xaml;
 using Ifpa.ViewModels;
 using PinballApi.Models.WPPR.v1.Rankings;
 using Xamarin.Essentials;
-using PinballApi.Models.WPPR.v1.Statistics;
+using PinballApi.Models.WPPR.v2;
+using System;
 
 namespace Ifpa.Views
 {
@@ -18,6 +19,10 @@ namespace Ifpa.Views
 
             BindingContext = viewModel = new RankingsViewModel();
             PlayerListViewIndexConverter.BindingContext = viewModel;
+            RankingTypePicker.SelectedIndex = 0;
+
+            CountryPicker.IsVisible = false;
+            CountryLabel.IsVisible = false;
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -40,7 +45,7 @@ namespace Ifpa.Views
             {
                 viewModel.CountOfItemsToFetch = Preferences.Get("PlayerCount", viewModel.CountOfItemsToFetch);
                 viewModel.StartingPosition = Preferences.Get("StartingRank", viewModel.StartingPosition);
-                viewModel.CountryToShow = new PlayersByCountryStat { CountryName = Preferences.Get("CountryName", viewModel.OverallRankings.CountryName) };
+                viewModel.CountryToShow = viewModel.DefaultCountry;
 
                 viewModel.LoadItemsCommand.Execute(null);
             }
@@ -66,9 +71,24 @@ namespace Ifpa.Views
             viewModel.LoadItemsCommand.Execute(null);
         }
 
-        private void ToolbarItem_Clicked(object sender, System.EventArgs e)
+        private void RankingType_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            FilterTable.IsVisible = !FilterTable.IsVisible;
+            var selectedType = (RankingType)Enum.Parse(typeof(RankingType), ((Picker)sender).SelectedItem as string);
+
+            if (selectedType == RankingType.Country)
+            {
+                CountryPicker.IsVisible = true;
+                CountryLabel.IsVisible = true;
+            }
+            else
+            {
+                CountryPicker.IsVisible = false;
+                CountryLabel.IsVisible = false;
+                viewModel.CountryToShow = viewModel.DefaultCountry;
+            }
+
+            viewModel.CurrentRankingType = selectedType;
+            viewModel.LoadItemsCommand.Execute(null);
         }
     }
 }
