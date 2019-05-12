@@ -1,10 +1,10 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Ifpa.ViewModels;
-using PinballApi.Models.WPPR.v1.Rankings;
 using Xamarin.Essentials;
 using PinballApi.Models.WPPR.v2;
 using System;
+using PinballApi.Models.WPPR.v2.Rankings;
 
 namespace Ifpa.Views
 {
@@ -27,7 +27,7 @@ namespace Ifpa.Views
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var player = args.SelectedItem as Ranking;
+            var player = args.SelectedItem as RankingResult;
             if (player == null)
                 return;
 

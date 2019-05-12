@@ -41,6 +41,7 @@ namespace Ifpa.ViewModels
             {
                 var types = Enum.GetNames(typeof(RankingType)).ToList();
                 types.Remove("WPPR");
+                types.Remove("Elite");
                 return types;
             }
         }
