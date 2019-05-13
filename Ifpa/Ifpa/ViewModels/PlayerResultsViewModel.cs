@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using PinballApi.Models.WPPR.v2.Players;
 using PinballApi.Models.WPPR.v2;
+using System.Collections.Generic;
 
 namespace Ifpa.ViewModels
 {
@@ -16,6 +17,8 @@ namespace Ifpa.ViewModels
         public ResultType State { get; set; }
         public RankingType RankingType { get; set; }
 
+        public RankingType[] RankingTypeOptions => new[] { RankingType.Main, RankingType.Women, RankingType.Youth };
+     
         public bool ShowRankingTypeChoice { get; set; }
 
         private int playerId;
