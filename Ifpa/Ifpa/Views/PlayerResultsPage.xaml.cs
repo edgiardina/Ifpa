@@ -59,7 +59,7 @@ namespace Ifpa.Views
 
         private void RankingProfileButton_Clicked(object sender, System.EventArgs e)
         {
-            navigationDrawer.ToggleDrawer();
+            popupLayout.IsOpen = true;
         }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -68,7 +68,7 @@ namespace Ifpa.Views
             {
                 viewModel.RankingType = (RankingType)Enum.Parse(typeof(RankingType), e.SelectedItem.ToString());           
                 viewModel.LoadItemsCommand.Execute(null);
-                navigationDrawer.IsOpen = false;
+                popupLayout.IsOpen = false;
             }
         }
     }

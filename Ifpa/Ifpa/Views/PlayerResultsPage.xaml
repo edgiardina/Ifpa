@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              xmlns:navigationdrawer="clr-namespace:Syncfusion.SfNavigationDrawer.XForms;assembly=Syncfusion.SfNavigationDrawer.XForms"
+             xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
              x:Class="Ifpa.Views.PlayerResultsPage"
              Title="{Binding Title}">
     <ContentPage.Resources>
@@ -14,29 +15,37 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Ranking Profile" IsEnabled="{Binding ShowRankingTypeChoice}" x:Name="RankingProfileButton" Clicked="RankingProfileButton_Clicked" Icon="activity_feed.png" />
     </ContentPage.ToolbarItems>
-    <navigationdrawer:SfNavigationDrawer x:Name="navigationDrawer" DrawerWidth="200" Position="Right" DrawerHeaderHeight="0">
-        <navigationdrawer:SfNavigationDrawer.DrawerContentView>
-            <StackLayout VerticalOptions="Start" BackgroundColor="White">
-                <Label Text="Ranking Profile" FontSize="16" Margin="10,10,10,10" VerticalOptions="Start" />
-                <ListView x:Name="listView" SelectedItem="Main" ItemSelected="ListView_ItemSelected" HeightRequest="150">
-                    <ListView.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Main</x:String>
-                            <x:String>Women</x:String>
-                            <x:String>Youth</x:String>
-                        </x:Array>
-                    </ListView.ItemsSource>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Label Text="{Binding}" Margin="10,10,10,10" />                          
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
-        </navigationdrawer:SfNavigationDrawer.DrawerContentView>
-        <navigationdrawer:SfNavigationDrawer.ContentView>
+
+    <sfPopup:SfPopupLayout x:Name="popupLayout" >
+        <sfPopup:SfPopupLayout.PopupView>
+
+            <sfPopup:PopupView ShowFooter="False" ShowHeader="False">
+                <sfPopup:PopupView.PopupStyle>
+                    <sfPopup:PopupStyle
+                                    BorderThickness="3"
+                                    CornerRadius="5"
+                                    />
+                </sfPopup:PopupView.PopupStyle>
+                <sfPopup:PopupView.ContentTemplate>
+                    <DataTemplate>
+                        <StackLayout VerticalOptions="Start" BackgroundColor="White">
+                            <Label Text="Ranking Profile" FontSize="16" Margin="10,10,10,10" VerticalOptions="Start" />
+                            <ListView x:Name="listView" SelectedItem="{Binding RankingType, Mode=OneWay}" ItemSelected="ListView_ItemSelected" HeightRequest="150"
+                                      ItemsSource="{Binding RankingTypeOptions, Mode=OneWay}">                          
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Label Text="{Binding}" Margin="10,10,10,10" />
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </DataTemplate>
+                </sfPopup:PopupView.ContentTemplate>
+            </sfPopup:PopupView>
+        </sfPopup:SfPopupLayout.PopupView>
+        <sfPopup:SfPopupLayout.Content>
             <StackLayout>
                 <tabView:SfTabView VisibleHeaderCount="3" SelectionChanged="SfTabView_SelectionChanged" 
                                 HeightRequest="50" TabHeaderBackgroundColor="#66FFFFFF">
@@ -87,6 +96,6 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-        </navigationdrawer:SfNavigationDrawer.ContentView>
-    </navigationdrawer:SfNavigationDrawer>
+        </sfPopup:SfPopupLayout.Content>
+    </sfPopup:SfPopupLayout>
 </ContentPage>
