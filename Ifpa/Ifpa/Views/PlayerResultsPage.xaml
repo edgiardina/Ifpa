@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
-             xmlns:navigationdrawer="clr-namespace:Syncfusion.SfNavigationDrawer.XForms;assembly=Syncfusion.SfNavigationDrawer.XForms"
              xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
              x:Class="Ifpa.Views.PlayerResultsPage"
              Title="{Binding Title}">
@@ -16,21 +15,24 @@
         <ToolbarItem Text="Ranking Profile" IsEnabled="{Binding ShowRankingTypeChoice}" x:Name="RankingProfileButton" Clicked="RankingProfileButton_Clicked" Icon="activity_feed.png" />
     </ContentPage.ToolbarItems>
 
-    <sfPopup:SfPopupLayout x:Name="popupLayout" >
+    <sfPopup:SfPopupLayout x:Name="popupLayout">
         <sfPopup:SfPopupLayout.PopupView>
-
-            <sfPopup:PopupView ShowFooter="False" ShowHeader="False">
+            <sfPopup:PopupView HeightRequest="188" ShowFooter="False" ShowHeader="False">
                 <sfPopup:PopupView.PopupStyle>
-                    <sfPopup:PopupStyle
+                    <sfPopup:PopupStyle                        
                                     BorderThickness="3"
                                     CornerRadius="5"
                                     />
                 </sfPopup:PopupView.PopupStyle>
                 <sfPopup:PopupView.ContentTemplate>
                     <DataTemplate>
-                        <StackLayout VerticalOptions="Start" BackgroundColor="White">
-                            <Label Text="Ranking Profile" FontSize="16" Margin="10,10,10,10" VerticalOptions="Start" />
-                            <ListView x:Name="listView" SelectedItem="{Binding RankingType, Mode=OneWay}" ItemSelected="ListView_ItemSelected" HeightRequest="150"
+                        <Grid BackgroundColor="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="1" Text="Ranking Profile" FontSize="16" Margin="10,10,10,10" VerticalOptions="Start" />
+                            <ListView SeparatorVisibility="None" VerticalOptions="Fill" Grid.Row="2" x:Name="listView" SelectedItem="{Binding RankingType, Mode=OneWay}" ItemSelected="ListView_ItemSelected"
                                       ItemsSource="{Binding RankingTypeOptions, Mode=OneWay}">                          
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
@@ -40,7 +42,7 @@
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
-                        </StackLayout>
+                        </Grid>
                     </DataTemplate>
                 </sfPopup:PopupView.ContentTemplate>
             </sfPopup:PopupView>

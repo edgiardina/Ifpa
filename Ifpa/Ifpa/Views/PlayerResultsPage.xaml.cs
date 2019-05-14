@@ -59,7 +59,7 @@ namespace Ifpa.Views
 
         private void RankingProfileButton_Clicked(object sender, System.EventArgs e)
         {
-            popupLayout.IsOpen = true;
+            popupLayout.Show();
         }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
