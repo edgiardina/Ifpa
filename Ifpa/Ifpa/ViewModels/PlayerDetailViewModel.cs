@@ -1,8 +1,9 @@
-﻿using PinballApi.Extensions;
-using PinballApi.Models.WPPR.v1.Players;
+﻿using Ifpa.Models;
+using PinballApi.Extensions;
+using PinballApi.Models.v2.WPPR;
+using PinballApi.Models.WPPR.v2.Players;
 using System;
 using System.Collections.ObjectModel;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -15,9 +16,9 @@ namespace Ifpa.ViewModels
 
         public int PlayerId { get; set; }
         public int LastTournamentCount { get; set; }
-        private PlayerRecord playerRecord = new PlayerRecord { Player = new Player { }, PlayerStats = new PlayerStats { } };
+        private Player playerRecord = new Player { PlayerStats = new PinballApi.Models.WPPR.v1.Players.PlayerStats { }, ChampionshipSeries = new System.Collections.Generic.List<ChampionshipSeries> { } };
 
-        public PlayerRecord PlayerRecord
+        public Player PlayerRecord
         {
             get { return playerRecord; }
             set
@@ -30,7 +31,7 @@ namespace Ifpa.ViewModels
 
         public ObservableCollection<RatingHistory> PlayerRatingHistory { get; set; }
 
-        public string Name => PlayerRecord.Player.FirstName + " " + PlayerRecord.Player.LastName;
+        public string Name => PlayerRecord.FirstName + " " + PlayerRecord.LastName;
 
         public string Rank => PlayerRecord.PlayerStats.CurrentWpprRank.OrdinalSuffix();
 
@@ -72,34 +73,21 @@ namespace Ifpa.ViewModels
         {
             get
             {
-                var actualUrl = $"https://www.ifpapinball.com/images/profiles/players/{PlayerId}.jpg";
-                var httpClient = new HttpClient();
-                //5 second timeout
-                httpClient.Timeout = new TimeSpan(0, 0, 5);
-
-                var uri = new Uri(actualUrl);
-                try
-                {
-                    using (var response = httpClient.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead).Result)
-                    {
-                        if (!response.IsSuccessStatusCode)
-                            return "https://www.ifpapinball.com/images/noplayerpic.png";
-                    }
-                }
-                catch
-                {
-                    return "https://www.ifpapinball.com/images/noplayerpic.png";
-                }
-                return actualUrl;
+                if (PlayerRecord.ProfilePhoto != null)
+                    return PlayerRecord.ProfilePhoto?.ToString();
+                else
+                    return Constants.PlayerProfileNoPicUrl;
             }
         }
 
-        public string CountryFlag => $"https://www.countryflags.io/{PlayerRecord.Player.CountryCode}/shiny/64.png";
+        public bool HasNacsData => PlayerRecord.ChampionshipSeries != null;
+
+        public string CountryFlag => $"https://www.countryflags.io/{PlayerRecord.CountryCode}/shiny/64.png";
 
         //Replace call at the end so that if a player is missing the 'state' we don't have an unsightly double space.
-        public string Location => $"{PlayerRecord.Player.City} {PlayerRecord.Player.State} {PlayerRecord.Player.CountryName}".Trim().Replace("  ", " ");
+        public string Location => $"{PlayerRecord.City} {PlayerRecord.StateProvince} {PlayerRecord.CountryName}".Trim().Replace("  ", " ");
 
-        public bool IsRegistered => PlayerRecord.Player.IfpaRegistered;
+        public bool IsRegistered => PlayerRecord.IfpaRegistered;
         
         public PlayerDetailViewModel(int playerId)
         {
@@ -115,14 +103,14 @@ namespace Ifpa.ViewModels
             {         
 
                 IsBusy = true;
-                var playerData = await PinballRankingApi.GetPlayerRecord(PlayerId);
-                var playerHistoryData = await PinballRankingApi.GetPlayerHistory(PlayerId);
-                LastTournamentCount = (await PinballRankingApi.GetPlayerResults(PlayerId)).ResultsCount;
+                var playerData = await PinballRankingApiV2.GetPlayer(PlayerId);
+                var playerHistoryData = await PinballRankingApiV2.GetPlayerHistory(PlayerId);
+                LastTournamentCount = (await PinballRankingApiV2.GetPlayerResults(PlayerId)).ResultsCount;
                 PlayerRankHistory = new ObservableCollection<RankHistory>(playerHistoryData.RankHistory);
                 PlayerRatingHistory = new ObservableCollection<RatingHistory>(playerHistoryData.RatingHistory);
 
                 PlayerRecord = playerData;
-                Title = PlayerRecord.Player.Initials.ToUpper();
+                Title = PlayerRecord.Initials.ToUpper();
 
                 if (PostPlayerLoadCommand != null)
                 {

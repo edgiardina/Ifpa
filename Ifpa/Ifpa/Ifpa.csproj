@@ -34,6 +34,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\ChampionshipSeriesPage.xaml.cs">
+      <DependentUpon>ChampionshipSeriesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\DataTemplates\ActivityFeedTournamentResultViewCell.xaml.cs">
       <DependentUpon>ActivityFeedTournamentResultViewCell.xaml</DependentUpon>
     </Compile>
@@ -45,6 +48,12 @@
     </Compile>
     <Compile Update="Views\FavoritesPage.xaml.cs">
       <DependentUpon>FavoritesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ChampionshipSeriesDetailPage.xaml.cs">
+      <DependentUpon>ChampionshipSeriesDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PlayerChampionshipSeriesPage.xaml.cs">
+      <DependentUpon>PlayerChampionshipSeriesPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\RulesPage.xaml.cs">
       <DependentUpon>RulesPage.xaml</DependentUpon>

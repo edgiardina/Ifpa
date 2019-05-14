@@ -190,6 +190,11 @@ namespace Ifpa.Views
                 }
             }
         }
+
+        private async void NACS_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PlayerChampionshipSeriesPage(new PlayerChampionshipSeriesViewModel(viewModel.PlayerId)));
+        }
     }
 
 
