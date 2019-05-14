@@ -72,6 +72,18 @@ namespace Ifpa.Droid
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.sfchart_others_label = global::Ifpa.Droid.Resource.String.sfchart_others_label;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.w = global::Ifpa.Droid.Resource.String.w;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.week = global::Ifpa.Droid.Resource.String.week;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.Drawable.inputlayout_togglecollapseicon = global::Ifpa.Droid.Resource.Drawable.inputlayout_togglecollapseicon;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.Drawable.inputlayout_togglevisibleicon = global::Ifpa.Droid.Resource.Drawable.inputlayout_togglevisibleicon;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.Drawable.popup_forms_android_close_icon = global::Ifpa.Droid.Resource.Drawable.popup_forms_android_close_icon;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.Drawable.popup_forms_android_shadow = global::Ifpa.Droid.Resource.Drawable.popup_forms_android_shadow;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.Drawable.popup_forms_dark_theme_close_icon = global::Ifpa.Droid.Resource.Drawable.popup_forms_dark_theme_close_icon;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.Drawable.popup_forms_light_theme_close_icon = global::Ifpa.Droid.Resource.Drawable.popup_forms_light_theme_close_icon;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.Id.BorderView = global::Ifpa.Droid.Resource.Id.BorderView;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.String.accept = global::Ifpa.Droid.Resource.String.accept;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.String.decline = global::Ifpa.Droid.Resource.String.decline;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.String.library_name = global::Ifpa.Droid.Resource.String.library_name;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.String.popup_message = global::Ifpa.Droid.Resource.String.popup_message;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.String.title = global::Ifpa.Droid.Resource.String.title;
 			global::Xamarin.Essentials.Resource.Attribute.alpha = global::Ifpa.Droid.Resource.Attribute.alpha;
 			global::Xamarin.Essentials.Resource.Attribute.coordinatorLayoutStyle = global::Ifpa.Droid.Resource.Attribute.coordinatorLayoutStyle;
 			global::Xamarin.Essentials.Resource.Attribute.font = global::Ifpa.Droid.Resource.Attribute.font;
@@ -5960,28 +5972,28 @@ namespace Ifpa.Droid
 			public const int activity_feed = 2130837588;
 			
 			// aapt resource value: 0x7f020055
-			public const int avd_hide_password = 2130837589;
+			public const int avd_hide_password = 2130837589;			
+
+			// aapt resource value: 0x7f02016c
+			public const int avd_hide_password_1 = 2130837868;
 			
-			// aapt resource value: 0x7f020167
-			public const int avd_hide_password_1 = 2130837863;
+			// aapt resource value: 0x7f02016d
+			public const int avd_hide_password_2 = 2130837869;
 			
-			// aapt resource value: 0x7f020168
-			public const int avd_hide_password_2 = 2130837864;
-			
-			// aapt resource value: 0x7f020169
-			public const int avd_hide_password_3 = 2130837865;
+			// aapt resource value: 0x7f02016e
+			public const int avd_hide_password_3 = 2130837870;
 			
 			// aapt resource value: 0x7f020056
 			public const int avd_show_password = 2130837590;
 			
-			// aapt resource value: 0x7f02016a
-			public const int avd_show_password_1 = 2130837866;
+			// aapt resource value: 0x7f02016f
+			public const int avd_show_password_1 = 2130837871;
 			
-			// aapt resource value: 0x7f02016b
-			public const int avd_show_password_2 = 2130837867;
+			// aapt resource value: 0x7f020170
+			public const int avd_show_password_2 = 2130837872;
 			
-			// aapt resource value: 0x7f02016c
-			public const int avd_show_password_3 = 2130837868;
+			// aapt resource value: 0x7f020171
+			public const int avd_show_password_3 = 2130837873;
 			
 			// aapt resource value: 0x7f020057
 			public const int calendar = 2130837591;
@@ -6742,12 +6754,12 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f020153
 			public const int notification_icon_background = 2130837843;
 			
-			// aapt resource value: 0x7f020165
-			public const int notification_template_icon_bg = 2130837861;
+			// aapt resource value: 0x7f02016a
+			public const int notification_template_icon_bg = 2130837866;
 			
-			// aapt resource value: 0x7f020166
-			public const int notification_template_icon_low_bg = 2130837862;
-			
+			// aapt resource value: 0x7f02016b
+			public const int notification_template_icon_low_bg = 2130837867;
+		
 			// aapt resource value: 0x7f020154
 			public const int notification_tile_bg = 2130837844;
 			
@@ -6758,43 +6770,61 @@ namespace Ifpa.Droid
 			public const int numbered_list = 2130837846;
 			
 			// aapt resource value: 0x7f020157
-			public const int rankchange = 2130837847;
+			public const int popup_forms_android_close_icon = 2130837847;
 			
 			// aapt resource value: 0x7f020158
-			public const int refresh = 2130837848;
+			public const int popup_forms_android_shadow = 2130837848;
 			
 			// aapt resource value: 0x7f020159
-			public const int ribbon = 2130837849;
+			public const int popup_forms_dark_theme_close_icon = 2130837849;
 			
 			// aapt resource value: 0x7f02015a
-			public const int rules = 2130837850;
+			public const int popup_forms_light_theme_close_icon = 2130837850;
 			
 			// aapt resource value: 0x7f02015b
-			public const int search = 2130837851;
+			public const int rankchange = 2130837851;
 			
 			// aapt resource value: 0x7f02015c
-			public const int settings = 2130837852;
+			public const int ranking_profile = 2130837852;
 			
 			// aapt resource value: 0x7f02015d
-			public const int share = 2130837853;
+			public const int refresh = 2130837853;
 			
 			// aapt resource value: 0x7f02015e
-			public const int splash_background = 2130837854;
+			public const int ribbon = 2130837854;
 			
 			// aapt resource value: 0x7f02015f
-			public const int star = 2130837855;
+			public const int rules = 2130837855;
 			
 			// aapt resource value: 0x7f020160
-			public const int stats = 2130837856;
+			public const int search = 2130837856;
 			
 			// aapt resource value: 0x7f020161
-			public const int tab_about = 2130837857;
+			public const int settings = 2130837857;
 			
 			// aapt resource value: 0x7f020162
-			public const int tooltip_frame_dark = 2130837858;
+			public const int share = 2130837858;
 			
 			// aapt resource value: 0x7f020163
-			public const int tooltip_frame_light = 2130837859;
+			public const int splash_background = 2130837859;
+			
+			// aapt resource value: 0x7f020164
+			public const int star = 2130837860;
+			
+			// aapt resource value: 0x7f020165
+			public const int stats = 2130837861;
+			
+			// aapt resource value: 0x7f020166
+			public const int tab_about = 2130837862;
+			
+			// aapt resource value: 0x7f020167
+			public const int tooltip_frame_dark = 2130837863;
+			
+			// aapt resource value: 0x7f020168
+			public const int tooltip_frame_light = 2130837864;
+			
+			// aapt resource value: 0x7f020169
+			public const int trophy = 2130837865;
 			
 			// aapt resource value: 0x7f020164
 			public const int trophy = 2130837860;
@@ -6814,6 +6844,9 @@ namespace Ifpa.Droid
 			
 			// aapt resource value: 0x7f0d0044
 			public const int ALT = 2131558468;
+			
+			// aapt resource value: 0x7f0d011f
+			public const int BorderView = 2131558687;
 			
 			// aapt resource value: 0x7f0d0045
 			public const int CTRL = 2131558469;
@@ -8092,8 +8125,8 @@ namespace Ifpa.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f0a0068
-			public const int ApplicationName = 2131361896;
+			// aapt resource value: 0x7f0a006d
+			public const int ApplicationName = 2131361901;
 			
 			// aapt resource value: 0x7f0a0029
 			public const int abc_action_bar_home_description = 2131361833;
@@ -8212,6 +8245,9 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0a0043
 			public const int abc_toolbar_collapse_description = 2131361859;
 			
+			// aapt resource value: 0x7f0a0062
+			public const int accept = 2131361890;
+			
 			// aapt resource value: 0x7f0a0051
 			public const int appbar_scrolling_view_behavior = 2131361873;
 			
@@ -8275,6 +8311,9 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0a0010
 			public const int common_signin_button_text_long = 2131361808;
 			
+			// aapt resource value: 0x7f0a0063
+			public const int decline = 2131361891;
+			
 			// aapt resource value: 0x7f0a0055
 			public const int fab_transformation_scrim_behavior = 2131361877;
 			
@@ -8283,6 +8322,9 @@ namespace Ifpa.Droid
 			
 			// aapt resource value: 0x7f0a0057
 			public const int hide_bottom_view_on_scroll_behavior = 2131361879;
+			
+			// aapt resource value: 0x7f0a005f
+			public const int library_name = 2131361887;
 			
 			// aapt resource value: 0x7f0a0011
 			public const int mr_button_content_description = 2131361809;
@@ -8374,50 +8416,56 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0a005d
 			public const int path_password_strike_through = 2131361885;
 			
-			// aapt resource value: 0x7f0a0060
-			public const int q = 2131361888;
+			// aapt resource value: 0x7f0a0061
+			public const int popup_message = 2131361889;
 			
-			// aapt resource value: 0x7f0a005f
-			public const int quarter = 2131361887;
+			// aapt resource value: 0x7f0a0065
+			public const int q = 2131361893;
 			
-			// aapt resource value: 0x7f0a006c
-			public const int rank_channel_description = 2131361900;
+			// aapt resource value: 0x7f0a0064
+			public const int quarter = 2131361892;
 			
-			// aapt resource value: 0x7f0a006b
-			public const int rank_channel_name = 2131361899;
+			// aapt resource value: 0x7f0a0071
+			public const int rank_channel_description = 2131361905;
+			
+			// aapt resource value: 0x7f0a0070
+			public const int rank_channel_name = 2131361904;
 			
 			// aapt resource value: 0x7f0a0044
 			public const int search_menu_title = 2131361860;
 			
-			// aapt resource value: 0x7f0a0066
-			public const int sfchart_close_label = 2131361894;
+			// aapt resource value: 0x7f0a006b
+			public const int sfchart_close_label = 2131361899;
 			
-			// aapt resource value: 0x7f0a0063
-			public const int sfchart_high_label = 2131361891;
+			// aapt resource value: 0x7f0a0068
+			public const int sfchart_high_label = 2131361896;
 			
-			// aapt resource value: 0x7f0a0064
-			public const int sfchart_low_label = 2131361892;
+			// aapt resource value: 0x7f0a0069
+			public const int sfchart_low_label = 2131361897;
 			
-			// aapt resource value: 0x7f0a0065
-			public const int sfchart_open_label = 2131361893;
+			// aapt resource value: 0x7f0a006a
+			public const int sfchart_open_label = 2131361898;
 			
-			// aapt resource value: 0x7f0a0067
-			public const int sfchart_others_label = 2131361895;
+			// aapt resource value: 0x7f0a006c
+			public const int sfchart_others_label = 2131361900;
 			
 			// aapt resource value: 0x7f0a005e
 			public const int status_bar_notification_info_overflow = 2131361886;
 			
-			// aapt resource value: 0x7f0a006a
-			public const int tournament_channel_description = 2131361898;
+			// aapt resource value: 0x7f0a0060
+			public const int title = 2131361888;
 			
-			// aapt resource value: 0x7f0a0069
-			public const int tournament_channel_name = 2131361897;
+			// aapt resource value: 0x7f0a006f
+			public const int tournament_channel_description = 2131361903;
 			
-			// aapt resource value: 0x7f0a0062
-			public const int w = 2131361890;
+			// aapt resource value: 0x7f0a006e
+			public const int tournament_channel_name = 2131361902;
 			
-			// aapt resource value: 0x7f0a0061
-			public const int week = 2131361889;
+			// aapt resource value: 0x7f0a0067
+			public const int w = 2131361895;
+			
+			// aapt resource value: 0x7f0a0066
+			public const int week = 2131361894;
 			
 			static String()
 			{
