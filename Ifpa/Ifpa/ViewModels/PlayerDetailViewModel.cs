@@ -4,6 +4,7 @@ using PinballApi.Models.v2.WPPR;
 using PinballApi.Models.WPPR.v2.Players;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -89,9 +90,11 @@ namespace Ifpa.ViewModels
 
         public bool IsRegistered => PlayerRecord.IfpaRegistered;
         
-        public PlayerDetailViewModel(int playerId)
+        public PlayerDetailViewModel(int? playerId = null)
         {
-            this.PlayerId = playerId;
+            if (playerId.HasValue)
+                PlayerId = playerId.Value;
+
             PlayerRankHistory = new ObservableCollection<RankHistory>();
             PlayerRatingHistory = new ObservableCollection<RatingHistory>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
@@ -100,24 +103,29 @@ namespace Ifpa.ViewModels
         async Task ExecuteLoadItemsCommand()
         {
             try
-            {         
-
-                IsBusy = true;
-                var playerData = await PinballRankingApiV2.GetPlayer(PlayerId);
-                var playerHistoryData = await PinballRankingApiV2.GetPlayerHistory(PlayerId);
-                LastTournamentCount = (await PinballRankingApiV2.GetPlayerResults(PlayerId)).ResultsCount;
-                PlayerRankHistory = new ObservableCollection<RankHistory>(playerHistoryData.RankHistory);
-                PlayerRatingHistory = new ObservableCollection<RatingHistory>(playerHistoryData.RatingHistory);
-
-                PlayerRecord = playerData;
-                Title = PlayerRecord.Initials.ToUpper();
-
-                if (PostPlayerLoadCommand != null)
+            {
+                if (PlayerId > 0)
                 {
-                    PostPlayerLoadCommand.Execute(null);
+                    IsBusy = true;
+                    var playerData = await PinballRankingApiV2.GetPlayer(PlayerId);
+                    var playerHistoryData = await PinballRankingApiV2.GetPlayerHistory(PlayerId);
+                    LastTournamentCount = (await PinballRankingApiV2.GetPlayerResults(PlayerId)).ResultsCount;
+                    PlayerRankHistory = new ObservableCollection<RankHistory>(playerHistoryData.RankHistory);
+                    PlayerRatingHistory = new ObservableCollection<RatingHistory>(playerHistoryData.RatingHistory);
+
+                    PlayerRecord = playerData;
+                    Title = PlayerRecord.Initials.ToUpper();
+
+                    if (PostPlayerLoadCommand != null)
+                    {
+                        PostPlayerLoadCommand.Execute(null);
+                    }
                 }
             }
-            catch(Exception ex) { }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
             finally
             {
                 IsBusy = false;
