@@ -29,9 +29,7 @@ namespace Ifpa.Views
             InitializeComponent();
 
             LoadMyStats = true;
-
-            BindingContext = this.viewModel = new PlayerDetailViewModel(0);
-
+            BindingContext = this.viewModel = new PlayerDetailViewModel();
             viewModel.IsBusy = true;
         }
 
