@@ -31,7 +31,7 @@
             <!--TODO: -->
             <BoxView Color="CornflowerBlue"
                  IsVisible="{Binding HasBeenSeen, Mode=OneWay, Converter={StaticResource inverter}}"
-                 CornerRadius="11"                     
+                 CornerRadius="6"                     
                  WidthRequest="12"
                  HeightRequest="12"
                  VerticalOptions="Center"

@@ -49,7 +49,8 @@ namespace Ifpa.Services
                                 HasBeenSeen = isHistoricalEventPopulation,
                                 RecordID = result.TournamentId,
                                 IntOne = result.Position,
-                                ActivityType = ActivityFeedType.TournamentResult
+                                ActivityType = ActivityFeedType.TournamentResult,
+                                Description = result.TournamentName
                             };
 
                             await Settings.LocalDatabase.CreateActivityFeedRecord(record);
