@@ -52,7 +52,7 @@ namespace Ifpa.ViewModels
 
         public string HighestRank => PlayerRecord.PlayerStats.HighestRank.OrdinalSuffix();
 
-        public DateTime HighestRankDate => PlayerRecord.PlayerStats.HighestRankDate;
+        public DateTime? HighestRankDate => PlayerRecord.PlayerStats.HighestRankDate;
 
         public double TotalWpprs => PlayerRecord.PlayerStats.WpprPointsAllTime;
 
@@ -110,8 +110,12 @@ namespace Ifpa.ViewModels
                     var playerData = await PinballRankingApiV2.GetPlayer(PlayerId);
                     var playerHistoryData = await PinballRankingApiV2.GetPlayerHistory(PlayerId);
                     LastTournamentCount = (await PinballRankingApiV2.GetPlayerResults(PlayerId)).ResultsCount;
-                    PlayerRankHistory = new ObservableCollection<RankHistory>(playerHistoryData.RankHistory);
-                    PlayerRatingHistory = new ObservableCollection<RatingHistory>(playerHistoryData.RatingHistory);
+
+                    if(playerHistoryData.RankHistory != null)
+                        PlayerRankHistory = new ObservableCollection<RankHistory>(playerHistoryData.RankHistory);
+
+                    if (playerHistoryData.RatingHistory != null)
+                        PlayerRatingHistory = new ObservableCollection<RatingHistory>(playerHistoryData.RatingHistory);
 
                     PlayerRecord = playerData;
                     Title = PlayerRecord.Initials.ToUpper();
