@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.3" />
-    <PackageReference Include="PinballApi" Version="2.0.43" />
+    <PackageReference Include="PinballApi" Version="2.0.44" />
     <PackageReference Include="Microsoft.Toolkit.Parsers" Version="5.1.1" />
     <PackageReference Include="sqlite-net-pcl" Version="1.5.231" />
     <PackageReference Include="Syncfusion.Licensing" Version="17.1.0.43" />
