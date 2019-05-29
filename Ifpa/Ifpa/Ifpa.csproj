@@ -24,6 +24,7 @@
     <PackageReference Include="sqlite-net-pcl" Version="1.5.231" />
     <PackageReference Include="Syncfusion.Licensing" Version="17.1.0.43" />
     <PackageReference Include="Syncfusion.Xamarin.Expander" Version="17.1.0.43" />
+    <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="17.1.0.43" />
     <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="17.1.0.43" />
     <PackageReference Include="Syncfusion.Xamarin.SfPopupLayout" Version="17.1.0.43" />
     <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="17.1.0.43" />

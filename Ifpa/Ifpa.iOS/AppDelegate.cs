@@ -33,6 +33,7 @@ namespace Ifpa.iOS
             Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
             Syncfusion.XForms.iOS.PopupLayout.SfPopupLayoutRenderer.Init();
             Syncfusion.XForms.iOS.Expander.SfExpanderRenderer.Init();
+            Syncfusion.SfCalendar.XForms.iOS.SfCalendarRenderer.Init();
 
 
             // Get possible shortcut item
