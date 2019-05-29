@@ -147,5 +147,11 @@ namespace Ifpa.Views
             // Manually deselect item.
             TournamentListView.SelectedItem = null;
         }
+
+        private async void Calendar_InlineItemTapped(object sender, Syncfusion.SfCalendar.XForms.InlineItemTappedEventArgs e)
+        {
+            var calendarEvent = e.InlineEvent as InlineCalendarItem;
+            await Navigation.PushAsync(new CalendarDetailPage(new CalendarDetailViewModel(calendarEvent.CalendarId)));
+        }
     }
 }
