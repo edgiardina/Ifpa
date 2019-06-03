@@ -9,6 +9,7 @@ using Xamarin.Forms.Maps;
 using System.Diagnostics;
 using PinballApi.Models.WPPR.v1.Calendar;
 using Ifpa.Models;
+using Syncfusion.SfCalendar.XForms;
 
 namespace Ifpa.Views
 {
@@ -148,10 +149,11 @@ namespace Ifpa.Views
             TournamentListView.SelectedItem = null;
         }
 
-        private async void Calendar_InlineItemTapped(object sender, Syncfusion.SfCalendar.XForms.InlineItemTappedEventArgs e)
+        private async void Calendar_InlineItemTapped(object sender, InlineItemTappedEventArgs e)
         {
             var calendarEvent = e.InlineEvent as InlineCalendarItem;
             await Navigation.PushAsync(new CalendarDetailPage(new CalendarDetailViewModel(calendarEvent.CalendarId)));
         }
+
     }
 }
