@@ -47,8 +47,8 @@ namespace Ifpa.ViewModels
                         {
                             CalendarId = item.CalendarId,
                             Subject = item.TournamentName,
-                            StartTime = item.StartDate,
-                            EndTime = item.EndDate,
+                            StartTime = item.StartDate.Date,
+                            EndTime = item.EndDate.Date,
                             IsAllDay = true
                         });
                     }

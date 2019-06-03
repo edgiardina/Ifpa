@@ -28,12 +28,10 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <Label Text="Location" Grid.Row="0" Grid.Column="0" />
-                    <Entry Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Placeholder="Chicago, Illinois" Text="Chicago, Illinois" x:Name="LocationEntry" />
+                    <Entry Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="20,0,5,0" Placeholder="Chicago, Illinois" Text="Chicago, Illinois" x:Name="LocationEntry" />
 
                     <Label Text="Distance" Grid.Row="1" Grid.Column="0" />
                     <Slider Grid.Row="1" Grid.Column="1" MinimumTrackColor="#007AFF" MaximumTrackColor="Gray" Margin="20,0,5,0" HorizontalOptions="FillAndExpand" Maximum="1000" Minimum="10" Value="250" ValueChanged="Slider_ValueChanged" x:Name="DistanceSlider" />
@@ -78,7 +76,7 @@
             </tabView:SfTabItem>
             <tabView:SfTabItem Title="Calendar">
                 <tabView:SfTabItem.Content>
-                    <syncfusion1:SfCalendar x:Name="calendar" InlineItemTapped="Calendar_InlineItemTapped"
+                    <syncfusion1:SfCalendar NavigationDirection="Vertical" x:Name="calendar" InlineItemTapped="Calendar_InlineItemTapped" 
                                             ViewMode="MonthView" ShowInlineEvents="True" InlineViewMode="Inline"
                                             DataSource="{Binding InlineCalendarItems}" />
                 </tabView:SfTabItem.Content>

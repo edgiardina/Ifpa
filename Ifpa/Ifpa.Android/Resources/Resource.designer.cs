@@ -30,6 +30,19 @@ namespace Ifpa.Droid
 			global::Syncfusion.XForms.Android.Core.Resource.Drawable.inputlayout_togglevisibleicon = global::Ifpa.Droid.Resource.Drawable.inputlayout_togglevisibleicon;
 			global::Syncfusion.XForms.Android.Expander.Resource.Drawable.inputlayout_togglecollapseicon = global::Ifpa.Droid.Resource.Drawable.inputlayout_togglecollapseicon;
 			global::Syncfusion.XForms.Android.Expander.Resource.Drawable.inputlayout_togglevisibleicon = global::Ifpa.Droid.Resource.Drawable.inputlayout_togglevisibleicon;
+			global::Syncfusion.SfCalendar.XForms.Droid.Resource.Dimension.activity_horizontal_margin = global::Ifpa.Droid.Resource.Dimension.activity_horizontal_margin;
+			global::Syncfusion.SfCalendar.XForms.Droid.Resource.Dimension.activity_vertical_margin = global::Ifpa.Droid.Resource.Dimension.activity_vertical_margin;
+			global::Syncfusion.SfCalendar.XForms.Droid.Resource.Dimension.date_text_size = global::Ifpa.Droid.Resource.Dimension.date_text_size;
+			global::Syncfusion.SfCalendar.XForms.Droid.Resource.Dimension.date_text_tab_size = global::Ifpa.Droid.Resource.Dimension.date_text_tab_size;
+			global::Syncfusion.SfCalendar.XForms.Droid.Resource.Dimension.month_row_size = global::Ifpa.Droid.Resource.Dimension.month_row_size;
+			global::Syncfusion.SfCalendar.XForms.Droid.Resource.Dimension.month_row_tab_size = global::Ifpa.Droid.Resource.Dimension.month_row_tab_size;
+			global::Syncfusion.SfCalendar.XForms.Droid.Resource.Dimension.month_text_size = global::Ifpa.Droid.Resource.Dimension.month_text_size;
+			global::Syncfusion.SfCalendar.XForms.Droid.Resource.Dimension.month_text_tab_size = global::Ifpa.Droid.Resource.Dimension.month_text_tab_size;
+			global::Syncfusion.SfCalendar.XForms.Droid.Resource.Drawable.Icon = global::Ifpa.Droid.Resource.Drawable.Icon;
+			global::Syncfusion.SfCalendar.XForms.Droid.Resource.Drawable.inputlayout_togglecollapseicon = global::Ifpa.Droid.Resource.Drawable.inputlayout_togglecollapseicon;
+			global::Syncfusion.SfCalendar.XForms.Droid.Resource.Drawable.inputlayout_togglevisibleicon = global::Ifpa.Droid.Resource.Drawable.inputlayout_togglevisibleicon;
+			global::Syncfusion.SfCalendar.XForms.Droid.Resource.String.sfcalendar_inlineviewalldaytext = global::Ifpa.Droid.Resource.String.sfcalendar_inlineviewalldaytext;
+			global::Syncfusion.SfCalendar.XForms.Droid.Resource.String.sfcalendar_inlineviewnoappointmenttext = global::Ifpa.Droid.Resource.String.sfcalendar_inlineviewnoappointmenttext;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.Animation.SfChart_Fade_In = global::Ifpa.Droid.Resource.Animation.SfChart_Fade_In;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.Animation.SfChart_Fade_Out = global::Ifpa.Droid.Resource.Animation.SfChart_Fade_Out;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.Animation.SfChart_Scale_In = global::Ifpa.Droid.Resource.Animation.SfChart_Scale_In;
@@ -5244,6 +5257,12 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c0012
 			public const int abc_text_size_title_material_toolbar = 2131492882;
 			
+			// aapt resource value: 0x7f0c00e3
+			public const int activity_horizontal_margin = 2131493091;
+			
+			// aapt resource value: 0x7f0c00e4
+			public const int activity_vertical_margin = 2131493092;
+			
 			// aapt resource value: 0x7f0c00cb
 			public const int browser_actions_context_menu_max_width = 2131493067;
 			
@@ -5279,6 +5298,12 @@ namespace Ifpa.Droid
 			
 			// aapt resource value: 0x7f0c00d7
 			public const int compat_notification_large_icon_max_width = 2131493079;
+			
+			// aapt resource value: 0x7f0c00e5
+			public const int date_text_size = 2131493093;
+			
+			// aapt resource value: 0x7f0c00e6
+			public const int date_text_tab_size = 2131493094;
 			
 			// aapt resource value: 0x7f0c0077
 			public const int design_appbar_elevation = 2131492983;
@@ -5456,6 +5481,18 @@ namespace Ifpa.Droid
 			
 			// aapt resource value: 0x7f0c0005
 			public const int item_touch_helper_swipe_escape_velocity = 2131492869;
+			
+			// aapt resource value: 0x7f0c00e9
+			public const int month_row_size = 2131493097;
+			
+			// aapt resource value: 0x7f0c00ea
+			public const int month_row_tab_size = 2131493098;
+			
+			// aapt resource value: 0x7f0c00e7
+			public const int month_text_size = 2131493095;
+			
+			// aapt resource value: 0x7f0c00e8
+			public const int month_text_tab_size = 2131493096;
 			
 			// aapt resource value: 0x7f0c0006
 			public const int mr_controller_volume_group_list_item_height = 2131492870;
@@ -5676,8 +5713,8 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0c006e
 			public const int subtitle_shadow_radius = 2131492974;
 			
-			// aapt resource value: 0x7f0c00e3
-			public const int textsize_badge_count = 2131493091;
+			// aapt resource value: 0x7f0c00eb
+			public const int textsize_badge_count = 2131493099;
 			
 			// aapt resource value: 0x7f0c0063
 			public const int tooltip_corner_radius = 2131492963;
@@ -8122,8 +8159,8 @@ namespace Ifpa.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f0a006d
-			public const int ApplicationName = 2131361901;
+			// aapt resource value: 0x7f0a006f
+			public const int ApplicationName = 2131361903;
 			
 			// aapt resource value: 0x7f0a0029
 			public const int abc_action_bar_home_description = 2131361833;
@@ -8422,14 +8459,20 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0a0064
 			public const int quarter = 2131361892;
 			
-			// aapt resource value: 0x7f0a0071
-			public const int rank_channel_description = 2131361905;
+			// aapt resource value: 0x7f0a0073
+			public const int rank_channel_description = 2131361907;
 			
-			// aapt resource value: 0x7f0a0070
-			public const int rank_channel_name = 2131361904;
+			// aapt resource value: 0x7f0a0072
+			public const int rank_channel_name = 2131361906;
 			
 			// aapt resource value: 0x7f0a0044
 			public const int search_menu_title = 2131361860;
+			
+			// aapt resource value: 0x7f0a006e
+			public const int sfcalendar_inlineviewalldaytext = 2131361902;
+			
+			// aapt resource value: 0x7f0a006d
+			public const int sfcalendar_inlineviewnoappointmenttext = 2131361901;
 			
 			// aapt resource value: 0x7f0a006b
 			public const int sfchart_close_label = 2131361899;
@@ -8452,11 +8495,11 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0a0060
 			public const int title = 2131361888;
 			
-			// aapt resource value: 0x7f0a006f
-			public const int tournament_channel_description = 2131361903;
+			// aapt resource value: 0x7f0a0071
+			public const int tournament_channel_description = 2131361905;
 			
-			// aapt resource value: 0x7f0a006e
-			public const int tournament_channel_name = 2131361902;
+			// aapt resource value: 0x7f0a0070
+			public const int tournament_channel_name = 2131361904;
 			
 			// aapt resource value: 0x7f0a0067
 			public const int w = 2131361895;
