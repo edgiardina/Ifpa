@@ -5,11 +5,15 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              xmlns:syncfusion1="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
+             xmlns:local="clr-namespace:Ifpa.Views.Behaviors"
              x:Class="Ifpa.Views.CalendarPage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Search" Clicked="ToolbarItem_Clicked" Icon="search.png" />
         <ToolbarItem Text="My Location" Clicked="MyLocation_Clicked" Icon="location.png" />
     </ContentPage.ToolbarItems>
+    <ContentPage.Behaviors>
+        <local:CalendarBehavior />
+    </ContentPage.Behaviors>
     <StackLayout>
         <syncfusion:SfExpander x:Name="DetailsExpander">
             <syncfusion:SfExpander.Header>
@@ -76,7 +80,7 @@
             </tabView:SfTabItem>
             <tabView:SfTabItem Title="Calendar">
                 <tabView:SfTabItem.Content>
-                    <syncfusion1:SfCalendar NavigationDirection="Vertical" x:Name="calendar" InlineItemTapped="Calendar_InlineItemTapped" 
+                    <syncfusion1:SfCalendar NavigationDirection="Vertical" x:Name="calendar" 
                                             ViewMode="MonthView" ShowInlineEvents="True" InlineViewMode="Inline"
                                             DataSource="{Binding InlineCalendarItems}" />
                 </tabView:SfTabItem.Content>
