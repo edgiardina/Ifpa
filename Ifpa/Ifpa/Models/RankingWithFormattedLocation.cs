@@ -30,6 +30,6 @@ namespace Ifpa.Models
         }
 
         //Replace call at the end so that if a player is missing the 'state' we don't have an unsightly double space.
-        public string Location => $"{City} {StateProvince} {CountryName}".Trim().Replace("  ", " ");
+        public string Location => $"{City}{(!string.IsNullOrEmpty(City) && !string.IsNullOrEmpty(StateProvince) ? "," : string.Empty)} {StateProvince} {CountryName}".Trim().Replace("  ", " ");
     }
 }
