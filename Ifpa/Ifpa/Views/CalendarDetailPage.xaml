@@ -67,7 +67,8 @@
                                 <Label Text="{Binding Address2, Mode=OneWay}" IsVisible="{Binding Address2,
                                                Converter={StaticResource stringNullOrEmptyBoolConverter}}"   />
                                 <Label Text="{Binding City, Mode=OneWay}"    />
-                                <Label Text="{Binding State, Mode=OneWay}"    />
+                                <Label Text="{Binding State, Mode=OneWay}" IsVisible="{Binding State,
+                                               Converter={StaticResource stringNullOrEmptyBoolConverter}}"    />
                                 <Label Text="{Binding CountryName, Mode=OneWay}"    />
                             </StackLayout>
                             <maps:Map WidthRequest="80" HeightRequest="100"
