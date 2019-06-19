@@ -35,22 +35,24 @@ namespace Ifpa.ViewModels
                 CalendarDetails.Clear();
                 InlineCalendarItems.Clear();
                 var items = await PinballRankingApi.GetCalendarSearch(address, distance, DistanceUnit.Miles);
-
-                foreach (var item in items.Calendar.OrderBy(n => n.EndDate))
+                if (items.Calendar.Any())
                 {
-                    CalendarDetails.Add(item);
-
-                    //avoid adding leagues to the inline calendar.
-                    if (item.EndDate - item.StartDate <= 5.Days())
+                    foreach (var item in items.Calendar.OrderBy(n => n.EndDate))
                     {
-                        InlineCalendarItems.Add(new InlineCalendarItem
+                        CalendarDetails.Add(item);
+
+                        //avoid adding leagues to the inline calendar.
+                        if (item.EndDate - item.StartDate <= 5.Days())
                         {
-                            CalendarId = item.CalendarId,
-                            Subject = item.TournamentName,
-                            StartTime = item.StartDate.Date,
-                            EndTime = item.EndDate.Date,
-                            IsAllDay = true
-                        });
+                            InlineCalendarItems.Add(new InlineCalendarItem
+                            {
+                                CalendarId = item.CalendarId,
+                                Subject = item.TournamentName,
+                                StartTime = item.StartDate.Date,
+                                EndTime = item.EndDate.Date,
+                                IsAllDay = true
+                            });
+                        }
                     }
                 }
             }
