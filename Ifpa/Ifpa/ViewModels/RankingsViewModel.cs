@@ -34,6 +34,14 @@ namespace Ifpa.ViewModels
             set { SetProperty(ref countOfItemsToFetch, value); }
         }
 
+        private bool showOverallRank;
+
+        public bool ShowOverallRank
+        {
+            get { return showOverallRank; }
+            set { SetProperty(ref showOverallRank, value); }
+        }
+
         public RankingType CurrentRankingType { get; set; }
         public List<string> RankingTypes
         {
@@ -88,6 +96,8 @@ namespace Ifpa.ViewModels
 
                 if (CurrentRankingType == RankingType.Main)
                 {
+                    ShowOverallRank = false;
+
                     var items = await PinballRankingApiV2.GetWpprRanking(StartingPosition, CountOfItemsToFetch);
                     foreach (var item in items.Rankings)
                     {
@@ -96,6 +106,8 @@ namespace Ifpa.ViewModels
                 }
                 else if(CurrentRankingType == RankingType.Women)
                 {
+                    ShowOverallRank = true;
+
                     var items = await PinballRankingApiV2.GetRankingForWomen(TournamentType.Open, StartingPosition, CountOfItemsToFetch);
                     foreach (var item in items.Rankings)
                     {
@@ -104,6 +116,8 @@ namespace Ifpa.ViewModels
                 }
                 else if (CurrentRankingType == RankingType.Youth)
                 {
+                    ShowOverallRank = true;
+
                     var items = await PinballRankingApiV2.GetRankingForYouth(StartingPosition, CountOfItemsToFetch);
                     foreach (var item in items.Rankings)
                     {
@@ -112,6 +126,8 @@ namespace Ifpa.ViewModels
                 }
                 else if (CurrentRankingType == RankingType.Country)
                 {
+                    ShowOverallRank = true;
+
                     var items = await PinballRankingApiV2.GetRankingForCountry(CountryToShow.CountryName, StartingPosition, CountOfItemsToFetch);
                     foreach (var item in items.Rankings)
                     {
