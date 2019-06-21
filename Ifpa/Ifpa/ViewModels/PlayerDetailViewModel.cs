@@ -36,9 +36,9 @@ namespace Ifpa.ViewModels
 
         public string Rank => PlayerRecord.PlayerStats.CurrentWpprRank.OrdinalSuffix();
 
-        public string Rating => PlayerRecord.PlayerStats.RatingsRank.OrdinalSuffix();
+        public string Rating => PlayerRecord.PlayerStats.RatingsRank.HasValue ? PlayerRecord.PlayerStats.RatingsRank.Value.OrdinalSuffix() : "Not Ranked";
 
-        public double RatingValue => PlayerRecord.PlayerStats.RatingsValue;
+        public double? RatingValue => PlayerRecord.PlayerStats.RatingsValue;
 
         public string EffPercent => PlayerRecord.PlayerStats.EfficiencyRank.HasValue ? PlayerRecord.PlayerStats.EfficiencyRank.Value.OrdinalSuffix() : "Not Ranked";
 
