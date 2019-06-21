@@ -162,7 +162,7 @@
                          IsPullToRefreshEnabled="true"
                          IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                          CachingStrategy="RecycleElement"
-                         ItemSelected="MostEventsListView_ItemSelected">
+                         ItemSelected="BiggestMoversListView_ItemSelected">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
