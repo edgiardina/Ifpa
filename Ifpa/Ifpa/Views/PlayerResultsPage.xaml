@@ -50,7 +50,7 @@
         <sfPopup:SfPopupLayout.Content>
             <StackLayout>
                 <tabView:SfTabView VisibleHeaderCount="3" SelectionChanged="SfTabView_SelectionChanged" 
-                                HeightRequest="50" TabHeaderBackgroundColor="#66FFFFFF">
+                                HeightRequest="70" TabHeaderBackgroundColor="#66FFFFFF">
                     <tabView:SfTabItem Title="Active">
                         <tabView:SfTabItem.Content>
                             <Label />
