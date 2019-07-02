@@ -3,44 +3,53 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:views="clr-namespace:Ifpa.Views"
             x:Class="Ifpa.Views.MainPage"
-            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-            android:TabbedPage.ToolbarPlacement="Bottom"
-            android:TabbedPage.BarItemColor="#66FFFFFF"
-            android:TabbedPage.BarSelectedItemColor="White">
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"                       
+            android:TabbedPage.ToolbarPlacement="Bottom">
+    
+    <!-- Customize appearance of bottom tab bar on Android only -->
     <TabbedPage.BarBackgroundColor>
         <OnPlatform x:TypeArguments="Color">
             <On Platform="Android" Value="{StaticResource NavigationPrimary}" />
         </OnPlatform>
     </TabbedPage.BarBackgroundColor>
-    <TabbedPage.Children>        
-        <NavigationPage Title="Rankings" Icon="numbered_list.png">      
-            <x:Arguments>
-                <views:RankingsPage />
-            </x:Arguments>
-        </NavigationPage>
+    <TabbedPage.SelectedTabColor>
+        <OnPlatform x:TypeArguments="Color">
+            <On Platform="Android" Value="White" />
+        </OnPlatform>
+    </TabbedPage.SelectedTabColor>
+    <TabbedPage.UnselectedTabColor>
+        <OnPlatform x:TypeArguments="Color">
+            <On Platform="Android" Value="#66FFFFFF" />
+        </OnPlatform>
+    </TabbedPage.UnselectedTabColor>    
+    
+    <NavigationPage Title="Rankings" IconImageSource="numbered_list.png">      
+        <x:Arguments>
+            <views:RankingsPage />
+        </x:Arguments>
+    </NavigationPage>
 
-        <NavigationPage Title="Player Search" Icon="search.png">
-            <x:Arguments>
-                <views:PlayerSearchPage />
-            </x:Arguments>
-        </NavigationPage>
+    <NavigationPage Title="Player Search" IconImageSource="search.png">
+        <x:Arguments>
+            <views:PlayerSearchPage />
+        </x:Arguments>
+    </NavigationPage>
 
-        <NavigationPage Title="My Stats" Icon="mystats.png">            
-            <x:Arguments>
-                <views:PlayerDetailPage />
-            </x:Arguments>
-        </NavigationPage>
+    <NavigationPage Title="My Stats" IconImageSource="mystats.png">            
+        <x:Arguments>
+            <views:PlayerDetailPage />
+        </x:Arguments>
+    </NavigationPage>
 
-        <NavigationPage Title="Calendar" Icon="calendar.png">          
-            <x:Arguments>
-                <views:CalendarPage />
-            </x:Arguments>
-        </NavigationPage>
+    <NavigationPage Title="Calendar" IconImageSource="calendar.png">          
+        <x:Arguments>
+            <views:CalendarPage />
+        </x:Arguments>
+    </NavigationPage>
 
-        <NavigationPage Title="More" Icon="more.png">
-            <x:Arguments>
-                <views:MoreItemsPage />
-            </x:Arguments>
-        </NavigationPage>
-    </TabbedPage.Children>
+    <NavigationPage Title="More" IconImageSource="more.png">
+        <x:Arguments>
+            <views:MoreItemsPage />
+        </x:Arguments>
+    </NavigationPage>
 </TabbedPage>
