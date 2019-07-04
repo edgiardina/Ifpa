@@ -1,23 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPdfViewer.XForms;assembly=Syncfusion.SfPdfViewer.XForms"
              x:Class="Ifpa.Views.RulesPage"
              Title="Rules">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Search" Clicked="ToolbarItem_Clicked" Icon="search.png" />
-    </ContentPage.ToolbarItems>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <SearchBar Grid.Row="0" x:Name="SearchBar" HeightRequest="60"
-                   SearchButtonPressed="SearchBar_SearchButtonPressed"
-                   TextChanged="SearchBar_TextChanged"
-                       IsSpellCheckEnabled="False"
-                       IsVisible="False"
-                       MaxLength="100"
-                       Keyboard="Text" />
-        <WebView Grid.Row="1" Source="{Binding RulesContent}" VerticalOptions="FillAndExpand" Navigating="WebView_Navigating" x:Name="RulesWebView"  />
-    </Grid>
+    <syncfusion:SfPdfViewer x:Name="pdfViewerControl" InputFileStream="{Binding PdfDocumentStream}" EnableDocumentLinkAnnotation="False" EnableFormFilling="False" AnnotationMode="None" />
 </ContentPage>
