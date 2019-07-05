@@ -24,7 +24,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Share" x:Name="ShareButton" Clicked="ShareButton_Clicked" Icon="share.png" />
     </ContentPage.ToolbarItems>
-    <StackLayout>
+    <StackLayout Spacing="0">
         <syncfusion:SfExpander x:Name="DetailsExpander">
             <syncfusion:SfExpander.Header>
                 <Grid Padding="10,10,10,10">
