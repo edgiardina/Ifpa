@@ -30,7 +30,7 @@ namespace Ifpa.Views
             BindingContext = viewModel = new CalendarViewModel();
         }
 
-        private async void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
+        private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
         {
             DistanceText.Text = ((int)DistanceSlider.Value).ToString();
         }
