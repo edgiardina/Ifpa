@@ -36,25 +36,8 @@ namespace Ifpa.Views
         {
             base.OnAppearing();
 
-            if (viewModel.Results.Count == 0)
+            if (viewModel.ActiveResults.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
-        }
-
-        private void SfTabView_SelectionChanged(object sender, Syncfusion.XForms.TabView.SelectionChangedEventArgs e)
-        {
-            switch(e.Name)
-            {
-                case "Active":
-                    viewModel.State = ResultType.Active;
-                    break;
-                case "Unused":
-                    viewModel.State = ResultType.NonActive;
-                    break;
-                case "Past":
-                    viewModel.State = ResultType.Inactive;
-                    break;
-            }          
-            viewModel.LoadItemsCommand.Execute(null);
         }
 
         private void RankingProfileButton_Clicked(object sender, System.EventArgs e)
