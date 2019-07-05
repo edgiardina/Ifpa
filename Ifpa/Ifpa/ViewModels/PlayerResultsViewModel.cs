@@ -11,7 +11,10 @@ namespace Ifpa.ViewModels
 {
     public class PlayerResultsViewModel : BaseViewModel
     {
-        public ObservableCollection<PlayerResult> Results { get; set; }
+        public ObservableCollection<PlayerResult> ActiveResults { get; set; }
+        public ObservableCollection<PlayerResult> UnusedResults { get; set; }
+        public ObservableCollection<PlayerResult> PastResults { get; set; }
+
         public Command LoadItemsCommand { get; set; }
 
         public ResultType State { get; set; }
@@ -30,7 +33,10 @@ namespace Ifpa.ViewModels
             State = ResultType.Active;
             RankingType = RankingType.Main;
             ShowRankingTypeChoice = false;
-            Results = new ObservableCollection<PlayerResult>();
+            ActiveResults = new ObservableCollection<PlayerResult>();
+            UnusedResults = new ObservableCollection<PlayerResult>();
+            PastResults = new ObservableCollection<PlayerResult>();
+
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
 
@@ -52,13 +58,27 @@ namespace Ifpa.ViewModels
                     OnPropertyChanged(nameof(ShowRankingTypeChoice));
                 }
 
-                Results.Clear();
-                var playerResults = await PinballRankingApiV2.GetPlayerResults(playerId, RankingType, State);
+                ActiveResults.Clear();
+                UnusedResults.Clear();
+                PastResults.Clear();
 
-                foreach (var item in playerResults.Results)
+                var activeResults = await PinballRankingApiV2.GetPlayerResults(playerId, RankingType, ResultType.Active);
+                foreach (var item in activeResults.Results)
                 {                 
-                    Results.Add(item);
-                }               
+                    ActiveResults.Add(item);
+                }
+
+                var unusedResults = await PinballRankingApiV2.GetPlayerResults(playerId, RankingType, ResultType.NonActive);
+                foreach (var item in unusedResults.Results)
+                {
+                    UnusedResults.Add(item);
+                }
+
+                var pastResults = await PinballRankingApiV2.GetPlayerResults(playerId, RankingType, ResultType.Inactive);
+                foreach (var item in pastResults.Results)
+                {
+                    PastResults.Add(item);
+                }
             }
             catch (Exception ex)
             {
