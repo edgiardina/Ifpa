@@ -48,7 +48,7 @@ namespace Ifpa.Views
                     {
                         viewModel.PlayerId = Settings.MyStatsPlayerId;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         await RedirectUserToPlayerSearch();
                     }
@@ -166,25 +166,25 @@ namespace Ifpa.Views
             if (isFavorite)
             {
                 //if player is in the existing favorites list, fill the heart icon.
-                ToolbarItems.SingleOrDefault(n => n.Text == "Favorite").Icon = "favorite.png";
+                ToolbarItems.SingleOrDefault(n => n.Text == "Favorite").IconImageSource = "favorite.png";
                 if (Device.RuntimePlatform == Device.Android)
                 {
-                    ToolbarItems.SingleOrDefault(n => n.Text == "Favorite").Icon = "favorite_white.png";
+                    ToolbarItems.SingleOrDefault(n => n.Text == "Favorite").IconImageSource = "favorite_white.png";
                 }
                 else
                 {
-                    ToolbarItems.SingleOrDefault(n => n.Text == "Favorite").Icon = "favorite.png";
+                    ToolbarItems.SingleOrDefault(n => n.Text == "Favorite").IconImageSource = "favorite.png";
                 }
             }
             else
             {                
                 if (Device.RuntimePlatform == Device.Android)
                 {
-                    ToolbarItems.SingleOrDefault(n => n.Text == "Favorite").Icon = "favorite_outline.png";
+                    ToolbarItems.SingleOrDefault(n => n.Text == "Favorite").IconImageSource = "favorite_outline.png";
                 }
                 else
                 {
-                    ToolbarItems.SingleOrDefault(n => n.Text == "Favorite").Icon = "favorite-outline.png";
+                    ToolbarItems.SingleOrDefault(n => n.Text == "Favorite").IconImageSource = "favorite-outline.png";
                 }
             }
         }

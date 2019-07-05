@@ -26,7 +26,7 @@ namespace Ifpa.Views
                 viewModel.LoadItemsCommand.Execute(null);
         }
 
-        private async void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
+        private void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
         {
             if (viewModel.CommentCounts > 0)
             {

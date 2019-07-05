@@ -42,6 +42,8 @@ namespace Ifpa.ViewModels
         
         public string CountryName { get; set; }
 
+        public string Location => $"{Address1} {Address2} {City}{(!string.IsNullOrEmpty(City) && !string.IsNullOrEmpty(State) ? "," : string.Empty)} {State} {CountryName}".Trim().Replace("  ", " ");
+
         public Command LoadItemsCommand { get; set; }
 
         public int CalendarId { get; set; }
