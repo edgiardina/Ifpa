@@ -63,21 +63,30 @@ namespace Ifpa.ViewModels
                 PastResults.Clear();
 
                 var activeResults = await PinballRankingApiV2.GetPlayerResults(playerId, RankingType, ResultType.Active);
-                foreach (var item in activeResults.Results)
-                {                 
-                    ActiveResults.Add(item);
+                if (activeResults.ResultsCount > 0)
+                {
+                    foreach (var item in activeResults.Results)
+                    {
+                        ActiveResults.Add(item);
+                    }
                 }
-
+                
                 var unusedResults = await PinballRankingApiV2.GetPlayerResults(playerId, RankingType, ResultType.NonActive);
-                foreach (var item in unusedResults.Results)
+                if (unusedResults.ResultsCount > 0)
                 {
-                    UnusedResults.Add(item);
+                    foreach (var item in unusedResults.Results)
+                    {
+                        UnusedResults.Add(item);
+                    }
                 }
-
+                
                 var pastResults = await PinballRankingApiV2.GetPlayerResults(playerId, RankingType, ResultType.Inactive);
-                foreach (var item in pastResults.Results)
+                if (pastResults.ResultsCount > 0)
                 {
-                    PastResults.Add(item);
+                    foreach (var item in pastResults.Results)
+                    {
+                        PastResults.Add(item);
+                    }
                 }
             }
             catch (Exception ex)

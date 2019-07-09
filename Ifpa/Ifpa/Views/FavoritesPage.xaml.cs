@@ -1,7 +1,7 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Ifpa.ViewModels;
-using PinballApi.Models.WPPR.v1.Players;
+using PinballApi.Models.WPPR.v2.Players;
 
 namespace Ifpa.Views
 {
@@ -23,7 +23,7 @@ namespace Ifpa.Views
             if (player == null)
                 return;
 
-            await Navigation.PushAsync(new PlayerDetailPage(new PlayerDetailViewModel(int.Parse(player.PlayerId))));
+            await Navigation.PushAsync(new PlayerDetailPage(new PlayerDetailViewModel(player.PlayerId)));
 
             // Manually deselect item.
             PlayersListView.SelectedItem = null;
