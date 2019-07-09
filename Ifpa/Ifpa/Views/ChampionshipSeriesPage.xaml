@@ -28,7 +28,9 @@
                                             <FormattedString.Spans>
                                                 <Span Text="Current Leader:" />
                                                 <Span Text=" " />
-                                                <Span Text="{Binding CurrentLeaderName}" />
+                                                <Span Text="{Binding CurrentLeader.FirstName}" />
+                                                <Span Text=" " />
+                                                <Span Text="{Binding CurrentLeader.LastName}" />
                                             </FormattedString.Spans>
                                         </FormattedString>
                                     </Label.FormattedText>

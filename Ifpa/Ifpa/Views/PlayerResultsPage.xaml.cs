@@ -40,7 +40,7 @@ namespace Ifpa.Views
                 viewModel.LoadItemsCommand.Execute(null);
         }
 
-        private void RankingProfileButton_Clicked(object sender, System.EventArgs e)
+        private void RankingProfileButton_Clicked(object sender, EventArgs e)
         {
             popupLayout.Show();
         }
