@@ -1,8 +1,10 @@
 ﻿using HtmlAgilityPack;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -14,6 +16,39 @@ namespace Ifpa.ViewModels
         public Command LoadItemsCommand { get; set; }
         public HtmlWebViewSource RulesContent { get; set; }
 
+        private const string RulesPdfUrl = "https://papa.org/wp-content/uploads/Professional-Amateur-Pinball-Association-Complete-Competition-Rules-5.pdf";
+
+        private Stream pdfDocumentStream;
+
+        public Stream PdfDocumentStream
+        {
+            get { return pdfDocumentStream; }
+            set
+            {
+                //Check the value whether it is the same as the currently loaded stream
+                if (value != pdfDocumentStream)
+                {
+                    pdfDocumentStream = value;
+                    OnPropertyChanged("PdfDocumentStream");
+                }
+            }
+        }
+
+        private async Task<Stream> DownloadPdfStream(string URL)
+        {
+            HttpClient httpClient = new HttpClient();
+            HttpResponseMessage response = await httpClient.GetAsync(URL);
+            //Check whether redirection is needed
+            if ((int)response.StatusCode == 302)
+            {
+                //The URL to redirect is in the header location of the response message
+                HttpResponseMessage redirectedResponse = await httpClient.GetAsync(response.Headers.Location.AbsoluteUri);
+                return await redirectedResponse.Content.ReadAsStreamAsync();
+            }
+            return await response.Content.ReadAsStreamAsync();
+        }
+
+    
         public RulesViewModel()
         {
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
@@ -28,18 +63,7 @@ namespace Ifpa.ViewModels
 
             try
             {
-                RulesContent = new HtmlWebViewSource();
-                var url = "https://www.ifpapinball.com/rules/";
-                var web = new HtmlWeb();
-                var doc = web.Load(url);
-
-                var rulesHtmlContent = doc.DocumentNode.Descendants("div")
-                                         .First(x => x.Attributes.AttributesWithName("class").Any() && x.Attributes["class"].Value == "postblock");
-
-                var htmlShim = await GetHtmlRulesShim();
-
-                RulesContent.Html = htmlShim.Replace("{rules}", rulesHtmlContent.InnerHtml);
-                OnPropertyChanged(nameof(RulesContent));
+                PdfDocumentStream = await DownloadPdfStream(RulesPdfUrl);
             }
             catch (Exception ex)
             {
@@ -48,16 +72,6 @@ namespace Ifpa.ViewModels
             finally
             {
                 IsBusy = false;
-            }
-        }
-
-        private async Task<string> GetHtmlRulesShim()
-        {
-            var assembly = IntrospectionExtensions.GetTypeInfo(typeof(RulesViewModel)).Assembly;
-            Stream stream = assembly.GetManifestResourceStream("Ifpa.Content.Rules.html");       
-            using (var reader = new StreamReader(stream))
-            {
-                return await reader.ReadToEndAsync();
             }
         }
 

@@ -47,5 +47,18 @@ namespace Ifpa.Views
             // Manually deselect item.
             MostEventsListView.SelectedItem = null;
         }
+
+        
+        private async void BiggestMoversListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var player = e.SelectedItem as BiggestMoversStat;
+            if (player == null)
+                return;
+
+            await Navigation.PushAsync(new PlayerDetailPage(new PlayerDetailViewModel(player.PlayerId)));
+
+            // Manually deselect item.
+            BiggestMoversListView.SelectedItem = null;
+        }
     }
 }

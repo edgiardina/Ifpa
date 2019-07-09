@@ -17,9 +17,9 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="Tournament result # " />
-                                <Span Text="{Binding RecordID, Mode=OneWay}" />
-                                <Span Text=" was posted to your profile" />
+                                <Span Text="Tournament results for '" />
+                                <Span Text="{Binding Description, Mode=OneWay}" />
+                                <Span Text="' were posted to your profile" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
@@ -28,7 +28,7 @@
             </StackLayout>
             <BoxView Color="CornflowerBlue"
                  IsVisible="{Binding HasBeenSeen, Mode=OneWay, Converter={StaticResource inverter}}"
-                 CornerRadius="9"                     
+                 CornerRadius="6"                       
                  WidthRequest="12"
                  HeightRequest="12"
                  VerticalOptions="Center"

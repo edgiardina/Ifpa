@@ -49,7 +49,7 @@
                                         <Label FontAttributes="Bold" Grid.Row="0" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="Default" Text="{Binding Title}" Margin="0" />
                                         <Label Grid.Row="1" VerticalTextAlignment="Start" FontSize="Small" Text="{Binding Summary}"  Margin="0" />
                                     </Grid>
-                                    <StackLayout Orientation="Horizontal" Grid.Row="2" Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="#F1F1F1">
+                                    <StackLayout Orientation="Horizontal" Grid.Row="2" Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource DetailPageBackground}">
                                         <Label HorizontalTextAlignment="Start"  FontSize="Small" Text="{Binding Author}"  Margin="0" />
                                         <Label HorizontalTextAlignment="End" FontSize="Small" Text="{Binding PublishDate, StringFormat='{0:d}'}"/>
                                     </StackLayout>

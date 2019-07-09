@@ -16,7 +16,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Label
+            <Label Margin="10,0,10,0"
                 IsVisible="{Binding IsPopulated, Converter={StaticResource BoolConverter}}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Center"
@@ -55,7 +55,7 @@
                                                 <FormattedString.Spans>
                                                     <Span Text="{Binding City}" />
                                                     <Span Text=" " />
-                                                    <Span Text="{Binding State}" />
+                                                    <Span Text="{Binding StateProvince}" />
                                                     <Span Text=" " />
                                                     <Span Text="{Binding CountryName}" />
                                                 </FormattedString.Spans>
@@ -63,7 +63,7 @@
                                         </Label.FormattedText>
                                     </Label>
                                 </StackLayout>
-                                <Label HorizontalOptions="EndAndExpand" Text="{Binding WpprRank, Converter={StaticResource intToOrdinalString}}" 
+                                <Label HorizontalOptions="EndAndExpand" Text="{Binding PlayerStats.CurrentWpprRank, Converter={StaticResource intToOrdinalString}}" 
                                    LineBreakMode="NoWrap" 
                                    Style="{DynamicResource ListItemTextStyle}" 
                                    FontSize="18" WidthRequest="80" />

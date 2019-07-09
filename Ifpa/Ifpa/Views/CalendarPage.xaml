@@ -2,51 +2,90 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
-             x:Class="Ifpa.Views.CalendarPage">
+             xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
+             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+             xmlns:syncfusion1="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
+             xmlns:local="clr-namespace:Ifpa.Views.Behaviors"
+             x:Class="Ifpa.Views.CalendarPage"
+             Title="Calendar">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Search" Clicked="ToolbarItem_Clicked" Icon="search.png" />
         <ToolbarItem Text="My Location" Clicked="MyLocation_Clicked" Icon="location.png" />
     </ContentPage.ToolbarItems>
-    <StackLayout>
-        <TableView Intent="Settings" HeightRequest="300">
-            <TableRoot>
-                <TableSection>
-                    <EntryCell Label="Location" Placeholder="Chicago, Illinois" Text="Chicago, Illinois" x:Name="LocationEntry" />
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal" Margin="20,10">
-                            <Label Text="Distance" />
-                            <Slider MinimumTrackColor="#007AFF" MaximumTrackColor="Gray"  Margin="20,0,5,0" HorizontalOptions="FillAndExpand" Maximum="1000" Minimum="10" Value="250" ValueChanged="Slider_ValueChanged" x:Name="DistanceSlider" />
-                            <Label Text="0" x:Name="DistanceText" />
-                            <Label Text="Mi" />
-                        </StackLayout>
-                    </ViewCell>
-                </TableSection>
-            </TableRoot>
-        </TableView>
-        <maps:Map WidthRequest="320" HeightRequest="200"
-            x:Name="calendarMap"                  
-            VerticalOptions="FillAndExpand"
-            MapType="Street" />
-        <ListView x:Name="TournamentListView"                  
-                     ItemsSource="{Binding CalendarDetails}"
-                     VerticalOptions="FillAndExpand"
-                     HasUnevenRows="true"       
-                     IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                     CachingStrategy="RecycleElement"
-                  ItemSelected="TournamentListView_ItemSelected">
-            <!--Built in Cells-->
-            <ListView.ItemTemplate 
-                    VerticalOptions="FillAndExpand"
-                     HasUnevenRows="true">
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="10" >
-                            <Label HorizontalOptions="Start" MinimumWidthRequest="90" Text="{Binding EndDate, StringFormat='{0:d}'}" LineBreakMode="NoWrap" />
-                            <Label Text="{Binding TournamentName}" />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+    <ContentPage.Behaviors>
+        <local:CalendarBehavior />
+    </ContentPage.Behaviors>
+    <StackLayout Spacing="0">
+        <syncfusion:SfExpander x:Name="DetailsExpander">
+            <syncfusion:SfExpander.Header>
+                <Grid Padding="10,10,10,10">
+                    <Label HeightRequest="20" BindingContext="{x:Reference Name=LocationEntry}" Text="{Binding Path=Text}" VerticalTextAlignment="Center" />
+                </Grid>
+            </syncfusion:SfExpander.Header>
+            <syncfusion:SfExpander.Content>
+                <Grid Padding="10,10,10,10" BackgroundColor="#FFFFFF">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label Text="Location" Grid.Row="0" Grid.Column="0" />
+                    <Entry Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="20,0,5,0" Placeholder="Chicago, Illinois" Text="Chicago, Illinois" x:Name="LocationEntry" />
+
+                    <Label Text="Distance" Grid.Row="1" Grid.Column="0" />
+                    <Slider Grid.Row="1" Grid.Column="1" MinimumTrackColor="#007AFF" MaximumTrackColor="Gray" Margin="20,0,5,0" HorizontalOptions="FillAndExpand" Maximum="1000" Minimum="10" Value="250" ValueChanged="Slider_ValueChanged" x:Name="DistanceSlider" />
+                    <Label Grid.Row="1" Grid.Column="2" Text="0" x:Name="DistanceText" />
+                    <Label Grid.Row="1" Grid.Column="3" Text="Mi" />
+                </Grid>            
+            </syncfusion:SfExpander.Content>
+        </syncfusion:SfExpander>
+
+        <tabView:SfTabView VisibleHeaderCount="2" 
+                            TabHeaderBackgroundColor="#66FFFFFF">
+            <tabView:SfTabItem Title="Map">
+                <tabView:SfTabItem.Content>
+                    <StackLayout Spacing="0">
+                        <maps:Map WidthRequest="320" HeightRequest="200"
+                            x:Name="calendarMap"                  
+                            VerticalOptions="FillAndExpand"
+                            MapType="Street" />
+                        <ListView x:Name="TournamentListView"                  
+                             ItemsSource="{Binding CalendarDetails}"
+                             VerticalOptions="FillAndExpand"
+                             HasUnevenRows="true"       
+                             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                             CachingStrategy="RecycleElement"
+                             ItemSelected="TournamentListView_ItemSelected">
+                            <!--Built in Cells-->
+                            <ListView.ItemTemplate 
+                                 VerticalOptions="FillAndExpand"
+                                 HasUnevenRows="true">
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Horizontal" Padding="10" >
+                                            <Label HorizontalOptions="Start" MinimumWidthRequest="90" Text="{Binding EndDate, StringFormat='{0:d}'}" LineBreakMode="NoWrap" />
+                                            <Label Text="{Binding TournamentName}" />
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+            <tabView:SfTabItem Title="Calendar">
+                <tabView:SfTabItem.Content>
+                    <syncfusion1:SfCalendar NavigationDirection="Vertical" x:Name="calendar" 
+                                            ViewMode="MonthView" ShowInlineEvents="True" InlineViewMode="Inline"
+                                            DataSource="{Binding InlineCalendarItems}" />
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>          
+        </tabView:SfTabView>       
     </StackLayout>
 </ContentPage>

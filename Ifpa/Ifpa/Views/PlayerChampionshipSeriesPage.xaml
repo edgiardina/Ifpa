@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
+             x:Class="Ifpa.Views.PlayerChampionshipSeriesPage"
+             Title="Championship Series">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:IntToOrdinalStringConverter x:Key="intToOrdinalString" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout>       
+
+        <ListView x:Name="MyListView"
+            ItemsSource="{Binding ChampionshipSeries}"
+            RefreshCommand="{Binding LoadItemsCommand}"
+            IsPullToRefreshEnabled="true"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            ItemTapped="Handle_ItemTapped"
+            CachingStrategy="RecycleElement"
+            HasUnevenRows="true">
+            <!--Custom View Cells-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="10">
+                            <StackLayout HorizontalOptions="Start">
+                                <Label Text="{Binding StateProvinceName}" FontSize="20" Style="{DynamicResource ListItemTextStyle}" />                                
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="EndAndExpand" MinimumWidthRequest="120">
+                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Text="{Binding Rank, Converter={StaticResource intToOrdinalString}}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

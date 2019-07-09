@@ -10,7 +10,7 @@
             <tabView:SfTabItem Title="Aggregates">
                 <tabView:SfTabItem.Content>
                     <ScrollView>
-                        <StackLayout Spacing="20" Padding="15" BackgroundColor="#F1F1F1">
+                        <StackLayout Spacing="20" Padding="15" BackgroundColor="{StaticResource DetailPageBackground}">
                             <chart:SfChart VerticalOptions="FillAndExpand" HeightRequest="300">
                                 <chart:SfChart.Legend>
                                     <chart:ChartLegend OverflowMode="Wrap"/>
@@ -162,7 +162,7 @@
                          IsPullToRefreshEnabled="true"
                          IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                          CachingStrategy="RecycleElement"
-                         ItemSelected="MostEventsListView_ItemSelected">
+                         ItemSelected="BiggestMoversListView_ItemSelected">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
