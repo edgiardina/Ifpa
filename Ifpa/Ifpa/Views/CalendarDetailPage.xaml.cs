@@ -36,17 +36,31 @@ namespace Ifpa.Views
 
                     var position = new Position(locations.First().Latitude, locations.First().Longitude);
                     calendarMap.MoveToRegion(new MapSpan(position, 0.1, 0.1));
-                    calendarMap.Pins.Add(new Pin
+                    var pin = new Pin
                     {
                         Label = viewModel.TournamentName,
-                        Position = position
-                    });
+                        Position = position,
+                        Address = viewModel.Location,
+                        Type = PinType.Place                        
+                    };
+
+                    pin.Clicked += Pin_Clicked;
+
+                    calendarMap.Pins.Add(pin);                    
 
                     calendarMap.IsVisible = true;
                 }
                 //unable to geocode position on the map, ignore. 
-                catch { }                
+                catch(Exception)
+                {
+                    calendarMap.IsVisible = false;
+                }                
             }
+        }
+
+        private void Pin_Clicked(object sender, EventArgs e)
+        {
+            Address_Tapped(sender, e);
         }
 
         private async void WebsiteLabel_Tapped(object sender, EventArgs e)

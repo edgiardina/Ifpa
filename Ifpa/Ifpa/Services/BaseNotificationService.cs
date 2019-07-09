@@ -1,6 +1,7 @@
 ﻿using Ifpa.Models;
 using Ifpa.ViewModels;
 using PinballApi;
+using PinballApi.Extensions;
 using Plugin.Badge;
 using System;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace Ifpa.Services
         protected readonly string NewTournamentNotificationDescription = @"Tournament results for ""{0}"" have been posted to your IFPA profile";
 
         public readonly string NewRankNotificationTitle = "IFPA Rank Change";
-        protected readonly string NewRankNotificationDescription = "Your IFPA rank has changed";
+        protected readonly string NewRankNotificationDescription = "Your IFPA rank has changed from {0} to {1}";
 
         public static string NewBlogPostTitle = "New Blog Post";
         protected readonly string NewBlogPostDescription = @"Blog post ""{0}"" has been published";
@@ -49,7 +50,8 @@ namespace Ifpa.Services
                                 HasBeenSeen = isHistoricalEventPopulation,
                                 RecordID = result.TournamentId,
                                 IntOne = result.Position,
-                                ActivityType = ActivityFeedType.TournamentResult
+                                ActivityType = ActivityFeedType.TournamentResult,
+                                Description = result.TournamentName
                             };
 
                             await Settings.LocalDatabase.CreateActivityFeedRecord(record);
@@ -84,7 +86,7 @@ namespace Ifpa.Services
                     {
                         if (Settings.NotifyOnRankChange)
                         {
-                            SendNotification(NewRankNotificationTitle, NewRankNotificationDescription);
+                            SendNotification(NewRankNotificationTitle, string.Format(NewRankNotificationDescription, lastRecordedWpprRank.OrdinalSuffix(), currentWpprRank.OrdinalSuffix()));
                             await UpdateBadgeIfNeeded();
                         }
 

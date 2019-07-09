@@ -1,4 +1,4 @@
-﻿using PinballApi.Models.WPPR.v1.Rankings;
+﻿using PinballApi.Models.WPPR.v2.Rankings;
 
 namespace Ifpa.Models
 {
@@ -6,9 +6,9 @@ namespace Ifpa.Models
     /// this class is an unforunate hack to work around missing location data. 
     /// this way if we are missing a field like State or City we won't have extraneous spaces. 
     /// </summary>
-    public class RankingWithFormattedLocation : Ranking
+    public class RankingWithFormattedLocation : RankingResult
     {
-        public RankingWithFormattedLocation(Ranking item)
+        public RankingWithFormattedLocation(RankingResult item)
         {
             BestFinish = item.BestFinish;
             EventCount = item.EventCount;
@@ -18,7 +18,7 @@ namespace Ifpa.Models
             CurrentWpprRank = item.CurrentWpprRank;
             WpprPoints = item.WpprPoints;
             City = item.City;
-            State = item.State;
+            StateProvince = item.StateProvince;
             CountryCode = item.CountryCode;
             CountryName = item.CountryName;
             Age = item.Age;
@@ -30,6 +30,6 @@ namespace Ifpa.Models
         }
 
         //Replace call at the end so that if a player is missing the 'state' we don't have an unsightly double space.
-        public string Location => $"{City} {State} {CountryName}".Trim().Replace("  ", " ");
+        public string Location => $"{City}{(!string.IsNullOrEmpty(City) && !string.IsNullOrEmpty(StateProvince) ? "," : string.Empty)} {StateProvince} {CountryName}".Trim().Replace("  ", " ");
     }
 }

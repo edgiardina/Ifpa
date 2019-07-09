@@ -31,7 +31,11 @@ namespace Ifpa.iOS
             global::Xamarin.FormsMaps.Init();
             Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer.Init();
             Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
-
+            Syncfusion.XForms.iOS.PopupLayout.SfPopupLayoutRenderer.Init();
+            Syncfusion.XForms.iOS.Expander.SfExpanderRenderer.Init();
+            Syncfusion.SfCalendar.XForms.iOS.SfCalendarRenderer.Init();
+            Syncfusion.SfPdfViewer.XForms.iOS.SfPdfDocumentViewRenderer.Init();
+            Syncfusion.SfRangeSlider.XForms.iOS.SfRangeSliderRenderer.Init();
 
             // Get possible shortcut item
             if (options != null)

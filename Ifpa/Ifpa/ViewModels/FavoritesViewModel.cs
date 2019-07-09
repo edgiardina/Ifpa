@@ -4,13 +4,13 @@ using System.Diagnostics;
 using Xamarin.Forms;
 using Ifpa.Models;
 using System.Linq;
-using System.Collections.Generic;
+using PinballApi.Models.WPPR.v2.Players;
 
 namespace Ifpa.ViewModels
 {
     public class FavoritesViewModel : BaseViewModel
     {
-        public ObservableCollection<PlayerWithWpprRank> Players { get; set; }
+        public ObservableCollection<Player> Players { get; set; }
         public bool IsPopulated => Players.Count > 0 || dataNotLoaded;
 
         private bool dataNotLoaded = true;
@@ -18,7 +18,7 @@ namespace Ifpa.ViewModels
         public FavoritesViewModel()
         {
             Title = "Favorites";
-            Players = new ObservableCollection<PlayerWithWpprRank>();
+            Players = new ObservableCollection<Player>();
         }
 
         private Command _loadItemsCommand;
@@ -39,17 +39,11 @@ namespace Ifpa.ViewModels
                     {
                         Players.Clear();
 
-                        var favorites = await Settings.LocalDatabase.GetFavorites();
-                        var tempList = new List<PlayerWithWpprRank>();
-                        
-                        foreach (var item in favorites)
-                        {
-                            var playerRecord = await PinballRankingApi.GetPlayerRecord(item.PlayerID);
+                        var favorites = await Settings.LocalDatabase.GetFavorites();                    
 
-                            tempList.Add(new PlayerWithWpprRank(playerRecord.Player, playerRecord.PlayerStats.CurrentWpprRank));
-                        }
-
-                        foreach (var player in tempList.OrderBy(i => i.WpprRank))
+                        var tempList = await PinballRankingApiV2.GetPlayers(favorites.Select(n => n.PlayerID).ToList());
+                   
+                        foreach (var player in tempList.OrderBy(i => i.PlayerStats.CurrentWpprRank))
                         {
                             Players.Add(player);
                         }

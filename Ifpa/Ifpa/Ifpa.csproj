@@ -18,22 +18,32 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.9.2" />
-    <PackageReference Include="PinballApi" Version="2.0.39" />
-    <PackageReference Include="Microsoft.Toolkit.Parsers" Version="5.1.0" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.9" />
+    <PackageReference Include="PinballApi" Version="2.0.50" />
+    <PackageReference Include="Microsoft.Toolkit.Parsers" Version="5.1.1" />
     <PackageReference Include="sqlite-net-pcl" Version="1.5.231" />
-    <PackageReference Include="Syncfusion.Licensing" Version="16.4.0.54" />
-    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="16.4.0.54" />
-    <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="16.4.0.54" />
+    <PackageReference Include="Syncfusion.Licensing" Version="17.1.0.53" />
+    <PackageReference Include="Syncfusion.Xamarin.Expander" Version="17.1.0.53" />
+    <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="17.1.0.53" />
+    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="17.1.0.53" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="17.1.0.53" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPopupLayout" Version="17.1.0.53" />
+    <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="17.1.0.53" />
     <PackageReference Include="Xamarin.Badge.Plugin" Version="2.0.0" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
-    <PackageReference Include="Xamarin.Forms" Version="3.6.0.293080" />
-    <PackageReference Include="Xamarin.Forms.Maps" Version="3.6.0.293080" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
+    <PackageReference Include="Xamarin.Forms" Version="4.1.0.555618" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="4.1.0.555618" />  
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\ChampionshipSeriesPage.xaml.cs">
+      <DependentUpon>ChampionshipSeriesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\DataTemplates\ActivityFeedTournamentResultViewCell.xaml.cs">
       <DependentUpon>ActivityFeedTournamentResultViewCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DirectorsPage.xaml.cs">
+      <DependentUpon>DirectorsPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\MoreItemsPage.xaml.cs">
       <DependentUpon>MoreItemsPage.xaml</DependentUpon>
@@ -43,6 +53,12 @@
     </Compile>
     <Compile Update="Views\FavoritesPage.xaml.cs">
       <DependentUpon>FavoritesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ChampionshipSeriesDetailPage.xaml.cs">
+      <DependentUpon>ChampionshipSeriesDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PlayerChampionshipSeriesPage.xaml.cs">
+      <DependentUpon>PlayerChampionshipSeriesPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\RulesPage.xaml.cs">
       <DependentUpon>RulesPage.xaml</DependentUpon>

@@ -1,5 +1,7 @@
 ﻿using Ifpa.ViewModels;
-using PinballApi.Models.WPPR.v1.Players;
+using PinballApi.Models.WPPR.v2;
+using PinballApi.Models.WPPR.v2.Players;
+using System;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -21,7 +23,7 @@ namespace Ifpa.Views
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var tournament = e.Item as Result;
+            var tournament = e.Item as PlayerResult;
             if (tournament == null)
                 return;
 
@@ -34,25 +36,23 @@ namespace Ifpa.Views
         {
             base.OnAppearing();
 
-            if (viewModel.Results.Count == 0)
+            if (viewModel.ActiveResults.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
         }
 
-        private void SfTabView_SelectionChanged(object sender, Syncfusion.XForms.TabView.SelectionChangedEventArgs e)
+        private void RankingProfileButton_Clicked(object sender, System.EventArgs e)
         {
-            switch(e.Name)
+            popupLayout.Show();
+        }
+
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
             {
-                case "Active":
-                    viewModel.State = PlayerResultState.Active;
-                    break;
-                case "Unused":
-                    viewModel.State = PlayerResultState.NonActive;
-                    break;
-                case "Past":
-                    viewModel.State = PlayerResultState.Inactive;
-                    break;
-            }          
-            viewModel.LoadItemsCommand.Execute(null);
+                viewModel.RankingType = (RankingType)Enum.Parse(typeof(RankingType), e.SelectedItem.ToString());           
+                viewModel.LoadItemsCommand.Execute(null);
+                popupLayout.IsOpen = false;
+            }
         }
     }
 }
