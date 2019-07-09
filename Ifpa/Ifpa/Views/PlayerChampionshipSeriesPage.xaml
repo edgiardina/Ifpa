@@ -25,7 +25,7 @@
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" Padding="10">
                             <StackLayout HorizontalOptions="Start">
-                                <Label Text="{Binding GroupName}"  FontSize="20" Style="{DynamicResource ListItemTextStyle}" />                                
+                                <Label Text="{Binding StateProvinceName}" FontSize="20" Style="{DynamicResource ListItemTextStyle}" />                                
                             </StackLayout>
                             <StackLayout HorizontalOptions="EndAndExpand" MinimumWidthRequest="120">
                                 <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Text="{Binding Rank, Converter={StaticResource intToOrdinalString}}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
