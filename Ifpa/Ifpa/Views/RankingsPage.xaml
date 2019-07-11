@@ -71,9 +71,9 @@
                  HasUnevenRows="true"
                  RefreshCommand="{Binding LoadItemsCommand}"
                  IsPullToRefreshEnabled="true"
-                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"                 
-                 CachingStrategy="RecycleElement"
-                 ItemSelected="OnItemSelected">
+                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                 ItemSelected="OnItemSelected"
+                 CachingStrategy="RetainElement">          
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

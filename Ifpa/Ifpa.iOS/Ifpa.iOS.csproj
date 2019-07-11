@@ -69,12 +69,16 @@
     <MtouchArch>ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Distribution: Ed Giardina (KH5JKUPW2Q)</CodesignKey>
-    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignEntitlements>
+    </CodesignEntitlements>
     <MtouchNoSymbolStrip>false</MtouchNoSymbolStrip>
     <OptimizePNGs>true</OptimizePNGs>
     <MtouchFloat32>false</MtouchFloat32>
-    <CodesignProvision>IFPA Companion App Profile</CodesignProvision>
+    <CodesignProvision>
+    </CodesignProvision>
     <BuildIpa>true</BuildIpa>
+    <CodesignExtraArgs />
+    <CodesignResourceRules />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
