@@ -31,8 +31,8 @@
     <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="17.1.0.53" />
     <PackageReference Include="Xamarin.Badge.Plugin" Version="2.0.0" />
     <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
-    <PackageReference Include="Xamarin.Forms" Version="4.1.0.555618" />
-    <PackageReference Include="Xamarin.Forms.Maps" Version="4.1.0.555618" />  
+    <PackageReference Include="Xamarin.Forms" Version="4.1.0.581479" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="4.1.0.581479" />  
   </ItemGroup>
 
   <ItemGroup>
