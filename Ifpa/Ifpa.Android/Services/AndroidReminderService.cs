@@ -17,8 +17,8 @@ namespace Ifpa.Droid.Services
             Intent intent = new Intent(Intent.ActionInsert);
             intent.PutExtra(CalendarContract.Events.InterfaceConsts.Title, calendarDetail.TournamentName);
             intent.PutExtra(CalendarContract.Events.InterfaceConsts.Description, calendarDetail.Details);            
-            intent.PutExtra(CalendarContract.Events.InterfaceConsts.Dtstart, new DateTimeOffset(calendarDetail.StartDate).ToUnixTimeMilliseconds());
-            intent.PutExtra(CalendarContract.Events.InterfaceConsts.Dtend, new DateTimeOffset(calendarDetail.EndDate).ToUnixTimeMilliseconds());
+            intent.PutExtra(CalendarContract.ExtraEventBeginTime, new DateTimeOffset(calendarDetail.StartDate).ToUnixTimeMilliseconds());
+            intent.PutExtra(CalendarContract.ExtraEventEndTime, new DateTimeOffset(calendarDetail.EndDate).ToUnixTimeMilliseconds());
 
             intent.PutExtra(CalendarContract.EventsColumns.EventLocation, $"{calendarDetail.Address1} {calendarDetail.City} {calendarDetail.State}");
             intent.PutExtra(CalendarContract.Events.InterfaceConsts.EventTimezone, "UTC");
