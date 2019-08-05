@@ -26,8 +26,10 @@ namespace Ifpa.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.input_layout_drop_down_icon = global::Ifpa.Droid.Resource.Drawable.input_layout_drop_down_icon;
 			global::Syncfusion.XForms.Android.Core.Resource.Drawable.inputlayout_togglecollapseicon = global::Ifpa.Droid.Resource.Drawable.inputlayout_togglecollapseicon;
 			global::Syncfusion.XForms.Android.Core.Resource.Drawable.inputlayout_togglevisibleicon = global::Ifpa.Droid.Resource.Drawable.inputlayout_togglevisibleicon;
+			global::Syncfusion.XForms.Android.Expander.Resource.Drawable.input_layout_drop_down_icon = global::Ifpa.Droid.Resource.Drawable.input_layout_drop_down_icon;
 			global::Syncfusion.XForms.Android.Expander.Resource.Drawable.inputlayout_togglecollapseicon = global::Ifpa.Droid.Resource.Drawable.inputlayout_togglecollapseicon;
 			global::Syncfusion.XForms.Android.Expander.Resource.Drawable.inputlayout_togglevisibleicon = global::Ifpa.Droid.Resource.Drawable.inputlayout_togglevisibleicon;
 			global::Com.Syncfusion.Sfbusyindicator.Resource.Attribute.busyIndicatorAnimationTypes = global::Ifpa.Droid.Resource.Attribute.busyIndicatorAnimationTypes;
@@ -77,6 +79,7 @@ namespace Ifpa.Droid
 			global::Syncfusion.SfCalendar.XForms.Droid.Resource.Dimension.month_text_size = global::Ifpa.Droid.Resource.Dimension.month_text_size;
 			global::Syncfusion.SfCalendar.XForms.Droid.Resource.Dimension.month_text_tab_size = global::Ifpa.Droid.Resource.Dimension.month_text_tab_size;
 			global::Syncfusion.SfCalendar.XForms.Droid.Resource.Drawable.Icon = global::Ifpa.Droid.Resource.Drawable.Icon;
+			global::Syncfusion.SfCalendar.XForms.Droid.Resource.Drawable.input_layout_drop_down_icon = global::Ifpa.Droid.Resource.Drawable.input_layout_drop_down_icon;
 			global::Syncfusion.SfCalendar.XForms.Droid.Resource.Drawable.inputlayout_togglecollapseicon = global::Ifpa.Droid.Resource.Drawable.inputlayout_togglecollapseicon;
 			global::Syncfusion.SfCalendar.XForms.Droid.Resource.Drawable.inputlayout_togglevisibleicon = global::Ifpa.Droid.Resource.Drawable.inputlayout_togglevisibleicon;
 			global::Syncfusion.SfCalendar.XForms.Droid.Resource.String.sfcalendar_inlineviewalldaytext = global::Ifpa.Droid.Resource.String.sfcalendar_inlineviewalldaytext;
@@ -85,6 +88,7 @@ namespace Ifpa.Droid
 			global::Syncfusion.SfChart.XForms.Droid.Resource.Animation.SfChart_Fade_Out = global::Ifpa.Droid.Resource.Animation.SfChart_Fade_Out;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.Animation.SfChart_Scale_In = global::Ifpa.Droid.Resource.Animation.SfChart_Scale_In;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.Animation.SfChart_Scale_Out = global::Ifpa.Droid.Resource.Animation.SfChart_Scale_Out;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Drawable.input_layout_drop_down_icon = global::Ifpa.Droid.Resource.Drawable.input_layout_drop_down_icon;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.Drawable.inputlayout_togglecollapseicon = global::Ifpa.Droid.Resource.Drawable.inputlayout_togglecollapseicon;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.Drawable.inputlayout_togglevisibleicon = global::Ifpa.Droid.Resource.Drawable.inputlayout_togglevisibleicon;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.annotationLayout = global::Ifpa.Droid.Resource.Id.annotationLayout;
@@ -117,10 +121,13 @@ namespace Ifpa.Droid
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.q = global::Ifpa.Droid.Resource.String.q;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.quarter = global::Ifpa.Droid.Resource.String.quarter;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.sfchart_close_label = global::Ifpa.Droid.Resource.String.sfchart_close_label;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.String.sfchart_decrease_label = global::Ifpa.Droid.Resource.String.sfchart_decrease_label;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.sfchart_high_label = global::Ifpa.Droid.Resource.String.sfchart_high_label;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.String.sfchart_increase_label = global::Ifpa.Droid.Resource.String.sfchart_increase_label;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.sfchart_low_label = global::Ifpa.Droid.Resource.String.sfchart_low_label;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.sfchart_open_label = global::Ifpa.Droid.Resource.String.sfchart_open_label;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.sfchart_others_label = global::Ifpa.Droid.Resource.String.sfchart_others_label;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.String.sfchart_total_label = global::Ifpa.Droid.Resource.String.sfchart_total_label;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.w = global::Ifpa.Droid.Resource.String.w;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.week = global::Ifpa.Droid.Resource.String.week;
 			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Attribute.busyIndicatorAnimationTypes = global::Ifpa.Droid.Resource.Attribute.busyIndicatorAnimationTypes;
@@ -165,8 +172,12 @@ namespace Ifpa.Droid
 			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Drawable.FormFieldCheckbox_UnChecked = global::Ifpa.Droid.Resource.Drawable.FormFieldCheckbox_UnChecked;
 			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Drawable.formfieldradiobuttonstyle = global::Ifpa.Droid.Resource.Drawable.formfieldradiobuttonstyle;
 			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Drawable.formfieldtextboxcursorcolor = global::Ifpa.Droid.Resource.Drawable.formfieldtextboxcursorcolor;
+			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Drawable.input_layout_drop_down_icon = global::Ifpa.Droid.Resource.Drawable.input_layout_drop_down_icon;
 			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Drawable.inputlayout_togglecollapseicon = global::Ifpa.Droid.Resource.Drawable.inputlayout_togglecollapseicon;
 			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Drawable.inputlayout_togglevisibleicon = global::Ifpa.Droid.Resource.Drawable.inputlayout_togglevisibleicon;
+			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Drawable.sfprogressbar_determinate_linear = global::Ifpa.Droid.Resource.Drawable.sfprogressbar_determinate_linear;
+			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Drawable.sfprogressbar_indeterminate_circular = global::Ifpa.Droid.Resource.Drawable.sfprogressbar_indeterminate_circular;
+			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Drawable.sfprogressbar_indeterminate_linear = global::Ifpa.Droid.Resource.Drawable.sfprogressbar_indeterminate_linear;
 			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Drawable.SignaturepadRoundedCorners = global::Ifpa.Droid.Resource.Drawable.SignaturepadRoundedCorners;
 			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Id.ball = global::Ifpa.Droid.Resource.Id.ball;
 			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Id.battery = global::Ifpa.Droid.Resource.Id.battery;
@@ -197,6 +208,9 @@ namespace Ifpa.Droid
 			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Id.print = global::Ifpa.Droid.Resource.Id.print;
 			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Id.rectangle = global::Ifpa.Droid.Resource.Id.rectangle;
 			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Id.rollingBall = global::Ifpa.Droid.Resource.Id.rollingBall;
+			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Id.sfprogressbar_progress = global::Ifpa.Droid.Resource.Id.sfprogressbar_progress;
+			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Id.sfprogressbar_secondary_progress = global::Ifpa.Droid.Resource.Id.sfprogressbar_secondary_progress;
+			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Id.sfprogressbar_track = global::Ifpa.Droid.Resource.Id.sfprogressbar_track;
 			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Id.signatureLabel = global::Ifpa.Droid.Resource.Id.signatureLabel;
 			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Id.signaturePadContainer = global::Ifpa.Droid.Resource.Id.signaturePadContainer;
 			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Id.signatureviewlayout = global::Ifpa.Droid.Resource.Id.signatureviewlayout;
@@ -316,6 +330,7 @@ namespace Ifpa.Droid
 			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Styleable.SfRangeSlider_rangeSliderTrackSelectionColor = global::Ifpa.Droid.Resource.Styleable.SfRangeSlider_rangeSliderTrackSelectionColor;
 			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Styleable.SfRangeSlider_rangeSliderValue = global::Ifpa.Droid.Resource.Styleable.SfRangeSlider_rangeSliderValue;
 			global::Syncfusion.SfPdfViewer.XForms.Droid.Resource.Styleable.SfRangeSlider_rangeSliderValuePlacement = global::Ifpa.Droid.Resource.Styleable.SfRangeSlider_rangeSliderValuePlacement;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.Drawable.input_layout_drop_down_icon = global::Ifpa.Droid.Resource.Drawable.input_layout_drop_down_icon;
 			global::Syncfusion.XForms.Android.PopupLayout.Resource.Drawable.inputlayout_togglecollapseicon = global::Ifpa.Droid.Resource.Drawable.inputlayout_togglecollapseicon;
 			global::Syncfusion.XForms.Android.PopupLayout.Resource.Drawable.inputlayout_togglevisibleicon = global::Ifpa.Droid.Resource.Drawable.inputlayout_togglevisibleicon;
 			global::Syncfusion.XForms.Android.PopupLayout.Resource.Drawable.popup_forms_android_close_icon = global::Ifpa.Droid.Resource.Drawable.popup_forms_android_close_icon;
@@ -328,6 +343,16 @@ namespace Ifpa.Droid
 			global::Syncfusion.XForms.Android.PopupLayout.Resource.String.library_name = global::Ifpa.Droid.Resource.String.library_name;
 			global::Syncfusion.XForms.Android.PopupLayout.Resource.String.popup_message = global::Ifpa.Droid.Resource.String.popup_message;
 			global::Syncfusion.XForms.Android.PopupLayout.Resource.String.title = global::Ifpa.Droid.Resource.String.title;
+			global::Syncfusion.XForms.Android.ProgressBar.Resource.Drawable.input_layout_drop_down_icon = global::Ifpa.Droid.Resource.Drawable.input_layout_drop_down_icon;
+			global::Syncfusion.XForms.Android.ProgressBar.Resource.Drawable.inputlayout_togglecollapseicon = global::Ifpa.Droid.Resource.Drawable.inputlayout_togglecollapseicon;
+			global::Syncfusion.XForms.Android.ProgressBar.Resource.Drawable.inputlayout_togglevisibleicon = global::Ifpa.Droid.Resource.Drawable.inputlayout_togglevisibleicon;
+			global::Syncfusion.XForms.Android.ProgressBar.Resource.Drawable.sfprogressbar_determinate_linear = global::Ifpa.Droid.Resource.Drawable.sfprogressbar_determinate_linear;
+			global::Syncfusion.XForms.Android.ProgressBar.Resource.Drawable.sfprogressbar_indeterminate_circular = global::Ifpa.Droid.Resource.Drawable.sfprogressbar_indeterminate_circular;
+			global::Syncfusion.XForms.Android.ProgressBar.Resource.Drawable.sfprogressbar_indeterminate_linear = global::Ifpa.Droid.Resource.Drawable.sfprogressbar_indeterminate_linear;
+			global::Syncfusion.XForms.Android.ProgressBar.Resource.Id.sfprogressbar_progress = global::Ifpa.Droid.Resource.Id.sfprogressbar_progress;
+			global::Syncfusion.XForms.Android.ProgressBar.Resource.Id.sfprogressbar_secondary_progress = global::Ifpa.Droid.Resource.Id.sfprogressbar_secondary_progress;
+			global::Syncfusion.XForms.Android.ProgressBar.Resource.Id.sfprogressbar_track = global::Ifpa.Droid.Resource.Id.sfprogressbar_track;
+			global::Syncfusion.XForms.Android.ProgressBar.Resource.String.library_name = global::Ifpa.Droid.Resource.String.library_name;
 			global::Com.Syncfusion.Sfrangeslider.Resource.Attribute.rangeSliderDirectionReversed = global::Ifpa.Droid.Resource.Attribute.rangeSliderDirectionReversed;
 			global::Com.Syncfusion.Sfrangeslider.Resource.Attribute.rangeSliderEndValue = global::Ifpa.Droid.Resource.Attribute.rangeSliderEndValue;
 			global::Com.Syncfusion.Sfrangeslider.Resource.Attribute.rangeSliderKnobColor = global::Ifpa.Droid.Resource.Attribute.rangeSliderKnobColor;
@@ -6332,26 +6357,26 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f020056
 			public const int avd_hide_password = 2130837590;
 			
-			// aapt resource value: 0x7f0200b2
-			public const int avd_hide_password_1 = 2130837682;
+			// aapt resource value: 0x7f0200b6
+			public const int avd_hide_password_1 = 2130837686;
 			
-			// aapt resource value: 0x7f0200b3
-			public const int avd_hide_password_2 = 2130837683;
+			// aapt resource value: 0x7f0200b7
+			public const int avd_hide_password_2 = 2130837687;
 			
-			// aapt resource value: 0x7f0200b4
-			public const int avd_hide_password_3 = 2130837684;
+			// aapt resource value: 0x7f0200b8
+			public const int avd_hide_password_3 = 2130837688;
 			
 			// aapt resource value: 0x7f020057
 			public const int avd_show_password = 2130837591;
 			
-			// aapt resource value: 0x7f0200b5
-			public const int avd_show_password_1 = 2130837685;
+			// aapt resource value: 0x7f0200b9
+			public const int avd_show_password_1 = 2130837689;
 			
-			// aapt resource value: 0x7f0200b6
-			public const int avd_show_password_2 = 2130837686;
+			// aapt resource value: 0x7f0200ba
+			public const int avd_show_password_2 = 2130837690;
 			
-			// aapt resource value: 0x7f0200b7
-			public const int avd_show_password_3 = 2130837687;
+			// aapt resource value: 0x7f0200bb
+			public const int avd_show_password_3 = 2130837691;
 			
 			// aapt resource value: 0x7f020058
 			public const int Bookmark = 2130837592;
@@ -6495,133 +6520,145 @@ namespace Ifpa.Droid
 			public const int ifpa_logo = 2130837638;
 			
 			// aapt resource value: 0x7f020087
-			public const int inputlayout_togglecollapseicon = 2130837639;
+			public const int input_layout_drop_down_icon = 2130837639;
 			
 			// aapt resource value: 0x7f020088
-			public const int inputlayout_togglevisibleicon = 2130837640;
+			public const int inputlayout_togglecollapseicon = 2130837640;
 			
 			// aapt resource value: 0x7f020089
-			public const int location = 2130837641;
+			public const int inputlayout_togglevisibleicon = 2130837641;
 			
 			// aapt resource value: 0x7f02008a
-			public const int more = 2130837642;
+			public const int location = 2130837642;
 			
 			// aapt resource value: 0x7f02008b
-			public const int mtrl_snackbar_background = 2130837643;
+			public const int more = 2130837643;
 			
 			// aapt resource value: 0x7f02008c
-			public const int mtrl_tabs_default_indicator = 2130837644;
+			public const int mtrl_snackbar_background = 2130837644;
 			
 			// aapt resource value: 0x7f02008d
-			public const int mystats = 2130837645;
+			public const int mtrl_tabs_default_indicator = 2130837645;
 			
 			// aapt resource value: 0x7f02008e
-			public const int navigation_empty_icon = 2130837646;
+			public const int mystats = 2130837646;
 			
 			// aapt resource value: 0x7f02008f
-			public const int news = 2130837647;
+			public const int navigation_empty_icon = 2130837647;
 			
 			// aapt resource value: 0x7f020090
-			public const int notification_action_background = 2130837648;
+			public const int news = 2130837648;
 			
 			// aapt resource value: 0x7f020091
-			public const int notification_bg = 2130837649;
+			public const int notification_action_background = 2130837649;
 			
 			// aapt resource value: 0x7f020092
-			public const int notification_bg_low = 2130837650;
+			public const int notification_bg = 2130837650;
 			
 			// aapt resource value: 0x7f020093
-			public const int notification_bg_low_normal = 2130837651;
+			public const int notification_bg_low = 2130837651;
 			
 			// aapt resource value: 0x7f020094
-			public const int notification_bg_low_pressed = 2130837652;
+			public const int notification_bg_low_normal = 2130837652;
 			
 			// aapt resource value: 0x7f020095
-			public const int notification_bg_normal = 2130837653;
+			public const int notification_bg_low_pressed = 2130837653;
 			
 			// aapt resource value: 0x7f020096
-			public const int notification_bg_normal_pressed = 2130837654;
+			public const int notification_bg_normal = 2130837654;
 			
 			// aapt resource value: 0x7f020097
-			public const int notification_icon = 2130837655;
+			public const int notification_bg_normal_pressed = 2130837655;
 			
 			// aapt resource value: 0x7f020098
-			public const int notification_icon_background = 2130837656;
-			
-			// aapt resource value: 0x7f0200b0
-			public const int notification_template_icon_bg = 2130837680;
-			
-			// aapt resource value: 0x7f0200b1
-			public const int notification_template_icon_low_bg = 2130837681;
+			public const int notification_icon = 2130837656;
 			
 			// aapt resource value: 0x7f020099
-			public const int notification_tile_bg = 2130837657;
+			public const int notification_icon_background = 2130837657;
+			
+			// aapt resource value: 0x7f0200b4
+			public const int notification_template_icon_bg = 2130837684;
+			
+			// aapt resource value: 0x7f0200b5
+			public const int notification_template_icon_low_bg = 2130837685;
 			
 			// aapt resource value: 0x7f02009a
-			public const int notify_panel_notification_icon_bg = 2130837658;
+			public const int notification_tile_bg = 2130837658;
 			
 			// aapt resource value: 0x7f02009b
-			public const int numbered_list = 2130837659;
+			public const int notify_panel_notification_icon_bg = 2130837659;
 			
 			// aapt resource value: 0x7f02009c
-			public const int popup_forms_android_close_icon = 2130837660;
+			public const int numbered_list = 2130837660;
 			
 			// aapt resource value: 0x7f02009d
-			public const int popup_forms_android_shadow = 2130837661;
+			public const int popup_forms_android_close_icon = 2130837661;
 			
 			// aapt resource value: 0x7f02009e
-			public const int popup_forms_dark_theme_close_icon = 2130837662;
+			public const int popup_forms_android_shadow = 2130837662;
 			
 			// aapt resource value: 0x7f02009f
-			public const int popup_forms_light_theme_close_icon = 2130837663;
+			public const int popup_forms_dark_theme_close_icon = 2130837663;
 			
 			// aapt resource value: 0x7f0200a0
-			public const int rankchange = 2130837664;
+			public const int popup_forms_light_theme_close_icon = 2130837664;
 			
 			// aapt resource value: 0x7f0200a1
-			public const int ranking_profile = 2130837665;
+			public const int rankchange = 2130837665;
 			
 			// aapt resource value: 0x7f0200a2
-			public const int refresh = 2130837666;
+			public const int ranking_profile = 2130837666;
 			
 			// aapt resource value: 0x7f0200a3
-			public const int ribbon = 2130837667;
+			public const int refresh = 2130837667;
 			
 			// aapt resource value: 0x7f0200a4
-			public const int rules = 2130837668;
+			public const int ribbon = 2130837668;
 			
 			// aapt resource value: 0x7f0200a5
-			public const int search = 2130837669;
+			public const int rules = 2130837669;
 			
 			// aapt resource value: 0x7f0200a6
-			public const int settings = 2130837670;
+			public const int search = 2130837670;
 			
 			// aapt resource value: 0x7f0200a7
-			public const int share = 2130837671;
+			public const int settings = 2130837671;
 			
 			// aapt resource value: 0x7f0200a8
-			public const int SignaturepadRoundedCorners = 2130837672;
+			public const int sfprogressbar_determinate_linear = 2130837672;
 			
 			// aapt resource value: 0x7f0200a9
-			public const int splash_background = 2130837673;
+			public const int sfprogressbar_indeterminate_circular = 2130837673;
 			
 			// aapt resource value: 0x7f0200aa
-			public const int star = 2130837674;
+			public const int sfprogressbar_indeterminate_linear = 2130837674;
 			
 			// aapt resource value: 0x7f0200ab
-			public const int stats = 2130837675;
+			public const int share = 2130837675;
 			
 			// aapt resource value: 0x7f0200ac
-			public const int tab_about = 2130837676;
+			public const int SignaturepadRoundedCorners = 2130837676;
 			
 			// aapt resource value: 0x7f0200ad
-			public const int tooltip_frame_dark = 2130837677;
+			public const int splash_background = 2130837677;
 			
 			// aapt resource value: 0x7f0200ae
-			public const int tooltip_frame_light = 2130837678;
+			public const int star = 2130837678;
 			
 			// aapt resource value: 0x7f0200af
-			public const int trophy = 2130837679;
+			public const int stats = 2130837679;
+			
+			// aapt resource value: 0x7f0200b0
+			public const int tab_about = 2130837680;
+			
+			// aapt resource value: 0x7f0200b1
+			public const int tooltip_frame_dark = 2130837681;
+			
+			// aapt resource value: 0x7f0200b2
+			public const int tooltip_frame_light = 2130837682;
+			
+			// aapt resource value: 0x7f0200b3
+			public const int trophy = 2130837683;
 			
 			static Drawable()
 			{
@@ -7245,6 +7282,15 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0d00c7
 			public const int seriesLayout = 2131558599;
 			
+			// aapt resource value: 0x7f0d0118
+			public const int sfprogressbar_progress = 2131558680;
+			
+			// aapt resource value: 0x7f0d0117
+			public const int sfprogressbar_secondary_progress = 2131558679;
+			
+			// aapt resource value: 0x7f0d0116
+			public const int sfprogressbar_track = 2131558678;
+			
 			// aapt resource value: 0x7f0d0104
 			public const int shellcontent_appbar = 2131558660;
 			
@@ -7841,8 +7887,8 @@ namespace Ifpa.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f0a00a4
-			public const int ApplicationName = 2131361956;
+			// aapt resource value: 0x7f0a00a7
+			public const int ApplicationName = 2131361959;
 			
 			// aapt resource value: 0x7f0a0053
 			public const int SfPdfViewerCancel = 2131361875;
@@ -8093,26 +8139,32 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0a0099
 			public const int quarter = 2131361945;
 			
-			// aapt resource value: 0x7f0a00a8
-			public const int rank_channel_description = 2131361960;
+			// aapt resource value: 0x7f0a00ab
+			public const int rank_channel_description = 2131361963;
 			
-			// aapt resource value: 0x7f0a00a7
-			public const int rank_channel_name = 2131361959;
+			// aapt resource value: 0x7f0a00aa
+			public const int rank_channel_name = 2131361962;
 			
 			// aapt resource value: 0x7f0a002c
 			public const int search_menu_title = 2131361836;
 			
-			// aapt resource value: 0x7f0a00a3
-			public const int sfcalendar_inlineviewalldaytext = 2131361955;
+			// aapt resource value: 0x7f0a00a6
+			public const int sfcalendar_inlineviewalldaytext = 2131361958;
 			
-			// aapt resource value: 0x7f0a00a2
-			public const int sfcalendar_inlineviewnoappointmenttext = 2131361954;
+			// aapt resource value: 0x7f0a00a5
+			public const int sfcalendar_inlineviewnoappointmenttext = 2131361957;
 			
 			// aapt resource value: 0x7f0a00a0
 			public const int sfchart_close_label = 2131361952;
 			
+			// aapt resource value: 0x7f0a00a3
+			public const int sfchart_decrease_label = 2131361955;
+			
 			// aapt resource value: 0x7f0a009d
 			public const int sfchart_high_label = 2131361949;
+			
+			// aapt resource value: 0x7f0a00a2
+			public const int sfchart_increase_label = 2131361954;
 			
 			// aapt resource value: 0x7f0a009e
 			public const int sfchart_low_label = 2131361950;
@@ -8122,6 +8174,9 @@ namespace Ifpa.Droid
 			
 			// aapt resource value: 0x7f0a00a1
 			public const int sfchart_others_label = 2131361953;
+			
+			// aapt resource value: 0x7f0a00a4
+			public const int sfchart_total_label = 2131361956;
 			
 			// aapt resource value: 0x7f0a005a
 			public const int sfpdfviewer_annotationsbackbutton = 2131361882;
@@ -8336,11 +8391,11 @@ namespace Ifpa.Droid
 			// aapt resource value: 0x7f0a0048
 			public const int title = 2131361864;
 			
-			// aapt resource value: 0x7f0a00a6
-			public const int tournament_channel_description = 2131361958;
+			// aapt resource value: 0x7f0a00a9
+			public const int tournament_channel_description = 2131361961;
 			
-			// aapt resource value: 0x7f0a00a5
-			public const int tournament_channel_name = 2131361957;
+			// aapt resource value: 0x7f0a00a8
+			public const int tournament_channel_name = 2131361960;
 			
 			// aapt resource value: 0x7f0a009c
 			public const int w = 2131361948;
