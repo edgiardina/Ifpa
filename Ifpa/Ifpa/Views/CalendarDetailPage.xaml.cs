@@ -41,13 +41,13 @@ namespace Ifpa.Views
                         Label = viewModel.TournamentName,
                         Position = position,
                         Address = viewModel.Location,
-                        Type = PinType.Place                        
+                        Type = PinType.Generic                        
                     };
 
                     pin.Clicked += Pin_Clicked;
 
-                    calendarMap.Pins.Add(pin);                    
-
+                    calendarMap.Pins.Add(pin);
+                    
                     calendarMap.IsVisible = true;
                 }
                 //unable to geocode position on the map, ignore. 

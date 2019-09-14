@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
-             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
+             xmlns:local1="clr-namespace:Ifpa.Views.Controls"
              x:Class="Ifpa.Views.CalendarDetailPage">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -51,7 +51,7 @@
         </Frame>
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout Spacing="0">
-                <maps:Map
+                <local1:PinViewMap
                     x:Name="calendarMap" HasScrollEnabled="False" HasZoomEnabled="False" HeightRequest="200"              
                      MapType="Street" IsVisible="False" />
 

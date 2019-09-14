@@ -88,6 +88,7 @@
     <Compile Include="Services\iOSReminderService.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderers\PinViewMapRenderer.cs" />
     <Compile Include="Services\ToolbarItemBadgeService.cs" />
     <Compile Include="Utils\BarButtonItemExtensions.cs" />
     <Compile Include="Utils\ShortcutIdentifier.cs" />
