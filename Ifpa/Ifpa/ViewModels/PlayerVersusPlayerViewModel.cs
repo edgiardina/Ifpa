@@ -16,6 +16,8 @@ namespace Ifpa.ViewModels
 
         public int PlayerId { get; set; }
 
+        public bool HasNoPvpData { get; set; }
+
         public PlayerVersusPlayerViewModel(int playerId)
         {
             Title = "PVP";
@@ -35,17 +37,27 @@ namespace Ifpa.ViewModels
             {
                 Results.Clear();
                 var pvpResults = await PinballRankingApi.GetPlayerComparisons(PlayerId);
-                var lastNames = pvpResults.Pvp
-                                        .OrderBy(n => n.LastName).Select(n => n.LastName).ToList();
-                var groupedResults = pvpResults.Pvp
-                                        .OrderBy(n => n.LastName)
-                                        .ThenBy(n => n.FirstName)
-                                        .GroupBy(c => char.ToUpper(c.LastName.FirstOrDefault()))
-                                        .Select(g => new Grouping<char, PlayerVersusRecord>(g.Key, g));
-                
-                foreach (var item in groupedResults)
-                {  
-                    Results.Add(item);
+
+                if (pvpResults.Pvp != null)
+                {
+                    var lastNames = pvpResults.Pvp
+                                            .OrderBy(n => n.LastName).Select(n => n.LastName).ToList();
+                    var groupedResults = pvpResults.Pvp
+                                            .OrderBy(n => n.LastName)
+                                            .ThenBy(n => n.FirstName)
+                                            .GroupBy(c => char.ToUpper(c.LastName.FirstOrDefault()))
+                                            .Select(g => new Grouping<char, PlayerVersusRecord>(g.Key, g));
+
+                    foreach (var item in groupedResults)
+                    {
+                        Results.Add(item);
+                    }
+                }
+                else
+                {
+                    HasNoPvpData = true;
+
+                    OnPropertyChanged(nameof(HasNoPvpData));
                 }
             }
             catch (Exception ex)

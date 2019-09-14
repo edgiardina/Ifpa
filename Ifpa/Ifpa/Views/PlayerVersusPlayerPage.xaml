@@ -7,9 +7,23 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:PlayerVersusRecordStringConverter x:Key="pvpString" />
+            <local:BoolConverter x:Key="BoolConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ListView x:Name="MyListView"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" 
+                IsVisible="{Binding HasNoPvpData}"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"
+                FontAttributes="Italic"
+                Text="Player has not played against competitors yet." />
+
+        <ListView x:Name="MyListView"
+            Grid.Row="0" 
+            IsVisible="{Binding HasNoPvpData, Converter={StaticResource BoolConverter}}"
             ItemsSource="{Binding Results}"
             RefreshCommand="{Binding LoadItemsCommand}"              
             IsPullToRefreshEnabled="true"
@@ -20,39 +34,40 @@
             IsGroupingEnabled="True"              
             GroupDisplayBinding="{Binding Key}"
             GroupShortNameBinding="{Binding Key}">
-        <!--Custom View Cells-->
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout Orientation="Horizontal" Padding="10">
-                        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <FormattedString.Spans>
-                                        <Span Text="{Binding FirstName}" />
-                                        <Span Text=" " />
-                                        <Span Text="{Binding LastName}" />
-                                    </FormattedString.Spans>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" HorizontalTextAlignment="End"                               
+            <!--Custom View Cells-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="10">
+                            <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="{Binding FirstName}" />
+                                            <Span Text=" " />
+                                            <Span Text="{Binding LastName}" />
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" HorizontalTextAlignment="End"                               
                                TextColor="{Binding Path=., Converter={StaticResource pvpString}}">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <FormattedString.Spans>
-                                        <Span Text="{Binding WinCount}" />
-                                        <Span Text=" - " />
-                                        <Span Text="{Binding LossCount}" />
-                                        <Span Text=" - " />
-                                        <Span Text="{Binding TieCount}" />
-                                    </FormattedString.Spans>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="{Binding WinCount}" />
+                                            <Span Text=" - " />
+                                            <Span Text="{Binding LossCount}" />
+                                            <Span Text=" - " />
+                                            <Span Text="{Binding TieCount}" />
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
 </ContentPage>
