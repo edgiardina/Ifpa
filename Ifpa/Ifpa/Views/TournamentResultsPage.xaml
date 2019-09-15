@@ -38,8 +38,16 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />                       
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
 
                     <Label Grid.Column="0" Grid.Row="0" Style="{DynamicResource labelStyle}" Text="Date: " />
