@@ -64,7 +64,7 @@
       <Version>2.1.0.4</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
-      <Version>17.2.0.51</Version>
+      <Version>17.3.0.14</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.2.0.848062" />
   </ItemGroup>
