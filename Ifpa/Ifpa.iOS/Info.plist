@@ -11,7 +11,6 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -25,7 +24,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.edgiardina.ifpa</string>
 	<key>CFBundleVersion</key>
-	<string>2.0.1</string>
+	<string>2.0.2</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
@@ -41,7 +40,7 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>This app will allow you to add an IFPA sanctioned tournament from the app to your local device&apos;s calendar</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.1</string>
+	<string>2.0.2</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
