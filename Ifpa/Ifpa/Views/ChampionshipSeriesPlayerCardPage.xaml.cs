@@ -6,11 +6,11 @@ using Xamarin.Forms.Xaml;
 namespace Ifpa.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ChampionshipSeriesDetailPage : ContentPage
+    public partial class ChampionshipSeriesPlayerCardPage : ContentPage
     {
-        ChampionshipSeriesDetailViewModel viewModel;
+        ChampionshipSeriesPlayerCardViewModel viewModel;
 
-        public ChampionshipSeriesDetailPage(ChampionshipSeriesDetailViewModel viewModel)
+        public ChampionshipSeriesPlayerCardPage(ChampionshipSeriesPlayerCardViewModel viewModel)
         {
             InitializeComponent();
 
@@ -19,20 +19,20 @@ namespace Ifpa.Views
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var playerStanding = e.Item as PlayerStanding;
-            if (playerStanding == null)
+            var tournamentCardRecord = e.Item as NacsTournamentCardRecord;
+            if (tournamentCardRecord == null)
                 return;
 
-            await Navigation.PushAsync(new ChampionshipSeriesPlayerCardPage(new ChampionshipSeriesPlayerCardViewModel(viewModel.Year, playerStanding.PlayerId, viewModel.StateProvinceAbbreviation)));
+            await Navigation.PushAsync(new TournamentResultsPage(new TournamentResultsViewModel(tournamentCardRecord.TournamentId)));
 
-            //Deselect Item
+            ////Deselect Item
             ((ListView)sender).SelectedItem = null;
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            if (viewModel.StateProvinceStandings.Count == 0)
+            if (viewModel.TournamentCardRecords.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
         }  
     }

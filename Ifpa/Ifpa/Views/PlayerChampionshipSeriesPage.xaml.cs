@@ -1,6 +1,7 @@
 ﻿using Ifpa.ViewModels;
 using PinballApi.Models.v2.WPPR;
 using PinballApi.Models.WPPR.v1.Players;
+using System;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -26,7 +27,7 @@ namespace Ifpa.Views
             if (state == null)
                 return;
 
-            await Navigation.PushAsync(new ChampionshipSeriesDetailPage(new ChampionshipSeriesDetailViewModel(state.StateProvince)));
+            await Navigation.PushAsync(new ChampionshipSeriesDetailPage(new ChampionshipSeriesDetailViewModel(state.StateProvince, DateTime.Now.Year)));
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;

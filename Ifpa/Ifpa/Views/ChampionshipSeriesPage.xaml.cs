@@ -1,5 +1,6 @@
 ﻿using Ifpa.ViewModels;
 using PinballApi.Models.WPPR.v2.Nacs;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,12 +10,15 @@ namespace Ifpa.Views
     public partial class ChampionshipSeriesPage : ContentPage
     {
         ChampionshipSeriesViewModel viewModel;
+        int year = DateTime.Now.Year;
 
         public ChampionshipSeriesPage()
         {
             InitializeComponent();
 
-            BindingContext = this.viewModel = new ChampionshipSeriesViewModel();
+            //TODO: allow user to pick the year            
+
+            BindingContext = this.viewModel = new ChampionshipSeriesViewModel(year);
         }
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -23,7 +27,7 @@ namespace Ifpa.Views
             if (championshipStandings == null)
                 return;
 
-            await Navigation.PushAsync(new ChampionshipSeriesDetailPage(new ChampionshipSeriesDetailViewModel(championshipStandings.StateProvince)));
+            await Navigation.PushAsync(new ChampionshipSeriesDetailPage(new ChampionshipSeriesDetailViewModel(championshipStandings.StateProvince, year)));
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
