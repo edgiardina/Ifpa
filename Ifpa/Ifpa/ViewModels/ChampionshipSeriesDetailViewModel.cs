@@ -15,11 +15,14 @@ namespace Ifpa.ViewModels
         public ObservableCollection<NacsPayout> StateProvincePayouts { get; set; }
         public Command LoadItemsCommand { get; set; }
 
-        private string stateProvinceAbbreviation;
+        public readonly string StateProvinceAbbreviation;
+        public readonly int Year;
 
-        public ChampionshipSeriesDetailViewModel(string stateProvinceAbbreviation)
+        public ChampionshipSeriesDetailViewModel(string stateProvinceAbbreviation, int year)
         {
-            this.stateProvinceAbbreviation = stateProvinceAbbreviation;
+            this.StateProvinceAbbreviation = stateProvinceAbbreviation;
+            this.Year = year;
+
             StateProvinceStandings = new ObservableCollection<PlayerStanding>();
             StateProvinceStatistics = new ObservableCollection<NacsStateProvinceStatistics>();
             StateProvincePayouts = new ObservableCollection<NacsPayout>();
@@ -43,7 +46,7 @@ namespace Ifpa.ViewModels
                 StateProvinceStatistics.Clear();
                 StateProvincePayouts.Clear();
 
-                var stateProvinceChampionshipSeries = await PinballRankingApiV2.GetNacsStateProvinceStandings(stateProvinceAbbreviation);
+                var stateProvinceChampionshipSeries = await PinballRankingApiV2.GetNacsStateProvinceStandings(StateProvinceAbbreviation, Year);
 
                 foreach (var item in stateProvinceChampionshipSeries.PlayerStandings)
                 {

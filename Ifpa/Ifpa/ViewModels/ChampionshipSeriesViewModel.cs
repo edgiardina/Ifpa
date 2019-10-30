@@ -11,9 +11,13 @@ namespace Ifpa.ViewModels
     {
         public ObservableCollection<NacsStandings> StateProvinceStandings { get; set; }
         public Command LoadItemsCommand { get; set; }
+
+        private readonly int year;
         
-        public ChampionshipSeriesViewModel()
+        public ChampionshipSeriesViewModel(int year)
         {
+            this.year = year;
+
             StateProvinceStandings = new ObservableCollection<NacsStandings>();
 
             Title = "Championship Series";
@@ -32,7 +36,7 @@ namespace Ifpa.ViewModels
             try
             {
                 StateProvinceStandings.Clear();
-                var stateProvinceChampionshipSeries = await PinballRankingApiV2.GetNacsStandings();
+                var stateProvinceChampionshipSeries = await PinballRankingApiV2.GetNacsStandings(year);
 
                 foreach (var item in stateProvinceChampionshipSeries)
                 {
