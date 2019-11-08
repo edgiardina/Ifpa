@@ -67,8 +67,8 @@ namespace Ifpa.Views
             {
                 Preferences.Set("PlayerCount", viewModel.CountOfItemsToFetch);
                 Preferences.Set("StartingRank", viewModel.StartingPosition);
-            }
-            viewModel.LoadItemsCommand.Execute(null);
+                viewModel.LoadItemsCommand.Execute(null);
+            }            
         }
 
         private void RankingType_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -88,7 +88,10 @@ namespace Ifpa.Views
             }
 
             viewModel.CurrentRankingType = selectedType;
-            viewModel.LoadItemsCommand.Execute(null);
+            if (viewModel.Players.Count > 0)
+            {
+                viewModel.LoadItemsCommand.Execute(null);
+            }
         }
     }
 }
