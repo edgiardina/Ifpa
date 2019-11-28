@@ -12,7 +12,7 @@ namespace Ifpa.ViewModels
         public Command LoadItemsCommand { get; set; }
         public HtmlWebViewSource RulesContent { get; set; }
 
-        private const string RulesPdfUrl = "https://papa.org/wp-content/uploads/PAPA_IFPA-Complete-Competition-Rules.pdf";
+        private const string RulesPdfUrl = "https://papa.org/wp-content/uploads/PAPA_IFPA-Complete-Competition-Rules-1.pdf";
 
         private Stream pdfDocumentStream;
 
