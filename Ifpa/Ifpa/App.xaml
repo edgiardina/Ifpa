@@ -11,6 +11,8 @@
       <Color x:Key="WinningRecord">#04B45F</Color>
       <Color x:Key="LosingRecord">#FE2E2E</Color>
       <Color x:Key="TieRecord">#333333</Color> 
+      <Color x:Key="TournamentResultIncludedRecord">#FFFFFF</Color>
+      <Color x:Key="TournamentResultExcludedRecord">#808080</Color> 
       <Style TargetType="NavigationPage">
         <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
         <Setter Property="BarTextColor" Value="White" />

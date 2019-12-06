@@ -8,6 +8,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:IntToOrdinalStringConverter x:Key="intToOrdinalString" />
+            <local:TournamentResultIncludedColorConverter x:Key="tournamentResultIncludedColorConverter" />
             <Style x:Key="labelStyle" TargetType="Label">
                 <Setter Property="LineBreakMode" Value="NoWrap" />
                 <Setter Property="FontSize" Value="16" />
@@ -105,7 +106,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="10">
+                        <StackLayout Orientation="Horizontal" Padding="10" BackgroundColor="{Binding Path=., Converter={StaticResource tournamentResultIncludedColorConverter}}">
                             <StackLayout HorizontalOptions="Start">
                                 <Label Text="{Binding TournamentName}"  FontSize="16" Style="{DynamicResource ListItemTextStyle}" />
                                 <StackLayout Orientation="Horizontal">
