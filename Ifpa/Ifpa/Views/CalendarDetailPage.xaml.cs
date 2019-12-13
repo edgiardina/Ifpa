@@ -44,7 +44,7 @@ namespace Ifpa.Views
                         Type = PinType.Generic                        
                     };
 
-                    pin.Clicked += Pin_Clicked;
+                    pin.MarkerClicked += Pin_Clicked;
 
                     calendarMap.Pins.Add(pin);
                     

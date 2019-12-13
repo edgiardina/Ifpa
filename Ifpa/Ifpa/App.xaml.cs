@@ -8,7 +8,7 @@ using Ifpa.Models;
 namespace Ifpa
 {
     public partial class App : Application
-    {
+    {               
         public App()
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(Constants.SyncFusionLicenseKey);
@@ -16,6 +16,8 @@ namespace Ifpa
             InitializeComponent();
             MainPage = new MainPage();
         }
+
+        public static AppTheme AppTheme { get; set; }
 
         protected override void OnStart()
         {
