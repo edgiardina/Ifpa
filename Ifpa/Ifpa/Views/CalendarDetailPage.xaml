@@ -6,10 +6,6 @@
              x:Class="Ifpa.Views.CalendarDetailPage">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <!--Page Level Resources: Compatibile with Xamarin Live Player -->
-            <Color x:Key="Primary">#2F4E6E</Color>
-            <Color x:Key="Accent">#072C53</Color>
-            <Color x:Key="LightTextColor">#999999</Color>
             <local:StringNullOrEmptyBoolConverter x:Key="stringNullOrEmptyBoolConverter" />
             <Style x:Key="calendarHeader" TargetType="Label">
                 <Setter Property="TextColor" Value="White" />
@@ -21,7 +17,7 @@
         <ToolbarItem Text="Share" x:Name="ShareButton" Clicked="ShareButton_Clicked" Icon="share.png" />
         <ToolbarItem Text="Add To Calendar" x:Name="AddToCalendarButton" Clicked="AddToCalendarButton_Clicked" Icon="calendar_add.png" />
     </ContentPage.ToolbarItems>
-    <StackLayout HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource DetailPageBackground}" Spacing="0">
+    <StackLayout HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource DetailPageBackground}" Spacing="0">
         <Frame BackgroundColor="{StaticResource SecondaryBanner}" CornerRadius="0">
             <StackLayout Orientation="Vertical">
                 <Label Text="{Binding Title, Mode=OneWay}" FontSize="24" Style="{DynamicResource calendarHeader}"/>

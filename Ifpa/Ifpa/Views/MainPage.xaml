@@ -9,7 +9,7 @@
     <!-- Customize appearance of bottom tab bar on Android only -->
     <TabbedPage.BarBackgroundColor>
         <OnPlatform x:TypeArguments="Color">
-            <On Platform="Android" Value="{StaticResource NavigationPrimary}" />
+            <On Platform="Android" Value="{DynamicResource NavigationPrimary}" />
         </OnPlatform>
     </TabbedPage.BarBackgroundColor>
     <TabbedPage.SelectedTabColor>

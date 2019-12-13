@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
              xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
              x:Class="Ifpa.Views.RankingsPage"
-              Title="{Binding Title}"
+             Title="{Binding Title}"
              x:Name="BrowseItemsPage">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -21,7 +21,7 @@
                     </Grid>
                 </syncfusion:SfExpander.Header>
                 <syncfusion:SfExpander.Content>
-                    <Grid Padding="10,10,10,10" BackgroundColor="#FFFFFF">
+                    <Grid Padding="10,10,10,10" BackgroundColor="{DynamicResource BackgroundColor}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />

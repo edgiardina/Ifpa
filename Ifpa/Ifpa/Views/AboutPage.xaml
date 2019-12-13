@@ -7,20 +7,12 @@
     <ContentPage.BindingContext>
         <vm:AboutViewModel />
     </ContentPage.BindingContext>
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <!--Page Level Resources: Compatibile with Xamarin Live Player -->
-            <Color x:Key="Primary">#2F4E6E</Color>
-            <Color x:Key="Accent">#072C53</Color>
-            <Color x:Key="LightTextColor">#999999</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                 <Image Source="https://www.ifpapinball.com/images/ifpa_logo.jpg" VerticalOptions="Center" />
             </StackLayout>
@@ -33,7 +25,7 @@
                             <FormattedString.Spans>
                                 <Span Text="IFPA Companion" FontAttributes="Bold" FontSize="22" />
                                 <Span Text=" " />
-                                <Span Text="{Binding CurrentVersion}" ForegroundColor="{StaticResource LightTextColor}" />
+                                <Span Text="{Binding CurrentVersion}" ForegroundColor="{StaticResource SecondaryTextColor}" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
@@ -71,8 +63,8 @@
                         <ColumnDefinition Width="1*" />
                         <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" WidthRequest="160" Padding="10,0,10,0" HorizontalOptions="CenterAndExpand"  Text="Learn More" Clicked="LearnMore_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
-                    <Button Grid.Column="1" WidthRequest="160" Padding="10,0,10,0" HorizontalOptions="CenterAndExpand"  Text="Leave a Review" Clicked="ReviewButton_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
+                    <Button Grid.Column="0" WidthRequest="160" Padding="10,0,10,0" HorizontalOptions="CenterAndExpand"  Text="Learn More" Clicked="LearnMore_Clicked" BackgroundColor="{StaticResource ButtonBackgroundColor}" TextColor="White" />
+                    <Button Grid.Column="1" WidthRequest="160" Padding="10,0,10,0" HorizontalOptions="CenterAndExpand"  Text="Leave a Review" Clicked="ReviewButton_Clicked" BackgroundColor="{StaticResource ButtonBackgroundColor}" TextColor="White" />
                 </Grid>
             </StackLayout>
         </ScrollView>

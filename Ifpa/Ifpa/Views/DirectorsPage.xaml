@@ -13,7 +13,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <tabView:SfTabView VisibleHeaderCount="2" HeightRequest="50" TabHeaderBackgroundColor="#66FFFFFF">
+        <tabView:SfTabView VisibleHeaderCount="2" HeightRequest="50" TabHeaderBackgroundColor="{DynamicResource TabHeaderBackgroundColor}">
             <tabView:SfTabItem Title="NACS Directors">
                 <tabView:SfTabItem.Content>
                     <ListView x:Name="NacsDirectorsListView" 

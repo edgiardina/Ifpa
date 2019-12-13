@@ -116,7 +116,7 @@ namespace Ifpa.Views
                         pin.Label = detail.TournamentName;
 
                         //TODO: on pinpress scroll listview to find item. 
-                        pin.Clicked += (sender, e) => 
+                        pin.MarkerClicked += (sender, e) => 
                         {
                             TournamentListView.ScrollTo(detail, ScrollToPosition.MakeVisible, true);
                         };
