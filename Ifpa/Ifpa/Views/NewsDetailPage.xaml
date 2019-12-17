@@ -41,7 +41,7 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" BackgroundColor="{StaticResource DetailPageBackground}" Margin="-5" Padding="5">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" BackgroundColor="{DynamicResource DetailPageBackground}" Margin="-5" Padding="5">
                             <Label HorizontalTextAlignment="Start"  FontSize="Small" Text="{Binding NewsItem.Author}"  Margin="0" />
                             <Label HorizontalTextAlignment="End" FontSize="Small" Text="{Binding NewsItem.PublishDate, StringFormat='{0:d}'}"/>
                         </StackLayout>

@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Ifpa.Styles.LightTheme"
-             Source="DefaultTheme.xaml">
+             x:Class="Ifpa.Styles.LightTheme">
 
     <!--Global Styles-->
     <Color x:Key="NavigationPrimary">#FFFFFF</Color>
@@ -22,9 +21,9 @@
     <Color x:Key="TabHeaderBackgroundColor">#66FFFFFF</Color>
     <Color x:Key="SecondaryBackgroundColor">#FFFFFF</Color>
 
-    <Style TargetType="NavigationPage">
-        <Setter Property="BarBackgroundColor" Value="{DynamicResource NavigationPrimary}" />
-        <Setter Property="BarTextColor" Value="{DynamicResource BarTextColor}" />
-        <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
-    </Style>
+    <Color x:Key="LinkTextColor">#0000ff</Color>
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="DefaultTheme.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

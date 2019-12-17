@@ -6,10 +6,10 @@
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"                       
             android:TabbedPage.ToolbarPlacement="Bottom">
     
-    <!-- Customize appearance of bottom tab bar on Android only -->
+    <!-- Customize appearance of bottom tab bar on Android only --><!--
     <TabbedPage.BarBackgroundColor>
         <OnPlatform x:TypeArguments="Color">
-            <On Platform="Android" Value="{DynamicResource NavigationPrimary}" />
+            <On Platform="Android" Value="#FFFFFF" />
         </OnPlatform>
     </TabbedPage.BarBackgroundColor>
     <TabbedPage.SelectedTabColor>
@@ -21,7 +21,7 @@
         <OnPlatform x:TypeArguments="Color">
             <On Platform="Android" Value="#66FFFFFF" />
         </OnPlatform>
-    </TabbedPage.UnselectedTabColor>    
+    </TabbedPage.UnselectedTabColor>-->    
     
     <NavigationPage Title="Rankings" IconImageSource="numbered_list.png">      
         <x:Arguments>
@@ -46,10 +46,54 @@
             <views:CalendarPage />
         </x:Arguments>
     </NavigationPage>
-
-    <NavigationPage Title="More" IconImageSource="more.png">
+    
+    <!-- More -->
+    
+    <NavigationPage Title="Favorites" IconImageSource="favorite.png">
         <x:Arguments>
-            <views:MoreItemsPage />
+            <views:FavoritesPage />
+        </x:Arguments>
+    </NavigationPage>
+    
+    <NavigationPage Title="Championship Series" IconImageSource="trophy.png">
+        <x:Arguments>
+            <views:ChampionshipSeriesPage />
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="News" IconImageSource="news.png">
+        <x:Arguments>
+            <views:NewsPage />
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="Rules" IconImageSource="rules.png">
+        <x:Arguments>
+            <views:RulesPage />
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="Stats" IconImageSource="stats.png">
+        <x:Arguments>
+            <views:StatsPage />
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="Directors" IconImageSource="globe.png">
+        <x:Arguments>
+            <views:DirectorsPage />
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="Settings" IconImageSource="settings.png">
+        <x:Arguments>
+            <views:SettingsPage />
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="About" IconImageSource="tab_about.png">
+        <x:Arguments>
+            <views:AboutPage />
         </x:Arguments>
     </NavigationPage>
 </TabbedPage>

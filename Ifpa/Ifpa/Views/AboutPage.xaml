@@ -25,7 +25,7 @@
                             <FormattedString.Spans>
                                 <Span Text="IFPA Companion" FontAttributes="Bold" FontSize="22" />
                                 <Span Text=" " />
-                                <Span Text="{Binding CurrentVersion}" ForegroundColor="{StaticResource SecondaryTextColor}" />
+                                <Span Text="{Binding CurrentVersion}" ForegroundColor="{DynamicResource SecondaryTextColor}" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
@@ -50,7 +50,7 @@
                         <FormattedString>
                             <FormattedString.Spans>
                                 <Span Text="This app was written by " />
-                                <Span Text="Ed Giardina" TextColor="Blue" />
+                                <Span Text="Ed Giardina" TextColor="{DynamicResource LinkTextColor}" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
@@ -63,8 +63,8 @@
                         <ColumnDefinition Width="1*" />
                         <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" WidthRequest="160" Padding="10,0,10,0" HorizontalOptions="CenterAndExpand"  Text="Learn More" Clicked="LearnMore_Clicked" BackgroundColor="{StaticResource ButtonBackgroundColor}" TextColor="White" />
-                    <Button Grid.Column="1" WidthRequest="160" Padding="10,0,10,0" HorizontalOptions="CenterAndExpand"  Text="Leave a Review" Clicked="ReviewButton_Clicked" BackgroundColor="{StaticResource ButtonBackgroundColor}" TextColor="White" />
+                    <Button Grid.Column="0" WidthRequest="160" Padding="10,0,10,0" HorizontalOptions="CenterAndExpand"  Text="Learn More" Clicked="LearnMore_Clicked" />
+                    <Button Grid.Column="1" WidthRequest="160" Padding="10,0,10,0" HorizontalOptions="CenterAndExpand"  Text="Leave a Review" Clicked="ReviewButton_Clicked" />
                 </Grid>
             </StackLayout>
         </ScrollView>

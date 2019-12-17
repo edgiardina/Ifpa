@@ -78,6 +78,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ToolbarItemBadgeService.cs" />
     <Compile Include="SplashActivity.cs" />
+    <Compile Include="Utils\AndroidThemeInspector.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

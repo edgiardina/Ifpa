@@ -71,9 +71,9 @@
             <ScrollView Padding="15,5,15,0">
                 <StackLayout Spacing="20">
                     <StackLayout Orientation="Horizontal">
-                        <Button Padding="10,0,10,0" Text="Results" HorizontalOptions="FillAndExpand" Clicked="TournamentResults_Button_Clicked" BackgroundColor="{DynamicResource ButtonBackgroundColor}" TextColor="{DynamicResource ButtonTextColor}" />
-                        <Button Padding="10,0,10,0" Text=" PVP " HorizontalOptions="FillAndExpand" Clicked="Pvp_Button_Clicked" BackgroundColor="{DynamicResource ButtonBackgroundColor}" TextColor="{DynamicResource ButtonTextColor}" />
-                        <Button Padding="10,0,10,0" Text="NACS" HorizontalOptions="FillAndExpand" Clicked="NACS_Button_Clicked" BackgroundColor="{DynamicResource ButtonBackgroundColor}" TextColor="{DynamicResource ButtonTextColor}" IsVisible="{Binding HasNacsData}" />
+                        <Button Padding="10,0,10,0" Text="Results" HorizontalOptions="FillAndExpand" Clicked="TournamentResults_Button_Clicked" />
+                        <Button Padding="10,0,10,0" Text=" PVP " HorizontalOptions="FillAndExpand" Clicked="Pvp_Button_Clicked" />
+                        <Button Padding="10,0,10,0" Text="NACS" HorizontalOptions="FillAndExpand" Clicked="NACS_Button_Clicked" IsVisible="{Binding HasNacsData}" />
                     </StackLayout>
                     <Frame Padding="5" Margin="2" HasShadow="True" CornerRadius="5">
                         <StackLayout Orientation="Vertical">
