@@ -3,6 +3,7 @@ using Xamarin.Forms.Xaml;
 using Ifpa.Views;
 using Xamarin.Essentials;
 using Ifpa.Models;
+using Ifpa.Styles;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Ifpa

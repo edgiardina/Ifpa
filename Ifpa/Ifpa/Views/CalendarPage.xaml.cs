@@ -53,7 +53,7 @@ namespace Ifpa.Views
                     LocationEntry.Text = lastCalendarLocation;
                 }
                 
-                await UpdateCalendarData();
+                UpdateCalendarData();
             }
         }
 

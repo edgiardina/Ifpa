@@ -12,12 +12,12 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid>
+        <Grid RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <SearchBar Grid.Row="0" x:Name="SearchBar" SearchCommand="{Binding SearchCommand}" HeightRequest="60"
+            <SearchBar Grid.Row="0" x:Name="SearchBar" SearchCommand="{Binding SearchCommand}"
                        IsSpellCheckEnabled="False"
                        MaxLength="100"
                        Keyboard="Text"                       
@@ -28,13 +28,15 @@
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Center"
                 FontAttributes="Italic"
-                Text="No players found." />
+                Text="No players found."
+                TextColor="{DynamicResource SecondaryTextColor}"
+                BackgroundColor="{DynamicResource SecondaryBackgroundColor}"/>
 
             <ListView x:Name="PlayersListView" 
                 Grid.Row="1" 
                 IsVisible="{Binding IsPopulated}"
                 ItemsSource="{Binding Players}"
-                VerticalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand"
                 HasUnevenRows="true"
                 RefreshCommand="{Binding LoadItemsCommand}"
                 IsPullToRefreshEnabled="true"
@@ -44,9 +46,9 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10" Orientation="Horizontal" >
+                            <StackLayout Padding="10" Orientation="Horizontal">
                                 <StackLayout Padding="10" Orientation="Vertical">
-                                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" TextColor="{DynamicResource PrimaryTextColor}">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <FormattedString.Spans>
@@ -58,7 +60,7 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12">
+                                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" TextColor="{DynamicResource SecondaryTextColor}">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <FormattedString.Spans>
@@ -73,6 +75,7 @@
                                     </Label>
                                 </StackLayout>
                                 <Label HorizontalOptions="EndAndExpand" Text="{Binding WpprRank, Converter={StaticResource intToOrdinalString}}" 
+                                   TextColor="{DynamicResource PrimaryTextColor}"
                                    LineBreakMode="NoWrap" 
                                    Style="{DynamicResource ListItemTextStyle}" 
                                    FontSize="18" WidthRequest="80" />
