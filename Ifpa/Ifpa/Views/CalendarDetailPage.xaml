@@ -18,7 +18,7 @@
         <ToolbarItem Text="Add To Calendar" x:Name="AddToCalendarButton" Clicked="AddToCalendarButton_Clicked" Icon="calendar_add.png" />
     </ContentPage.ToolbarItems>
     <StackLayout HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource DetailPageBackground}" Spacing="0">
-        <Frame BackgroundColor="{StaticResource SecondaryBanner}" CornerRadius="0">
+        <Frame BackgroundColor="{DynamicResource SecondaryBanner}" CornerRadius="0">
             <StackLayout Orientation="Vertical">
                 <Label Text="{Binding Title, Mode=OneWay}" FontSize="24" Style="{DynamicResource calendarHeader}"/>
 

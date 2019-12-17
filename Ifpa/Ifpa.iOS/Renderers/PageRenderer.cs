@@ -52,8 +52,9 @@ namespace Ifpa.iOS.Renderers
             }
             else
             {
-                if (App.AppTheme == AppTheme.Light)
+                if (App.AppTheme == AppTheme.Light && App.Current.Resources.Count > 0)
                     return;
+
                 App.Current.Resources = new LightTheme();
                 App.AppTheme = AppTheme.Light;
             }
