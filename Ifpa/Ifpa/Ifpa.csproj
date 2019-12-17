@@ -53,12 +53,6 @@
     <Compile Update="Views\DirectorsPage.xaml.cs">
       <DependentUpon>DirectorsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\MoreItemsPage.xaml.cs">
-      <DependentUpon>MoreItemsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\MoreItemsMenuItem.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\FavoritesPage.xaml.cs">
       <DependentUpon>FavoritesPage.xaml</DependentUpon>
     </Compile>
@@ -114,9 +108,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DataTemplates\ActivityFeedRankChangeViewCell.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\MoreItemsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\PlayerResultsPage.xaml">

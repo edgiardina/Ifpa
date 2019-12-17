@@ -85,7 +85,6 @@
     <LaunchForBackgroundFetch>false</LaunchForBackgroundFetch>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Renderers\PageRenderer.cs" />
     <Compile Include="Services\iOSReminderService.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
@@ -93,6 +92,7 @@
     <Compile Include="Services\ToolbarItemBadgeService.cs" />
     <Compile Include="Utils\BarButtonItemExtensions.cs" />
     <Compile Include="Utils\ShortcutIdentifier.cs" />
+    <Compile Include="Utils\iOSThemeInspector.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Services\iOSNotificationService.cs" />
