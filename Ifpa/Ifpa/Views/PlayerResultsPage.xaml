@@ -66,13 +66,13 @@
                                             <StackLayout HorizontalOptions="Start">
                                                 <Label Text="{Binding TournamentName}"  FontSize="16" Style="{DynamicResource ListItemTextStyle}" />
                                                 <StackLayout Orientation="Horizontal">
-                                                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding EventName}" />
-                                                    <Label Text="{Binding EventDate, StringFormat='{0:d}'}" FontSize="12" />
+                                                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding EventName}" TextColor="{DynamicResource SecondaryTextColor}" />
+                                                    <Label Text="{Binding EventDate, StringFormat='{0:d}'}" FontSize="12" TextColor="{DynamicResource SecondaryTextColor}" />
                                                 </StackLayout>
                                             </StackLayout>
                                             <StackLayout HorizontalOptions="EndAndExpand" MinimumWidthRequest="120">
                                                 <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Text="{Binding Position, Converter={StaticResource intToOrdinalString}}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
-                                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding CurrentPoints, StringFormat='{0:0.00}'}" />
+                                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding CurrentPoints, StringFormat='{0:0.00}'}" TextColor="{DynamicResource SecondaryTextColor}" />
                                             </StackLayout>
                                         </StackLayout>
                                     </ViewCell>
@@ -99,13 +99,13 @@
                                             <StackLayout HorizontalOptions="Start">
                                                 <Label Text="{Binding TournamentName}"  FontSize="16" Style="{DynamicResource ListItemTextStyle}" />
                                                 <StackLayout Orientation="Horizontal">
-                                                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding EventName}" />
-                                                    <Label Text="{Binding EventDate, StringFormat='{0:d}'}" FontSize="12" />
+                                                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding EventName}"  TextColor="{DynamicResource SecondaryTextColor}" />
+                                                    <Label Text="{Binding EventDate, StringFormat='{0:d}'}" FontSize="12" TextColor="{DynamicResource SecondaryTextColor}" />
                                                 </StackLayout>
                                             </StackLayout>
                                             <StackLayout HorizontalOptions="EndAndExpand" MinimumWidthRequest="120">
                                                 <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Text="{Binding Position, Converter={StaticResource intToOrdinalString}}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
-                                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding CurrentPoints, StringFormat='{0:0.00}'}" />
+                                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding CurrentPoints, StringFormat='{0:0.00}'}" TextColor="{DynamicResource SecondaryTextColor}" />
                                             </StackLayout>
                                         </StackLayout>
                                     </ViewCell>
@@ -132,13 +132,13 @@
                                             <StackLayout HorizontalOptions="Start">
                                                 <Label Text="{Binding TournamentName}"  FontSize="16" Style="{DynamicResource ListItemTextStyle}" />
                                                 <StackLayout Orientation="Horizontal">
-                                                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding EventName}" />
-                                                    <Label Text="{Binding EventDate, StringFormat='{0:d}'}" FontSize="12" />
+                                                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding EventName}" TextColor="{DynamicResource SecondaryTextColor}" />
+                                                    <Label Text="{Binding EventDate, StringFormat='{0:d}'}" FontSize="12" TextColor="{DynamicResource SecondaryTextColor}" />
                                                 </StackLayout>
                                             </StackLayout>
                                             <StackLayout HorizontalOptions="EndAndExpand" MinimumWidthRequest="120">
                                                 <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Text="{Binding Position, Converter={StaticResource intToOrdinalString}}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
-                                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding CurrentPoints, StringFormat='{0:0.00}'}" />
+                                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding CurrentPoints, StringFormat='{0:0.00}'}" TextColor="{DynamicResource SecondaryTextColor}" />
                                             </StackLayout>
                                         </StackLayout>
                                     </ViewCell>

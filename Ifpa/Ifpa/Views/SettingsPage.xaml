@@ -13,7 +13,7 @@
                 </TableSection>
                 <TableSection Title="'My Stats' Player">
                     <ViewCell>
-                        <Button Padding="10,0,10,0" Margin="0,10,0,10" HorizontalOptions="CenterAndExpand" Text="Clear Selected Player" Clicked="Button_Clicked" BackgroundColor="{DynamicResource ButtonBackgroundColor}" TextColor="{DynamicResource ButtonTextColor}" />
+                        <Button Padding="10,0,10,0" Margin="0,10,0,10" HorizontalOptions="CenterAndExpand" Text="Clear Selected Player" Clicked="Button_Clicked" />
                     </ViewCell>
                 </TableSection>
             </TableView>            

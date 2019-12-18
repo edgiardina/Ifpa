@@ -10,6 +10,7 @@ using System.Diagnostics;
 using PinballApi.Models.WPPR.v1.Calendar;
 using Ifpa.Models;
 using Syncfusion.SfCalendar.XForms;
+using System.Collections.Generic;
 
 namespace Ifpa.Views
 {
@@ -53,7 +54,7 @@ namespace Ifpa.Views
                     LocationEntry.Text = lastCalendarLocation;
                 }
                 
-                UpdateCalendarData();
+                await UpdateCalendarData();
             }
         }
 
@@ -108,21 +109,12 @@ namespace Ifpa.Views
 
                     IsBusy = true;
 
+                    List<Task> listOfTasks = new List<Task>();
                     foreach (var detail in viewModel.CalendarDetails)
                     {
-                        var pin = new Pin();
-                        var locations = await Geocoding.GetLocationsAsync(detail.Address1 + " " + detail.City + ", " + detail.State);
-                        pin.Position = new Position(locations.First().Latitude, locations.First().Longitude);
-                        pin.Label = detail.TournamentName;
-
-                        //TODO: on pinpress scroll listview to find item. 
-                        pin.MarkerClicked += (sender, e) => 
-                        {
-                            TournamentListView.ScrollTo(detail, ScrollToPosition.MakeVisible, true);
-                        };
-
-                        calendarMap.Pins.Add(pin);
+                        listOfTasks.Add(LoadEventOntoCalendar(detail));
                     }
+                    await Task.WhenAll(listOfTasks);
                 }
                 catch (Exception e)
                 {
@@ -135,6 +127,22 @@ namespace Ifpa.Views
 
                 IsBusy = false;
             }
+        }
+
+        private async Task LoadEventOntoCalendar(CalendarDetails detail)
+        {
+            var pin = new Pin();
+            var locations = await Geocoding.GetLocationsAsync(detail.Address1 + " " + detail.City + ", " + detail.State);
+            pin.Position = new Position(locations.First().Latitude, locations.First().Longitude);
+            pin.Label = detail.TournamentName;
+
+            //TODO: on pinpress scroll listview to find item. 
+            pin.MarkerClicked += (sender, e) =>
+            {
+                TournamentListView.ScrollTo(detail, ScrollToPosition.MakeVisible, true);
+            };
+
+            calendarMap.Pins.Add(pin);
         }
 
         private async void TournamentListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

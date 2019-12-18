@@ -24,6 +24,7 @@ namespace Ifpa
 
         protected override void OnStart()
         {
+            base.OnStart();
             // Handle when your app starts
             VersionTracking.Track();
 
@@ -39,12 +40,12 @@ namespace Ifpa
 
         protected override void OnResume()
         {
+            base.OnResume();
             // Handle when your app resumes
             AppTheme theme = DependencyService.Get<IThemeInspector>().GetOperatingSystemTheme();
 
             SetTheme(theme);
         }
-
 
         void SetTheme(AppTheme theme)
         {

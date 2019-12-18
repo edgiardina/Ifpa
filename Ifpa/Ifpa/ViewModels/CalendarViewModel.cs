@@ -32,9 +32,14 @@ namespace Ifpa.ViewModels
 
             try
             {
+                var sw = Stopwatch.StartNew();
                 CalendarDetails.Clear();
                 InlineCalendarItems.Clear();
+                Console.WriteLine("Cleared collections in {0}", sw.ElapsedMilliseconds);
+
                 var items = await PinballRankingApi.GetCalendarSearch(address, distance, DistanceUnit.Miles);
+
+                Console.WriteLine("Api call completed at {0}", sw.ElapsedMilliseconds);
                 if (items.Calendar.Any())
                 {
                     foreach (var item in items.Calendar.OrderBy(n => n.EndDate))
@@ -44,17 +49,21 @@ namespace Ifpa.ViewModels
                         //avoid adding leagues to the inline calendar.
                         if (item.EndDate - item.StartDate <= 5.Days())
                         {
-                            InlineCalendarItems.Add(new InlineCalendarItem
-                            {
-                                CalendarId = item.CalendarId,
-                                Subject = item.TournamentName,
-                                StartTime = item.StartDate.Date,
-                                EndTime = item.EndDate.Date,
-                                IsAllDay = true
-                            });
+                            _ = Task.Run(() =>
+                              {
+                                  InlineCalendarItems.Add(new InlineCalendarItem
+                                  {
+                                      CalendarId = item.CalendarId,
+                                      Subject = item.TournamentName,
+                                      StartTime = item.StartDate.Date,
+                                      EndTime = item.EndDate.Date,
+                                      IsAllDay = true
+                                  });
+                              });
                         }
                     }
                 }
+                Console.WriteLine("Collections loaded at {0}", sw.ElapsedMilliseconds);
             }
             catch (Exception ex)
             {
