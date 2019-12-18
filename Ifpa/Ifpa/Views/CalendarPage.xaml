@@ -32,16 +32,16 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <Label Text="Location" Grid.Row="0" Grid.Column="0" />
+                    <Label Text="Location" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center" />
                     <Entry Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="20,0,5,0" Placeholder="Chicago, Illinois" Text="Chicago, Illinois" x:Name="LocationEntry" />
 
-                    <Label Text="Distance" Grid.Row="1" Grid.Column="0" />
+                    <Label Text="Distance" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" />
                     <Slider Grid.Row="1" Grid.Column="1" MinimumTrackColor="#007AFF" MaximumTrackColor="Gray" Margin="20,0,5,0" HorizontalOptions="FillAndExpand" Maximum="1000" Minimum="10" Value="150" ValueChanged="Slider_ValueChanged" x:Name="DistanceSlider" />
-                    <Label Grid.Row="1" Grid.Column="2" Text="0" x:Name="DistanceText" />
-                    <Label Grid.Row="1" Grid.Column="3" Text="Mi" />
+                    <Label Grid.Row="1" Grid.Column="2" Text="0" x:Name="DistanceText" VerticalTextAlignment="Center" />
+                    <Label Grid.Row="1" Grid.Column="3" Text="Mi" VerticalTextAlignment="Center" />
                 </Grid>            
             </syncfusion:SfExpander.Content>
         </syncfusion:SfExpander>
@@ -69,8 +69,8 @@
                                 <DataTemplate>
                                     <ViewCell>
                                         <StackLayout Orientation="Horizontal" Padding="10" >
-                                            <Label HorizontalOptions="Start" MinimumWidthRequest="90" Text="{Binding EndDate, StringFormat='{0:d}'}" LineBreakMode="NoWrap" />
-                                            <Label Text="{Binding TournamentName}" />
+                                            <Label Text="{Binding TournamentName}" HorizontalOptions="StartAndExpand" />
+                                            <Label MinimumWidthRequest="90" FontSize="Small" HorizontalOptions="End" VerticalTextAlignment="Center" TextColor="{DynamicResource SecondaryTextColor}" Text="{Binding EndDate, StringFormat='{0:d}'}" LineBreakMode="NoWrap" />
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>

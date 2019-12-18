@@ -88,7 +88,6 @@
                             <RowDefinition Height="1*" />                           
                             <RowDefinition Height="1*" />
                             <RowDefinition Height="1*" />
-                            <RowDefinition Height="1*" />
                         </Grid.RowDefinitions>
                         <Label Grid.Column="0" Grid.Row="0" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Rank" />
                         <Label Grid.Column="1" Grid.Row="0" Text="{Binding Rank, Mode=OneWay}" HorizontalTextAlignment="Center"/>
@@ -102,9 +101,7 @@
                         <Label Grid.Column="1" Grid.Row="2" Text="{Binding EffPercent, Mode=OneWay}" HorizontalTextAlignment="Center"/>
                         <Label Grid.Column="2" Grid.Row="2" Text="{Binding EfficiencyValue, Mode=OneWay}" HorizontalTextAlignment="Center"/>
 
-                        <Label Grid.Column="0" Grid.Row="3" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Highest Rank" />
-                        <Label Grid.Column="1" Grid.Row="3" Text="{Binding HighestRank, Mode=OneWay}" HorizontalTextAlignment="Center"/>
-                        <Label Grid.Column="2" Grid.Row="3" Text="{Binding HighestRankDate, StringFormat='{0:MMMM, yyyy}'}" HorizontalTextAlignment="Center"/>
+      
                     </Grid>
 
                     <Label Text="Ranking Statistics" />
@@ -118,14 +115,29 @@
                             <RowDefinition Height="1*" />
                             <RowDefinition Height="1*" />
                         </Grid.RowDefinitions>
-                        <Label Grid.Column="0" Grid.Row="0" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Last Month's Rank" />
-                        <Label Grid.Column="1" Grid.Row="0" Text="{Binding LastMonthRank, Mode=OneWay}" HorizontalTextAlignment="Center"/>
+                        
+                        <Label Grid.Column="0" Grid.Row="0" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Highest Rank" />
+                        <Label Grid.Column="1" Grid.Row="0" Text="{Binding HighestRank, Mode=OneWay}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="{Binding HighestRank, Mode=OneWay}" />
+                                        <Span Text=" (" />
+                                        <Span Text="{Binding HighestRankDate, StringFormat='{0:MMMM, yyyy}'}" />
+                                        <Span Text=")" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        
+                        <Label Grid.Column="0" Grid.Row="1" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Last Month's Rank" />
+                        <Label Grid.Column="1" Grid.Row="1" Text="{Binding LastMonthRank, Mode=OneWay}" />
 
-                        <Label Grid.Column="0" Grid.Row="1" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Last Year's Rank" />
-                        <Label Grid.Column="1" Grid.Row="1" Text="{Binding LastYearRank, Mode=OneWay}" HorizontalTextAlignment="Center"/>
+                        <Label Grid.Column="0" Grid.Row="2" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Last Year's Rank" />
+                        <Label Grid.Column="1" Grid.Row="2" Text="{Binding LastYearRank, Mode=OneWay}" />
 
-                        <Label Grid.Column="0" Grid.Row="2" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Total WPPRs" />
-                        <Label Grid.Column="1" Grid.Row="2" Text="{Binding TotalWpprs, Mode=OneWay}" HorizontalTextAlignment="Center"/>
+                        <Label Grid.Column="0" Grid.Row="3" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Total WPPRs" />
+                        <Label Grid.Column="1" Grid.Row="3" Text="{Binding TotalWpprs, Mode=OneWay}" />
                     </Grid>
 
 
@@ -144,7 +156,7 @@
                         </Grid.RowDefinitions>
 
                         <Label Grid.Column="0" Grid.Row="0" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Best Finish" />
-                        <Label Grid.Column="1" Grid.Row="0" LineBreakMode="NoWrap" HorizontalTextAlignment="Center">
+                        <Label Grid.Column="1" Grid.Row="0" LineBreakMode="NoWrap">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <FormattedString.Spans>
@@ -157,19 +169,19 @@
                             </Label.FormattedText>
                         </Label>
                         <Label Grid.Column="0" Grid.Row="1" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Avg Finish" />
-                        <Label Grid.Column="1" Grid.Row="1" Text="{Binding AvgFinish, Converter={StaticResource intToOrdinalString}, Mode=OneWay}" HorizontalTextAlignment="Center"/>
+                        <Label Grid.Column="1" Grid.Row="1" Text="{Binding AvgFinish, Converter={StaticResource intToOrdinalString}, Mode=OneWay}" />
 
                         <Label Grid.Column="0" Grid.Row="2" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Avg Finish Last Year" />
-                        <Label Grid.Column="1" Grid.Row="2" Text="{Binding AvgFinishLastYear, Converter={StaticResource intToOrdinalString}, Mode=OneWay}" HorizontalTextAlignment="Center"/>
+                        <Label Grid.Column="1" Grid.Row="2" Text="{Binding AvgFinishLastYear, Converter={StaticResource intToOrdinalString}, Mode=OneWay}" />
 
                         <Label Grid.Column="0" Grid.Row="3" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Total Events" />
-                        <Label Grid.Column="1" Grid.Row="3" Text="{Binding TotalEvents, Mode=OneWay}" HorizontalTextAlignment="Center"/>
+                        <Label Grid.Column="1" Grid.Row="3" Text="{Binding TotalEvents, Mode=OneWay}" />
 
                         <Label Grid.Column="0" Grid.Row="4" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Total Active Events" />
-                        <Label Grid.Column="1" Grid.Row="4" Text="{Binding TotalActiveEvents, Mode=OneWay}" HorizontalTextAlignment="Center"/>
+                        <Label Grid.Column="1" Grid.Row="4" Text="{Binding TotalActiveEvents, Mode=OneWay}" />
 
                         <Label Grid.Column="0" Grid.Row="5" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Events Outside Country" />
-                        <Label Grid.Column="1" Grid.Row="5" Text="{Binding EventsOutsideCountry, Mode=OneWay}" HorizontalTextAlignment="Center"/>
+                        <Label Grid.Column="1" Grid.Row="5" Text="{Binding EventsOutsideCountry, Mode=OneWay}" />
 
                     </Grid>
 
