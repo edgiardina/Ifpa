@@ -12,7 +12,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill" BackgroundColor="{DynamicResource BarTextColor}">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                 <Image Source="https://www.ifpapinball.com/images/ifpa_logo.jpg" VerticalOptions="Center" />
             </StackLayout>

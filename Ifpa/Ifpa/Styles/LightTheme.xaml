@@ -4,7 +4,7 @@
              x:Class="Ifpa.Styles.LightTheme">
 
     <!--Global Styles-->
-    <Color x:Key="NavigationPrimary">#0088B3</Color>
+    <Color x:Key="NavigationPrimary">#f9f9f9</Color>
     <Color x:Key="SecondaryBanner">#556E87</Color>
     <Color x:Key="DetailPageBackground">#F1F1F1</Color>
     <Color x:Key="WinningRecord">#04B45F</Color>
@@ -12,7 +12,7 @@
     <Color x:Key="TieRecord">#333333</Color>
 
     <Color x:Key="BackgroundColor">#f6f6f6</Color>
-    <Color x:Key="BarTextColor">#000000</Color>
+    <Color x:Key="BarTextColor">#556E87</Color>
 
     <Color x:Key="ButtonBackgroundColor">#2F4E6E</Color>
     <Color x:Key="ButtonTextColor">#FFFFFF</Color>

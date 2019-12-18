@@ -42,7 +42,7 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                            <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12">
+                                            <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" TextColor="{DynamicResource SecondaryTextColor}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <FormattedString.Spans>
@@ -97,16 +97,12 @@
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <FormattedString.Spans>
-                                                            <Span Text="{Binding CountryName}" />
+                                                            <Span Text="{Binding CountryName}" TextColor="{DynamicResource SecondaryTextColor}" />
                                                         </FormattedString.Spans>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
                                         </StackLayout>
-                                        <Label HorizontalOptions="EndAndExpand" Text="{Binding WpprRank, Converter={StaticResource intToOrdinalString}}" 
-                                   LineBreakMode="NoWrap" 
-                                   Style="{DynamicResource ListItemTextStyle}" 
-                                   FontSize="18" WidthRequest="80" />
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>
