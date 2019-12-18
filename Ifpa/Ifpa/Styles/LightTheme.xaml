@@ -4,14 +4,14 @@
              x:Class="Ifpa.Styles.LightTheme">
 
     <!--Global Styles-->
-    <Color x:Key="NavigationPrimary">#FFFFFF</Color>
+    <Color x:Key="NavigationPrimary">#0088B3</Color>
     <Color x:Key="SecondaryBanner">#556E87</Color>
     <Color x:Key="DetailPageBackground">#F1F1F1</Color>
     <Color x:Key="WinningRecord">#04B45F</Color>
     <Color x:Key="LosingRecord">#FE2E2E</Color>
     <Color x:Key="TieRecord">#333333</Color>
 
-    <Color x:Key="BackgroundColor">#f2f2f6</Color>
+    <Color x:Key="BackgroundColor">#f6f6f6</Color>
     <Color x:Key="BarTextColor">#000000</Color>
 
     <Color x:Key="ButtonBackgroundColor">#2F4E6E</Color>
@@ -23,7 +23,18 @@
 
     <Color x:Key="LinkTextColor">#0000ff</Color>
 
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="DefaultTheme.xaml"/>
-    </ResourceDictionary.MergedDictionaries>
+    <Style TargetType="NavigationPage">
+        <Setter Property="BarBackgroundColor" Value="{DynamicResource NavigationPrimary}" />
+        <Setter Property="BarTextColor" Value="{DynamicResource BarTextColor}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
+    </Style>
+
+    <Style TargetType="Button" ApplyToDerivedTypes="True">
+        <Setter Property="BackgroundColor" Value="{DynamicResource ButtonBackgroundColor}" />
+        <Setter Property="TextColor" Value="{DynamicResource ButtonTextColor}" />
+    </Style>
+
+    <Style TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
+    </Style>
 </ResourceDictionary>

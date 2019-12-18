@@ -22,11 +22,11 @@
                             <StackLayout Padding="10" Orientation="Vertical" HorizontalOptions="FillAndExpand">
                                 <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" Text="{Binding StateProvinceName}" />
 
-                                <Label HorizontalOptions="StartAndExpand" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10" >
+                                <Label HorizontalOptions="StartAndExpand" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" >
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <FormattedString.Spans>
-                                                <Span Text="Current Leader:" />
+                                                <Span Text="Current Leader:" TextColor="{DynamicResource SecondaryTextColor}" />
                                                 <Span Text=" " />
                                                 <Span Text="{Binding CurrentLeader.FirstName}" />
                                                 <Span Text=" " />

@@ -180,7 +180,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
-      <Version>17.3.0.21</Version>
+      <Version>17.4.0.39</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
   </ItemGroup>

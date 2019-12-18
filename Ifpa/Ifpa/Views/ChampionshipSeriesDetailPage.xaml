@@ -44,7 +44,8 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <Label HorizontalOptions="StartAndExpand"  Text="{Binding WpprPoints, StringFormat='{0:N2}'}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10" />
+                                        <Label HorizontalOptions="StartAndExpand" Text="{Binding WpprPoints, StringFormat='{0:N2}'}" 
+                                               LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10" TextColor="{DynamicResource SecondaryTextColor}" />
                                     </StackLayout>
 
                                     <StackLayout Orientation="Vertical" Padding="10">
@@ -52,7 +53,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <FormattedString.Spans>
-                                                        <Span Text="Event Count:" />
+                                                        <Span Text="Event Count:" TextColor="{DynamicResource SecondaryTextColor}" />
                                                         <Span Text=" " />
                                                         <Span Text="{Binding EventCount}" />
                                                     </FormattedString.Spans>
@@ -63,7 +64,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <FormattedString.Spans>
-                                                        <Span Text="Win Count:" />
+                                                        <Span Text="Win Count:" TextColor="{DynamicResource SecondaryTextColor}" />
                                                         <Span Text=" " />
                                                         <Span Text="{Binding WinCount}" />
                                                     </FormattedString.Spans>
@@ -95,7 +96,7 @@
                                 <StackLayout Padding="10,0,10,0" Orientation="Horizontal" >
                                     <StackLayout Padding="10" Orientation="Vertical" HorizontalOptions="FillAndExpand">
                                         <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" Text="{Binding Month, Converter={StaticResource intToMonthStringConverter}}" />
-                                        <Label HorizontalOptions="StartAndExpand"  Text="{Binding PrizeAccumlationValue, StringFormat='{0:C}'}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10" />
+                                        <Label HorizontalOptions="StartAndExpand"  Text="{Binding PrizeAccumlationValue, StringFormat='{0:C}'}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" />
                                     </StackLayout>
 
                                     <StackLayout Orientation="Vertical" Padding="10">
@@ -103,7 +104,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <FormattedString.Spans>
-                                                        <Span Text="Tournament Count:" />
+                                                        <Span Text="Tournament Count:" TextColor="{DynamicResource SecondaryTextColor}" />
                                                         <Span Text=" " />
                                                         <Span Text="{Binding TournamentCount}" />
                                                     </FormattedString.Spans>
@@ -114,7 +115,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <FormattedString.Spans>
-                                                        <Span Text="Unique Players:" />
+                                                        <Span Text="Unique Players:" TextColor="{DynamicResource SecondaryTextColor}" />
                                                         <Span Text=" " />
                                                         <Span Text="{Binding UniquePlayerCount}" />
                                                     </FormattedString.Spans>
