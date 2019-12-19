@@ -30,6 +30,9 @@
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer: Ed Giardina (PVMXR5HC9R)</CodesignKey>
     <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <CodesignExtraArgs />
+    <CodesignResourceRules />
+    <CodesignEntitlements />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
