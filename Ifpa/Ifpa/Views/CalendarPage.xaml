@@ -46,9 +46,8 @@
             </syncfusion:SfExpander.Content>
         </syncfusion:SfExpander>
 
-        <tabView:SfTabView VisibleHeaderCount="2" 
-                            TabHeaderBackgroundColor="{DynamicResource TabHeaderBackgroundColor}">
-            <tabView:SfTabItem Title="Map">
+        <tabView:SfTabView VisibleHeaderCount="2" >
+            <tabView:SfTabItem Title="Map" >
                 <tabView:SfTabItem.Content>
                     <StackLayout Spacing="0">
                         <maps:Map WidthRequest="320" HeightRequest="200"

@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
+             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              x:Class="Ifpa.Styles.DarkTheme">    
     
     <Color x:Key="NavigationPrimary">#000000</Color>
@@ -17,7 +19,7 @@
     <Color x:Key="ButtonTextColor">#FFFFFF</Color>
     <Color x:Key="PrimaryTextColor">#FFFFFF</Color>
     <Color x:Key="SecondaryTextColor">#999999</Color>
-    <Color x:Key="TabHeaderBackgroundColor">#66FFFFFF</Color>
+    <Color x:Key="TabHeaderBackgroundColor">#212124</Color>
     <Color x:Key="SecondaryBackgroundColor">#212124</Color>
 
     <Color x:Key="LinkTextColor">#0000ff</Color>
@@ -35,5 +37,20 @@
 
     <Style TargetType="Label">
         <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
+    </Style>
+
+    <Style TargetType="syncfusion:SfExpander">
+        <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
+        <Setter Property="HeaderBackgroundColor" Value="{DynamicResource BackgroundColor}" />
+        <Setter Property="IconColor" Value="{DynamicResource PrimaryTextColor}" />
+    </Style>
+
+    <Style TargetType="tabView:SfTabView">
+        <Setter Property="TabHeaderBackgroundColor" Value="{DynamicResource TabHeaderBackgroundColor}" />
+    </Style>
+
+    <Style TargetType="tabView:SfTabItem">
+        <Setter Property="TitleFontColor" Value="{DynamicResource PrimaryTextColor}" />
+   
     </Style>
 </ResourceDictionary>
