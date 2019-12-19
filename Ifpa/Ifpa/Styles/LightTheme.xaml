@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
+             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              x:Class="Ifpa.Styles.LightTheme">
 
     <!--Global Styles-->
@@ -36,5 +38,20 @@
 
     <Style TargetType="Label">
         <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
+    </Style>
+
+    <Style TargetType="syncfusion:SfExpander">
+        <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
+        <Setter Property="HeaderBackgroundColor" Value="{DynamicResource BackgroundColor}" />
+        <Setter Property="IconColor" Value="{DynamicResource PrimaryTextColor}" />
+    </Style>
+
+    <Style TargetType="tabView:SfTabView">
+        <Setter Property="TabHeaderBackgroundColor" Value="{DynamicResource TabHeaderBackgroundColor}" /> 
+    </Style>
+
+    <Style TargetType="tabView:SfTabItem">
+        <Setter Property="TitleFontColor" Value="{DynamicResource PrimaryTextColor}" />
+        <!--<Setter Property="SelectionColor" Value="Purple" />-->
     </Style>
 </ResourceDictionary>

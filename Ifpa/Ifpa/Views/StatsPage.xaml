@@ -6,11 +6,11 @@
              x:Class="Ifpa.Views.StatsPage"
              Title="Stats">
     <ContentPage.Content>
-        <tabView:SfTabView VisibleHeaderCount="4" HeightRequest="50" TabHeaderBackgroundColor="#66FFFFFF">
+        <tabView:SfTabView VisibleHeaderCount="4" HeightRequest="50">
             <tabView:SfTabItem Title="Aggregates">
                 <tabView:SfTabItem.Content>
                     <ScrollView>
-                        <StackLayout Spacing="20" Padding="15" BackgroundColor="{DynamicResource DetailPageBackground}">
+                        <StackLayout Spacing="20" Padding="15">
                             <chart:SfChart VerticalOptions="FillAndExpand" HeightRequest="300">
                                 <chart:SfChart.Legend>
                                     <chart:ChartLegend OverflowMode="Wrap"/>
@@ -83,7 +83,7 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                            <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12">
+                                            <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" TextColor="{DynamicResource SecondaryTextColor}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <FormattedString.Spans>
@@ -93,7 +93,7 @@
                                                 </Label.FormattedText>
                                             </Label>
                                         </StackLayout>
-                                        <Label HorizontalOptions="EndAndExpand" Text="{Binding WpprPoints, StringFormat='{0:N2}'}" 
+                                        <Label HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" Text="{Binding WpprPoints, StringFormat='{0:N2}'}" 
                                    LineBreakMode="NoWrap" 
                                    Style="{DynamicResource ListItemTextStyle}" 
                                    FontSize="18" WidthRequest="80" />
@@ -131,7 +131,7 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                            <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12">
+                                            <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" TextColor="{DynamicResource SecondaryTextColor}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <FormattedString.Spans>
@@ -141,7 +141,7 @@
                                                 </Label.FormattedText>
                                             </Label>
                                         </StackLayout>
-                                        <Label HorizontalOptions="EndAndExpand" Text="{Binding Count}" 
+                                        <Label HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" Text="{Binding Count}" 
                                    LineBreakMode="NoWrap" 
                                    Style="{DynamicResource ListItemTextStyle}" 
                                    FontSize="18" WidthRequest="80" />
@@ -179,7 +179,7 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                            <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12">
+                                            <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" TextColor="{DynamicResource SecondaryTextColor}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <FormattedString.Spans>
@@ -189,7 +189,7 @@
                                                 </Label.FormattedText>
                                             </Label>
                                         </StackLayout>
-                                        <Label HorizontalOptions="EndAndExpand" Text="{Binding StatsRank}" 
+                                        <Label HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" Text="{Binding StatsRank}" 
                                    LineBreakMode="NoWrap" 
                                    Style="{DynamicResource ListItemTextStyle}" 
                                    FontSize="18" WidthRequest="80" />

@@ -32,7 +32,7 @@
                 </Grid>
             </syncfusion:SfExpander.Header>
             <syncfusion:SfExpander.Content>
-                <Grid Padding="10,10,10,10"  BackgroundColor="{DynamicResource BackgroundColor}">
+                <Grid Padding="10,10,10,10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="150" />
                         <ColumnDefinition Width="*" />

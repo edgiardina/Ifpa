@@ -21,12 +21,12 @@
                           
                             <StackLayout Padding="10" Orientation="Vertical" HorizontalOptions="FillAndExpand">
                                 <Label Style="{DynamicResource ListItemTextStyle}" FontSize="16" Text="{Binding TournamentName}" />
-                                <Label HorizontalOptions="StartAndExpand" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10" Text="{Binding EventName}" />
+                                <Label HorizontalOptions="StartAndExpand" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10" Text="{Binding EventName}"  TextColor="{DynamicResource SecondaryTextColor}" />
                             </StackLayout>
 
                             <StackLayout Orientation="Vertical" Padding="10" MinimumWidthRequest="120" HorizontalOptions="End">
                                 <Label HorizontalOptions="EndAndExpand" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" HorizontalTextAlignment="End" Text="{Binding EventDate, StringFormat='{0:d}'}" />
-                                <Label HorizontalOptions="EndAndExpand" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" HorizontalTextAlignment="End" Text="{Binding TotalPoints, StringFormat='{0:0.00}'}" />
+                                <Label HorizontalOptions="EndAndExpand" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" HorizontalTextAlignment="End" Text="{Binding TotalPoints, StringFormat='{0:0.00}'}"  TextColor="{DynamicResource SecondaryTextColor}" />
                             </StackLayout>                         
                         </StackLayout>
                     </ViewCell>
