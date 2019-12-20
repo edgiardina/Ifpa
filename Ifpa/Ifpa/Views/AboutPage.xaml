@@ -3,16 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ifpa.Views.AboutPage"
              xmlns:vm="clr-namespace:Ifpa.ViewModels"
-             Title="{Binding Title}">
+             Title="{Binding Title}" BackgroundColor="{DynamicResource BackgroundColor}">
     <ContentPage.BindingContext>
         <vm:AboutViewModel />
     </ContentPage.BindingContext>
-    <Grid>
+    <ContentPage.Content>
+        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill" BackgroundColor="{DynamicResource BarTextColor}">
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill" BackgroundColor="{DynamicResource BannerTextColor}">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                 <Image Source="https://www.ifpapinball.com/images/ifpa_logo.jpg" VerticalOptions="Center" />
             </StackLayout>
@@ -55,7 +56,7 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Grid HorizontalOptions="FillAndExpand">
+                <Grid HorizontalOptions="FillAndExpand" Margin="0, 20, 0, 0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
@@ -69,4 +70,5 @@
             </StackLayout>
         </ScrollView>
     </Grid>
+    </ContentPage.Content>
 </ContentPage>

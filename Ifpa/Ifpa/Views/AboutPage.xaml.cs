@@ -11,8 +11,7 @@ namespace Ifpa.Views
     public partial class AboutPage : ContentPage
     {
         private const int creatorIfpaNumber = 16927;
-
-        AboutViewModel viewModel;
+        private readonly AboutViewModel viewModel;
 
         public AboutPage()
         {

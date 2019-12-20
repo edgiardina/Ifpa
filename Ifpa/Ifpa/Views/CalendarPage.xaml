@@ -47,7 +47,7 @@
         </syncfusion:SfExpander>
 
         <tabView:SfTabView VisibleHeaderCount="2" >
-            <tabView:SfTabItem Title="Map" >
+            <tabView:SfTabItem Title="Map">
                 <tabView:SfTabItem.Content>
                     <StackLayout Spacing="0">
                         <maps:Map WidthRequest="320" HeightRequest="200"
@@ -82,7 +82,21 @@
                 <tabView:SfTabItem.Content>
                     <syncfusion1:SfCalendar NavigationDirection="Vertical" x:Name="calendar" 
                                             ViewMode="MonthView" ShowInlineEvents="True" InlineViewMode="Inline"
-                                            DataSource="{Binding InlineCalendarItems}" />
+                                            DataSource="{Binding InlineCalendarItems}" BackgroundColor="{DynamicResource BackgroundColor}">
+                        <syncfusion1:SfCalendar.MonthViewSettings>
+                            <syncfusion1:MonthViewSettings 
+                                HeaderBackgroundColor="{DynamicResource BackgroundColor}" 
+                                HeaderTextColor="{DynamicResource SecondaryTextColor}"
+                                DayHeaderBackgroundColor="{DynamicResource BackgroundColor}"
+                                CurrentMonthBackgroundColor="{DynamicResource BackgroundColor}" 
+                                PreviousMonthBackgroundColor="{DynamicResource SecondaryBackgroundColor}"
+                                PreviousMonthTextColor="{DynamicResource SecondaryTextColor}"
+                                CurrentMonthTextColor="{DynamicResource PrimaryTextColor}"
+                                TodayTextColor="{DynamicResource LinkTextColor}"
+                                InlineBackgroundColor="{DynamicResource SecondaryBackgroundColor}"
+                                />
+                        </syncfusion1:SfCalendar.MonthViewSettings>                        
+                    </syncfusion1:SfCalendar>
                 </tabView:SfTabItem.Content>
             </tabView:SfTabItem>          
         </tabView:SfTabView>       
