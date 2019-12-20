@@ -4,7 +4,7 @@
              x:Class="Ifpa.Views.PlayerDetailPage"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
-             Title="{Binding Title}">
+             Title="{Binding Title}" BackgroundColor="Transparent">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:BoolConverter x:Key="BoolConverter" />

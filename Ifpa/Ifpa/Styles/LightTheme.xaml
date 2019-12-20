@@ -14,6 +14,7 @@
     <Color x:Key="TieRecord">#333333</Color>
 
     <Color x:Key="BackgroundColor">#f6f6f6</Color>
+    <Color x:Key="BarBackgroundColor">#f6f6f6</Color>
     <Color x:Key="BarTextColor">#556E87</Color>
 
     <Color x:Key="ButtonBackgroundColor">#2F4E6E</Color>
@@ -24,10 +25,10 @@
     <Color x:Key="SecondaryBackgroundColor">#FFFFFF</Color>
 
     <Color x:Key="LinkTextColor">#0000ff</Color>
+    <Color x:Key="BannerTextColor">#1D3052</Color>
 
     <Style TargetType="NavigationPage">
-        <Setter Property="BarBackgroundColor" Value="{DynamicResource NavigationPrimary}" />
-        <Setter Property="BarTextColor" Value="{DynamicResource BarTextColor}" />
+        <Setter Property="BarBackgroundColor" Value="{DynamicResource BarBackgroundColor}" />
         <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
     </Style>
 

@@ -6,23 +6,6 @@
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"                       
             android:TabbedPage.ToolbarPlacement="Bottom">
     
-    <!-- Customize appearance of bottom tab bar on Android only --><!--
-    <TabbedPage.BarBackgroundColor>
-        <OnPlatform x:TypeArguments="Color">
-            <On Platform="Android" Value="#FFFFFF" />
-        </OnPlatform>
-    </TabbedPage.BarBackgroundColor>
-    <TabbedPage.SelectedTabColor>
-        <OnPlatform x:TypeArguments="Color">
-            <On Platform="Android" Value="White" />
-        </OnPlatform>
-    </TabbedPage.SelectedTabColor>
-    <TabbedPage.UnselectedTabColor>
-        <OnPlatform x:TypeArguments="Color">
-            <On Platform="Android" Value="#66FFFFFF" />
-        </OnPlatform>
-    </TabbedPage.UnselectedTabColor>-->    
-    
     <NavigationPage Title="Rankings" IconImageSource="numbered_list.png">      
         <x:Arguments>
             <views:RankingsPage />
@@ -67,11 +50,7 @@
         </x:Arguments>
     </NavigationPage>
 
-    <NavigationPage Title="Rules" IconImageSource="rules.png">
-        <x:Arguments>
-            <views:RulesPage />
-        </x:Arguments>
-    </NavigationPage>
+    <views:RulesPage Title="Rules" IconImageSource="rules.png" />
 
     <NavigationPage Title="Stats" IconImageSource="stats.png">
         <x:Arguments>
@@ -85,11 +64,7 @@
         </x:Arguments>
     </NavigationPage>
 
-    <NavigationPage Title="Settings" IconImageSource="settings.png">
-        <x:Arguments>
-            <views:SettingsPage />
-        </x:Arguments>
-    </NavigationPage>
+    <views:SettingsPage Title="Settings" IconImageSource="settings.png" />
 
     <NavigationPage Title="About" IconImageSource="tab_about.png">
         <x:Arguments>
