@@ -10,7 +10,7 @@
             <tabView:SfTabItem Title="Aggregates">
                 <tabView:SfTabItem.Content>
                     <ScrollView>
-                        <StackLayout Spacing="20" Padding="15">
+                        <StackLayout Spacing="20" Padding="15" BackgroundColor="{DynamicResource BackgroundColor}">
                             <chart:SfChart VerticalOptions="FillAndExpand" HeightRequest="300">
                                 <chart:SfChart.Legend>
                                     <chart:ChartLegend OverflowMode="Wrap"/>
