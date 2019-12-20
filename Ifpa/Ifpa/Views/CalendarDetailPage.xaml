@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
              xmlns:local1="clr-namespace:Ifpa.Views.Controls"
-             x:Class="Ifpa.Views.CalendarDetailPage" BackgroundColor="Transparent">
+             x:Class="Ifpa.Views.CalendarDetailPage">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:StringNullOrEmptyBoolConverter x:Key="stringNullOrEmptyBoolConverter" />
@@ -51,21 +51,16 @@
                     x:Name="calendarMap" HasScrollEnabled="False" HasZoomEnabled="False" HeightRequest="200"              
                      MapType="Street" IsVisible="False" />
 
-                <Frame CornerRadius="0" VerticalOptions="FillAndExpand" Margin="0,0,0,0" BackgroundColor="Transparent">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Address_Tapped" />
-                    </Frame.GestureRecognizers>
-                    <StackLayout>                          
+                <StackLayout VerticalOptions="FillAndExpand" Padding="20,20,20,20"  >                          
 
-                        <Label Text="{Binding Website, Mode=OneWay}" TextColor="Blue" Margin="0,0,0,10">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="WebsiteLabel_Tapped"/>
-                            </Label.GestureRecognizers>
-                        </Label>
+                    <Label Text="{Binding Website, Mode=OneWay}" TextColor="Blue" Margin="0,0,0,10">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="WebsiteLabel_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
 
-                        <Label Text="{Binding Details, Mode=OneWay}" />
-                    </StackLayout>
-                </Frame>
+                    <Label Text="{Binding Details, Mode=OneWay}" />
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </StackLayout>
