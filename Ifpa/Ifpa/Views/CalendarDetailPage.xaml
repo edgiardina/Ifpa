@@ -51,7 +51,7 @@
                     x:Name="calendarMap" HasScrollEnabled="False" HasZoomEnabled="False" HeightRequest="200"              
                      MapType="Street" IsVisible="False" />
 
-                <StackLayout VerticalOptions="FillAndExpand" Padding="20,20,20,20"  >                          
+                <StackLayout VerticalOptions="FillAndExpand" Padding="20,20,20,20" BackgroundColor="{DynamicResource BackgroundColor}" >                          
 
                     <Label Text="{Binding Website, Mode=OneWay}" TextColor="Blue" Margin="0,0,0,10">
                         <Label.GestureRecognizers>
