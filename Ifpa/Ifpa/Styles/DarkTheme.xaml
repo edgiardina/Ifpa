@@ -41,8 +41,8 @@
     </Style>
 
     <Style TargetType="syncfusion:SfExpander">
-        <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
-        <Setter Property="HeaderBackgroundColor" Value="{DynamicResource BackgroundColor}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource TabHeaderBackgroundColor}" />
+        <Setter Property="HeaderBackgroundColor" Value="{DynamicResource TabHeaderBackgroundColor}" />
         <Setter Property="IconColor" Value="{DynamicResource PrimaryTextColor}" />
     </Style>
 

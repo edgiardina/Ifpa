@@ -28,6 +28,8 @@ namespace Ifpa.Views.Behaviors
                 foreach (InlineCalendarItem appt in e.Appointments)
                 {
                     Button button = new Button();
+                    button.BackgroundColor = Color.Transparent;
+                    button.TextColor = (Color)Application.Current.Resources["PrimaryTextColor"];
                     button.Text = appt.Subject;
                     button.CommandParameter = appt.CalendarId;
                     button.Clicked += Button_Clicked;
