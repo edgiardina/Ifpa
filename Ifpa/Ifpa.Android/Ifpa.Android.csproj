@@ -69,6 +69,7 @@
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Renderers\TintImageEffect.cs" />
     <Compile Include="Services\AndroidReminderService.cs" />
     <Compile Include="BackgroundReceiver.cs" />
     <Compile Include="BadgeDrawable.cs" />
@@ -113,7 +114,6 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Renderers\" />
     <Folder Include="Resources\drawable-hdpi\" />
     <Folder Include="Resources\drawable-xhdpi\" />
     <Folder Include="Resources\drawable-xxhdpi\" />
