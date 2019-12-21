@@ -88,6 +88,7 @@
     <LaunchForBackgroundFetch>false</LaunchForBackgroundFetch>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Renderers\TintImageEffect.cs" />
     <Compile Include="Services\iOSReminderService.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />

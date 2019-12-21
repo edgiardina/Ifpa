@@ -30,6 +30,7 @@ namespace Ifpa.ViewModels
             {
                 var activityFeedItems = await Settings.LocalDatabase.GetActivityFeedRecords();
                 ActivityFeedItems.Clear();
+
                 foreach(var item in activityFeedItems)
                 {
                     ActivityFeedItems.Add(item);
