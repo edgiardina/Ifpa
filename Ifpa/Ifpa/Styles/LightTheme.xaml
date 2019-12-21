@@ -13,7 +13,7 @@
     <Color x:Key="LosingRecord">#FE2E2E</Color>
     <Color x:Key="TieRecord">#333333</Color>
 
-    <Color x:Key="BackgroundColor">#f6f6f6</Color>
+    <Color x:Key="BackgroundColor">#FFFFFF</Color>
     <Color x:Key="BarBackgroundColor">#f6f6f6</Color>
     <Color x:Key="BarTextColor">#556E87</Color>
 
@@ -22,7 +22,7 @@
     <Color x:Key="PrimaryTextColor">#000000</Color>
     <Color x:Key="SecondaryTextColor">#999999</Color>
     <Color x:Key="TabHeaderBackgroundColor">#66FFFFFF</Color>
-    <Color x:Key="SecondaryBackgroundColor">#FFFFFF</Color>
+    <Color x:Key="SecondaryBackgroundColor">#f6f6f6</Color>
 
     <Color x:Key="LinkTextColor">#0000ff</Color>
     <Color x:Key="BannerTextColor">#1D3052</Color>
@@ -42,8 +42,8 @@
     </Style>
 
     <Style TargetType="syncfusion:SfExpander">
-        <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
-        <Setter Property="HeaderBackgroundColor" Value="{DynamicResource BackgroundColor}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource BarBackgroundColor}" />
+        <Setter Property="HeaderBackgroundColor" Value="{DynamicResource BarBackgroundColor}" />
         <Setter Property="IconColor" Value="{DynamicResource PrimaryTextColor}" />
     </Style>
 

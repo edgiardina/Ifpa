@@ -18,15 +18,15 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="Your rank changed from " />
+                                <Span Text="Your rank changed from " TextColor="{DynamicResource SecondaryTextColor}" />
                                 <Span Text="{Binding IntTwo, Mode=OneWay, Converter={StaticResource intToOrdinalString}}" />
-                                <Span Text=" to " />
+                                <Span Text=" to " TextColor="{DynamicResource SecondaryTextColor}" />
                                 <Span Text="{Binding IntOne, Mode=OneWay, Converter={StaticResource intToOrdinalString}}" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Label LineBreakMode="NoWrap" FontSize="Micro" Text="{Binding CreatedDateTime, StringFormat='{0:d}'}" Style="{DynamicResource ListItemTextStyle}" />
+                <Label LineBreakMode="NoWrap" FontSize="Micro" Text="{Binding CreatedDateTime, StringFormat='{0:d}'}" TextColor="{DynamicResource SecondaryTextColor}" />
             </StackLayout>
             <!--TODO: -->
             <BoxView Color="CornflowerBlue"

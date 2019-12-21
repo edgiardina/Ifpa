@@ -17,14 +17,14 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="Tournament results for '" />
+                                <Span Text="Tournament results for " TextColor="{DynamicResource SecondaryTextColor}" />
                                 <Span Text="{Binding Description, Mode=OneWay}" />
-                                <Span Text="' were posted to your profile" />
+                                <Span Text=" were posted to your profile" TextColor="{DynamicResource SecondaryTextColor}" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Label LineBreakMode="NoWrap" FontSize="Micro" Text="{Binding CreatedDateTime, StringFormat='{0:d}'}" Style="{DynamicResource ListItemTextStyle}" />
+                <Label LineBreakMode="NoWrap" FontSize="Micro" Text="{Binding CreatedDateTime, StringFormat='{0:d}'}" TextColor="{DynamicResource SecondaryTextColor}" />
             </StackLayout>
             <BoxView Color="CornflowerBlue"
                  IsVisible="{Binding HasBeenSeen, Mode=OneWay, Converter={StaticResource inverter}}"
