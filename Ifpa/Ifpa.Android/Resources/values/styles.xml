@@ -34,4 +34,15 @@
   <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
     <item name="colorAccent">#FF4081</item>
   </style>
+
+  <color name="primaryTextColor">#000000</color>
+  <color name="iconAccentColor">#4579FB</color>
+
+  <style name="MainTheme.DarkTheme.Base" parent="Theme.AppCompat">
+    <!-- Your app's theme defined here -->
+  </style>
+  <style name="MainTheme.DarkTheme.Toolbar" parent="MainTheme.DarkTheme.Base">
+    <item name="android:drawableTint">@color/iconAccentColor</item>
+    <item name="colorControlNormal">@color/primaryTextColor</item>
+  </style>
 </resources>

@@ -5,7 +5,7 @@
              Title="Settings">
     <ContentPage.Content>
       
-        <TableView Intent="Settings" HasUnevenRows="True" >
+        <TableView Intent="Settings" HasUnevenRows="True" BackgroundColor="{DynamicResource SecondaryBackgroundColor}" >
             <TableRoot>
                 <TableSection Title="Notifications">
                     <SwitchCell Text="IFPA Rank Change" On="{Binding NotifyOnRankChange, Mode=TwoWay}" />

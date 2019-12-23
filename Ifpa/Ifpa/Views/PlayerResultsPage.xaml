@@ -67,7 +67,7 @@
                                         <StackLayout Orientation="Vertical" Padding="10">
                                             <StackLayout Orientation="Horizontal" >
                                                 <Label Text="{Binding TournamentName}"  FontSize="16" Style="{DynamicResource ListItemTextStyle}" HorizontalOptions="StartAndExpand" />
-                                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" HorizontalOptions="End" Text="{Binding Position, Converter={StaticResource intToOrdinalString}}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
+                                                <Label LineBreakMode="NoWrap" MinimumWidthRequest="100" HorizontalTextAlignment="End" HorizontalOptions="End" Text="{Binding Position, Converter={StaticResource intToOrdinalString}}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">                                                
@@ -105,7 +105,7 @@
                                         <StackLayout Orientation="Vertical" Padding="10">
                                             <StackLayout Orientation="Horizontal" >
                                                 <Label Text="{Binding TournamentName}"  FontSize="16" Style="{DynamicResource ListItemTextStyle}" HorizontalOptions="StartAndExpand" />
-                                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" HorizontalOptions="End" Text="{Binding Position, Converter={StaticResource intToOrdinalString}}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
+                                                <Label LineBreakMode="NoWrap"  MinimumWidthRequest="100" HorizontalTextAlignment="End" HorizontalOptions="End" Text="{Binding Position, Converter={StaticResource intToOrdinalString}}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
@@ -143,7 +143,7 @@
                                         <StackLayout Orientation="Vertical" Padding="10">
                                             <StackLayout Orientation="Horizontal" >
                                                 <Label Text="{Binding TournamentName}"  FontSize="16" Style="{DynamicResource ListItemTextStyle}" HorizontalOptions="StartAndExpand" />
-                                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" HorizontalOptions="End" Text="{Binding Position, Converter={StaticResource intToOrdinalString}}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
+                                                <Label LineBreakMode="NoWrap"  MinimumWidthRequest="100" HorizontalTextAlignment="End" HorizontalOptions="End" Text="{Binding Position, Converter={StaticResource intToOrdinalString}}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
