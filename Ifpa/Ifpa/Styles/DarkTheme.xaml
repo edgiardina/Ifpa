@@ -29,6 +29,8 @@
     <Style TargetType="NavigationPage">
         <Setter Property="BarBackgroundColor" Value="{DynamicResource BarBackgroundColor}" />
         <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
+        <Setter Property="BarTextColor"
+                    Value="{OnPlatform Android={StaticResource PrimaryTextColor}}" />
     </Style>
 
     <Style TargetType="Button" ApplyToDerivedTypes="True">
