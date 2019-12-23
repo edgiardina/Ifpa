@@ -7,6 +7,8 @@ using Xamarin.Essentials;
 using Xamarin.Forms.Maps;
 using System.Linq;
 using Ifpa.Interfaces;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace Ifpa.Views
 {
@@ -16,7 +18,7 @@ namespace Ifpa.Views
         CalendarDetailViewModel viewModel;
         
         public CalendarDetailPage(CalendarDetailViewModel viewModel)
-        {
+        {       
             InitializeComponent();
 
             BindingContext = this.viewModel = viewModel;

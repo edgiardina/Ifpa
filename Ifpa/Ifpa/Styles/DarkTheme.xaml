@@ -5,7 +5,6 @@
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              x:Class="Ifpa.Styles.DarkTheme">    
     
-    <Color x:Key="NavigationPrimary">#000000</Color>
     <Color x:Key="SecondaryBanner">#556E87</Color>
     <Color x:Key="DetailPageBackground">#F1F1F1</Color>
     <Color x:Key="WinningRecord">#04B45F</Color>
@@ -24,7 +23,7 @@
     <Color x:Key="SecondaryBackgroundColor">#212124</Color>
 
     <Color x:Key="LinkTextColor">#0000ff</Color>
-    <Color x:Key="BannerTextColor">#1D3052</Color>
+    <Color x:Key="BannerTextColor">#072C53</Color>
     <Color x:Key="IconAccentColor">#4579FB</Color>
 
     <Style TargetType="NavigationPage">
@@ -42,8 +41,8 @@
     </Style>
 
     <Style TargetType="syncfusion:SfExpander">
-        <Setter Property="BackgroundColor" Value="{DynamicResource TabHeaderBackgroundColor}" />
-        <Setter Property="HeaderBackgroundColor" Value="{DynamicResource TabHeaderBackgroundColor}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryBackgroundColor}" />
+        <Setter Property="HeaderBackgroundColor" Value="{DynamicResource SecondaryBackgroundColor}" />
         <Setter Property="IconColor" Value="{DynamicResource PrimaryTextColor}" />
     </Style>
 

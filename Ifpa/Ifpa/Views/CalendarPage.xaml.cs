@@ -27,6 +27,7 @@ namespace Ifpa.Views
         public CalendarPage()
         {
             InitializeComponent();
+            
 
             BindingContext = viewModel = new CalendarViewModel();
         }

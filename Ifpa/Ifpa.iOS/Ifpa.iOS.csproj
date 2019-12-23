@@ -411,4 +411,9 @@
   <ItemGroup>
     <BundleResource Include="Resources\globe%403x.png" />
   </ItemGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties XamarinHotReloadWrongLinkerErrorInfoBarIfpaiOSHideInfoBar="True" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

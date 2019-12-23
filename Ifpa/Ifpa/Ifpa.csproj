@@ -11,14 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Content\Rules.html" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Content\Rules.html" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="PinballApi" Version="2.0.55" />
     <PackageReference Include="Microsoft.Toolkit.Parsers" Version="6.0.0" />
     <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
@@ -109,6 +101,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DataTemplates\ActivityFeedRankChangeViewCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MoreItemsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\PlayerResultsPage.xaml">

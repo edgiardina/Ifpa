@@ -34,6 +34,8 @@ namespace Ifpa.ViewModels
 
         public string Name => PlayerRecord.FirstName + " " + PlayerRecord.LastName;
 
+        public string Initials => PlayerRecord.Initials;
+
         public string Rank => PlayerRecord.PlayerStats.CurrentWpprRank.OrdinalSuffix();
 
         public string Rating => PlayerRecord.PlayerStats.RatingsRank.HasValue ? PlayerRecord.PlayerStats.RatingsRank.Value.OrdinalSuffix() : "Not Ranked";
@@ -117,8 +119,7 @@ namespace Ifpa.ViewModels
                     if (playerHistoryData.RatingHistory != null)
                         PlayerRatingHistory = new ObservableCollection<RatingHistory>(playerHistoryData.RatingHistory);
 
-                    PlayerRecord = playerData;
-                    Title = PlayerRecord.Initials.ToUpper();
+                    PlayerRecord = playerData;                   
 
                     if (PostPlayerLoadCommand != null)
                     {

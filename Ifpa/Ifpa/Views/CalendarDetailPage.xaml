@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
              xmlns:local1="clr-namespace:Ifpa.Views.Controls"
-             x:Class="Ifpa.Views.CalendarDetailPage">
+             x:Class="Ifpa.Views.CalendarDetailPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.LargeTitleDisplay="Never">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:StringNullOrEmptyBoolConverter x:Key="stringNullOrEmptyBoolConverter" />
@@ -45,13 +47,13 @@
                 </Label>
             </StackLayout>
         </Frame>
-        <ScrollView VerticalOptions="FillAndExpand">
+        <ScrollView VerticalOptions="FillAndExpand"  BackgroundColor="{DynamicResource BackgroundColor}"  IsClippedToBounds="True">
             <StackLayout Spacing="0">
                 <local1:PinViewMap
                     x:Name="calendarMap" HasScrollEnabled="False" HasZoomEnabled="False" HeightRequest="200"              
                      MapType="Street" IsVisible="False" />
 
-                <StackLayout VerticalOptions="FillAndExpand" Padding="20,20,20,20" BackgroundColor="{DynamicResource BackgroundColor}" >                          
+                <StackLayout VerticalOptions="FillAndExpand" Padding="20,20,20,20" >                          
 
                     <Label Text="{Binding Website, Mode=OneWay}" TextColor="Blue" Margin="0,0,0,10">
                         <Label.GestureRecognizers>

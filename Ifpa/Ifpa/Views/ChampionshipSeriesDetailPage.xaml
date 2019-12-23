@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              x:Class="Ifpa.Views.ChampionshipSeriesDetailPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.LargeTitleDisplay="Never"
              Title="{Binding Title}">
     <ContentPage.Resources>
         <ResourceDictionary>
