@@ -3,72 +3,45 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:views="clr-namespace:Ifpa.Views"
             x:Class="Ifpa.Views.MainPage"
-            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"                       
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"  
+            xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
             android:TabbedPage.ToolbarPlacement="Bottom">
-    
-    <NavigationPage Title="Rankings" IconImageSource="numbered_list.png">      
+
+    <NavigationPage Title="Rankings" IconImageSource="numbered_list.png" 
+                    ios:NavigationPage.PrefersLargeTitles="true">      
         <x:Arguments>
             <views:RankingsPage />
         </x:Arguments>
     </NavigationPage>
 
-    <NavigationPage Title="Player Search" IconImageSource="search.png">
+    <NavigationPage Title="Player Search" IconImageSource="search.png" 
+                    ios:NavigationPage.PrefersLargeTitles="true">
         <x:Arguments>
             <views:PlayerSearchPage />
         </x:Arguments>
     </NavigationPage>
 
-    <NavigationPage Title="My Stats" IconImageSource="mystats.png">            
+    <NavigationPage Title="My Stats" IconImageSource="mystats.png" 
+                    ios:NavigationPage.PrefersLargeTitles="true">            
         <x:Arguments>
             <views:PlayerDetailPage />
         </x:Arguments>
     </NavigationPage>
 
-    <NavigationPage Title="Calendar" IconImageSource="calendar.png">          
+    <NavigationPage Title="Calendar" IconImageSource="calendar.png"                     
+                    ios:NavigationPage.PrefersLargeTitles="true">          
         <x:Arguments>
             <views:CalendarPage />
         </x:Arguments>
     </NavigationPage>
     
     <!-- More -->
+
+    <NavigationPage Title="More" IconImageSource="more.png" 
+                    ios:NavigationPage.PrefersLargeTitles="true">
+        <x:Arguments>
+            <views:MoreItemsPage />
+        </x:Arguments>
+    </NavigationPage>   
     
-    <NavigationPage Title="Favorites" IconImageSource="favorite.png">
-        <x:Arguments>
-            <views:FavoritesPage />
-        </x:Arguments>
-    </NavigationPage>
-    
-    <NavigationPage Title="Championship Series" IconImageSource="trophy.png">
-        <x:Arguments>
-            <views:ChampionshipSeriesPage />
-        </x:Arguments>
-    </NavigationPage>
-
-    <NavigationPage Title="News" IconImageSource="news.png">
-        <x:Arguments>
-            <views:NewsPage />
-        </x:Arguments>
-    </NavigationPage>
-
-    <views:RulesPage Title="Rules" IconImageSource="rules.png" />
-
-    <NavigationPage Title="Stats" IconImageSource="stats.png">
-        <x:Arguments>
-            <views:StatsPage />
-        </x:Arguments>
-    </NavigationPage>
-
-    <NavigationPage Title="Directors" IconImageSource="globe.png">
-        <x:Arguments>
-            <views:DirectorsPage />
-        </x:Arguments>
-    </NavigationPage>
-
-    <views:SettingsPage Title="Settings" IconImageSource="settings.png" />
-
-    <NavigationPage Title="About" IconImageSource="tab_about.png">
-        <x:Arguments>
-            <views:AboutPage />
-        </x:Arguments>
-    </NavigationPage>
 </TabbedPage>

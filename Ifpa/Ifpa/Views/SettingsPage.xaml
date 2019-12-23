@@ -4,8 +4,9 @@
              x:Class="Ifpa.Views.SettingsPage" 
              Title="Settings">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
-            <TableView Intent="Settings" HasUnevenRows="True">
+      
+        <TableView Intent="Settings" HasUnevenRows="True" >
+            <TableRoot>
                 <TableSection Title="Notifications">
                     <SwitchCell Text="IFPA Rank Change" On="{Binding NotifyOnRankChange, Mode=TwoWay}" />
                     <SwitchCell Text="Tournament Result Posted" On="{Binding NotifyOnTournamentResult, Mode=TwoWay}" />
@@ -16,7 +17,8 @@
                         <Button Padding="10,0,10,0" Margin="0,10,0,10" HorizontalOptions="CenterAndExpand" Text="Clear Selected Player" Clicked="Button_Clicked" />
                     </ViewCell>
                 </TableSection>
-            </TableView>            
-        </StackLayout>
+            </TableRoot>
+        </TableView>            
+
     </ContentPage.Content>
 </ContentPage>
