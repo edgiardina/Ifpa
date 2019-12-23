@@ -4,6 +4,8 @@
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              x:Class="Ifpa.Views.StatsPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.LargeTitleDisplay="Never"
              Title="Stats">
     <ContentPage.Content>
         <tabView:SfTabView VisibleHeaderCount="4" HeightRequest="50">
