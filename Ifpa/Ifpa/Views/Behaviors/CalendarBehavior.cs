@@ -40,7 +40,8 @@ namespace Ifpa.Views.Behaviors
             {
                 var label = new Button();
                 label.Text = "No Tournaments";
-                label.TextColor = Color.Black;
+                label.BackgroundColor = Color.Transparent;
+                label.TextColor = (Color)Application.Current.Resources["PrimaryTextColor"];
                 stackLayout.Children.Add(label);
             }
 

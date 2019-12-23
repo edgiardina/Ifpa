@@ -20,7 +20,8 @@
             <SearchBar Grid.Row="0" x:Name="SearchBar" SearchCommand="{Binding SearchCommand}"
                        IsSpellCheckEnabled="False"
                        MaxLength="100"
-                       Keyboard="Text"                       
+                       Keyboard="Text"   
+                       Placeholder="Type a player's name to search"
                        SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}" />
             
             <Label Grid.Row="1" 

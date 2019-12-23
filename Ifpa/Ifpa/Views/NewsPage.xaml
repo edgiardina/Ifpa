@@ -6,7 +6,6 @@
     <StackLayout >
         <ListView 
                 x:Name="ItemsListView" 
-                BackgroundColor="White"
                 ItemsSource="{Binding NewsItems}"
                 VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"

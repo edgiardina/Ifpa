@@ -27,7 +27,8 @@ namespace Ifpa.Views
         public CalendarPage()
         {
             InitializeComponent();
-            
+            //calendar.MinDate = DateTime.Now;
+            //calendar.MaxDate = DateTime.Now.AddYears(1);
 
             BindingContext = viewModel = new CalendarViewModel();
         }

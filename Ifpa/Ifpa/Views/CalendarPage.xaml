@@ -5,6 +5,7 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              xmlns:syncfusion1="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:local="clr-namespace:Ifpa.Views.Behaviors"
              x:Class="Ifpa.Views.CalendarPage"
              Title="Calendar">
@@ -46,7 +47,7 @@
             </syncfusion:SfExpander.Content>
         </syncfusion:SfExpander>
 
-        <tabView:SfTabView VisibleHeaderCount="2" >
+        <tabView:SfTabView VisibleHeaderCount="2" TabHeaderPosition="Bottom">
             <tabView:SfTabItem Title="Map">
                 <tabView:SfTabItem.Content>
                     <StackLayout Spacing="0">
@@ -80,11 +81,11 @@
             </tabView:SfTabItem>
             <tabView:SfTabItem Title="Calendar">
                 <tabView:SfTabItem.Content>
-                    <syncfusion1:SfCalendar NavigationDirection="Vertical" x:Name="calendar" 
-                                            ViewMode="MonthView" ShowInlineEvents="True" InlineViewMode="Inline"
+                    <syncfusion1:SfCalendar NavigationDirection="Vertical" x:Name="calendar" AgendaViewHeight="180"
+                                            ViewMode="MonthView" ShowInlineEvents="True" InlineViewMode="Agenda" ShowLeadingAndTrailingDays="False"
                                             DataSource="{Binding InlineCalendarItems}" BackgroundColor="{DynamicResource BackgroundColor}">
                         <syncfusion1:SfCalendar.MonthViewSettings>
-                            <syncfusion1:MonthViewSettings 
+                            <syncfusion1:MonthViewSettings                                  
                                 HeaderBackgroundColor="{DynamicResource BackgroundColor}" 
                                 HeaderTextColor="{DynamicResource SecondaryTextColor}"
                                 DayHeaderBackgroundColor="{DynamicResource BackgroundColor}"

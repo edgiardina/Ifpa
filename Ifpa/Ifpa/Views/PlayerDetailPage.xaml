@@ -28,193 +28,193 @@
         <ToolbarItem Text="Set to My Stats" x:Name="StarButton" Clicked="StarButton_Clicked" Icon="star.png" />
         <ToolbarItem Text="Share" x:Name="ShareButton" Clicked="ShareButton_Clicked" Icon="share.png" />
     </ContentPage.ToolbarItems>
-    <StackLayout >        
-        <ScrollView Padding="15,0,15,0">
-            <StackLayout IsVisible="{Binding IsBusy, Converter={StaticResource BoolConverter}}" Spacing="20">
-                <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" VerticalOptions="CenterAndExpand" />
-                <Grid Padding="15,0,15,0" BackgroundColor="{DynamicResource SecondaryBanner}">
+
+    <ScrollView Padding="15,0,15,0">
+        <StackLayout IsVisible="{Binding IsBusy, Converter={StaticResource BoolConverter}}" Spacing="20">
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" VerticalOptions="CenterAndExpand" />
+            <Grid Padding="15,0,15,0" BackgroundColor="{DynamicResource SecondaryBanner}" Margin="-15,0,-15,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="5" Grid.Column="0">
+                    <Label Text="{Binding Initials, Mode=OneWay}" Style="{DynamicResource playerHeader}" FontSize="20"/>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label LineBreakMode="NoWrap" HorizontalOptions="StartAndExpand" Style="{DynamicResource playerHeader}" FontSize="16" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="Player #: " />
+                                        <Span Text="{Binding PlayerId, Mode=OneWay}" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame HasShadow="True" BackgroundColor="Transparent" HorizontalOptions="End" Padding="0">
+                            <Image Source="https://www.ifpapinball.com/images/confirmed.png" IsVisible="{Binding IsRegistered, Mode=OneWay}" 
+                                    HorizontalOptions="End" WidthRequest="16"/>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding Location, Mode=OneWay}" HorizontalOptions="StartAndExpand" FontSize="16" Style="{DynamicResource playerHeader}"  />
+                        <Frame HasShadow="True" BackgroundColor="Transparent" HorizontalOptions="End" Padding="0">
+                            <Image Source="{Binding CountryFlag, Mode=OneWay}"  />
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+                <Frame Grid.Column="1" HasShadow="True" BackgroundColor="Transparent" HorizontalOptions="End" Padding="0" CornerRadius="5">
+                    <Image HorizontalOptions="CenterAndExpand" Source="{Binding PlayerAvatar, Mode=OneWay}" VerticalOptions="CenterAndExpand" Aspect="AspectFit" x:Name="AvatarImage" />
+                </Frame>
+            </Grid>
+            <StackLayout Orientation="Horizontal">
+                <Button Padding="10,0,10,0" Text="Results" HorizontalOptions="FillAndExpand" Clicked="TournamentResults_Button_Clicked" />
+                <Button Padding="10,0,10,0" Text=" PVP " HorizontalOptions="FillAndExpand" Clicked="Pvp_Button_Clicked" />
+                <Button Padding="10,0,10,0" Text="NACS" HorizontalOptions="FillAndExpand" Clicked="NACS_Button_Clicked" IsVisible="{Binding HasNacsData}" />
+            </StackLayout>
+
+            <StackLayout Spacing="10">
+                <Label Text="Player Overview" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="5" Grid.Column="0">
-                        <Label Text="{Binding Initials, Mode=OneWay}" Style="{DynamicResource playerHeader}" FontSize="20"/>
+                    <Label Grid.Column="0" Grid.Row="0" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Rank" />
+                    <Label Grid.Column="1" Grid.Row="0" Text="{Binding Rank, Mode=OneWay}" HorizontalTextAlignment="Center"/>
+                    <Label Grid.Column="2" Grid.Row="0" Text="{Binding CurrentWpprValue, Mode=OneWay}" HorizontalTextAlignment="Center"/>
 
-                        <StackLayout Orientation="Horizontal">
-                            <Label LineBreakMode="NoWrap" HorizontalOptions="StartAndExpand" Style="{DynamicResource playerHeader}" FontSize="16" >
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <FormattedString.Spans>
-                                            <Span Text="Player #: " />
-                                            <Span Text="{Binding PlayerId, Mode=OneWay}" />
-                                        </FormattedString.Spans>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Frame HasShadow="True" BackgroundColor="Transparent" HorizontalOptions="End" Padding="0">
-                                <Image Source="https://www.ifpapinball.com/images/confirmed.png" IsVisible="{Binding IsRegistered, Mode=OneWay}" 
-                                    HorizontalOptions="End" WidthRequest="16"/>
-                            </Frame>
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding Location, Mode=OneWay}" HorizontalOptions="StartAndExpand" FontSize="16" Style="{DynamicResource playerHeader}"  />
-                            <Frame HasShadow="True" BackgroundColor="Transparent" HorizontalOptions="End" Padding="0">
-                                <Image Source="{Binding CountryFlag, Mode=OneWay}"  />
-                            </Frame>
-                        </StackLayout>
-                    </StackLayout>
-                    <Frame Grid.Column="1" HasShadow="True" BackgroundColor="Transparent" HorizontalOptions="End" Padding="0" CornerRadius="5">
-                        <Image HorizontalOptions="CenterAndExpand" Source="{Binding PlayerAvatar, Mode=OneWay}" VerticalOptions="CenterAndExpand" Aspect="AspectFit" x:Name="AvatarImage" />
-                    </Frame>
+                    <Label Grid.Column="0" Grid.Row="1" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Rating" />
+                    <Label Grid.Column="1" Grid.Row="1" Text="{Binding Rating, Mode=OneWay}" HorizontalTextAlignment="Center"/>
+                    <Label Grid.Column="2" Grid.Row="1" Text="{Binding RatingValue, Mode=OneWay}" HorizontalTextAlignment="Center"/>
+
+                    <Label Grid.Column="0" Grid.Row="2" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Eff percent" />
+                    <Label Grid.Column="1" Grid.Row="2" Text="{Binding EffPercent, Mode=OneWay}" HorizontalTextAlignment="Center"/>
+                    <Label Grid.Column="2" Grid.Row="2" Text="{Binding EfficiencyValue, Mode=OneWay}" HorizontalTextAlignment="Center"/>
+
+
                 </Grid>
-                <StackLayout Orientation="Horizontal">
-                    <Button Padding="10,0,10,0" Text="Results" HorizontalOptions="FillAndExpand" Clicked="TournamentResults_Button_Clicked" />
-                    <Button Padding="10,0,10,0" Text=" PVP " HorizontalOptions="FillAndExpand" Clicked="Pvp_Button_Clicked" />
-                    <Button Padding="10,0,10,0" Text="NACS" HorizontalOptions="FillAndExpand" Clicked="NACS_Button_Clicked" IsVisible="{Binding HasNacsData}" />
+
+                <Label Text="Ranking Statistics" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Column="0" Grid.Row="0" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Highest Rank" />
+                    <Label Grid.Column="1" Grid.Row="0" Text="{Binding HighestRank, Mode=OneWay}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="{Binding HighestRank, Mode=OneWay}" />
+                                    <Span Text=" (" />
+                                    <Span Text="{Binding HighestRankDate, StringFormat='{0:MMMM, yyyy}'}" />
+                                    <Span Text=")" />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label Grid.Column="0" Grid.Row="1" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Last Month's Rank" />
+                    <Label Grid.Column="1" Grid.Row="1" Text="{Binding LastMonthRank, Mode=OneWay}" />
+
+                    <Label Grid.Column="0" Grid.Row="2" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Last Year's Rank" />
+                    <Label Grid.Column="1" Grid.Row="2" Text="{Binding LastYearRank, Mode=OneWay}" />
+
+                    <Label Grid.Column="0" Grid.Row="3" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Total WPPRs" />
+                    <Label Grid.Column="1" Grid.Row="3" Text="{Binding TotalWpprs, Mode=OneWay}" />
+                </Grid>
+
+
+                <Label Text="Tournament Statistics" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Column="0" Grid.Row="0" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Best Finish" />
+                    <Label Grid.Column="1" Grid.Row="0" LineBreakMode="NoWrap">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="{Binding BestFinish, Mode=OneWay}" />
+                                    <Span Text=" (" />
+                                    <Span Text="{Binding BestFinishCount, Mode=OneWay}" />
+                                    <Span Text=" times)" />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Grid.Column="0" Grid.Row="1" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Avg Finish" />
+                    <Label Grid.Column="1" Grid.Row="1" Text="{Binding AvgFinish, Converter={StaticResource intToOrdinalString}, Mode=OneWay}" />
+
+                    <Label Grid.Column="0" Grid.Row="2" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Avg Finish Last Year" />
+                    <Label Grid.Column="1" Grid.Row="2" Text="{Binding AvgFinishLastYear, Converter={StaticResource intToOrdinalString}, Mode=OneWay}" />
+
+                    <Label Grid.Column="0" Grid.Row="3" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Total Events" />
+                    <Label Grid.Column="1" Grid.Row="3" Text="{Binding TotalEvents, Mode=OneWay}" />
+
+                    <Label Grid.Column="0" Grid.Row="4" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Total Active Events" />
+                    <Label Grid.Column="1" Grid.Row="4" Text="{Binding TotalActiveEvents, Mode=OneWay}" />
+
+                    <Label Grid.Column="0" Grid.Row="5" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Events Outside Country" />
+                    <Label Grid.Column="1" Grid.Row="5" Text="{Binding EventsOutsideCountry, Mode=OneWay}" />
+
+                </Grid>
+
+                <StackLayout HeightRequest="400">
+                    <chart:SfChart HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <chart:SfChart.Title>
+                            <chart:ChartTitle Text="Rank Progress"/>
+                        </chart:SfChart.Title>
+                        <chart:SfChart.PrimaryAxis>
+                            <chart:DateTimeAxis/>
+                        </chart:SfChart.PrimaryAxis>
+                        <chart:SfChart.SecondaryAxis>
+                            <chart:LogarithmicAxis IsInversed="True" />
+                        </chart:SfChart.SecondaryAxis>
+                        <chart:LineSeries ItemsSource="{Binding PlayerRankHistory}" XBindingPath="RankDate" YBindingPath="RankPosition"/>
+                    </chart:SfChart>
+                    <chart:SfChart HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <chart:SfChart.Title>
+                            <chart:ChartTitle Text="Rating Progress"/>
+                        </chart:SfChart.Title>
+                        <chart:SfChart.PrimaryAxis>
+                            <chart:DateTimeAxis/>
+                        </chart:SfChart.PrimaryAxis>
+                        <chart:SfChart.SecondaryAxis>
+                            <chart:NumericalAxis />
+                        </chart:SfChart.SecondaryAxis>
+                        <chart:LineSeries ItemsSource="{Binding PlayerRatingHistory}" XBindingPath="RatingDate" YBindingPath="Rating"/>
+                    </chart:SfChart>
                 </StackLayout>
 
-                <StackLayout Spacing="10">
-                    <Label Text="Player Overview" />
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*" />
-                            <ColumnDefinition Width="1*" />
-                            <ColumnDefinition Width="1*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*" />                           
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="1*" />
-                        </Grid.RowDefinitions>
-                        <Label Grid.Column="0" Grid.Row="0" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Rank" />
-                        <Label Grid.Column="1" Grid.Row="0" Text="{Binding Rank, Mode=OneWay}" HorizontalTextAlignment="Center"/>
-                        <Label Grid.Column="2" Grid.Row="0" Text="{Binding CurrentWpprValue, Mode=OneWay}" HorizontalTextAlignment="Center"/>
+            </StackLayout>
 
-                        <Label Grid.Column="0" Grid.Row="1" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Rating" />
-                        <Label Grid.Column="1" Grid.Row="1" Text="{Binding Rating, Mode=OneWay}" HorizontalTextAlignment="Center"/>
-                        <Label Grid.Column="2" Grid.Row="1" Text="{Binding RatingValue, Mode=OneWay}" HorizontalTextAlignment="Center"/>
-
-                        <Label Grid.Column="0" Grid.Row="2" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Eff percent" />
-                        <Label Grid.Column="1" Grid.Row="2" Text="{Binding EffPercent, Mode=OneWay}" HorizontalTextAlignment="Center"/>
-                        <Label Grid.Column="2" Grid.Row="2" Text="{Binding EfficiencyValue, Mode=OneWay}" HorizontalTextAlignment="Center"/>
-
-      
-                    </Grid>
-
-                    <Label Text="Ranking Statistics" />
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*" />
-                            <ColumnDefinition Width="1*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="1*" />
-                        </Grid.RowDefinitions>
-                        
-                        <Label Grid.Column="0" Grid.Row="0" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Highest Rank" />
-                        <Label Grid.Column="1" Grid.Row="0" Text="{Binding HighestRank, Mode=OneWay}">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <FormattedString.Spans>
-                                        <Span Text="{Binding HighestRank, Mode=OneWay}" />
-                                        <Span Text=" (" />
-                                        <Span Text="{Binding HighestRankDate, StringFormat='{0:MMMM, yyyy}'}" />
-                                        <Span Text=")" />
-                                    </FormattedString.Spans>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        
-                        <Label Grid.Column="0" Grid.Row="1" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Last Month's Rank" />
-                        <Label Grid.Column="1" Grid.Row="1" Text="{Binding LastMonthRank, Mode=OneWay}" />
-
-                        <Label Grid.Column="0" Grid.Row="2" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Last Year's Rank" />
-                        <Label Grid.Column="1" Grid.Row="2" Text="{Binding LastYearRank, Mode=OneWay}" />
-
-                        <Label Grid.Column="0" Grid.Row="3" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Total WPPRs" />
-                        <Label Grid.Column="1" Grid.Row="3" Text="{Binding TotalWpprs, Mode=OneWay}" />
-                    </Grid>
-
-
-                    <Label Text="Tournament Statistics" />
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*" />
-                            <ColumnDefinition Width="1*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="1*" />
-                        </Grid.RowDefinitions>
-
-                        <Label Grid.Column="0" Grid.Row="0" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Best Finish" />
-                        <Label Grid.Column="1" Grid.Row="0" LineBreakMode="NoWrap">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <FormattedString.Spans>
-                                        <Span Text="{Binding BestFinish, Mode=OneWay}" />
-                                        <Span Text=" (" />
-                                        <Span Text="{Binding BestFinishCount, Mode=OneWay}" />
-                                        <Span Text=" times)" />
-                                    </FormattedString.Spans>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Label Grid.Column="0" Grid.Row="1" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Avg Finish" />
-                        <Label Grid.Column="1" Grid.Row="1" Text="{Binding AvgFinish, Converter={StaticResource intToOrdinalString}, Mode=OneWay}" />
-
-                        <Label Grid.Column="0" Grid.Row="2" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Avg Finish Last Year" />
-                        <Label Grid.Column="1" Grid.Row="2" Text="{Binding AvgFinishLastYear, Converter={StaticResource intToOrdinalString}, Mode=OneWay}" />
-
-                        <Label Grid.Column="0" Grid.Row="3" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Total Events" />
-                        <Label Grid.Column="1" Grid.Row="3" Text="{Binding TotalEvents, Mode=OneWay}" />
-
-                        <Label Grid.Column="0" Grid.Row="4" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Total Active Events" />
-                        <Label Grid.Column="1" Grid.Row="4" Text="{Binding TotalActiveEvents, Mode=OneWay}" />
-
-                        <Label Grid.Column="0" Grid.Row="5" LineBreakMode="NoWrap" TextColor="{DynamicResource SecondaryTextColor}" Text="Events Outside Country" />
-                        <Label Grid.Column="1" Grid.Row="5" Text="{Binding EventsOutsideCountry, Mode=OneWay}" />
-
-                    </Grid>
-
-                    <StackLayout HeightRequest="400">
-                        <chart:SfChart HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                            <chart:SfChart.Title>
-                                <chart:ChartTitle Text="Rank Progress"/>
-                            </chart:SfChart.Title>
-                            <chart:SfChart.PrimaryAxis>
-                                <chart:DateTimeAxis/>
-                            </chart:SfChart.PrimaryAxis>
-                            <chart:SfChart.SecondaryAxis>
-                                <chart:LogarithmicAxis IsInversed="True" />
-                            </chart:SfChart.SecondaryAxis>
-                            <chart:LineSeries ItemsSource="{Binding PlayerRankHistory}" XBindingPath="RankDate" YBindingPath="RankPosition"/>
-                        </chart:SfChart>
-                        <chart:SfChart HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                            <chart:SfChart.Title>
-                                <chart:ChartTitle Text="Rating Progress"/>
-                            </chart:SfChart.Title>
-                            <chart:SfChart.PrimaryAxis>
-                                <chart:DateTimeAxis/>
-                            </chart:SfChart.PrimaryAxis>
-                            <chart:SfChart.SecondaryAxis>
-                                <chart:NumericalAxis />
-                            </chart:SfChart.SecondaryAxis>
-                            <chart:LineSeries ItemsSource="{Binding PlayerRatingHistory}" XBindingPath="RatingDate" YBindingPath="Rating"/>
-                        </chart:SfChart>
-                    </StackLayout>
-
-                </StackLayout>
-            
         </StackLayout>
-        </ScrollView>
-    </StackLayout>
+    </ScrollView>
+
 </ContentPage>
