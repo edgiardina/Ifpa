@@ -26,11 +26,9 @@ namespace Ifpa
         {
             base.OnStart();
             // Handle when your app starts
-            VersionTracking.Track();
+            VersionTracking.Track();           
 
-            AppTheme theme = DependencyService.Get<IThemeInspector>().GetOperatingSystemTheme();
-
-            SetTheme(theme);
+            SetThemeBasedOnDeviceTheme();
         }
 
         protected override void OnSleep()
@@ -41,14 +39,18 @@ namespace Ifpa
         protected override void OnResume()
         {
             base.OnResume();
+
+            //BUG: For some reason this code never runs.
             // Handle when your app resumes
             AppTheme theme = DependencyService.Get<IThemeInspector>().GetOperatingSystemTheme();
 
-            SetTheme(theme);
+            SetThemeBasedOnDeviceTheme();
         }
 
-        void SetTheme(AppTheme theme)
+        public static void SetThemeBasedOnDeviceTheme()
         {
+            AppTheme theme = DependencyService.Get<IThemeInspector>().GetOperatingSystemTheme();
+
             //Handle Light Theme & Dark Theme
             if (theme == AppTheme.Light)
                 App.Current.Resources = new LightTheme();
