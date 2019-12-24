@@ -81,11 +81,11 @@
             </tabView:SfTabItem>
             <tabView:SfTabItem Title="Calendar">
                 <tabView:SfTabItem.Content>
-                    <syncfusion1:SfCalendar NavigationDirection="Vertical" x:Name="calendar" AgendaViewHeight="180"
+                    <syncfusion1:SfCalendar NavigationDirection="Horizontal" x:Name="calendar" AgendaViewHeight="180"
                                             ViewMode="MonthView" ShowInlineEvents="True" InlineViewMode="Agenda" ShowLeadingAndTrailingDays="False"
-                                            DataSource="{Binding InlineCalendarItems}" BackgroundColor="{DynamicResource BackgroundColor}">
+                                            DataSource="{Binding InlineCalendarItems}" BackgroundColor="{DynamicResource BackgroundColor}" ShowNavigationButtons="True" >
                         <syncfusion1:SfCalendar.MonthViewSettings>
-                            <syncfusion1:MonthViewSettings                                  
+                            <syncfusion1:MonthViewSettings                                   
                                 HeaderBackgroundColor="{DynamicResource BackgroundColor}" 
                                 HeaderTextColor="{DynamicResource SecondaryTextColor}"
                                 DayHeaderBackgroundColor="{DynamicResource BackgroundColor}"
