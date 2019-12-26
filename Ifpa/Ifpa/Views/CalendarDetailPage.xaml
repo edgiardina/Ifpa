@@ -3,13 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
              xmlns:local1="clr-namespace:Ifpa.Views.Controls"
-             x:Class="Ifpa.Views.CalendarDetailPage">
+             x:Class="Ifpa.Views.CalendarDetailPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.LargeTitleDisplay="Never">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <!--Page Level Resources: Compatibile with Xamarin Live Player -->
-            <Color x:Key="Primary">#2F4E6E</Color>
-            <Color x:Key="Accent">#072C53</Color>
-            <Color x:Key="LightTextColor">#999999</Color>
             <local:StringNullOrEmptyBoolConverter x:Key="stringNullOrEmptyBoolConverter" />
             <Style x:Key="calendarHeader" TargetType="Label">
                 <Setter Property="TextColor" Value="White" />
@@ -21,8 +19,8 @@
         <ToolbarItem Text="Share" x:Name="ShareButton" Clicked="ShareButton_Clicked" Icon="share.png" />
         <ToolbarItem Text="Add To Calendar" x:Name="AddToCalendarButton" Clicked="AddToCalendarButton_Clicked" Icon="calendar_add.png" />
     </ContentPage.ToolbarItems>
-    <StackLayout HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource DetailPageBackground}" Spacing="0">
-        <Frame BackgroundColor="{StaticResource SecondaryBanner}" CornerRadius="0">
+    <StackLayout HorizontalOptions="FillAndExpand" Spacing="0" >
+        <Frame BackgroundColor="{DynamicResource SecondaryBanner}" CornerRadius="0">
             <StackLayout Orientation="Vertical">
                 <Label Text="{Binding Title, Mode=OneWay}" FontSize="24" Style="{DynamicResource calendarHeader}"/>
 
@@ -49,27 +47,22 @@
                 </Label>
             </StackLayout>
         </Frame>
-        <ScrollView VerticalOptions="FillAndExpand">
+        <ScrollView VerticalOptions="FillAndExpand"  BackgroundColor="{DynamicResource BackgroundColor}"  IsClippedToBounds="True">
             <StackLayout Spacing="0">
                 <local1:PinViewMap
                     x:Name="calendarMap" HasScrollEnabled="False" HasZoomEnabled="False" HeightRequest="200"              
                      MapType="Street" IsVisible="False" />
 
-                <Frame CornerRadius="0" VerticalOptions="FillAndExpand" Margin="0,0,0,0">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Address_Tapped" />
-                    </Frame.GestureRecognizers>
-                    <StackLayout>                          
+                <StackLayout VerticalOptions="FillAndExpand" Padding="20,20,20,20" >                          
 
-                        <Label Text="{Binding Website, Mode=OneWay}" TextColor="Blue" Margin="0,0,0,10">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="WebsiteLabel_Tapped"/>
-                            </Label.GestureRecognizers>
-                        </Label>
+                    <Label Text="{Binding Website, Mode=OneWay}" TextColor="Blue" Margin="0,0,0,10">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="WebsiteLabel_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
 
-                        <Label Text="{Binding Details, Mode=OneWay}" />
-                    </StackLayout>
-                </Frame>
+                    <Label Text="{Binding Details, Mode=OneWay}" />
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </StackLayout>

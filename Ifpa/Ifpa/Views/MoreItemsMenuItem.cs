@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Ifpa.Views
 {
-
     public class MoreItemsMenuItem
     {
         public MoreItemsMenuItem()

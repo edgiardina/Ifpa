@@ -32,7 +32,7 @@
                 </Grid>
             </syncfusion:SfExpander.Header>
             <syncfusion:SfExpander.Content>
-                <Grid Padding="10,10,10,10" BackgroundColor="#FFFFFF">
+                <Grid Padding="10,10,10,10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="150" />
                         <ColumnDefinition Width="*" />
@@ -105,26 +105,21 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="10">
-                            <StackLayout HorizontalOptions="Start">
-                                <Label Text="{Binding TournamentName}"  FontSize="16" Style="{DynamicResource ListItemTextStyle}" />
-                                <StackLayout Orientation="Horizontal">
-                                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <FormattedString.Spans>
-                                                    <Span Text="{Binding FirstName}" />
-                                                    <Span Text=" " />
-                                                    <Span Text="{Binding LastName}" />
-                                                </FormattedString.Spans>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </StackLayout>
-                            </StackLayout>
+                        <StackLayout Orientation="Horizontal" Padding="10">                                                      
+                                <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" VerticalTextAlignment="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <FormattedString.Spans>
+                                                <Span Text="{Binding FirstName}" />
+                                                <Span Text=" " />
+                                                <Span Text="{Binding LastName}" />
+                                            </FormattedString.Spans>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>                                                   
                             <StackLayout HorizontalOptions="EndAndExpand">
                                 <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Text="{Binding Position, Converter={StaticResource intToOrdinalString}}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
-                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding Points, StringFormat='{0:0.00}'}" />
+                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding Points, StringFormat='{0:0.00}'}" TextColor="{DynamicResource SecondaryTextColor}" />
                             </StackLayout>
                         </StackLayout>
                     </ViewCell>

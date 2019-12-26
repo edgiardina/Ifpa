@@ -2,23 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ifpa.Views.NewsPage"
-             xmlns:vm="clr-namespace:Ifpa.ViewModels"
              Title="{Binding Title}">
-    <ContentPage.BindingContext>
-        <vm:AboutViewModel />
-    </ContentPage.BindingContext>
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <!--Page Level Resources: Compatibile with Xamarin Live Player -->
-            <Color x:Key="Primary">#2F4E6E</Color>
-            <Color x:Key="Accent">#072C53</Color>
-            <Color x:Key="LightTextColor">#999999</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    <StackLayout>
+    <StackLayout >
         <ListView 
                 x:Name="ItemsListView" 
-                BackgroundColor="White"
                 ItemsSource="{Binding NewsItems}"
                 VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"
@@ -31,16 +18,16 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame Padding="0" Margin="5" HasShadow="True" CornerRadius="0">
-                            <StackLayout Orientation="Horizontal" Margin="0" >
-                                <Grid VerticalOptions="FillAndExpand" Padding="0" Margin="0" HorizontalOptions="FillAndExpand" BackgroundColor="White">
+                        <Frame Padding="0" Margin="5" HasShadow="True" CornerRadius="0"  BackgroundColor="{DynamicResource BackgroundColor}">
+                            <StackLayout Orientation="Horizontal" Margin="0"  BackgroundColor="Transparent" >
+                                <Grid VerticalOptions="FillAndExpand" Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="100"/>
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
                                     <Image Grid.Row="0" Source="{Binding ImageUrl}" HorizontalOptions="FillAndExpand" Aspect="AspectFill" VerticalOptions="Start" />
-                                    <Grid Grid.Row="1" VerticalOptions="FillAndExpand" Margin="0" HorizontalOptions="FillAndExpand" BackgroundColor="White" Padding="5,5,5,5">
+                                    <Grid Grid.Row="1" VerticalOptions="FillAndExpand" Margin="0" HorizontalOptions="FillAndExpand" Padding="5,5,5,5">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto"/>
                                             <RowDefinition Height="Auto"/>
@@ -49,7 +36,7 @@
                                         <Label FontAttributes="Bold" Grid.Row="0" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="Default" Text="{Binding Title}" Margin="0" />
                                         <Label Grid.Row="1" VerticalTextAlignment="Start" FontSize="Small" Text="{Binding Summary}"  Margin="0" />
                                     </Grid>
-                                    <StackLayout Orientation="Horizontal" Grid.Row="2" Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource DetailPageBackground}">
+                                    <StackLayout Orientation="Horizontal" Grid.Row="2" Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource SecondaryBackgroundColor}">
                                         <Label HorizontalTextAlignment="Start"  FontSize="Small" Text="{Binding Author}"  Margin="0" />
                                         <Label HorizontalTextAlignment="End" FontSize="Small" Text="{Binding PublishDate, StringFormat='{0:d}'}"/>
                                     </StackLayout>

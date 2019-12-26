@@ -10,18 +10,23 @@ using System.Diagnostics;
 using PinballApi.Models.WPPR.v1.Calendar;
 using Ifpa.Models;
 using Syncfusion.SfCalendar.XForms;
+using System.Collections.Generic;
 
 namespace Ifpa.Views
 {
+    public enum CalendarPageView
+    {
+        MapAndList,
+        Calendar
+    }
+
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CalendarPage : ContentPage
     {
         public CalendarViewModel viewModel { get; set; }
-
-        public Location Location { get; set; }
-
-        public Placemark Placemark { get; set; }
-
+        
+        public CalendarPageView View { get; set; }
 
         public CalendarPage()
         {
@@ -30,64 +35,23 @@ namespace Ifpa.Views
             BindingContext = viewModel = new CalendarViewModel();
         }
 
-        private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            DistanceText.Text = ((int)DistanceSlider.Value).ToString();
-        }
-
         protected async override void OnAppearing()
         {
             base.OnAppearing();
 
             if (viewModel.CalendarDetails.Count == 0)
-            {
-                var lastCalendarLocation = Preferences.Get("LastCalendarLocation", "Unset");
-                var lastCalendarDistance = Preferences.Get("LastCalendarDistance", 0);
-                if (lastCalendarLocation == "Unset" || lastCalendarDistance == 0)
-                {
-                    await PollAndUpdateUserLocation();
-                }
-                else
-                {
-                    DistanceSlider.Value = lastCalendarDistance;
-                    LocationEntry.Text = lastCalendarLocation;
-                }
-                
+            {                
                 await UpdateCalendarData();
             }
         }
 
-        private async void ToolbarItem_Clicked(object sender, EventArgs e)
-        {
-            await UpdateCalendarData();
-        }
         private async void MyLocation_Clicked(object sender, EventArgs e)
         {
-            await PollAndUpdateUserLocation();
-            await UpdateCalendarData();
-        }
+            var filterPage = new CalendarFilterModalPage();
 
-        private async Task PollAndUpdateUserLocation()
-        {
-            if (!IsBusy)
-            {
-                try
-                {
-                    IsBusy = true;
-                    Location = await Geolocation.GetLastKnownLocationAsync();
+            filterPage.FilterSaved += () => { UpdateCalendarData(); };
 
-                    var placemarks = await Geocoding.GetPlacemarksAsync(Location);
-
-                    Placemark = placemarks.First();
-                    LocationEntry.Text = Placemark.Locality + ", " + Placemark.AdminArea;
-                }
-                catch (Exception e)
-                {
-                    Debug.WriteLine(e.Message);
-                }
-
-                IsBusy = false;
-            }
+            await Navigation.PushModalAsync(filterPage);
         }
 
         private async Task UpdateCalendarData()
@@ -96,33 +60,29 @@ namespace Ifpa.Views
             {
                 try
                 {
+                    var location = Preferences.Get("LastCalendarLocation", "Chicago, Il");
+                    var distance = Preferences.Get("LastCalendarDistance", 150);
+
+                    Preferences.Set("LastCalendarLocation", location);
+                    Preferences.Set("LastCalendarDistance", distance);
+
                     IsBusy = true;
                     calendarMap.Pins.Clear();
 
-                    var location = await Geocoding.GetLocationsAsync(LocationEntry.Text);
-                    calendarMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(location.First().Latitude, location.First().Longitude), 
-                                                                         new Distance(DistanceSlider.Value * Constants.MetersInAMile)));
+                    var geoLocation = await Geocoding.GetLocationsAsync(location);
+                    calendarMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(geoLocation.First().Latitude, geoLocation.First().Longitude), 
+                                                                         new Distance(distance * Constants.MetersInAMile)));
 
-                    DistanceText.Text = ((int)DistanceSlider.Value).ToString();
-                    await viewModel.ExecuteLoadItemsCommand(LocationEntry.Text, (int)DistanceSlider.Value);
+                    await viewModel.ExecuteLoadItemsCommand(location, distance);
 
                     IsBusy = true;
 
+                    List<Task> listOfTasks = new List<Task>();
                     foreach (var detail in viewModel.CalendarDetails)
                     {
-                        var pin = new Pin();
-                        var locations = await Geocoding.GetLocationsAsync(detail.Address1 + " " + detail.City + ", " + detail.State);
-                        pin.Position = new Position(locations.First().Latitude, locations.First().Longitude);
-                        pin.Label = detail.TournamentName;
-
-                        //TODO: on pinpress scroll listview to find item. 
-                        pin.Clicked += (sender, e) => 
-                        {
-                            TournamentListView.ScrollTo(detail, ScrollToPosition.MakeVisible, true);
-                        };
-
-                        calendarMap.Pins.Add(pin);
+                        listOfTasks.Add(LoadEventOntoCalendar(detail));
                     }
+                    await Task.WhenAll(listOfTasks);
                 }
                 catch (Exception e)
                 {
@@ -130,11 +90,24 @@ namespace Ifpa.Views
                     Debug.WriteLine(e.Message);
                 }
 
-                Preferences.Set("LastCalendarLocation", LocationEntry.Text);
-                Preferences.Set("LastCalendarDistance", (int)DistanceSlider.Value);
-
                 IsBusy = false;
             }
+        }
+
+        private async Task LoadEventOntoCalendar(CalendarDetails detail)
+        {
+            var pin = new Pin();
+            var locations = await Geocoding.GetLocationsAsync(detail.Address1 + " " + detail.City + ", " + detail.State);
+            pin.Position = new Position(locations.First().Latitude, locations.First().Longitude);
+            pin.Label = detail.TournamentName;
+
+            //TODO: on pinpress scroll listview to find item. 
+            pin.MarkerClicked += (sender, e) =>
+            {
+                TournamentListView.ScrollTo(detail, ScrollToPosition.MakeVisible, true);
+            };
+
+            calendarMap.Pins.Add(pin);
         }
 
         private async void TournamentListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -147,6 +120,24 @@ namespace Ifpa.Views
 
             // Manually deselect item.
             TournamentListView.SelectedItem = null;
+        }
+
+        private void ToggleView_Clicked(object sender, EventArgs e)
+        {
+            if(View == CalendarPageView.Calendar)
+            {
+                MapLayout.IsVisible = true;
+                calendar.IsVisible = false;
+                View = CalendarPageView.MapAndList;
+                ToolbarItems.SingleOrDefault(n => n.Text == "Toggle View").IconImageSource = "calendar.png";
+            }
+            else
+            {
+                MapLayout.IsVisible = false;
+                calendar.IsVisible = true;
+                View = CalendarPageView.Calendar;
+                ToolbarItems.SingleOrDefault(n => n.Text == "Toggle View").IconImageSource = "map.png";
+            }
         }
     }
 }

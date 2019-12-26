@@ -1,5 +1,4 @@
 ﻿using Ifpa.Models;
-using Ifpa.ViewModels;
 using PinballApi;
 using PinballApi.Extensions;
 using Plugin.Badge;

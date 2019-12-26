@@ -2,6 +2,7 @@
 <ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
           xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
+          xmlns:effects="clr-namespace:Ifpa.Effects"
           x:Class="Ifpa.Views.DataTemplates.ActivityFeedRankChangeViewCell">
     <ViewCell.View>
         <StackLayout Orientation="Horizontal" Padding="10">
@@ -11,22 +12,27 @@
                     <local:BoolConverter x:Key="inverter"/>
                 </ResourceDictionary>
             </StackLayout.Resources>
-            <Image Source="rankchange.png" HeightRequest="25" />
+            <Image Source="rankchange.png" HeightRequest="25" >
+                <Image.Effects>
+                    <!-- TODO: replace explicit color declaration with style found in theme, required TintColor to be bindable -->
+                    <effects:TintImageEffect TintColor="#4579FB" />
+                </Image.Effects>
+            </Image>
             <StackLayout Padding="10,0,0,0">
                 <Label Text="Rank Changed" FontAttributes="Bold" />
                 <Label Style="{DynamicResource ListItemTextStyle}" FontSize="Small">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="Your rank changed from " />
+                                <Span Text="Your rank changed from " TextColor="{DynamicResource SecondaryTextColor}" />
                                 <Span Text="{Binding IntTwo, Mode=OneWay, Converter={StaticResource intToOrdinalString}}" />
-                                <Span Text=" to " />
+                                <Span Text=" to " TextColor="{DynamicResource SecondaryTextColor}" />
                                 <Span Text="{Binding IntOne, Mode=OneWay, Converter={StaticResource intToOrdinalString}}" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Label LineBreakMode="NoWrap" FontSize="Micro" Text="{Binding CreatedDateTime, StringFormat='{0:d}'}" Style="{DynamicResource ListItemTextStyle}" />
+                <Label LineBreakMode="NoWrap" FontSize="Micro" Text="{Binding CreatedDateTime, StringFormat='{0:d}'}" TextColor="{DynamicResource SecondaryTextColor}" />
             </StackLayout>
             <!--TODO: -->
             <BoxView Color="CornflowerBlue"

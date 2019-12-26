@@ -3,24 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ifpa.Views.AboutPage"
              xmlns:vm="clr-namespace:Ifpa.ViewModels"
-             Title="{Binding Title}">
+             Title="{Binding Title}" BackgroundColor="{DynamicResource BackgroundColor}">
     <ContentPage.BindingContext>
         <vm:AboutViewModel />
     </ContentPage.BindingContext>
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <!--Page Level Resources: Compatibile with Xamarin Live Player -->
-            <Color x:Key="Primary">#2F4E6E</Color>
-            <Color x:Key="Accent">#072C53</Color>
-            <Color x:Key="LightTextColor">#999999</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    <Grid>
+    <ContentPage.Content>
+        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill" BackgroundColor="{DynamicResource BannerTextColor}">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                 <Image Source="https://www.ifpapinball.com/images/ifpa_logo.jpg" VerticalOptions="Center" />
             </StackLayout>
@@ -33,7 +26,7 @@
                             <FormattedString.Spans>
                                 <Span Text="IFPA Companion" FontAttributes="Bold" FontSize="22" />
                                 <Span Text=" " />
-                                <Span Text="{Binding CurrentVersion}" ForegroundColor="{StaticResource LightTextColor}" />
+                                <Span Text="{Binding CurrentVersion}" ForegroundColor="{DynamicResource SecondaryTextColor}" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
@@ -58,12 +51,12 @@
                         <FormattedString>
                             <FormattedString.Spans>
                                 <Span Text="This app was written by " />
-                                <Span Text="Ed Giardina" TextColor="Blue" />
+                                <Span Text="Ed Giardina" TextColor="{DynamicResource LinkTextColor}" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Grid HorizontalOptions="FillAndExpand">
+                <Grid HorizontalOptions="FillAndExpand" Margin="0, 20, 0, 0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
@@ -71,10 +64,11 @@
                         <ColumnDefinition Width="1*" />
                         <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" WidthRequest="160" Padding="10,0,10,0" HorizontalOptions="CenterAndExpand"  Text="Learn More" Clicked="LearnMore_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
-                    <Button Grid.Column="1" WidthRequest="160" Padding="10,0,10,0" HorizontalOptions="CenterAndExpand"  Text="Leave a Review" Clicked="ReviewButton_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
+                    <Button Grid.Column="0" WidthRequest="160" Padding="10,0,10,0" HorizontalOptions="CenterAndExpand"  Text="Learn More" Clicked="LearnMore_Clicked" />
+                    <Button Grid.Column="1" WidthRequest="160" Padding="10,0,10,0" HorizontalOptions="CenterAndExpand"  Text="Leave a Review" Clicked="ReviewButton_Clicked" />
                 </Grid>
             </StackLayout>
         </ScrollView>
     </Grid>
+    </ContentPage.Content>
 </ContentPage>

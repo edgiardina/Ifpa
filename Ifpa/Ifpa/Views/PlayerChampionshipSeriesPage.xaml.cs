@@ -1,6 +1,5 @@
 ﻿using Ifpa.ViewModels;
 using PinballApi.Models.v2.WPPR;
-using PinballApi.Models.WPPR.v1.Players;
 using System;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;

@@ -5,6 +5,8 @@
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
              x:Class="Ifpa.Views.PlayerResultsPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.LargeTitleDisplay="Never"
              Title="{Binding Title}">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -25,14 +27,14 @@
                 </sfPopup:PopupView.PopupStyle>
                 <sfPopup:PopupView.ContentTemplate>
                     <DataTemplate>
-                        <Grid BackgroundColor="White">
+                        <Grid BackgroundColor="{DynamicResource BackgroundColor}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Label Grid.Row="1" Text="Ranking Profile" FontSize="16" Margin="10,10,10,10" VerticalOptions="Start" />
                             <ListView SeparatorVisibility="None" VerticalOptions="Fill" Grid.Row="2" x:Name="listView" SelectedItem="{Binding RankingType, Mode=OneWay}" ItemSelected="ListView_ItemSelected"
-                                      ItemsSource="{Binding RankingTypeOptions, Mode=OneWay}">                          
+                                      ItemsSource="{Binding RankingTypeOptions, Mode=OneWay}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
@@ -47,10 +49,10 @@
             </sfPopup:PopupView>
         </sfPopup:SfPopupLayout.PopupView>
         <sfPopup:SfPopupLayout.Content>
-                <tabView:SfTabView VisibleHeaderCount="3" TabHeaderBackgroundColor="#66FFFFFF">
-                    <tabView:SfTabItem Title="Active">
-                        <tabView:SfTabItem.Content>
-                            <ListView x:Name="ActiveListView"
+            <tabView:SfTabView VisibleHeaderCount="3" TabHeaderBackgroundColor="{DynamicResource TabHeaderBackgroundColor}">
+                <tabView:SfTabItem Title="Active">
+                    <tabView:SfTabItem.Content>
+                        <ListView x:Name="ActiveListView"
                                 ItemsSource="{Binding ActiveResults}"
                                 RefreshCommand="{Binding LoadItemsCommand}"
                                 IsPullToRefreshEnabled="true"
@@ -58,64 +60,74 @@
                                 ItemTapped="Handle_ItemTapped"
                                 CachingStrategy="RecycleElement"
                                 HasUnevenRows="true">
-                                <!--Custom View Cells-->
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <ViewCell>
-                                            <StackLayout Orientation="Horizontal" Padding="10">
-                                                <StackLayout HorizontalOptions="Start">
-                                                    <Label Text="{Binding TournamentName}"  FontSize="16" Style="{DynamicResource ListItemTextStyle}" />
-                                                    <StackLayout Orientation="Horizontal">
-                                                        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding EventName}" />
-                                                        <Label Text="{Binding EventDate, StringFormat='{0:d}'}" FontSize="12" />
-                                                    </StackLayout>
-                                                </StackLayout>
-                                                <StackLayout HorizontalOptions="EndAndExpand" MinimumWidthRequest="120">
-                                                    <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Text="{Binding Position, Converter={StaticResource intToOrdinalString}}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
-                                                    <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding CurrentPoints, StringFormat='{0:0.00}'}" />
-                                                </StackLayout>
+                            <!--Custom View Cells-->
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Vertical" Padding="10">
+                                            <StackLayout Orientation="Horizontal" >
+                                                <Label Text="{Binding TournamentName}"  FontSize="16" Style="{DynamicResource ListItemTextStyle}" HorizontalOptions="StartAndExpand" />
+                                                <Label LineBreakMode="NoWrap" MinimumWidthRequest="100" HorizontalTextAlignment="End" HorizontalOptions="End" Text="{Binding Position, Converter={StaticResource intToOrdinalString}}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
                                             </StackLayout>
-                                        </ViewCell>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </tabView:SfTabItem.Content>
-                    </tabView:SfTabItem>
-                    <tabView:SfTabItem Title="Unused">
-                        <tabView:SfTabItem.Content>
-                            <ListView x:Name="UnusedListView"
+
+                                            <StackLayout  Orientation="Horizontal">                                                
+                                                <Grid HorizontalOptions="FillAndExpand">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition  Width="1*" />
+                                                        <ColumnDefinition  Width="1*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Grid.Column="0" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding EventName}" TextColor="{DynamicResource SecondaryTextColor}" />
+                                                    <Label Grid.Column="1" Text="{Binding EventDate, StringFormat='{0:d}'}" FontSize="12" TextColor="{DynamicResource SecondaryTextColor}" />
+                                                </Grid>
+                                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" HorizontalOptions="End" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding CurrentPoints, StringFormat='{0:0.00}'}" TextColor="{DynamicResource SecondaryTextColor}" />
+                                            </StackLayout>                                    
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </tabView:SfTabItem.Content>
+                </tabView:SfTabItem>
+                <tabView:SfTabItem Title="Unused">
+                    <tabView:SfTabItem.Content>
+                        <ListView x:Name="UnusedListView"
                                     ItemsSource="{Binding UnusedResults}"
                                     RefreshCommand="{Binding LoadItemsCommand}"
                                     IsPullToRefreshEnabled="true"
                                     IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                                     ItemTapped="Handle_ItemTapped"
                                     CachingStrategy="RecycleElement"
-                                    HasUnevenRows="true">           
-                                <!--Custom View Cells-->
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <ViewCell>
-                                            <StackLayout Orientation="Horizontal" Padding="10">
-                                                <StackLayout HorizontalOptions="Start">
-                                                    <Label Text="{Binding TournamentName}"  FontSize="16" Style="{DynamicResource ListItemTextStyle}" />
-                                                    <StackLayout Orientation="Horizontal">
-                                                        <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding EventName}" />
-                                                        <Label Text="{Binding EventDate, StringFormat='{0:d}'}" FontSize="12" />
-                                                    </StackLayout>
-                                                </StackLayout>
-                                                <StackLayout HorizontalOptions="EndAndExpand" MinimumWidthRequest="120">
-                                                    <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Text="{Binding Position, Converter={StaticResource intToOrdinalString}}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
-                                                    <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding CurrentPoints, StringFormat='{0:0.00}'}" />
-                                                </StackLayout>
+                                    HasUnevenRows="true">
+                            <!--Custom View Cells-->
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Vertical" Padding="10">
+                                            <StackLayout Orientation="Horizontal" >
+                                                <Label Text="{Binding TournamentName}"  FontSize="16" Style="{DynamicResource ListItemTextStyle}" HorizontalOptions="StartAndExpand" />
+                                                <Label LineBreakMode="NoWrap"  MinimumWidthRequest="100" HorizontalTextAlignment="End" HorizontalOptions="End" Text="{Binding Position, Converter={StaticResource intToOrdinalString}}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
                                             </StackLayout>
-                                        </ViewCell>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </tabView:SfTabItem.Content>
-                    </tabView:SfTabItem>
-                    <tabView:SfTabItem Title="Past">
-                        <tabView:SfTabItem.Content>
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <Grid HorizontalOptions="FillAndExpand">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition  Width="1*" />
+                                                        <ColumnDefinition  Width="1*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Grid.Column="0" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding EventName}" TextColor="{DynamicResource SecondaryTextColor}" />
+                                                    <Label Grid.Column="1" Text="{Binding EventDate, StringFormat='{0:d}'}" FontSize="12" TextColor="{DynamicResource SecondaryTextColor}" />
+                                                </Grid>
+                                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" HorizontalOptions="End" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding CurrentPoints, StringFormat='{0:0.00}'}" TextColor="{DynamicResource SecondaryTextColor}" />
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </tabView:SfTabItem.Content>
+                </tabView:SfTabItem>
+                <tabView:SfTabItem Title="Past">
+                    <tabView:SfTabItem.Content>
                         <ListView x:Name="PastListView"
                                 ItemsSource="{Binding PastResults}"
                                 RefreshCommand="{Binding LoadItemsCommand}"
@@ -128,17 +140,22 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <StackLayout Orientation="Horizontal" Padding="10">
-                                            <StackLayout HorizontalOptions="Start">
-                                                <Label Text="{Binding TournamentName}"  FontSize="16" Style="{DynamicResource ListItemTextStyle}" />
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding EventName}" />
-                                                    <Label Text="{Binding EventDate, StringFormat='{0:d}'}" FontSize="12" />
-                                                </StackLayout>
+                                        <StackLayout Orientation="Vertical" Padding="10">
+                                            <StackLayout Orientation="Horizontal" >
+                                                <Label Text="{Binding TournamentName}"  FontSize="16" Style="{DynamicResource ListItemTextStyle}" HorizontalOptions="StartAndExpand" />
+                                                <Label LineBreakMode="NoWrap"  MinimumWidthRequest="100" HorizontalTextAlignment="End" HorizontalOptions="End" Text="{Binding Position, Converter={StaticResource intToOrdinalString}}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
                                             </StackLayout>
-                                            <StackLayout HorizontalOptions="EndAndExpand" MinimumWidthRequest="120">
-                                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Text="{Binding Position, Converter={StaticResource intToOrdinalString}}" FontSize="24" Style="{DynamicResource ListItemTextStyle}" />
-                                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding CurrentPoints, StringFormat='{0:0.00}'}" />
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <Grid HorizontalOptions="FillAndExpand">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition  Width="1*" />
+                                                        <ColumnDefinition  Width="1*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Grid.Column="0" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding EventName}" TextColor="{DynamicResource SecondaryTextColor}" />
+                                                    <Label Grid.Column="1" Text="{Binding EventDate, StringFormat='{0:d}'}" FontSize="12" TextColor="{DynamicResource SecondaryTextColor}" />
+                                                </Grid>
+                                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End" HorizontalOptions="End" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding CurrentPoints, StringFormat='{0:0.00}'}" TextColor="{DynamicResource SecondaryTextColor}" />
                                             </StackLayout>
                                         </StackLayout>
                                     </ViewCell>
@@ -146,8 +163,8 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </tabView:SfTabItem.Content>
-                    </tabView:SfTabItem>
-                </tabView:SfTabView>
+                </tabView:SfTabItem>
+            </tabView:SfTabView>
         </sfPopup:SfPopupLayout.Content>
     </sfPopup:SfPopupLayout>
 </ContentPage>

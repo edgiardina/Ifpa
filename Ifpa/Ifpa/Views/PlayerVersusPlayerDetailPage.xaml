@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
              x:Class="Ifpa.Views.PlayerVersusPlayerDetailPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.LargeTitleDisplay="Never"
              Title="{Binding Title}">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -25,16 +27,16 @@
                         <StackLayout HorizontalOptions="StartAndExpand">
                             <Label Text="{Binding TournamentName}"  FontSize="16" Style="{DynamicResource ListItemTextStyle}" />
                             <StackLayout Orientation="Horizontal">
-                                <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding EventName}" />
-                                <Label Text="{Binding EventDate, StringFormat='{0:d}'}" FontSize="12" />
+                                <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" Text="{Binding EventName}" TextColor="{DynamicResource SecondaryTextColor}" />
+                                <Label Text="{Binding EventDate, StringFormat='{0:d}'}" FontSize="12" TextColor="{DynamicResource SecondaryTextColor}" />
                             </StackLayout>
                         </StackLayout>
-                        <StackLayout HorizontalOptions="Center" MinimumWidthRequest="80" WidthRequest="80" >
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" MinimumWidthRequest="80" WidthRequest="80" >
                             <Label LineBreakMode="NoWrap" HorizontalTextAlignment="Start" FontSize="16" Style="{DynamicResource ListItemTextStyle}" >
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <FormattedString.Spans>
-                                            <Span Text="P1: " />
+                                            <Span Text="P1: " TextColor="{DynamicResource SecondaryTextColor}" />
                                             <Span Text="{Binding P1FinishPosition, Converter={StaticResource intToOrdinalString}}" />
                                         </FormattedString.Spans>
                                     </FormattedString>
@@ -44,7 +46,7 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <FormattedString.Spans>
-                                            <Span Text="P2: " />
+                                            <Span Text="P2: " TextColor="{DynamicResource SecondaryTextColor}" />
                                             <Span Text="{Binding P2FinishPosition, Converter={StaticResource intToOrdinalString}}" />
                                         </FormattedString.Spans>
                                     </FormattedString>
