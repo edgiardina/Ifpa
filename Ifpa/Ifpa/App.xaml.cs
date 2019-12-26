@@ -40,10 +40,6 @@ namespace Ifpa
         {
             base.OnResume();
 
-            //BUG: For some reason this code never runs.
-            // Handle when your app resumes
-            AppTheme theme = DependencyService.Get<IThemeInspector>().GetOperatingSystemTheme();
-
             SetThemeBasedOnDeviceTheme();
         }
 
