@@ -20,17 +20,12 @@ namespace Ifpa.Views
         public CalendarFilterModalPage()
         {
             InitializeComponent();
-        }
-
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
 
             var lastCalendarLocation = Preferences.Get("LastCalendarLocation", "Unset");
             var lastCalendarDistance = Preferences.Get("LastCalendarDistance", 0);
             if (lastCalendarLocation == "Unset" || lastCalendarDistance == 0)
             {
-                await PollAndUpdateUserLocation();
+                PollAndUpdateUserLocation();
             }
             else
             {

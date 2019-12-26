@@ -42,7 +42,7 @@
             </ListView>
         </StackLayout>
         <syncfusion1:SfCalendar NavigationDirection="Horizontal" x:Name="calendar"  IsVisible="False" VerticalOptions="FillAndExpand" 
-                                ViewMode="MonthView" ShowInlineEvents="True" InlineViewMode="Agenda" ShowLeadingAndTrailingDays="False"
+                                ViewMode="MonthView" ShowInlineEvents="True" InlineViewMode="Agenda" 
                                 DataSource="{Binding InlineCalendarItems}" BackgroundColor="{DynamicResource BackgroundColor}" ShowNavigationButtons="True" >
             <syncfusion1:SfCalendar.MonthViewSettings>
                 <syncfusion1:MonthViewSettings                                   

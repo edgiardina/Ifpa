@@ -6,7 +6,8 @@
              xmlns:effects="clr-namespace:Ifpa.Effects"
              mc:Ignorable="d"
              Title="Set Calendar Location"
-             x:Class="Ifpa.Views.CalendarFilterModalPage">
+             x:Class="Ifpa.Views.CalendarFilterModalPage"
+             BackgroundColor="{DynamicResource SecondaryBackgroundColor}">
     <ContentPage.Content>
         <Grid Padding="10,10,10,10" VerticalOptions="CenterAndExpand">
             <Grid.ColumnDefinitions>
@@ -23,12 +24,15 @@
 
             <Label Text="Location" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center" />
             <Entry Grid.Row="0" Grid.Column="1" Margin="20,0,5,0" Placeholder="Chicago, Illinois" x:Name="LocationEntry" />
-            <ImageButton Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" VerticalOptions="Center" WidthRequest="40" HorizontalOptions="Center"  Source="location.png" Clicked="ImageButton_Clicked" >
-                <ImageButton.Effects>
+            <Image Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" VerticalOptions="Center" WidthRequest="40" HorizontalOptions="Center"  Source="location.png" >
+                <Image.Effects>
                     <!-- TODO: replace explicit color declaration with style found in theme, required TintColor to be bindable -->
                     <effects:TintImageEffect TintColor="#4579FB" />
-                </ImageButton.Effects>
-            </ImageButton>
+                </Image.Effects>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ImageButton_Clicked" />
+                </Image.GestureRecognizers>
+            </Image>
 
 
             <Label Text="Distance" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" />
