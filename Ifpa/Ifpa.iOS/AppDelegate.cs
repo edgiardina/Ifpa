@@ -117,6 +117,8 @@ namespace Ifpa.iOS
 
         public override void OnActivated(UIApplication application)
         {
+            base.OnActivated(application);
+
             // Handle any shortcut item being selected
             HandleShortcutItem(LaunchedShortcutItem);
 
