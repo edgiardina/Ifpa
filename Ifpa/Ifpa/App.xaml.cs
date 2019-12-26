@@ -3,24 +3,32 @@ using Xamarin.Forms.Xaml;
 using Ifpa.Views;
 using Xamarin.Essentials;
 using Ifpa.Models;
+using Ifpa.Styles;
+using Ifpa.Interfaces;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Ifpa
 {
     public partial class App : Application
-    {
+    {               
         public App()
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(Constants.SyncFusionLicenseKey);
-
+            //initial theme should be light 
+            
             InitializeComponent();
             MainPage = new MainPage();
         }
 
+        public static AppTheme AppTheme { get; set; }
+
         protected override void OnStart()
         {
+            base.OnStart();
             // Handle when your app starts
-            VersionTracking.Track();
+            VersionTracking.Track();           
+
+            SetThemeBasedOnDeviceTheme();
         }
 
         protected override void OnSleep()
@@ -30,7 +38,20 @@ namespace Ifpa
 
         protected override void OnResume()
         {
-            // Handle when your app resumes
+            base.OnResume();
+
+            SetThemeBasedOnDeviceTheme();
+        }
+
+        public static void SetThemeBasedOnDeviceTheme()
+        {
+            AppTheme theme = DependencyService.Get<IThemeInspector>().GetOperatingSystemTheme();
+
+            //Handle Light Theme & Dark Theme
+            if (theme == AppTheme.Light)
+                App.Current.Resources = new LightTheme();
+            else
+                App.Current.Resources = new DarkTheme();
         }
     }
 }

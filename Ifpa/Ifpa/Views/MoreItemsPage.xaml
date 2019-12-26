@@ -2,36 +2,40 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Ifpa.Views"
+             xmlns:effects="clr-namespace:Ifpa.Effects"
              x:Class="Ifpa.Views.MoreItemsPage"
              Title="More">
-    <StackLayout>
-        <ListView x:Name="listView" x:FieldModifier="public" ItemSelected="ListView_ItemSelected">
-            <ListView.ItemsSource>
-                <x:Array Type="{x:Type local:MoreItemsMenuItem}">
-                    <local:MoreItemsMenuItem Title="Favorites" IconSource="favorite.png" TargetType="{x:Type local:FavoritesPage}" />
-                    <local:MoreItemsMenuItem Title="Championship Series" IconSource="trophy.png" TargetType="{x:Type local:ChampionshipSeriesPage}" />
-                    <local:MoreItemsMenuItem Title="News" IconSource="news.png" TargetType="{x:Type local:NewsPage}" />
-                    <local:MoreItemsMenuItem Title="Rules" IconSource="rules.png" TargetType="{x:Type local:RulesPage}" />
-                    <local:MoreItemsMenuItem Title="Stats" IconSource="stats.png" TargetType="{x:Type local:StatsPage}" />
-                    <local:MoreItemsMenuItem Title="Directors" IconSource="globe.png" TargetType="{x:Type local:DirectorsPage}" />
-                    <local:MoreItemsMenuItem Title="Settings" IconSource="settings.png" TargetType="{x:Type local:SettingsPage}" />
-                    <local:MoreItemsMenuItem Title="About" IconSource="tab_about.png" TargetType="{x:Type local:AboutPage}" />
-                </x:Array>
-            </ListView.ItemsSource>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid Padding="5,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Image Source="{Binding IconSource}" />
-                            <Label Grid.Column="1" Text="{Binding Title}" />
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>
+    <ListView x:Name="listView" x:FieldModifier="public" ItemSelected="ListView_ItemSelected" >
+        <ListView.ItemsSource>
+            <x:Array Type="{x:Type local:MoreItemsMenuItem}">
+                <local:MoreItemsMenuItem Title="Favorites" IconSource="favorite.png" TargetType="{x:Type local:FavoritesPage}" />
+                <local:MoreItemsMenuItem Title="Championship Series" IconSource="trophy.png" TargetType="{x:Type local:ChampionshipSeriesPage}" />
+                <local:MoreItemsMenuItem Title="News" IconSource="news.png" TargetType="{x:Type local:NewsPage}" />
+                <local:MoreItemsMenuItem Title="Rules" IconSource="rules.png" TargetType="{x:Type local:RulesPage}" />
+                <local:MoreItemsMenuItem Title="Stats" IconSource="stats.png" TargetType="{x:Type local:StatsPage}" />
+                <local:MoreItemsMenuItem Title="Directors" IconSource="globe.png" TargetType="{x:Type local:DirectorsPage}" />
+                <local:MoreItemsMenuItem Title="Settings" IconSource="settings.png" TargetType="{x:Type local:SettingsPage}" />
+                <local:MoreItemsMenuItem Title="About" IconSource="tab_about.png" TargetType="{x:Type local:AboutPage}" />
+            </x:Array>
+        </ListView.ItemsSource>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid Padding="0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding IconSource}" Margin="10,0,10,0">
+                            <Image.Effects>
+                                <!-- TODO: replace explicit color declaration with style found in theme, required TintColor to be bindable -->
+                                <effects:TintImageEffect TintColor="#4579FB" />
+                            </Image.Effects>
+                        </Image>
+                        <Label Grid.Column="1" Text="{Binding Title}" VerticalTextAlignment="Center" />
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>

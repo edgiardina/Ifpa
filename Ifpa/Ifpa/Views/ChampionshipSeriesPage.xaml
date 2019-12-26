@@ -2,8 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ifpa.Views.ChampionshipSeriesPage"
-             Title="{Binding Title}">
-    <StackLayout>       
+             Title="{Binding Title}">    
 
         <ListView x:Name="MyListView"
             ItemsSource="{Binding StateProvinceStandings}"
@@ -22,11 +21,11 @@
                             <StackLayout Padding="10" Orientation="Vertical" HorizontalOptions="FillAndExpand">
                                 <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" Text="{Binding StateProvinceName}" />
 
-                                <Label HorizontalOptions="StartAndExpand" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10" >
+                                <Label HorizontalOptions="StartAndExpand" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" >
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <FormattedString.Spans>
-                                                <Span Text="Current Leader:" />
+                                                <Span Text="Current Leader:" TextColor="{DynamicResource SecondaryTextColor}" />
                                                 <Span Text=" " />
                                                 <Span Text="{Binding CurrentLeader.FirstName}" />
                                                 <Span Text=" " />
@@ -66,5 +65,4 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    </StackLayout>
 </ContentPage>

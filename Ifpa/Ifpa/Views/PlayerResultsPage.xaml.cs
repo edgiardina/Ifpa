@@ -47,7 +47,7 @@ namespace Ifpa.Views
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            if (e.SelectedItem != null)
+            if (e.SelectedItem != null && viewModel.RankingType != (RankingType)Enum.Parse(typeof(RankingType), e.SelectedItem.ToString()))
             {
                 viewModel.RankingType = (RankingType)Enum.Parse(typeof(RankingType), e.SelectedItem.ToString());           
                 viewModel.LoadItemsCommand.Execute(null);

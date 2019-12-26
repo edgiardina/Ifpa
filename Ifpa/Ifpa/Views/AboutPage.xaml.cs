@@ -10,9 +10,8 @@ namespace Ifpa.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AboutPage : ContentPage
     {
-        private int creatorIfpaNumber = 16927;
-
-        AboutViewModel viewModel;
+        private const int creatorIfpaNumber = 16927;
+        private readonly AboutViewModel viewModel;
 
         public AboutPage()
         {

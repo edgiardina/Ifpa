@@ -5,6 +5,8 @@
              xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              Title="{Binding Title}"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.LargeTitleDisplay="Never"
              x:Name="SearchPlayersPage">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -13,7 +15,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <tabView:SfTabView VisibleHeaderCount="2" HeightRequest="50" TabHeaderBackgroundColor="#66FFFFFF">
+        <tabView:SfTabView VisibleHeaderCount="2" HeightRequest="50" TabHeaderBackgroundColor="{DynamicResource TabHeaderBackgroundColor}">
             <tabView:SfTabItem Title="NACS Directors">
                 <tabView:SfTabItem.Content>
                     <ListView x:Name="NacsDirectorsListView" 
@@ -42,7 +44,7 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                            <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12">
+                                            <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" TextColor="{DynamicResource SecondaryTextColor}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <FormattedString.Spans>
@@ -97,16 +99,12 @@
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <FormattedString.Spans>
-                                                            <Span Text="{Binding CountryName}" />
+                                                            <Span Text="{Binding CountryName}" TextColor="{DynamicResource SecondaryTextColor}" />
                                                         </FormattedString.Spans>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
                                         </StackLayout>
-                                        <Label HorizontalOptions="EndAndExpand" Text="{Binding WpprRank, Converter={StaticResource intToOrdinalString}}" 
-                                   LineBreakMode="NoWrap" 
-                                   Style="{DynamicResource ListItemTextStyle}" 
-                                   FontSize="18" WidthRequest="80" />
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>

@@ -4,22 +4,20 @@
              x:Class="Ifpa.Views.NewsDetailPage"
              xmlns:vm="clr-namespace:Ifpa.ViewModels"
              xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.LargeTitleDisplay="Never"
              Title="{Binding Title}">
     <ContentPage.BindingContext>
         <vm:AboutViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Resources>
         <ResourceDictionary>
-            <!--Page Level Resources: Compatibile with Xamarin Live Player -->
-            <Color x:Key="Primary">#2F4E6E</Color>
-            <Color x:Key="Accent">#072C53</Color>
-            <Color x:Key="LightTextColor">#999999</Color> 
             <local:AlternatingRowListViewConverter x:Key="alternatingRowListViewIndexConverter" />        
         </ResourceDictionary>
     </ContentPage.Resources>
 
-        <StackLayout VerticalOptions="FillAndExpand">
-            <Frame Padding="0" Margin="5" HasShadow="True" CornerRadius="0" VerticalOptions="FillAndExpand">
+        <StackLayout VerticalOptions="FillAndExpand" BackgroundColor="{DynamicResource SecondaryBackgroundColor}">
+            <Frame Padding="0" Margin="5" HasShadow="True" CornerRadius="0" VerticalOptions="FillAndExpand"  BackgroundColor="{DynamicResource BackgroundColor}">
                 <StackLayout VerticalOptions="FillAndExpand">
                      
                     <Label FontAttributes="Bold"  HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="Default" Text="{Binding NewsItem.Title}" Margin="5" />
@@ -41,7 +39,7 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" BackgroundColor="{StaticResource DetailPageBackground}" Margin="-5" Padding="5">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand"  BackgroundColor="{DynamicResource SecondaryBackgroundColor}" Margin="-5" Padding="5">
                             <Label HorizontalTextAlignment="Start"  FontSize="Small" Text="{Binding NewsItem.Author}"  Margin="0" />
                             <Label HorizontalTextAlignment="End" FontSize="Small" Text="{Binding NewsItem.PublishDate, StringFormat='{0:d}'}"/>
                         </StackLayout>
@@ -50,7 +48,6 @@
                         Margin="15"
                         HeightRequest="150"
                         x:Name="ItemsListView" 
-                        BackgroundColor="White"
                         ItemsSource="{Binding Comments}"                
                         HasUnevenRows="true"
                         RefreshCommand="{Binding LoadItemsCommand}"

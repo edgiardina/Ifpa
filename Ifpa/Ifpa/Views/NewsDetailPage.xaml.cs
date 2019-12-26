@@ -1,6 +1,7 @@
 ﻿using Ifpa.ViewModels;
 using System;
 using System.Collections;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -42,8 +43,8 @@ namespace Ifpa.Views
             {
                 try
                 {
-                    var uri = new Uri(e.Url);
-                    Device.OpenUri(uri);
+                    var uri = new Uri(e.Url);               
+                    Launcher.OpenAsync(uri);
                 }
                 catch (Exception)
                 {
