@@ -49,17 +49,14 @@ namespace Ifpa.ViewModels
                         //avoid adding leagues to the inline calendar.
                         if (item.EndDate - item.StartDate <= 5.Days())
                         {
-                            _ = Task.Run(() =>
-                              {
-                                  InlineCalendarItems.Add(new InlineCalendarItem
-                                  {
-                                      CalendarId = item.CalendarId,
-                                      Subject = item.TournamentName,
-                                      StartTime = item.StartDate.Date,
-                                      EndTime = item.EndDate.Date,
-                                      IsAllDay = true
-                                  });
-                              });
+                            InlineCalendarItems.Add(new InlineCalendarItem
+                            {
+                                CalendarId = item.CalendarId,
+                                Subject = item.TournamentName,
+                                StartTime = item.StartDate.Date,
+                                EndTime = item.EndDate.Date,
+                                IsAllDay = true
+                            });                      
                         }
                     }
                 }
