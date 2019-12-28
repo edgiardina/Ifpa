@@ -18,7 +18,8 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <SearchBar Grid.Row="0" x:Name="SearchBar" SearchCommand="{Binding SearchCommand}"
-                       IsSpellCheckEnabled="False"
+                       IsSpellCheckEnabled="False" TextColor="{DynamicResource PrimaryTextColor}" PlaceholderColor="{DynamicResource SecondaryTextColor}"   
+                       CancelButtonColor="{DynamicResource SecondaryTextColor}"
                        MaxLength="100"
                        Keyboard="Text"   
                        Placeholder="Type a player's name to search"
