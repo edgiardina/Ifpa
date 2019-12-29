@@ -48,10 +48,16 @@ namespace Ifpa
             AppTheme theme = DependencyService.Get<IThemeInspector>().GetOperatingSystemTheme();
 
             //Handle Light Theme & Dark Theme
-            if (theme == AppTheme.Light)
-                App.Current.Resources = new LightTheme();
+            if (theme == AppTheme.Light) 
+            {
+                App.Current.Resources.MergedDictionaries.Remove(new DarkTheme());
+                App.Current.Resources.MergedDictionaries.Add(new LightTheme());
+            }
             else
-                App.Current.Resources = new DarkTheme();
+            {
+                App.Current.Resources.MergedDictionaries.Remove(new LightTheme());
+                App.Current.Resources.MergedDictionaries.Add(new DarkTheme());
+            }
         }
     }
 }

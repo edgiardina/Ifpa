@@ -1,14 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
+             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              x:Class="Ifpa.Styles.DefaultTheme">
 
-    <!--<ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Styles/Global.xaml" />
-        <ResourceDictionary Source="/Styles/Sizes.xaml" />
-        <ResourceDictionary Source="/Styles/Text.xaml" />
-        <ResourceDictionary Source="/Styles/Icons.xaml" />
-    </ResourceDictionary.MergedDictionaries>-->
+    <Style TargetType="NavigationPage">
+        <Setter Property="BarBackgroundColor" Value="{DynamicResource BarBackgroundColor}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
+        <Setter Property="BarTextColor"
+                    Value="{OnPlatform Android={DynamicResource PrimaryTextColor}}" />
+    </Style>
 
+    <Style TargetType="Button" ApplyToDerivedTypes="True">
+        <Setter Property="BackgroundColor" Value="{DynamicResource ButtonBackgroundColor}" />
+        <Setter Property="TextColor" Value="{DynamicResource ButtonTextColor}" />
+    </Style>
+
+    <Style TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
+    </Style>
+
+    <Style TargetType="Picker">
+        <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
+    </Style>
+
+    <Style TargetType="syncfusion:SfExpander">
+        <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryBackgroundColor}" />
+        <Setter Property="HeaderBackgroundColor" Value="{DynamicResource SecondaryBackgroundColor}" />
+        <Setter Property="IconColor" Value="{DynamicResource PrimaryTextColor}" />
+    </Style>
+
+    <Style TargetType="chart:SfChart">
+        <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
+    </Style>
+
+    <Style TargetType="chart:ChartTitle">
+        <Setter Property="TextColor"  Value="{DynamicResource PrimaryTextColor}" />
+        <Setter Property="BorderColor" Value="Transparent" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+    </Style>
+
+    <Style TargetType="tabView:SfTabView">
+        <Setter Property="TabHeaderBackgroundColor" Value="{DynamicResource TabHeaderBackgroundColor}" />
+    </Style>
+
+    <Style TargetType="tabView:SfTabItem">
+        <Setter Property="TitleFontColor" Value="{DynamicResource PrimaryTextColor}" />
+        <!--<Setter Property="SelectionColor" Value="Purple" />-->
+    </Style>
 
 </ResourceDictionary>
