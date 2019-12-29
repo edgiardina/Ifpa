@@ -43,6 +43,9 @@ namespace Ifpa.Views
             {                
                 await UpdateCalendarData();
             }
+
+            //TODO: make sure 'today' is selected as actual today. if the calendar page was drawn before and reused / kept in memory the day before,
+            //next time you view, you won't see the updated today
         }
 
         private async void MyLocation_Clicked(object sender, EventArgs e)

@@ -1,10 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
-             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
-             x:Class="Ifpa.Styles.DarkTheme">    
-    
+                    x:Class="Ifpa.Styles.DarkTheme">
+
     <Color x:Key="SecondaryBanner">#556E87</Color>
     <Color x:Key="DetailPageBackground">#F1F1F1</Color>
     <Color x:Key="WinningRecord">#04B45F</Color>
@@ -26,34 +24,16 @@
     <Color x:Key="BannerTextColor">#072C53</Color>
     <Color x:Key="IconAccentColor">#4579FB</Color>
 
-    <Style TargetType="NavigationPage">
-        <Setter Property="BarBackgroundColor" Value="{DynamicResource BarBackgroundColor}" />
+    <!-- Below are custom to this theme -->
+
+    <Style TargetType="TableView">
         <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
-        <Setter Property="BarTextColor"
-                    Value="{OnPlatform Android={StaticResource PrimaryTextColor}}" />
     </Style>
 
-    <Style TargetType="Button" ApplyToDerivedTypes="True">
-        <Setter Property="BackgroundColor" Value="{DynamicResource ButtonBackgroundColor}" />
-        <Setter Property="TextColor" Value="{DynamicResource ButtonTextColor}" />
-    </Style>
-
-    <Style TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
-    </Style>
-
-    <Style TargetType="syncfusion:SfExpander">
+    <Style TargetType="StackLayout" Class="SettingsRow">
+        <Setter Property="Padding" Value="15,10,10,10" />
+        <Setter Property="Orientation" Value="Horizontal" />
         <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryBackgroundColor}" />
-        <Setter Property="HeaderBackgroundColor" Value="{DynamicResource SecondaryBackgroundColor}" />
-        <Setter Property="IconColor" Value="{DynamicResource PrimaryTextColor}" />
     </Style>
 
-    <Style TargetType="tabView:SfTabView">
-        <Setter Property="TabHeaderBackgroundColor" Value="{DynamicResource TabHeaderBackgroundColor}" />
-    </Style>
-
-    <Style TargetType="tabView:SfTabItem">
-        <Setter Property="TitleFontColor" Value="{DynamicResource PrimaryTextColor}" />
-   
-    </Style>
 </ResourceDictionary>
