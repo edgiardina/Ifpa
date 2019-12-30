@@ -185,8 +185,8 @@
 
                 </Grid>
 
-                <StackLayout HeightRequest="400">
-                    <chart:SfChart HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout HeightRequest="400" x:Name="ChartLayout">
+                    <chart:SfChart x:Name="RankProgressChart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <chart:SfChart.Title>
                             <chart:ChartTitle Text="Rank Progress"/>
                         </chart:SfChart.Title>
@@ -198,7 +198,7 @@
                         </chart:SfChart.SecondaryAxis>
                         <chart:LineSeries ItemsSource="{Binding PlayerRankHistory}" XBindingPath="RankDate" YBindingPath="RankPosition"/>
                     </chart:SfChart>
-                    <chart:SfChart HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <chart:SfChart x:Name="RatingProgressChart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <chart:SfChart.Title>
                             <chart:ChartTitle Text="Rating Progress"/>
                         </chart:SfChart.Title>
