@@ -7,6 +7,7 @@ using System.Linq;
 using Ifpa.Services;
 using Ifpa.Models;
 using Xamarin.Essentials;
+using Syncfusion.SfChart.XForms;
 
 namespace Ifpa.Views
 {
@@ -76,6 +77,10 @@ namespace Ifpa.Views
             }
 
             viewModel.LoadItemsCommand.Execute(null);
+
+            //there's some sort of chart bug here so set the chart color manually again
+            RankProgressChart.Title.TextColor = (Color)Application.Current.Resources["PrimaryTextColor"];
+            RatingProgressChart.Title.TextColor = (Color)Application.Current.Resources["PrimaryTextColor"];
         }
 
         /// <summary>
