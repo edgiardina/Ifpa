@@ -3,6 +3,7 @@ using PinballApi.Models.WPPR.v2;
 using PinballApi.Models.WPPR.v2.Players;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -40,18 +41,14 @@ namespace Ifpa.Views
                 viewModel.LoadItemsCommand.Execute(null);
         }
 
-        private void RankingProfileButton_Clicked(object sender, EventArgs e)
+        private async void RankingProfileButton_Clicked(object sender, EventArgs e)
         {
-            popupLayout.Show();
-        }
-
-        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            if (e.SelectedItem != null && viewModel.RankingType != (RankingType)Enum.Parse(typeof(RankingType), e.SelectedItem.ToString()))
+            string action = await DisplayActionSheet("Ranking Profile", "Cancel", null, viewModel.RankingTypeOptions.Select(a => a.ToString()).ToArray());
+            
+            if (action != "Cancel")
             {
-                viewModel.RankingType = (RankingType)Enum.Parse(typeof(RankingType), e.SelectedItem.ToString());           
+                viewModel.RankingType = (RankingType)Enum.Parse(typeof(RankingType), action);
                 viewModel.LoadItemsCommand.Execute(null);
-                popupLayout.IsOpen = false;
             }
         }
     }
