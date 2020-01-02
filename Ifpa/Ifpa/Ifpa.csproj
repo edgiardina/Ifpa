@@ -19,7 +19,6 @@
     <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="17.4.0.39" />
     <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="17.4.0.39" />
     <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="17.4.0.39" />
-    <PackageReference Include="Syncfusion.Xamarin.SfPopupLayout" Version="17.4.0.39" />
     <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="17.4.0.39" />
     <PackageReference Include="Xamarin.Badge.Plugin" Version="2.0.0" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
