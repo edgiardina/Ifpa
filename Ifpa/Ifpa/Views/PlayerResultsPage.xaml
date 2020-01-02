@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
-             xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
              x:Class="Ifpa.Views.PlayerResultsPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.LargeTitleDisplay="Never"
@@ -16,40 +15,8 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Ranking Profile" IsEnabled="{Binding ShowRankingTypeChoice}" x:Name="RankingProfileButton" Clicked="RankingProfileButton_Clicked" Icon="ranking_profile.png" />
     </ContentPage.ToolbarItems>
-    <sfPopup:SfPopupLayout x:Name="popupLayout">
-        <sfPopup:SfPopupLayout.PopupView>
-            <sfPopup:PopupView HeightRequest="188" ShowFooter="False" ShowHeader="False">
-                <sfPopup:PopupView.PopupStyle>
-                    <sfPopup:PopupStyle                        
-                                    BorderThickness="3"
-                                    CornerRadius="5"
-                                    />
-                </sfPopup:PopupView.PopupStyle>
-                <sfPopup:PopupView.ContentTemplate>
-                    <DataTemplate>
-                        <Grid BackgroundColor="{DynamicResource BackgroundColor}">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Label Grid.Row="1" Text="Ranking Profile" FontSize="16" Margin="10,10,10,10" VerticalOptions="Start" />
-                            <ListView SeparatorVisibility="None" VerticalOptions="Fill" Grid.Row="2" x:Name="listView" SelectedItem="{Binding RankingType, Mode=OneWay}" ItemSelected="ListView_ItemSelected"
-                                      ItemsSource="{Binding RankingTypeOptions, Mode=OneWay}">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <ViewCell>
-                                            <Label Text="{Binding}" Margin="10,10,10,10" />
-                                        </ViewCell>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </Grid>
-                    </DataTemplate>
-                </sfPopup:PopupView.ContentTemplate>
-            </sfPopup:PopupView>
-        </sfPopup:SfPopupLayout.PopupView>
-        <sfPopup:SfPopupLayout.Content>
-            <tabView:SfTabView VisibleHeaderCount="3" TabHeaderBackgroundColor="{DynamicResource TabHeaderBackgroundColor}">
+    
+    <tabView:SfTabView VisibleHeaderCount="3" TabHeaderBackgroundColor="{DynamicResource TabHeaderBackgroundColor}">
                 <tabView:SfTabItem Title="Active">
                     <tabView:SfTabItem.Content>
                         <ListView x:Name="ActiveListView"
@@ -165,6 +132,5 @@
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
             </tabView:SfTabView>
-        </sfPopup:SfPopupLayout.Content>
-    </sfPopup:SfPopupLayout>
+
 </ContentPage>
