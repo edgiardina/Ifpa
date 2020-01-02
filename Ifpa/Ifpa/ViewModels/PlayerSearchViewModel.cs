@@ -36,7 +36,7 @@ namespace Ifpa.ViewModels
 
                         if (text.Trim().Length > 0)
                         {
-                            var items = await PinballRankingApi.SearchForPlayerByName(text);
+                            var items = await PinballRankingApi.SearchForPlayerByName(text.Trim());
                             foreach (var item in items.Search)
                             {
                                 Players.Add(item);
