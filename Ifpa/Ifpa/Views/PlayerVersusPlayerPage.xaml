@@ -36,6 +36,15 @@
             IsGroupingEnabled="True"              
             GroupDisplayBinding="{Binding Key}"
             GroupShortNameBinding="{Binding Key}">
+            <ListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical" BackgroundColor="{DynamicResource SecondaryBackgroundColor}">
+                            <Label Text="{Binding Key}" Padding="15,10,0,10" VerticalOptions="CenterAndExpand" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.GroupHeaderTemplate>
             <!--Custom View Cells-->
             <ListView.ItemTemplate>
                 <DataTemplate>

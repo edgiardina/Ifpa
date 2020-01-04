@@ -7,7 +7,7 @@
     <Color x:Key="DetailPageBackground">#F1F1F1</Color>
     <Color x:Key="WinningRecord">#04B45F</Color>
     <Color x:Key="LosingRecord">#FE2E2E</Color>
-    <Color x:Key="TieRecord">#333333</Color>
+    <Color x:Key="TieRecord">#999999</Color>
 
     <Color x:Key="BackgroundColor">#000000</Color>
     <Color x:Key="BarBackgroundColor">#191919</Color>    
