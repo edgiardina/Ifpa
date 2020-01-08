@@ -39,11 +39,17 @@
     <Compile Update="Views\ChampionshipSeriesPage.xaml.cs">
       <DependentUpon>ChampionshipSeriesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\CustomRankingsDetailPage.xaml.cs">
+      <DependentUpon>CustomRankingsDetailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\DataTemplates\ActivityFeedTournamentResultViewCell.xaml.cs">
       <DependentUpon>ActivityFeedTournamentResultViewCell.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\DirectorsPage.xaml.cs">
       <DependentUpon>DirectorsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\CustomRankingsPage.xaml.cs">
+      <DependentUpon>CustomRankingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\FavoritesPage.xaml.cs">
       <DependentUpon>FavoritesPage.xaml</DependentUpon>
