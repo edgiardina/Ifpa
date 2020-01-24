@@ -8,10 +8,16 @@ using Android;
 using Android.Content;
 using Android.Runtime;
 using Plugin.CurrentActivity;
+using Plugin.AppShortcuts;
 
 namespace Ifpa.Droid
 {
     [Activity(Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [IntentFilter(new[] { Intent.ActionView },
+          Categories = new[] { Intent.CategoryDefault },
+          DataScheme = "ifpa",
+          DataHost = "ifpacompanion",
+          AutoVerify = true)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -21,7 +27,8 @@ namespace Ifpa.Droid
 
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            //global::Xamarin.
+       
+            
             LoadApplication(new App());
 
             CrossCurrentActivity.Current.Init(this, savedInstanceState);

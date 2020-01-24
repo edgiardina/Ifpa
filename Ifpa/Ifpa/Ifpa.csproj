@@ -13,6 +13,7 @@
   <ItemGroup>
     <PackageReference Include="PinballApi" Version="2.0.55" />
     <PackageReference Include="Microsoft.Toolkit.Parsers" Version="6.0.0" />
+    <PackageReference Include="Plugin.AppShortcuts" Version="1.0.0.3" />
     <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
     <PackageReference Include="Syncfusion.Licensing" Version="17.4.0.39" />
     <PackageReference Include="Syncfusion.Xamarin.Expander" Version="17.4.0.39" />

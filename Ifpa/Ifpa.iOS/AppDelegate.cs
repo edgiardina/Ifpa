@@ -2,8 +2,6 @@
 using System.Linq;
 using Foundation;
 using Ifpa.iOS.Services;
-using Ifpa.iOS.Utils;
-using Ifpa.Models;
 using Ifpa.Services;
 using Ifpa.Views;
 using UIKit;
@@ -34,12 +32,6 @@ namespace Ifpa.iOS
             Syncfusion.XForms.iOS.Expander.SfExpanderRenderer.Init();
             Syncfusion.SfCalendar.XForms.iOS.SfCalendarRenderer.Init();
             Syncfusion.SfPdfViewer.XForms.iOS.SfPdfDocumentViewRenderer.Init();
-
-            // Get possible shortcut item
-            if (options != null)
-            {
-                LaunchedShortcutItem = options[UIApplication.LaunchOptionsShortcutItemKey] as UIApplicationShortcutItem;
-            }
 
             LoadApplication(new App());
 
@@ -79,55 +71,15 @@ namespace Ifpa.iOS
             }
         }
 
-        #region QuickActions
-        public UIApplicationShortcutItem LaunchedShortcutItem { get; set; }
-
-        public bool HandleShortcutItem(UIApplicationShortcutItem shortcutItem)
-        {
-            var handled = false;
-
-            // Anything to process?
-            if (shortcutItem == null) return false;
-
-            // Take action based on the shortcut type
-            switch (shortcutItem.Type)
-            {
-                case ShortcutIdentifier.PlayerSearch:
-                    Settings.CurrentTabIndex = 1;
-                    handled = true;
-                    break;
-                case ShortcutIdentifier.MyStats:
-                    Settings.CurrentTabIndex = 2;
-                    handled = true;
-                    break;
-                case ShortcutIdentifier.Calendar:
-                    Settings.CurrentTabIndex = 3;
-                    handled = true;
-                    break;
-            }
-
-             ((MainPage)(App.Current.MainPage)).SwitchTabToLastSelectedTab();
-
-            // Return results
-            return handled;
-        }
-
-
-        public override void OnActivated(UIApplication application)
-        {
-            base.OnActivated(application);
-
-            // Handle any shortcut item being selected
-            HandleShortcutItem(LaunchedShortcutItem);
-
-            // Clear shortcut after it's been handled
-            LaunchedShortcutItem = null;
-        }
+        #region QuickActions       
 
         public override void PerformActionForShortcutItem(UIApplication application, UIApplicationShortcutItem shortcutItem, UIOperationHandler completionHandler)
         {
-            // Perform action
-            completionHandler(HandleShortcutItem(shortcutItem));
+            var uri = Plugin.AppShortcuts.iOS.ArgumentsHelper.GetUriFromApplicationShortcutItem(shortcutItem);
+            if (uri != null)
+            {
+                Xamarin.Forms.Application.Current.SendOnAppLinkRequestReceived(uri);
+            }
         }
 
         #endregion
