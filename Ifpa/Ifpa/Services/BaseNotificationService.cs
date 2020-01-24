@@ -19,8 +19,8 @@ namespace Ifpa.Services
         public readonly string NewRankNotificationTitle = "IFPA Rank Change";
         protected readonly string NewRankNotificationDescription = "Your IFPA rank has changed from {0} to {1}";
 
-        public static string NewBlogPostTitle = "New Blog Post";
-        protected readonly string NewBlogPostDescription = @"Blog post ""{0}"" has been published";
+        public static string NewBlogPostTitle = "New News Item";
+        protected readonly string NewBlogPostDescription = @"News item ""{0}"" has been published";
 
         public async Task NotifyIfUserHasNewlySubmittedTourneyResults()
         {
