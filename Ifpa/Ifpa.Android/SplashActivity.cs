@@ -4,6 +4,7 @@ using Android.Content;
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Util;
+using Plugin.AppShortcuts;
 
 namespace Ifpa.Droid
 {
@@ -16,7 +17,7 @@ namespace Ifpa.Droid
         {
             base.OnCreate(savedInstanceState, persistentState);
             Log.Debug(TAG, "SplashActivity.OnCreate");
-
+            CrossAppShortcuts.Current.Init();
         }
 
         // Launches the startup task
