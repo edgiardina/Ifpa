@@ -273,6 +273,12 @@
     <BundleResource Include="Resources\inactive%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ifpa.iOS.Today\Ifpa.iOS.Today.csproj">
+      <Project>{b7f9f7ad-a6c4-423f-8ab5-6511c58fb389}</Project>
+      <Name>Ifpa.iOS.Today</Name>
+      <IsAppExtension>true</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
+    </ProjectReference>
     <ProjectReference Include="..\Ifpa\Ifpa.csproj">
       <Project>{924ed4a9-0c09-4cd9-b460-7656504673da}</Project>
       <Name>Ifpa</Name>

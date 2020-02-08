@@ -61,8 +61,8 @@ namespace Ifpa.Models
 
         public static int MyStatsPlayerId
         {
-            get => Preferences.Get("PlayerId", 0);
-            private set => Preferences.Set("PlayerId", value);
+            get => Preferences.Get("PlayerId", 0, Constants.iOSAppGroup);
+            private set => Preferences.Set("PlayerId", value, Constants.iOSAppGroup);
         }
 
         public static int MyStatsCurrentWpprRank
