@@ -19,7 +19,15 @@ namespace Ifpa.iOS.Today
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView PlayerInfoView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel PlayerName { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel PlayerNotAssignedLabel { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -32,9 +40,19 @@ namespace Ifpa.iOS.Today
                 PlayerImage = null;
             }
 
+            if (PlayerInfoView != null) {
+                PlayerInfoView.Dispose ();
+                PlayerInfoView = null;
+            }
+
             if (PlayerName != null) {
                 PlayerName.Dispose ();
                 PlayerName = null;
+            }
+
+            if (PlayerNotAssignedLabel != null) {
+                PlayerNotAssignedLabel.Dispose ();
+                PlayerNotAssignedLabel = null;
             }
 
             if (PlayerRank != null) {

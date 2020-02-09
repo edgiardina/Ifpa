@@ -44,6 +44,13 @@ namespace Ifpa.iOS.Today
                 PlayerImage.Image = FromUrl(PlayerRecord.ProfilePhoto.ToString());
                 PlayerName.Text = PlayerRecord.FirstName + " " + PlayerRecord.LastName;
                 PlayerRank.Text = PlayerRecord.PlayerStats.CurrentWpprRank.OrdinalSuffix();
+                PlayerNotAssignedLabel.Hidden = true;
+                PlayerInfoView.Hidden = false;
+            }
+            else
+            {
+                PlayerInfoView.Hidden = true; 
+                PlayerNotAssignedLabel.Hidden = false;
             }
         }
 
