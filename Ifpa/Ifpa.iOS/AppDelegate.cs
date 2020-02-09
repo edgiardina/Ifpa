@@ -2,6 +2,7 @@
 using System.Linq;
 using Foundation;
 using Ifpa.iOS.Services;
+using Ifpa.Models;
 using Ifpa.Services;
 using Ifpa.Views;
 using UIKit;
@@ -37,6 +38,8 @@ namespace Ifpa.iOS
 
             UIApplication.SharedApplication.RegisterUserNotificationSettings(UIUserNotificationSettings.GetSettingsForTypes(UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound, null));
             UIApplication.SharedApplication.SetMinimumBackgroundFetchInterval(UIApplication.BackgroundFetchIntervalMinimum);
+
+            NSUserDefaults plist = new NSUserDefaults(Constants.iOSAppGroup, NSUserDefaultsType.SuiteName);
 
             return base.FinishedLaunching(app, options);
         }

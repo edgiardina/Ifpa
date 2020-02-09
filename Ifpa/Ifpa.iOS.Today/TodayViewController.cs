@@ -37,11 +37,14 @@ namespace Ifpa.iOS.Today
 
             var playerId = Convert.ToInt32(plist.IntForKey("PlayerId"));
 
-            PlayerRecord = await PinballRankingApiV2.GetPlayer(playerId);
+            if (playerId > 0)
+            {
+                PlayerRecord = await PinballRankingApiV2.GetPlayer(playerId);
 
-            PlayerImage.Image = FromUrl(PlayerRecord.ProfilePhoto.ToString());
-            PlayerName.Text = PlayerRecord.FirstName + " " + PlayerRecord.LastName;
-            PlayerRank.Text = PlayerRecord.PlayerStats.CurrentWpprRank.OrdinalSuffix();
+                PlayerImage.Image = FromUrl(PlayerRecord.ProfilePhoto.ToString());
+                PlayerName.Text = PlayerRecord.FirstName + " " + PlayerRecord.LastName;
+                PlayerRank.Text = PlayerRecord.PlayerStats.CurrentWpprRank.OrdinalSuffix();
+            }
         }
 
         static UIImage FromUrl(string uri)
