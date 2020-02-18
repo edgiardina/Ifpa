@@ -13,14 +13,14 @@ namespace Ifpa.ViewModels
     public class CalendarViewModel : BaseViewModel
     {
         public ObservableCollection<CalendarDetails> CalendarDetails { get; set; }
-        public CalendarEventCollection InlineCalendarItems { get; set; }
+        public CalendarEventCollectionRange InlineCalendarItems { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         public CalendarViewModel()
         {
             Title = "Calendar";
             CalendarDetails = new ObservableCollection<CalendarDetails>();
-            InlineCalendarItems = new CalendarEventCollection();
+            InlineCalendarItems = new CalendarEventCollectionRange();
         }
 
         public async Task ExecuteLoadItemsCommand(string address, int distance)
@@ -44,22 +44,23 @@ namespace Ifpa.ViewModels
                 {
                     foreach (var item in items.Calendar.OrderBy(n => n.EndDate))
                     {
-                        CalendarDetails.Add(item);
-
-                        //avoid adding leagues to the inline calendar.
-                        if (item.EndDate - item.StartDate <= 5.Days())
-                        {
-                            InlineCalendarItems.Add(new InlineCalendarItem
-                            {
-                                CalendarId = item.CalendarId,
-                                Subject = item.TournamentName,
-                                StartTime = item.StartDate.Date,
-                                EndTime = item.EndDate.Date,
-                                IsAllDay = true
-                            });                      
-                        }
+                        CalendarDetails.Add(item);                        
                     }
+
+                    InlineCalendarItems.AddRange(
+                        items.Calendar.Where(item => item.EndDate - item.StartDate <= 5.Days())
+                                      .Select(i => 
+                                        new InlineCalendarItem
+                                        {
+                                            CalendarId = i.CalendarId,
+                                            Subject = i.TournamentName,
+                                            StartTime = i.StartDate.Date,
+                                            EndTime = i.EndDate.Date,
+                                            IsAllDay = true
+                                        })
+                    );
                 }
+
                 Console.WriteLine("Collections loaded at {0}", sw.ElapsedMilliseconds);
             }
             catch (Exception ex)
