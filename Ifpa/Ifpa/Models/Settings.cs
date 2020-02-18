@@ -61,8 +61,19 @@ namespace Ifpa.Models
 
         public static int MyStatsPlayerId
         {
-            get => Preferences.Get("PlayerId", 0, Constants.iOSAppGroup);
-            private set => Preferences.Set("PlayerId", value, Constants.iOSAppGroup);
+            get 
+            { 
+               var playerId = Preferences.Get("PlayerId", 0);
+
+               //to share the playerId value with the IFPA Today Widget or any other iOS App Group program
+               Preferences.Set("PlayerId", playerId, Constants.iOSAppGroup);
+               return playerId;
+            }
+            private set 
+            { 
+                Preferences.Set("PlayerId", value, Constants.iOSAppGroup);
+                Preferences.Set("PlayerId", value);
+            }
         }
 
         public static int MyStatsCurrentWpprRank
