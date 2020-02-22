@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using PinballApi.Models.WPPR.v1.Statistics;
+using Ifpa.Models;
 
 namespace Ifpa.ViewModels
 {
@@ -15,11 +16,11 @@ namespace Ifpa.ViewModels
 
         public ObservableCollection<PlayersByYearStat> PlayersByYear { get; set; }
 
-        public ObservableCollection<PointsThisYearStat> MostPointsPlayers { get; set; }
+        public ObservableCollectionRange<PointsThisYearStat> MostPointsPlayers { get; set; }
 
-        public ObservableCollection<MostEventsStat> MostEventsPlayers { get; set; }
+        public ObservableCollectionRange<MostEventsStat> MostEventsPlayers { get; set; }
 
-        public ObservableCollection<BiggestMoversStat> BiggestMovers { get; set; }
+        public ObservableCollectionRange<BiggestMoversStat> BiggestMovers { get; set; }
 
         public Command LoadItemsCommand { get; set; }
 
@@ -29,9 +30,9 @@ namespace Ifpa.ViewModels
             PlayersByCountry = new ObservableCollection<PlayersByCountryStat>();
             EventsByYear = new ObservableCollection<EventsByYearStat>();
             PlayersByYear = new ObservableCollection<PlayersByYearStat>();
-            MostPointsPlayers = new ObservableCollection<PointsThisYearStat>();
-            MostEventsPlayers = new ObservableCollection<MostEventsStat>();
-            BiggestMovers = new ObservableCollection<BiggestMoversStat>();
+            MostPointsPlayers = new ObservableCollectionRange<PointsThisYearStat>();
+            MostEventsPlayers = new ObservableCollectionRange<MostEventsStat>();
+            BiggestMovers = new ObservableCollectionRange<BiggestMoversStat>();
 
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
@@ -60,7 +61,7 @@ namespace Ifpa.ViewModels
 
                 var eventsByYear = await PinballRankingApi.GetEventsPerYearStat();
                 foreach (var item in eventsByYear)
-                {                    
+                {
                     EventsByYear.Add(item);
                 }
 
@@ -71,22 +72,13 @@ namespace Ifpa.ViewModels
                 }
 
                 var mostPointsPlayers = await PinballRankingApi.GetPointsThisYearStats();
-                foreach(var item in mostPointsPlayers)
-                {
-                    MostPointsPlayers.Add(item);
-                }
+                MostPointsPlayers.AddRange(mostPointsPlayers);
 
                 var mostEventsPlayers = await PinballRankingApi.GetMostEventsStats();
-                foreach(var item in mostEventsPlayers)
-                {
-                    MostEventsPlayers.Add(item);
-                }
+                MostEventsPlayers.AddRange(mostEventsPlayers);
 
                 var biggestMovers = await PinballRankingApi.GetBiggestMoversStat();
-                foreach(var item in biggestMovers)
-                {
-                    BiggestMovers.Add(item);
-                }
+                BiggestMovers.AddRange(biggestMovers);
 
             }
             catch (Exception ex)

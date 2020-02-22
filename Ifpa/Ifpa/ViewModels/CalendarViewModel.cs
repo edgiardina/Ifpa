@@ -12,14 +12,14 @@ namespace Ifpa.ViewModels
 {
     public class CalendarViewModel : BaseViewModel
     {
-        public ObservableCollection<CalendarDetails> CalendarDetails { get; set; }
+        public ObservableCollectionRange<CalendarDetails> CalendarDetails { get; set; }
         public CalendarEventCollectionRange InlineCalendarItems { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         public CalendarViewModel()
         {
             Title = "Calendar";
-            CalendarDetails = new ObservableCollection<CalendarDetails>();
+            CalendarDetails = new ObservableCollectionRange<CalendarDetails>();
             InlineCalendarItems = new CalendarEventCollectionRange();
         }
 
@@ -42,10 +42,7 @@ namespace Ifpa.ViewModels
                 Console.WriteLine("Api call completed at {0}", sw.ElapsedMilliseconds);
                 if (items.Calendar.Any())
                 {
-                    foreach (var item in items.Calendar.OrderBy(n => n.EndDate))
-                    {
-                        CalendarDetails.Add(item);                        
-                    }
+                    CalendarDetails.AddRange(items.Calendar.OrderBy(n => n.EndDate));
 
                     InlineCalendarItems.AddRange(
                         items.Calendar.Where(item => item.EndDate - item.StartDate <= 5.Days())

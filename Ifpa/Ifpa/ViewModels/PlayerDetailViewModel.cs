@@ -111,7 +111,6 @@ namespace Ifpa.ViewModels
                     IsBusy = true;
                     var playerData = await PinballRankingApiV2.GetPlayer(PlayerId);
                     var playerHistoryData = await PinballRankingApiV2.GetPlayerHistory(PlayerId);
-                    LastTournamentCount = (await PinballRankingApiV2.GetPlayerResults(PlayerId)).ResultsCount;
 
                     if(playerHistoryData.RankHistory != null)
                         PlayerRankHistory = new ObservableCollection<RankHistory>(playerHistoryData.RankHistory);
