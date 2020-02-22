@@ -1,11 +1,11 @@
-﻿using Syncfusion.SfCalendar.XForms;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 
 namespace Ifpa.Models
 {
-    public class CalendarEventCollectionRange : CalendarEventCollection
+    public class ObservableCollectionRange<T> : ObservableCollection<T>
     {
         private bool _suppressNotification = false;
 
@@ -15,19 +15,19 @@ namespace Ifpa.Models
                 base.OnCollectionChanged(e);
         }
 
-        public void AddRange(IEnumerable<CalendarInlineEvent> list)
+        public void AddRange(IEnumerable<T> list)
         {
             if (list == null)
                 throw new ArgumentNullException("list");
 
             _suppressNotification = true;
 
-            foreach (CalendarInlineEvent item in list)
+            foreach (T item in list)
             {
                 Add(item);
             }
             _suppressNotification = false;
             OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
-        }        
+        }
     }
 }
