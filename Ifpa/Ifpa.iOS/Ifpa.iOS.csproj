@@ -95,7 +95,6 @@
     <Compile Include="Renderers\PinViewMapRenderer.cs" />
     <Compile Include="Services\ToolbarItemBadgeService.cs" />
     <Compile Include="Utils\BarButtonItemExtensions.cs" />
-    <Compile Include="Utils\iOSThemeInspector.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Services\iOSNotificationService.cs" />
