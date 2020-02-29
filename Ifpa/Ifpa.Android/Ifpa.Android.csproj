@@ -74,6 +74,7 @@
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Renderers\HomeTabbedPageRenderer.cs" />
     <Compile Include="Renderers\TintImageEffect.cs" />
     <Compile Include="Services\AndroidReminderService.cs" />
     <Compile Include="BackgroundReceiver.cs" />

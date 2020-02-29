@@ -125,6 +125,7 @@ namespace Ifpa.Views
 
             await DisplayAlert("Congratulations", "You have now configured your Stats page!", "OK");
             var masterPage = this.Parent.Parent as TabbedPage;
+            await masterPage.Navigation.PopToRootAsync();
             masterPage.CurrentPage = masterPage.Children[2];
         }
 

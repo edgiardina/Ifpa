@@ -5,7 +5,7 @@ using Xamarin.Forms.Xaml;
 namespace Ifpa.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPage : TabbedPage
+    public partial class MainPage : HomeTabbedPage
     {
         public MainPage()
         {

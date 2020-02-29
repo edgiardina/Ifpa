@@ -1,11 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:views="clr-namespace:Ifpa.Views"
-            x:Class="Ifpa.Views.MainPage"
-            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"  
-            xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
-            android:TabbedPage.ToolbarPlacement="Bottom">
+<models:HomeTabbedPage
+        xmlns:models="clr-namespace:Ifpa.Models"
+        xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:views="clr-namespace:Ifpa.Views"
+        x:Class="Ifpa.Views.MainPage"
+        xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"  
+        xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+        android:TabbedPage.ToolbarPlacement="Bottom">
 
     <NavigationPage Title="Rankings" IconImageSource="numbered_list.png" 
                     ios:NavigationPage.PrefersLargeTitles="true">      
@@ -14,7 +16,7 @@
         </x:Arguments>
     </NavigationPage>
 
-    <NavigationPage Title="Player Search" IconImageSource="search.png" 
+    <NavigationPage Title="Player Search" IconImageSource="search.png"  
                     ios:NavigationPage.PrefersLargeTitles="true">
         <x:Arguments>
             <views:PlayerSearchPage />
@@ -44,4 +46,4 @@
         </x:Arguments>
     </NavigationPage>   
     
-</TabbedPage>
+</models:HomeTabbedPage>
