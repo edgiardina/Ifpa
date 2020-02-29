@@ -65,7 +65,20 @@ namespace Ifpa.Views
 
         private async void ImageButton_Clicked(object sender, EventArgs e)
         {
-            await PollAndUpdateUserLocation();
+            var status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
+            if (status != PermissionStatus.Granted)
+            {
+                status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
+            }
+
+            if (status == PermissionStatus.Granted)
+            {
+                await PollAndUpdateUserLocation();
+            }
+            else
+            {
+                await DisplayAlert("Permission Required", "IFPA Companion requires your permission before polling your location for Calendar Search", "OK");
+            }
         }
 
         private async void CancelButton_Clicked(object sender, EventArgs e)
