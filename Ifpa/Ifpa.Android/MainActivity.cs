@@ -27,8 +27,8 @@ namespace Ifpa.Droid
 
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-       
-            
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+
             LoadApplication(new App());
 
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
@@ -38,20 +38,6 @@ namespace Ifpa.Droid
 
             var alarmManager = GetSystemService(AlarmService).JavaCast<AlarmManager>();
             alarmManager.SetInexactRepeating(AlarmType.ElapsedRealtime, SystemClock.ElapsedRealtime() + 3 * 1000, AlarmManager.IntervalFifteenMinutes, pending);
-        }
-
-        protected override void OnStart()
-        {
-            base.OnStart();
-
-            if (ContextCompat.CheckSelfPermission(this, "ACCESS_FINE_LOCATION") != Permission.Granted)
-            {
-                ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.AccessCoarseLocation, Manifest.Permission.AccessFineLocation }, 0);
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("Permission to ACCESS_FINE_LOCATION Granted!!!");
-            }
         }
     }
 }

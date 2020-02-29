@@ -43,12 +43,20 @@ namespace Ifpa.iOS
 
         public override async void PerformFetch(UIApplication application, Action<UIBackgroundFetchResult> completionHandler)
         {
-            await NotificationService.NotifyIfUserHasNewlySubmittedTourneyResults();
-            await NotificationService.NotifyIfUsersRankChanged();
-            await NotificationService.NotifyIfNewBlogItemPosted();
+            try
+            {
+                await NotificationService.NotifyIfUserHasNewlySubmittedTourneyResults();
+                await NotificationService.NotifyIfUsersRankChanged();
+                await NotificationService.NotifyIfNewBlogItemPosted();
 
-            // Inform system of fetch results
-            completionHandler(UIBackgroundFetchResult.NewData);
+                // Inform system of fetch results
+                completionHandler(UIBackgroundFetchResult.NewData);
+            }
+            catch
+            {
+                completionHandler(UIBackgroundFetchResult.Failed);
+            }
+
         }
 
         public override async void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)

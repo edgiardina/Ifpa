@@ -86,15 +86,28 @@ namespace Ifpa.Views
 
         private async void AddToCalendarButton_Clicked(object sender, EventArgs e)
         {
-            var result = await DependencyService.Get<IReminderService>().CreateReminder(this.viewModel);
-
-            if(result)
+            var status = await Permissions.CheckStatusAsync<Permissions.CalendarWrite>();
+            if (status != PermissionStatus.Granted)
             {
-                await DisplayAlert("Success", "Tournament added to your Calendar", "OK");
+                status = await Permissions.RequestAsync<Permissions.CalendarWrite>();
+            }
+
+            if (status == PermissionStatus.Granted)
+            {
+                var result = await DependencyService.Get<IReminderService>().CreateReminder(this.viewModel);
+
+                if (result)
+                {
+                    await DisplayAlert("Success", "Tournament added to your Calendar", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Error", "Unable to add Tournament to your Calendar", "OK");
+                }
             }
             else
             {
-                await DisplayAlert("Error", "Unable to add Tournament to your Calendar", "OK");
+                await DisplayAlert("Permission Required", "IFPA Companion requires your permission before adding items to your Calendar", "OK");
             }
         }
 
