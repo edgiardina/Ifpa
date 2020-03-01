@@ -124,9 +124,9 @@ namespace Ifpa.Views
             await Settings.SetMyStatsPlayer(viewModel.PlayerId, viewModel.PlayerRecord.PlayerStats.CurrentWpprRank);
 
             await DisplayAlert("Congratulations", "You have now configured your Stats page!", "OK");
-            var masterPage = this.Parent.Parent as TabbedPage;
-            await masterPage.Navigation.PopToRootAsync();
+            var masterPage = this.Parent.Parent as TabbedPage;            
             masterPage.CurrentPage = masterPage.Children[2];
+            await this.Navigation.PopToRootAsync();
         }
 
         private async Task RedirectUserToPlayerSearch()
