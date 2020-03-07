@@ -23,6 +23,8 @@ namespace Ifpa.Views
 
             CountryPicker.IsVisible = false;
             CountryLabel.IsVisible = false;
+            TypeLabel.IsVisible = false;
+            TypePicker.IsVisible = false;
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -45,6 +47,7 @@ namespace Ifpa.Views
             {
                 viewModel.CountOfItemsToFetch = Preferences.Get("PlayerCount", viewModel.CountOfItemsToFetch);
                 viewModel.StartingPosition = Preferences.Get("StartingRank", viewModel.StartingPosition);
+                viewModel.CurrentTournamentType = (TournamentType)Enum.Parse(typeof(TournamentType), Preferences.Get("TournamentType", viewModel.CurrentTournamentType.ToString()));
                 viewModel.CountryToShow = viewModel.DefaultCountry;
 
                 viewModel.LoadItemsCommand.Execute(null);
@@ -79,17 +82,37 @@ namespace Ifpa.Views
             {
                 CountryPicker.IsVisible = true;
                 CountryLabel.IsVisible = true;
+                TypeLabel.IsVisible = false;
+                TypePicker.IsVisible = false;
+            }
+            else if(selectedType == RankingType.Women)
+            {
+                CountryPicker.IsVisible = false;
+                CountryLabel.IsVisible = false;
+                TypeLabel.IsVisible = true;
+                TypePicker.IsVisible = true;
             }
             else
             {
                 CountryPicker.IsVisible = false;
                 CountryLabel.IsVisible = false;
+                TypeLabel.IsVisible = false;
+                TypePicker.IsVisible = false;
                 viewModel.CountryToShow = viewModel.DefaultCountry;
             }
 
             viewModel.CurrentRankingType = selectedType;
             if (viewModel.Players.Count > 0)
             {
+                viewModel.LoadItemsCommand.Execute(null);
+            }
+        }
+
+        private void TypePicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!viewModel.IsBusy)
+            {
+                Preferences.Set("TournamentType", viewModel.CurrentTournamentType.ToString());
                 viewModel.LoadItemsCommand.Execute(null);
             }
         }
