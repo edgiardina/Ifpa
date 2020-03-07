@@ -46,6 +46,13 @@
                                 x:Name="CountryPicker"
                                 SelectedIndexChanged="Picker_SelectedIndexChanged"/>
 
+                        <Label Grid.Column="1" Grid.Row="2" Text="Type" x:Name="TypeLabel"  TextColor="{DynamicResource SecondaryTextColor}" VerticalTextAlignment="Center" />
+                        <Picker Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="2" HorizontalOptions="FillAndExpand" ItemsSource="{Binding TournamentTypes, Mode=OneWay}" 
+                                ItemDisplayBinding="{Binding TournamentTypes}"                                         
+                                SelectedItem="{Binding CurrentTournamentType, Mode=TwoWay}"                   
+                                x:Name="TypePicker"
+                                SelectedIndexChanged="TypePicker_SelectedIndexChanged"/>
+
                         <Label Grid.Column="1" Grid.Row="3" Text="Players"  TextColor="{DynamicResource SecondaryTextColor}" VerticalTextAlignment="Center" />
                         <Label Grid.Column="2" Grid.Row="3" Text="{Binding CountOfItemsToFetch}" HorizontalTextAlignment="End" LineBreakMode="NoWrap" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"  />
                         <Stepper Grid.Column="3" Grid.Row="3" Maximum="500" Minimum="10" 
