@@ -110,7 +110,7 @@ namespace Ifpa.ViewModels
                 }
                 else if(CurrentRankingType == RankingType.Women)
                 {
-                    ShowOverallRank = true;
+                    ShowOverallRank = CurrentTournamentType == TournamentType.Open;
 
                     var items = await PinballRankingApiV2.GetRankingForWomen(CurrentTournamentType, StartingPosition, CountOfItemsToFetch);
                     foreach (var item in items.Rankings)
