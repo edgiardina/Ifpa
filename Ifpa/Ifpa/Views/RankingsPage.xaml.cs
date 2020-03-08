@@ -20,6 +20,7 @@ namespace Ifpa.Views
             BindingContext = viewModel = new RankingsViewModel();
             PlayerListViewIndexConverter.BindingContext = viewModel;
             RankingTypePicker.SelectedIndex = 0;
+            TypePicker.SelectedIndex = 0;
 
             CountryPicker.IsVisible = false;
             CountryLabel.IsVisible = false;
@@ -110,11 +111,11 @@ namespace Ifpa.Views
 
         private void TypePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!viewModel.IsBusy)
-            {
-                Preferences.Set("TournamentType", viewModel.CurrentTournamentType.ToString());
-                viewModel.LoadItemsCommand.Execute(null);
-            }
+            viewModel.CurrentTournamentType = (TournamentType)Enum.Parse(typeof(TournamentType), ((Picker)sender).SelectedItem as string);
+
+            Preferences.Set("TournamentType", viewModel.CurrentTournamentType.ToString());
+            viewModel.LoadItemsCommand.Execute(null);
+            
         }
     }
 }
