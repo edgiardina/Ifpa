@@ -54,6 +54,10 @@ namespace Ifpa.ViewModels
             }
         }
 
+        public List<string> TournamentTypes => Enum.GetNames(typeof(TournamentType)).ToList();   
+        
+        public TournamentType CurrentTournamentType { get; set; }
+
         public readonly Country DefaultCountry = new Country { CountryName = "United States" };        
 
         public RankingsViewModel()
@@ -108,7 +112,7 @@ namespace Ifpa.ViewModels
                 {
                     ShowOverallRank = true;
 
-                    var items = await PinballRankingApiV2.GetRankingForWomen(TournamentType.Open, StartingPosition, CountOfItemsToFetch);
+                    var items = await PinballRankingApiV2.GetRankingForWomen(CurrentTournamentType, StartingPosition, CountOfItemsToFetch);
                     foreach (var item in items.Rankings)
                     {
                         Players.Add(new RankingWithFormattedLocation(item));
