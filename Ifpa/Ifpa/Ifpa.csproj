@@ -22,9 +22,9 @@
     <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="17.4.0.39" />
     <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="17.4.0.39" />
     <PackageReference Include="Xamarin.Badge.Plugin" Version="2.0.0" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.4.0" />
-    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991640" />
-    <PackageReference Include="Xamarin.Forms.Maps" Version="4.4.0.991640" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="4.5.0.356" />  
   </ItemGroup>
 
   <ItemGroup>
