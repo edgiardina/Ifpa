@@ -4,7 +4,6 @@ using Ifpa.Views;
 using Xamarin.Essentials;
 using Ifpa.Models;
 using Ifpa.Styles;
-using Ifpa.Interfaces;
 using System;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
@@ -17,10 +16,15 @@ namespace Ifpa
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(Constants.SyncFusionLicenseKey);
             //initial theme should be light 
 
-            Shortcuts.AddShortcuts();
+            _ = Shortcuts.AddShortcuts();
 
             InitializeComponent();
             MainPage = new MainPage();
+
+            Current.RequestedThemeChanged += (s, a) =>
+            {
+                SetThemeBasedOnDeviceTheme();
+            };
         }
 
         public static AppTheme AppTheme { get; set; }
@@ -42,16 +46,14 @@ namespace Ifpa
         protected override void OnResume()
         {
             base.OnResume();
-
-            SetThemeBasedOnDeviceTheme();
-        }
+        }    
 
         public static void SetThemeBasedOnDeviceTheme()
         {
-            AppTheme theme = AppInfo.RequestedTheme;
+            OSAppTheme currentTheme = Current.RequestedTheme;
 
             //Handle Light Theme & Dark Theme
-            if (theme == AppTheme.Dark)
+            if (currentTheme == OSAppTheme.Dark)
             {
                 Current.Resources.MergedDictionaries.Remove(new LightTheme());
                 Current.Resources.MergedDictionaries.Add(new DarkTheme());

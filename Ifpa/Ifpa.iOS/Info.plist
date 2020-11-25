@@ -31,10 +31,8 @@
 	<string>Ifpa</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleLightContent</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
+	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app will use your location to show nearby tournaments</string>
 	<key>NSCalendarsUsageDescription</key>
