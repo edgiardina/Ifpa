@@ -7,7 +7,9 @@
              mc:Ignorable="d"
              Title="Set Calendar Location"
              x:Class="Ifpa.Views.CalendarFilterModalPage"
-             BackgroundColor="{DynamicResource SecondaryBackgroundColor}">
+             BackgroundColor="{DynamicResource SecondaryBackgroundColor}"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.ModalPresentationStyle="Automatic">
     <ContentPage.Content>
         <Grid Padding="10,10,10,10" VerticalOptions="CenterAndExpand">
             <Grid.ColumnDefinitions>
