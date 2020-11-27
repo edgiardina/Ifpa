@@ -51,5 +51,12 @@ namespace Ifpa.Views
             });
         }
 
+        private async void InfoButton_Clicked(object sender, EventArgs e)
+        {
+            var infoPage = new TournamentInfoPage(viewModel);
+
+            await Navigation.PushModalAsync(infoPage);
+        }
+
     }
 }
