@@ -2,127 +2,67 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
-             xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
              x:Class="Ifpa.Views.RankingsPage"
              Title="{Binding Title}"
              x:Name="BrowseItemsPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Filter" x:Name="InfoButton" Clicked="InfoButton_Clicked"  Icon="filter.png" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:IntToOrdinalStringConverter x:Key="intToOrdinalString" />
             <local:PlayerListViewIndexConverter x:Key="playerListViewIndexConverter" x:Name="PlayerListViewIndexConverter" StartingRank="{Binding StartingPosition, Mode=TwoWay}" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.Content>
-        <StackLayout Spacing="0">
-            <syncfusion:SfExpander x:Name="DetailsExpander" DynamicSizeMode="Content">
-                <syncfusion:SfExpander.Header>
-                    <Grid Padding="10,10,10,10">
-                        <Label Text="Ranking Filters" VerticalTextAlignment="Center" />
-                    </Grid>
-                </syncfusion:SfExpander.Header>
-                <syncfusion:SfExpander.Content>
-                    <Grid Padding="10,10,10,10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-
-                        <Label Grid.Column="1" Grid.Row="1" Text="Ranking Type"  TextColor="{DynamicResource SecondaryTextColor}" VerticalTextAlignment="Center" />
-                        <Picker x:Name="RankingTypePicker" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="1" HorizontalOptions="FillAndExpand" SelectedIndexChanged="RankingType_SelectedIndexChanged"
-                                SelectedItem="{Binding CurrentRankingType, Mode=TwoWay}"
-                                ItemsSource="{Binding RankingTypes, Mode=OneWay}" />
-
-                        <Label Grid.Column="1" Grid.Row="2" Text="Country" x:Name="CountryLabel"  TextColor="{DynamicResource SecondaryTextColor}" VerticalTextAlignment="Center" />
-                        <Picker Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="2" HorizontalOptions="FillAndExpand" ItemsSource="{Binding Countries, Mode=OneWay}" 
-                                ItemDisplayBinding="{Binding CountryName}"                                         
-                                SelectedItem="{Binding CountryToShow, Mode=TwoWay}"                   
-                                x:Name="CountryPicker"
-                                SelectedIndexChanged="Picker_SelectedIndexChanged"/>
-
-                        <Label Grid.Column="1" Grid.Row="2" Text="Tournament Type" x:Name="TypeLabel"  TextColor="{DynamicResource SecondaryTextColor}" VerticalTextAlignment="Center" />
-                        <Picker Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="2" HorizontalOptions="FillAndExpand" ItemsSource="{Binding TournamentTypes, Mode=OneWay}"                                                                   
-                                SelectedItem="{Binding CurrentTournamentType, Mode=TwoWay}"                   
-                                x:Name="TypePicker"
-                                SelectedIndexChanged="TypePicker_SelectedIndexChanged"/>
-
-                        <Label Grid.Column="1" Grid.Row="3" Text="Players"  TextColor="{DynamicResource SecondaryTextColor}" VerticalTextAlignment="Center" />
-                        <Label Grid.Column="2" Grid.Row="3" Text="{Binding CountOfItemsToFetch}" HorizontalTextAlignment="End" LineBreakMode="NoWrap" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"  />
-                        <Stepper Grid.Column="3" Grid.Row="3" Maximum="500" Minimum="10" 
-                                    Increment="10"
-                                 HorizontalOptions="Center"
-                                    Value="{Binding CountOfItemsToFetch, Mode=TwoWay}"
-                                    ValueChanged="Stepper_ValueChanged" />
-
-                        <Label Grid.Column="1" Grid.Row="4" Text="Starting Rank"  TextColor="{DynamicResource SecondaryTextColor}" VerticalTextAlignment="Center"  />
-                        <Label Grid.Column="2" Grid.Row="4" Text="{Binding StartingPosition}" HorizontalTextAlignment="End"  LineBreakMode="NoWrap" x:Name="StartingPositionLabel" HorizontalOptions="FillAndExpand"  VerticalTextAlignment="Center"  />
-                        <Stepper Grid.Column="3" Grid.Row="4" Maximum="10000" Minimum="1"
-                                    x:Name="StartingRankStepper"
-                                      HorizontalOptions="Center"
-                                    Increment="100"
-                                    Value="{Binding StartingPosition, Mode=TwoWay}"
-                                    ValueChanged="Stepper_ValueChanged" />              
-                    </Grid>
-                </syncfusion:SfExpander.Content>
-            </syncfusion:SfExpander>
-
-            <ListView x:Name="PlayersListView" 
+    <ListView x:Name="PlayersListView" 
                  ItemsSource="{Binding Players}"           
                  HasUnevenRows="true"
                  RefreshCommand="{Binding LoadItemsCommand}"
                  IsPullToRefreshEnabled="true"
                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                  ItemSelected="OnItemSelected"
-                 CachingStrategy="RecycleElement">          
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="10,0,10,0" Orientation="Horizontal" >
-                                <Label VerticalTextAlignment="Center" Text="{Binding ., Converter={StaticResource playerListViewIndexConverter}, ConverterParameter={x:Reference PlayersListView}}" 
+                 CachingStrategy="RecycleElement">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Padding="10,0,10,0" Orientation="Horizontal" >
+                        <Label VerticalTextAlignment="Center" Text="{Binding ., Converter={StaticResource playerListViewIndexConverter}, ConverterParameter={x:Reference PlayersListView}}" 
                                    LineBreakMode="NoWrap" 
                                    Style="{DynamicResource ListItemTextStyle}" 
                                    FontSize="24" MinimumWidthRequest="58" HorizontalOptions="Start" />
-                                <StackLayout Padding="10" Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                                    <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <FormattedString.Spans>
-                                                    <Span Text="{Binding FirstName}" />
-                                                    <Span Text=" " />
-                                                    <Span Text="{Binding LastName}" />
-                                                </FormattedString.Spans>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label TextColor="{DynamicResource SecondaryTextColor}" Text="{Binding Location}" HorizontalOptions="StartAndExpand" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" />
-                                        <Label TextColor="{DynamicResource SecondaryTextColor}" HorizontalOptions="End"  Text="{Binding WpprPoints, StringFormat='{0:N2}'}" LineBreakMode="NoWrap" 
+                        <StackLayout Padding="10" Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                            <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="{Binding FirstName}" />
+                                            <Span Text=" " />
+                                            <Span Text="{Binding LastName}" />
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <StackLayout Orientation="Horizontal">
+                                <Label TextColor="{DynamicResource SecondaryTextColor}" Text="{Binding Location}" HorizontalOptions="StartAndExpand" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" />
+                                <Label TextColor="{DynamicResource SecondaryTextColor}" HorizontalOptions="End"  Text="{Binding WpprPoints, StringFormat='{0:N2}'}" LineBreakMode="NoWrap" 
                                                Style="{DynamicResource ListItemTextStyle}" FontSize="10" />
-                                    </StackLayout>
-                                    <Label HorizontalOptions="StartAndExpand" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" TextColor="{DynamicResource SecondaryTextColor}" 
-                                               FontSize="10" HorizontalTextAlignment="Start" IsVisible="{Binding Source={x:Reference BrowseItemsPage}, Path=BindingContext.ShowOverallRank}">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <FormattedString.Spans>
-                                                    <Span Text="Overall WPPR Rank:" />
-                                                    <Span Text=" " />
-                                                    <Span Text="{Binding CurrentWpprRank, Converter={StaticResource intToOrdinalString}}" />
-                                                </FormattedString.Spans>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </StackLayout>
                             </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
-    </ContentPage.Content>
+                            <Label HorizontalOptions="StartAndExpand" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" TextColor="{DynamicResource SecondaryTextColor}" 
+                                               FontSize="10" HorizontalTextAlignment="Start" IsVisible="{Binding Source={x:Reference BrowseItemsPage}, Path=BindingContext.ShowOverallRank}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="Overall WPPR Rank:" />
+                                            <Span Text=" " />
+                                            <Span Text="{Binding CurrentWpprRank, Converter={StaticResource intToOrdinalString}}" />
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>
