@@ -29,7 +29,6 @@ namespace Ifpa.iOS
             global::Xamarin.FormsMaps.Init();
             Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer.Init();
             Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
-            Syncfusion.XForms.iOS.Expander.SfExpanderRenderer.Init();
             Syncfusion.SfCalendar.XForms.iOS.SfCalendarRenderer.Init();
             Syncfusion.SfPdfViewer.XForms.iOS.SfPdfDocumentViewRenderer.Init();
 
