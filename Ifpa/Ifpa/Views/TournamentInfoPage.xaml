@@ -22,7 +22,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid Padding="10,10,10,10">
+        <Grid Padding="10,10,10,10"  VerticalOptions="CenterAndExpand">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150" />
                 <ColumnDefinition Width="*" />
