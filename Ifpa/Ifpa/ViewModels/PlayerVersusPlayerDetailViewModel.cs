@@ -11,6 +11,10 @@ namespace Ifpa.ViewModels
     public class PlayerVersusPlayerDetailViewModel : BaseViewModel
     {
         public ObservableCollection<Pvp> PlayerVersusPlayer { get; set; }
+
+        public string PlayerOneInitials { get; set; }
+
+        public string PlayerTwoInitials { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         private int playerOneId;
@@ -42,6 +46,11 @@ namespace Ifpa.ViewModels
                 }
 
                 Title = $"{pvpResults.P1FirstName} {pvpResults.P1LastName} vs {pvpResults.P2FirstName} {pvpResults.P2LastName}";
+
+                PlayerOneInitials = pvpResults.P1FirstName.FirstOrDefault().ToString() + pvpResults.P1LastName.FirstOrDefault().ToString();
+                PlayerTwoInitials = pvpResults.P2FirstName.FirstOrDefault().ToString() + pvpResults.P2LastName.FirstOrDefault().ToString();
+                OnPropertyChanged("PlayerOneInitials");
+                OnPropertyChanged("PlayerTwoInitials");
             }
             catch (Exception ex)
             {

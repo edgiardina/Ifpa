@@ -5,7 +5,8 @@
              x:Class="Ifpa.Views.PlayerVersusPlayerDetailPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.LargeTitleDisplay="Never"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             x:Name="PlayerVersusPlayerDetailPage">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:IntToOrdinalStringConverter x:Key="intToOrdinalString" />
@@ -36,7 +37,8 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <FormattedString.Spans>
-                                            <Span Text="P1: " TextColor="{DynamicResource SecondaryTextColor}" />
+                                            <Span Text="{Binding Source={x:Reference PlayerVersusPlayerDetailPage}, Path=BindingContext.PlayerOneInitials}" TextColor="{DynamicResource SecondaryTextColor}" />
+                                            <Span Text=": " TextColor="{DynamicResource SecondaryTextColor}" />
                                             <Span Text="{Binding P1FinishPosition, Converter={StaticResource intToOrdinalString}}" />
                                         </FormattedString.Spans>
                                     </FormattedString>
@@ -46,7 +48,8 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <FormattedString.Spans>
-                                            <Span Text="P2: " TextColor="{DynamicResource SecondaryTextColor}" />
+                                            <Span Text="{Binding Source={x:Reference PlayerVersusPlayerDetailPage}, Path=BindingContext.PlayerTwoInitials}" TextColor="{DynamicResource SecondaryTextColor}" />
+                                            <Span Text=": " TextColor="{DynamicResource SecondaryTextColor}" />
                                             <Span Text="{Binding P2FinishPosition, Converter={StaticResource intToOrdinalString}}" />
                                         </FormattedString.Spans>
                                     </FormattedString>
