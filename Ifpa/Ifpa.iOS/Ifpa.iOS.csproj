@@ -15,7 +15,7 @@
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <ProvisioningType>automatic</ProvisioningType>
+    <ProvisioningType>manual</ProvisioningType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -72,14 +72,13 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>Apple Distribution: Ed Giardina (KH5JKUPW2Q)</CodesignKey>
+    <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignEntitlements>
     </CodesignEntitlements>
     <MtouchNoSymbolStrip>false</MtouchNoSymbolStrip>
     <OptimizePNGs>true</OptimizePNGs>
     <MtouchFloat32>false</MtouchFloat32>
-    <CodesignProvision>
-    </CodesignProvision>
+    <CodesignProvision>com.edgiardina.ifpa AppStore (2020)</CodesignProvision>
     <BuildIpa>true</BuildIpa>
     <CodesignExtraArgs />
     <CodesignResourceRules />
@@ -421,7 +420,7 @@
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties TriggeredFromHotReload="False" XamarinHotReloadWrongLinkerErrorInfoBarIfpaiOSHideInfoBar="True" />
+      <UserProperties XamarinHotReloadWrongLinkerErrorInfoBarIfpaiOSHideInfoBar="True" TriggeredFromHotReload="False" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
