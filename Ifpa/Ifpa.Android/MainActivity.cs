@@ -1,14 +1,9 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using Android.Support.V4.App;
-using Android.Support.V4.Content;
-using Android;
 using Android.Content;
 using Android.Runtime;
 using Plugin.CurrentActivity;
-using Plugin.AppShortcuts;
 
 namespace Ifpa.Droid
 {
