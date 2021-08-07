@@ -1,4 +1,5 @@
-﻿using Ifpa.Droid.Services;
+﻿using AndroidX.AppCompat.Widget;
+using Ifpa.Droid.Services;
 using Ifpa.Services;
 using Plugin.CurrentActivity;
 using Xamarin.Forms;
@@ -13,7 +14,7 @@ namespace Ifpa.Droid.Services
         {
             Device.BeginInvokeOnMainThread(() =>
             {
-                var toolbar = CrossCurrentActivity.Current.Activity.FindViewById(Resource.Id.toolbar) as Android.Support.V7.Widget.Toolbar;
+                var toolbar = CrossCurrentActivity.Current.Activity.FindViewById(Resource.Id.toolbar) as Toolbar;
                 if (toolbar != null)
                 {
                     if (!string.IsNullOrEmpty(value))

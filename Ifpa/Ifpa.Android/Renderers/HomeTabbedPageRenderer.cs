@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Android.Content;
-using Android.Support.Design.Widget;
 using Android.Views;
+using Google.Android.Material.BottomNavigation;
 using Ifpa.Droid.Renderers;
 using Ifpa.Models;
 using Xamarin.Forms.Platform.Android.AppCompat;
