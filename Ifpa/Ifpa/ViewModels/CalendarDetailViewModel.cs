@@ -79,6 +79,7 @@ namespace Ifpa.ViewModels
                 Details = calendarEntry.Details;
                 StartDate = calendarEntry.StartDate;
                 EndDate = calendarEntry.EndDate;
+                TournamentId = calendarEntry.TournamentId;
 
                 OnPropertyChanged(null);
             }
