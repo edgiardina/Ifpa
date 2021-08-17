@@ -12,7 +12,7 @@ namespace Ifpa.ViewModels
         public Command LoadItemsCommand { get; set; }
         public HtmlWebViewSource RulesContent { get; set; }
 
-        private const string RulesPdfUrl = "https://replayfoundation.org/wp-content/uploads/PAPA_IFPA-Complete-Competition-Rules-1.pdf";
+        private const string RulesPdfUrl = "https://www.ifpapinball.com/wp/wp-content/uploads/2021/04/PAPA_IFPA-Complete-Competition-Rules-2021.04.06.pdf";
 
         private Stream pdfDocumentStream;
 
