@@ -4,7 +4,7 @@
              x:Class="Ifpa.Views.ChampionshipSeriesPage"
              Title="{Binding Title}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Filter" Clicked="ToolbarItem_Clicked" Icon="filter.png" />
+        <ToolbarItem Text="Filter" Clicked="ToolbarItem_Clicked" IconImageSource="filter.png" />
     </ContentPage.ToolbarItems>
     <ListView x:Name="MyListView"
             ItemsSource="{Binding StateProvinceStandings}"

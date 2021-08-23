@@ -13,7 +13,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Ranking Profile" IsEnabled="{Binding ShowRankingTypeChoice}" x:Name="RankingProfileButton" Clicked="RankingProfileButton_Clicked" Icon="ranking_profile.png" />
+        <ToolbarItem Text="Ranking Profile" IsEnabled="{Binding ShowRankingTypeChoice}" x:Name="RankingProfileButton" Clicked="RankingProfileButton_Clicked" IconImageSource="ranking_profile.png" />
     </ContentPage.ToolbarItems>
     
     <tabView:SfTabView VisibleHeaderCount="3" TabHeaderBackgroundColor="{DynamicResource TabHeaderBackgroundColor}">

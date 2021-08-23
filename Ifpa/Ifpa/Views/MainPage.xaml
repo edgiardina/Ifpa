@@ -10,6 +10,7 @@
         android:TabbedPage.ToolbarPlacement="Bottom">
 
     <NavigationPage Title="Rankings" IconImageSource="numbered_list.png" 
+                    NavigationPage.HasNavigationBar="False"
                     ios:NavigationPage.PrefersLargeTitles="true">      
         <x:Arguments>
             <views:RankingsPage />

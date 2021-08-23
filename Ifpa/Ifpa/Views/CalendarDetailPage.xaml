@@ -16,8 +16,8 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Share" x:Name="ShareButton" Clicked="ShareButton_Clicked" Icon="share.png" />
-        <ToolbarItem Text="Add To Calendar" x:Name="AddToCalendarButton" Clicked="AddToCalendarButton_Clicked" Icon="calendar_add.png" />
+        <ToolbarItem Text="Share" x:Name="ShareButton" Clicked="ShareButton_Clicked" IconImageSource="share.png" />
+        <ToolbarItem Text="Add To Calendar" x:Name="AddToCalendarButton" Clicked="AddToCalendarButton_Clicked" IconImageSource="calendar_add.png" />
     </ContentPage.ToolbarItems>
     <StackLayout HorizontalOptions="FillAndExpand" Spacing="0" >
         <Frame BackgroundColor="{DynamicResource SecondaryBanner}" CornerRadius="0">

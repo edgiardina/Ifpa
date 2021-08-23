@@ -16,7 +16,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Activity Feed" x:Name="ActivityFeedButton" Clicked="ActivityFeedButton_Clicked" Icon="activity_feed.png" />
+        <ToolbarItem Text="Activity Feed" x:Name="ActivityFeedButton" Clicked="ActivityFeedButton_Clicked" IconImageSource="activity_feed.png" />
         <ToolbarItem Text="Favorite" x:Name="FavoriteButton" Clicked="FavoriteButton_Clicked">
             <ToolbarItem.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
@@ -25,8 +25,8 @@
                 </OnPlatform>
             </ToolbarItem.Icon>
         </ToolbarItem>
-        <ToolbarItem Text="Set to My Stats" x:Name="StarButton" Clicked="StarButton_Clicked" Icon="star.png" />
-        <ToolbarItem Text="Share" x:Name="ShareButton" Clicked="ShareButton_Clicked" Icon="share.png" />
+        <ToolbarItem Text="Set to My Stats" x:Name="StarButton" Clicked="StarButton_Clicked" IconImageSource="star.png" />
+        <ToolbarItem Text="Share" x:Name="ShareButton" Clicked="ShareButton_Clicked" IconImageSource="share.png" />
     </ContentPage.ToolbarItems>
     <ScrollView>
         <StackLayout >
