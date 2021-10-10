@@ -1,17 +1,28 @@
 ﻿using Ifpa.Models;
-using Microsoft.Toolkit.Parsers.Rss;
-using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Net.Http;
+using System.ServiceModel.Syndication;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Ifpa.Services
 {
     public class BlogPostService
     {
-        public async Task<IEnumerable<RssSchema>> GetBlogPosts()
+        public async Task<IEnumerable<SyndicationItem>> GetBlogPosts()
         {
             return await Parse(Constants.IfpaRssFeedUrl);
+        }
+
+        public async Task<IEnumerable<SyndicationItem>> GetCommentsForBlogPost(string blogPostId)
+        {
+            var blogPosts = await Parse(Constants.IfpaRssFeedUrl);
+            var post = blogPosts.Single(n => n.Id == blogPostId);
+            var link = post.Links.FirstOrDefault().Uri.ToString();
+
+            return await Parse(link + "/feed");
         }
 
         public int ParseGuidFromInternalId(string internalId)
@@ -21,20 +32,21 @@ namespace Ifpa.Services
             return int.Parse(internalId.Split('=')[1]);
         }
 
-        private async Task<IEnumerable<RssSchema>> Parse(string url)
+        private async Task<IEnumerable<SyndicationItem>> Parse(string url)
         {
-            string feed = null;
+            Stream stream = null;
 
             using (var client = new HttpClient())
             {
-                feed = await client.GetStringAsync(url);
+                stream = await client.GetStreamAsync(url);
             }
+            
+            if (stream == null) return new List<SyndicationItem>();
 
-            if (feed == null) return new List<RssSchema>();
-
-            var parser = new RssParser();
-            var rss = parser.Parse(feed);
-            return rss;
+            XmlReader reader = XmlReader.Create(stream);
+            SyndicationFeed feed = SyndicationFeed.Load(reader);
+     
+            return feed.Items;
         }
     }
 }

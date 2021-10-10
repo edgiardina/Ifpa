@@ -3,32 +3,33 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Microsoft.Toolkit.Parsers.Rss;
-using System.Collections.Generic;
-using System.Net.Http;
-using Ifpa.Models;
 using System.Linq;
-using System.Text.RegularExpressions;
-using System.Web;
+using System.ServiceModel.Syndication;
+using Ifpa.Services;
+using System.Xml;
 
 namespace Ifpa.ViewModels
 {
     public class NewsDetailViewModel : BaseViewModel
     {
-        public RssSchema NewsItem { get; set; }
-        public ObservableCollection<RssSchema> Comments { get; set; }
+        public SyndicationItem NewsItem { get; set; }
+        public ObservableCollection<SyndicationItem> Comments { get; set; }
 
         public int CommentCounts => Comments.Count;
         public Command LoadItemsCommand { get; set; }
 
-        public string NewsItemUrl { get; set; }
+        public Uri NewsItemUrl { get; set; }
         public HtmlWebViewSource NewsItemContent { get; set; }
-        
-        public NewsDetailViewModel(string url)
+
+        private BlogPostService blogPostService { get; set; }
+
+        public NewsDetailViewModel(Uri url)
         {
             Title = "News";
             NewsItemUrl = url;
-            Comments = new ObservableCollection<RssSchema>();
+            blogPostService = new BlogPostService();
+
+            Comments = new ObservableCollection<SyndicationItem>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
 
@@ -42,17 +43,21 @@ namespace Ifpa.ViewModels
             try
             {
                 Comments.Clear();
-                var newsItemDetails = await Parse(Constants.IfpaRssFeedUrl);
+                var newsItemDetails = await blogPostService.GetBlogPosts();
 
-                NewsItem = newsItemDetails.Single(n => n.FeedUrl == NewsItemUrl);
+                NewsItem = newsItemDetails.Single(n => n.Links.Any(m => m.Uri == NewsItemUrl));
                 OnPropertyChanged(nameof(NewsItem));
-                Title = NewsItem.Title;
+                Title = NewsItem.Title.Text;
                 NewsItemContent = new HtmlWebViewSource();
                 //TODO: make this HTML and CSS in discrete files 
-                NewsItemContent.Html = "<html><head><style>img {display:block; clear:both;  margin: auto; margin-botton:10px !important;}</style></head><body style='font-family:sans-serif;'>" + NewsItem.Content + "</body></html>";
+                var articleContent = NewsItem.ElementExtensions
+                      .FirstOrDefault(ext => ext.OuterName == "encoded")
+                      .GetObject<XmlElement>().InnerText;
+
+                NewsItemContent.Html = "<html><head><style>img {display:block; clear:both;  margin: auto; margin-botton:10px !important;}</style></head><body style='font-family:sans-serif;'>" + articleContent + "</body></html>";
                 OnPropertyChanged(nameof(NewsItemContent));
 
-                var comments = await Parse(NewsItem.FeedUrl + "feed/");
+                var comments = await blogPostService.GetCommentsForBlogPost(NewsItem.Id);
 
                 foreach (var item in comments)
                 {
@@ -68,22 +73,6 @@ namespace Ifpa.ViewModels
             {
                 IsBusy = false;
             }
-        }
-
-        private async Task<IEnumerable<RssSchema>> Parse(string url)
-        {
-            string feed = null;
-
-            using (var client = new HttpClient())
-            {
-                feed = await client.GetStringAsync(url);
-            }
-
-            if (feed == null) return new List<RssSchema>();
-
-            var parser = new RssParser();
-            var rss = parser.Parse(feed);
-            return rss;
         }
 
     }

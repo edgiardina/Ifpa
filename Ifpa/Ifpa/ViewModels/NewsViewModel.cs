@@ -3,24 +3,25 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Microsoft.Toolkit.Parsers.Rss;
 using Ifpa.Services;
+using System.ServiceModel.Syndication;
+using System.Web;
 
 namespace Ifpa.ViewModels
 {
     public class NewsViewModel : BaseViewModel
     {
-        public ObservableCollection<RssSchema> NewsItems { get; set; }
+        public ObservableCollection<SyndicationItem> NewsItems { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         private BlogPostService blogPostService { get; set; }
-        
+
         public NewsViewModel()
         {
             blogPostService = new BlogPostService();
 
             Title = "News";
-            NewsItems = new ObservableCollection<RssSchema>();
+            NewsItems = new ObservableCollection<SyndicationItem>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
 
@@ -37,9 +38,10 @@ namespace Ifpa.ViewModels
                 var newsItems = await blogPostService.GetBlogPosts();
 
                 foreach (var item in newsItems)
-                {                 
-                    NewsItems.Add(item);                    
-                }                
+                {
+                    item.Summary = new TextSyndicationContent(HttpUtility.HtmlDecode(item.Summary.Text));
+                    NewsItems.Add(item);
+                }
             }
             catch (Exception ex)
             {

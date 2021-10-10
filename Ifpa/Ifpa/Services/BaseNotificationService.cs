@@ -120,9 +120,9 @@ namespace Ifpa.Services
 
                     var latestPosts = await blogPostService.GetBlogPosts();
 
-                    var latestGuidInPosts = latestPosts.Max(n => blogPostService.ParseGuidFromInternalId(n.InternalID));
+                    var latestGuidInPosts = latestPosts.Max(n => blogPostService.ParseGuidFromInternalId(n.Id));
 
-                    var latestPost = latestPosts.Single(n => n.InternalID.EndsWith(latestGuidInPosts.ToString()));
+                    var latestPost = latestPosts.Single(n => n.Id.EndsWith(latestGuidInPosts.ToString()));
 
                     if (latestGuidInPosts > Settings.LastBlogPostGuid)
                     {

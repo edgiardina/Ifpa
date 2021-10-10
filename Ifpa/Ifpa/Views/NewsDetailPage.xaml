@@ -20,7 +20,7 @@
             <Frame Padding="0" Margin="5" HasShadow="True" CornerRadius="0" VerticalOptions="FillAndExpand"  BackgroundColor="{DynamicResource BackgroundColor}">
                 <StackLayout VerticalOptions="FillAndExpand">
                      
-                    <Label FontAttributes="Bold"  HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="Default" Text="{Binding NewsItem.Title}" Margin="5" />
+                    <Label FontAttributes="Bold"  HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="Default" Text="{Binding NewsItem.Title.Text}" Margin="5" />
                         
                     <WebView Source="{Binding NewsItemContent}" VerticalOptions="FillAndExpand" Navigating="WebView_Navigating"  />
 
@@ -59,8 +59,8 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <StackLayout Padding="5" BackgroundColor="{Binding ., Converter={StaticResource alternatingRowListViewIndexConverter}, ConverterParameter={x:Reference ItemsListView}}">
-                                        <Label HorizontalTextAlignment="Start"  FontSize="Small" Text="{Binding Summary}" Margin="0" />
-                                        <Label HorizontalTextAlignment="Start"  FontSize="Small" Text="{Binding Author}" Margin="0" />
+                                        <Label HorizontalTextAlignment="Start"  FontSize="Small" Text="{Binding Summary.Text}" Margin="0" />
+                                        <Label HorizontalTextAlignment="Start"  FontSize="Small" Text="{Binding Title.Text}" Margin="0" />
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>

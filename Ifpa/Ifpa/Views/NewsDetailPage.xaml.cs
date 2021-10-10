@@ -1,6 +1,7 @@
 ﻿using Ifpa.ViewModels;
 using System;
 using System.Collections;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,19 +13,21 @@ namespace Ifpa.Views
     {
         NewsDetailViewModel viewModel;
 
-        public NewsDetailPage( NewsDetailViewModel model)
+        public NewsDetailPage(NewsDetailViewModel model)
         {
             InitializeComponent();
 
             BindingContext = this.viewModel = model;
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
             if (viewModel.NewsItem == null)
-                viewModel.LoadItemsCommand.Execute(null);
+            {
+                await Task.Run(() => viewModel.LoadItemsCommand.Execute(null));
+            }
         }
 
         private void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
@@ -43,7 +46,7 @@ namespace Ifpa.Views
             {
                 try
                 {
-                    var uri = new Uri(e.Url);               
+                    var uri = new Uri(e.Url);
                     Launcher.OpenAsync(uri);
                 }
                 catch (Exception)
