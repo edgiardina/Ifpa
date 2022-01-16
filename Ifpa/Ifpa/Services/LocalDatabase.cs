@@ -19,7 +19,7 @@ namespace Ifpa.Services
 
         public Task<List<ActivityFeedItem>> GetActivityFeedRecords()
         {
-            return database.Table<ActivityFeedItem>().OrderByDescending(n => n.CreatedDateTime).ToListAsync();
+            return database.Table<ActivityFeedItem>().OrderByDescending(n => n.CreatedDateTime).Take(100).ToListAsync();
         }
 
         public async Task<int> CreateActivityFeedRecord(ActivityFeedItem item)

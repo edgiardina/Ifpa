@@ -17,7 +17,7 @@
         <StackLayout x:Name="MapLayout" Spacing="0">
             <maps:Map WidthRequest="320" HeightRequest="200"
                 x:Name="calendarMap"                  
-                VerticalOptions="FillAndExpand"
+                VerticalOptions="Start"
                 MapType="Street" />
             <ListView x:Name="TournamentListView"                  
                     ItemsSource="{Binding CalendarDetails}"
