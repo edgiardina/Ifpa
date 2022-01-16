@@ -6,6 +6,7 @@ using PinballApi.Models.WPPR.v2;
 using System;
 using PinballApi.Models.WPPR.v2.Rankings;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Ifpa.Views
 {
@@ -22,7 +23,7 @@ namespace Ifpa.Views
             PlayerListViewIndexConverter.BindingContext = viewModel;
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             if (viewModel.Players.Count == 0)
             {
@@ -33,8 +34,7 @@ namespace Ifpa.Views
 
                 viewModel.CountryToShow = new Country { CountryName = Preferences.Get("CountryName", viewModel.DefaultCountry.CountryName) };
 
-                viewModel.LoadItemsCommand.Execute(null);
-
+                await Task.Run(() => viewModel.LoadItemsCommand.Execute(null));
             }
             base.OnAppearing();
         }

@@ -35,7 +35,7 @@
        
             <StackLayout IsVisible="{Binding IsBusy, Converter={StaticResource BoolConverter}}" Spacing="20" Padding="15,0,15,0">
 
-                <Grid BackgroundColor="{DynamicResource SecondaryBanner}" Margin="-15,0,-15,0" Padding="15,0,15,0">
+                <Grid BackgroundColor="{DynamicResource SecondaryBanner}" Margin="-15,0,-15,0" Padding="15,0,15,0" VerticalOptions="StartAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
