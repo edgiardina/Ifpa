@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android.Content;
 using Android.Provider;
@@ -12,7 +13,7 @@ namespace Ifpa.Droid.Services
 {
     public class AndroidReminderService : IReminderService
     {
-        public async Task<bool> CreateReminder(CalendarDetailViewModel calendarDetail)
+        public async Task<bool> CreateReminder(CalendarDetailViewModel calendarDetail, string calendarIdentifier)
         {
             Intent intent = new Intent(Intent.ActionInsert);
             intent.PutExtra(CalendarContract.Events.InterfaceConsts.Title, calendarDetail.TournamentName);
@@ -26,6 +27,11 @@ namespace Ifpa.Droid.Services
             intent.SetData(CalendarContract.Events.ContentUri);
             Forms.Context.StartActivity(intent);
             return true;
+        }
+
+        public async Task<IEnumerable<string>> GetCalendarList()
+        {
+            throw new NotImplementedException();
         }
     }
 }
