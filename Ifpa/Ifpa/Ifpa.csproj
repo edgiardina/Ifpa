@@ -13,17 +13,17 @@
   <ItemGroup>
     <PackageReference Include="PinballApi" Version="2.0.55" />
     <PackageReference Include="Plugin.AppShortcuts" Version="1.0.0.3" />
-    <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
-    <PackageReference Include="Syncfusion.Licensing" Version="19.2.0.51" />
-    <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="19.2.0.51" />
-    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="19.2.0.51" />
-    <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="19.2.0.51" />
-    <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="19.2.0.51" />
-    <PackageReference Include="System.ServiceModel.Syndication" Version="5.0.0" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="Syncfusion.Licensing" Version="19.4.0.42" />
+    <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="19.4.0.42" />
+    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="19.4.0.42" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="19.4.0.42" />
+    <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="19.4.0.42" />
+    <PackageReference Include="System.ServiceModel.Syndication" Version="6.0.0" />
     <PackageReference Include="Xamarin.Badge.Plugin" Version="2.0.0" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />
-    <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2083" />  
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2291" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2291" />  
   </ItemGroup>
 
   <ItemGroup>

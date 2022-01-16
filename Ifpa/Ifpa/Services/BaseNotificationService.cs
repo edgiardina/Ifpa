@@ -128,7 +128,7 @@ namespace Ifpa.Services
                     {
                         if(Settings.LastBlogPostGuid > 0)
                         {
-                            SendNotification(NewBlogPostTitle, string.Format(NewBlogPostDescription, latestPost.Title));
+                            SendNotification(NewBlogPostTitle, string.Format(NewBlogPostDescription, latestPost.Title.Text));
                         }
 
                         Settings.LastBlogPostGuid = latestGuidInPosts;
