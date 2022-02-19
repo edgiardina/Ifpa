@@ -24,7 +24,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.edgiardina.ifpa</string>
 	<key>CFBundleVersion</key>
-	<string>2.3</string>
+	<string>2.3.1</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
@@ -38,7 +38,7 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>This app will allow you to add an IFPA sanctioned tournament from the app to your local device&apos;s calendar</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.3</string>
+	<string>2.3.1</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
