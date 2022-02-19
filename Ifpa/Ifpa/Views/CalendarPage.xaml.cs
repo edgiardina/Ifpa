@@ -52,7 +52,7 @@ namespace Ifpa.Views
         {
             var filterPage = new CalendarFilterModalPage();
 
-            filterPage.FilterSaved += () => { UpdateCalendarData(); };
+            filterPage.FilterSaved += async () => { await UpdateCalendarData(); };
 
             await Navigation.PushModalAsync(filterPage);
         }

@@ -85,7 +85,7 @@ namespace Ifpa.ViewModels
 
         public bool HasNacsData => PlayerRecord.ChampionshipSeries != null;
 
-        public string CountryFlag => $"https://www.countryflags.io/{PlayerRecord.CountryCode}/shiny/64.png";
+        public string CountryFlag => $"https://flagcdn.com/w80/{PlayerRecord.CountryCode?.ToLower()}.png";
 
         //Replace call at the end so that if a player is missing the 'state' we don't have an unsightly double space.
         public string Location => $"{PlayerRecord.City}{(!string.IsNullOrEmpty(PlayerRecord.City) && !string.IsNullOrEmpty(PlayerRecord.StateProvince) ? "," : string.Empty)} {PlayerRecord.StateProvince} {PlayerRecord.CountryName}".Trim().Replace("  ", " ");

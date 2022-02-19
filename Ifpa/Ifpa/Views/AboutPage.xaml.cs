@@ -48,5 +48,10 @@ namespace Ifpa.Views
         {
             await Browser.OpenAsync("http://tiltforums.com/t/ifpa-app-now-available-on-the-app-store/4543", BrowserLaunchMode.External);
         }
+
+        private async void Flagpedia_Tapped(object sender, EventArgs e)
+        {
+            await Browser.OpenAsync("https://flagpedia.net/", BrowserLaunchMode.External);
+        }
     }
 }
