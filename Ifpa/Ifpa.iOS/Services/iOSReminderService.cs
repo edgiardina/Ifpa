@@ -48,7 +48,8 @@ namespace Ifpa.iOS.Services
             var granted = await eventStore.RequestAccessAsync(EKEntityType.Event);
             if (granted.Item1)
             {
-                var calendars = eventStore.GetCalendars(EKEntityType.Event).Where(n => n.Type == EKCalendarType.Local);
+                var calendars = eventStore.GetCalendars(EKEntityType.Event)
+                                          .Where(n => (n.Type == EKCalendarType.CalDav || n.Type == EKCalendarType.Local) && n.AllowsContentModifications);
           
                 return calendars.Select(n => n.Title);
             }

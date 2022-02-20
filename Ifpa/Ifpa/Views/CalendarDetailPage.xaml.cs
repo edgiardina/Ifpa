@@ -86,7 +86,7 @@ namespace Ifpa.Views
 
         private async void AddToCalendarButton_Clicked(object sender, EventArgs e)
         {
-            var status = await Permissions.CheckStatusAsync<Permissions.CalendarWrite>();
+            var status = await Permissions.CheckStatusAsync<Permissions.CalendarRead>();
             if (status != PermissionStatus.Granted)
             {
                 status = await Permissions.RequestAsync<Permissions.CalendarWrite>();
