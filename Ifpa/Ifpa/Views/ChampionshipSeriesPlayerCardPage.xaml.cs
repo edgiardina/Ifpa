@@ -1,5 +1,6 @@
 ﻿using Ifpa.ViewModels;
 using PinballApi.Models.WPPR.v2.Nacs;
+using PinballApi.Models.WPPR.v2.Series;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,7 +20,7 @@ namespace Ifpa.Views
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var tournamentCardRecord = e.Item as NacsTournamentCardRecord;
+            var tournamentCardRecord = e.Item as PlayerCard;
             if (tournamentCardRecord == null)
                 return;
 
