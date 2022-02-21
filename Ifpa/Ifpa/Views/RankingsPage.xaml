@@ -6,6 +6,7 @@
              Title="{Binding Title}"
              x:Name="BrowseItemsPage">
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Filter" x:Name="SearchButton" Clicked="SearchButton_Clicked"  IconImageSource="search.png" />
         <ToolbarItem Text="Filter" x:Name="InfoButton" Clicked="InfoButton_Clicked"  IconImageSource="filter.png" />
     </ContentPage.ToolbarItems>
     <ContentPage.Resources>

@@ -17,10 +17,10 @@
         </x:Arguments>
     </NavigationPage>
 
-    <NavigationPage Title="Player Search" IconImageSource="search.png"  
+    <NavigationPage Title="Champ. Series" IconImageSource="trophy.png"  
                     ios:NavigationPage.PrefersLargeTitles="true">
         <x:Arguments>
-            <views:PlayerSearchPage />
+            <views:ChampionshipSeriesListPage />
         </x:Arguments>
     </NavigationPage>
 

@@ -41,6 +41,7 @@ namespace Ifpa
         protected override void OnSleep()
         {
             // Handle when your app sleeps
+            base.OnSleep();
         }
 
         protected override void OnResume()

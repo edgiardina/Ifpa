@@ -133,7 +133,7 @@ namespace Ifpa.Views
         {
             await DisplayAlert("Configure your Stats", "Looks like you haven't configured your 'My Stats' page. Use the Player Search to find your Player, and press the Star to configure your Stats", "OK");
             var masterPage = this.Parent.Parent as TabbedPage;
-            masterPage.CurrentPage = masterPage.Children[1];
+            masterPage.CurrentPage = masterPage.Children[0];
         }
 
         private async void ActivityFeedButton_Clicked(object sender, EventArgs e)
