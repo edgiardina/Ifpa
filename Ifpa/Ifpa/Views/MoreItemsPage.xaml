@@ -9,7 +9,6 @@
         <ListView.ItemsSource>
             <x:Array Type="{x:Type local:MoreItemsMenuItem}">
                 <local:MoreItemsMenuItem Title="Favorites" IconSource="favorite.png" TargetType="{x:Type local:FavoritesPage}" />
-                <local:MoreItemsMenuItem Title="Championship Series" IconSource="trophy.png" TargetType="{x:Type local:ChampionshipSeriesListPage}" />
                 <local:MoreItemsMenuItem Title="Custom Rankings" IconSource="numbered_list.png" TargetType="{x:Type local:CustomRankingsPage}" />
                 <local:MoreItemsMenuItem Title="News" IconSource="news.png" TargetType="{x:Type local:NewsPage}" />
                 <local:MoreItemsMenuItem Title="Rules" IconSource="rules.png" TargetType="{x:Type local:RulesPage}" />
