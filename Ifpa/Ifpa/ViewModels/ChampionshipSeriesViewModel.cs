@@ -1,4 +1,5 @@
 ﻿using PinballApi.Models.WPPR.v2.Nacs;
+using PinballApi.Models.WPPR.v2.Series;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -9,18 +10,21 @@ namespace Ifpa.ViewModels
 {
     public class ChampionshipSeriesViewModel : BaseViewModel
     {
-        public ObservableCollection<NacsStandings> StateProvinceStandings { get; set; }
+        public ObservableCollection<SeriesOverallResult> SeriesOverallResults { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         public int Year { get; set; }
+
+        public string SeriesCode { get; set; }
         
-        public ChampionshipSeriesViewModel(int year)
+        public ChampionshipSeriesViewModel(string code, int year)
         {
             this.Year = year;
+            this.SeriesCode = code;
 
-            StateProvinceStandings = new ObservableCollection<NacsStandings>();
+            SeriesOverallResults = new ObservableCollection<SeriesOverallResult>();
 
-            Title = "Championship Series";
+            Title = SeriesCode;
 
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
@@ -35,25 +39,25 @@ namespace Ifpa.ViewModels
 
             try
             {
-                StateProvinceStandings.Clear();
-                var stateProvinceChampionshipSeries = await PinballRankingApiV2.GetNacsStandings(Year);
+                SeriesOverallResults.Clear();
+                var stateProvinceChampionshipSeries = await PinballRankingApiV2.GetSeriesOverallStanding(SeriesCode, Year);
 
                 if (stateProvinceChampionshipSeries != null)
                 {
-                    foreach (var item in stateProvinceChampionshipSeries)
+                    foreach (var item in stateProvinceChampionshipSeries.OverallResults)
                     {
-                        StateProvinceStandings.Add(item);
+                        SeriesOverallResults.Add(item);
                     }
                 }
                 
                 if(Year != DateTime.Now.Year)
                 {
-                    Title = $"Championship Series {Year}";
+                    Title = $"{SeriesCode} {Year}";
                     OnPropertyChanged("Title");
                 }
                 else
                 {
-                    Title = $"Championship Series";
+                    Title = SeriesCode;
                     OnPropertyChanged("Title");
                 }
             }

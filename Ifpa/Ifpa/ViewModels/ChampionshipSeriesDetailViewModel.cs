@@ -1,5 +1,6 @@
 ﻿using PinballApi.Models.v2.WPPR;
 using PinballApi.Models.WPPR.v2.Nacs;
+using PinballApi.Models.WPPR.v2.Series;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -10,24 +11,24 @@ namespace Ifpa.ViewModels
 {
     public class ChampionshipSeriesDetailViewModel : BaseViewModel
     {
-        public ObservableCollection<PlayerStanding> StateProvinceStandings { get; set; }
-        public ObservableCollection<NacsStateProvinceStatistics> StateProvinceStatistics { get; set; }
-        public ObservableCollection<NacsPayout> StateProvincePayouts { get; set; }
+        public RegionStandings RegionStandings { get; set; }
+        public SeriesTournaments SeriesTournaments { get; set; }    
+
         public Command LoadItemsCommand { get; set; }
 
-        public readonly string StateProvinceAbbreviation;
+        public readonly string RegionCode;
+        public readonly string SeriesCode;
         public readonly int Year;
 
-        public ChampionshipSeriesDetailViewModel(string stateProvinceAbbreviation, int year)
+        public ChampionshipSeriesDetailViewModel(string seriesCode, string regionCode, int year)
         {
-            this.StateProvinceAbbreviation = stateProvinceAbbreviation;
+            this.SeriesCode = seriesCode;
+            this.RegionCode = regionCode;
             this.Year = year;
 
-            StateProvinceStandings = new ObservableCollection<PlayerStanding>();
-            StateProvinceStatistics = new ObservableCollection<NacsStateProvinceStatistics>();
-            StateProvincePayouts = new ObservableCollection<NacsPayout>();
+            RegionStandings = new RegionStandings();
 
-            Title = $"{stateProvinceAbbreviation} Championship Series";
+            Title = $"{regionCode} {seriesCode} ({year})";
 
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
@@ -42,26 +43,11 @@ namespace Ifpa.ViewModels
 
             try
             {
-                StateProvinceStandings.Clear();
-                StateProvinceStatistics.Clear();
-                StateProvincePayouts.Clear();
+                RegionStandings = await PinballRankingApiV2.GetSeriesStandingsForRegion(SeriesCode, RegionCode, Year);
+                OnPropertyChanged("RegionStandings");
 
-                var stateProvinceChampionshipSeries = await PinballRankingApiV2.GetNacsStateProvinceStandings(StateProvinceAbbreviation, Year);
-
-                foreach (var item in stateProvinceChampionshipSeries.PlayerStandings)
-                {
-                    StateProvinceStandings.Add(item);
-                }
-
-                foreach (var item in stateProvinceChampionshipSeries.Statistics)
-                {
-                    StateProvinceStatistics.Add(item);
-                }
-
-                foreach (var item in stateProvinceChampionshipSeries.Payouts)
-                {
-                    StateProvincePayouts.Add(item);
-                }
+                SeriesTournaments = await PinballRankingApiV2.GetSeriesTournamentsForRegion(SeriesCode, RegionCode, Year);
+                OnPropertyChanged("SeriesTournaments");
             }
             catch (Exception ex)
             {

@@ -7,7 +7,7 @@
         <ToolbarItem Text="Filter" Clicked="ToolbarItem_Clicked" IconImageSource="filter.png" />
     </ContentPage.ToolbarItems>
     <ListView x:Name="MyListView"
-            ItemsSource="{Binding StateProvinceStandings}"
+            ItemsSource="{Binding SeriesOverallResults}"
             RefreshCommand="{Binding LoadItemsCommand}"
             IsPullToRefreshEnabled="true"
             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
@@ -21,7 +21,7 @@
                         <StackLayout Padding="10,0,10,0" Orientation="Horizontal">
                           
                             <StackLayout Padding="10" Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                                <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" Text="{Binding StateProvinceName}" />
+                                <Label LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" Text="{Binding RegionName}" />
 
                                 <Label HorizontalOptions="StartAndExpand" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" >
                                     <Label.FormattedText>
@@ -29,9 +29,7 @@
                                             <FormattedString.Spans>
                                                 <Span Text="Current Leader:" TextColor="{DynamicResource SecondaryTextColor}" />
                                                 <Span Text=" " />
-                                                <Span Text="{Binding CurrentLeader.FirstName}" />
-                                                <Span Text=" " />
-                                                <Span Text="{Binding CurrentLeader.LastName}" />
+                                                <Span Text="{Binding CurrentLeader.PlayerName}" />
                                             </FormattedString.Spans>
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -56,7 +54,7 @@
                                             <FormattedString.Spans>
                                                 <Span Text="Prize Value:" />
                                                 <Span Text=" " />
-                                                <Span Text="{Binding PrizeValue, StringFormat='{0:C}'}" />
+                                                <Span Text="{Binding PrizeFund, StringFormat='{0:C}'}" />
                                             </FormattedString.Spans>
                                         </FormattedString>
                                     </Label.FormattedText>
