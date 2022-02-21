@@ -1,5 +1,6 @@
 ﻿using Ifpa.ViewModels;
 using PinballApi.Models.WPPR.v2.Nacs;
+using PinballApi.Models.WPPR.v2.Series;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -33,6 +34,18 @@ namespace Ifpa.Views
             base.OnAppearing();
 
             viewModel.LoadItemsCommand.Execute(null);
-        }  
+        }
+
+        private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var tournament = e.Item as SubmittedTournament;
+            if (tournament == null)
+                return;
+
+            await Navigation.PushAsync(new TournamentResultsPage(new TournamentResultsViewModel(tournament.TournamentId)));
+
+            //Deselect Item
+            ((ListView)sender).SelectedItem = null;
+        }
     }
 }

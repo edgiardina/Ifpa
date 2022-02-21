@@ -12,6 +12,7 @@ namespace Ifpa.ViewModels
     public class ChampionshipSeriesDetailViewModel : BaseViewModel
     {
         public RegionStandings RegionStandings { get; set; }
+        public SeriesTournaments SeriesTournaments { get; set; }    
 
         public Command LoadItemsCommand { get; set; }
 
@@ -43,6 +44,10 @@ namespace Ifpa.ViewModels
             try
             {
                 RegionStandings = await PinballRankingApiV2.GetSeriesStandingsForRegion(SeriesCode, RegionCode, Year);
+                OnPropertyChanged("RegionStandings");
+
+                SeriesTournaments = await PinballRankingApiV2.GetSeriesTournamentsForRegion(SeriesCode, RegionCode, Year);
+                OnPropertyChanged("SeriesTournaments");
             }
             catch (Exception ex)
             {
