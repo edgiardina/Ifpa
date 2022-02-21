@@ -62,7 +62,7 @@ namespace Ifpa.ViewModels
             IsBusy = true;
 
             try
-            {
+            {                
                 var items = await PinballRankingApi.GetCalendarById(CalendarId);
 
                 var calendarEntry = items.Calendar.FirstOrDefault();

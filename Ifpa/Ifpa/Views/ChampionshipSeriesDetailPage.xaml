@@ -18,7 +18,7 @@
         <tabView:SfTabItem Title="Standings">
             <tabView:SfTabItem.Content>
                 <ListView
-                        ItemsSource="{Binding StateProvinceStandings}"
+                        ItemsSource="{Binding RegionStandings.Standings}"
                         RefreshCommand="{Binding LoadItemsCommand}"
                         IsPullToRefreshEnabled="true"
                         IsRefreshing="{Binding IsBusy, Mode=OneWay}"

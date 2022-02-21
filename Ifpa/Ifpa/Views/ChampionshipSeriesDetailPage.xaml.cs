@@ -23,7 +23,7 @@ namespace Ifpa.Views
             if (playerStanding == null)
                 return;
 
-            await Navigation.PushAsync(new ChampionshipSeriesPlayerCardPage(new ChampionshipSeriesPlayerCardViewModel(viewModel.Year, playerStanding.PlayerId, viewModel.StateProvinceAbbreviation)));
+            await Navigation.PushAsync(new ChampionshipSeriesPlayerCardPage(new ChampionshipSeriesPlayerCardViewModel(viewModel.Year, playerStanding.PlayerId, viewModel.RegionCode)));
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
@@ -32,8 +32,7 @@ namespace Ifpa.Views
         {
             base.OnAppearing();
 
-            if (viewModel.StateProvinceStandings.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
+            viewModel.LoadItemsCommand.Execute(null);
         }  
     }
 }
