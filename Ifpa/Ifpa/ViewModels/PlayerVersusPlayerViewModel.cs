@@ -3,16 +3,21 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using PinballApi.Models.WPPR.v1.Players;
+using PinballApi.Models.WPPR.v2.Players;
 using System.Linq;
 using Ifpa.Models;
+using PinballApi.Models.WPPR.v2.Rankings;
 
 namespace Ifpa.ViewModels
 {
     public class PlayerVersusPlayerViewModel : BaseViewModel
     {
-        public ObservableCollection<Grouping<char, PlayerVersusRecord>> Results { get; set; }
-        public Command LoadItemsCommand { get; set; }
+        public ObservableCollection<Grouping<char, PlayerVersusRecord>> AllResults { get; set; }
+
+        public ObservableCollection<Grouping<char, PlayerVersusRecord>> EliteResults { get; set; }
+        public Command LoadAllItemsCommand { get; set; }
+
+        public Command LoadEliteItemsCommand { get; set; }
 
         public int PlayerId { get; set; }
 
@@ -22,11 +27,13 @@ namespace Ifpa.ViewModels
         {
             Title = "PVP";
             this.PlayerId = playerId;
-            Results = new ObservableCollection<Grouping<char, PlayerVersusRecord>>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            AllResults = new ObservableCollection<Grouping<char, PlayerVersusRecord>>();
+            EliteResults = new ObservableCollection<Grouping<char, PlayerVersusRecord>>();
+            LoadAllItemsCommand = new Command(async () => await ExecuteLoadAllItemsCommand());
+            LoadEliteItemsCommand = new Command(async () => await ExecuteLoadEliteItemsCommand());
         }
 
-        async Task ExecuteLoadItemsCommand()
+        async Task ExecuteLoadEliteItemsCommand()
         {
             if (IsBusy)
                 return;
@@ -35,14 +42,14 @@ namespace Ifpa.ViewModels
 
             try
             {
-                Results.Clear();
-                var pvpResults = await PinballRankingApi.GetPlayerComparisons(PlayerId);
+                EliteResults.Clear();
+                var pvpResults = await PinballRankingApiV2.GetPlayerVersusElitePlayer(PlayerId);
 
-                if (pvpResults.Pvp != null)
+                if (pvpResults.Records != null)
                 {
-                    var lastNames = pvpResults.Pvp
+                    var lastNames = pvpResults.Records
                                             .OrderBy(n => n.LastName).Select(n => n.LastName).ToList();
-                    var groupedResults = pvpResults.Pvp
+                    var groupedResults = pvpResults.Records
                                             .OrderBy(n => n.LastName)
                                             .ThenBy(n => n.FirstName)
                                             .GroupBy(c => char.ToUpper(c.LastName.FirstOrDefault()))
@@ -50,7 +57,51 @@ namespace Ifpa.ViewModels
 
                     foreach (var item in groupedResults)
                     {
-                        Results.Add(item);
+                        EliteResults.Add(item);
+                    }
+                }
+                else
+                {
+                    HasNoPvpData = true;
+
+                    OnPropertyChanged(nameof(HasNoPvpData));
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        async Task ExecuteLoadAllItemsCommand()
+        {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+
+            try
+            {
+                AllResults.Clear();
+                var pvpResults = await PinballRankingApiV2.GetPlayerVersusPlayer(PlayerId);
+
+                if (pvpResults.PlayerVersusPlayerRecords != null)
+                {
+                    var lastNames = pvpResults.PlayerVersusPlayerRecords
+                                            .OrderBy(n => n.LastName).Select(n => n.LastName).ToList();
+                    var groupedResults = pvpResults.PlayerVersusPlayerRecords
+                                            .OrderBy(n => n.LastName)
+                                            .ThenBy(n => n.FirstName)
+                                            .GroupBy(c => char.ToUpper(c.LastName.FirstOrDefault()))
+                                            .Select(g => new Grouping<char, PlayerVersusRecord>(g.Key, g));
+
+                    foreach (var item in groupedResults)
+                    {
+                        AllResults.Add(item);
                     }
                 }
                 else

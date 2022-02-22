@@ -12,6 +12,9 @@
             <local:BoolConverter x:Key="BoolConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Filter" x:Name="InfoButton" Clicked="InfoButton_Clicked"  IconImageSource="filter.png" />
+    </ContentPage.ToolbarItems>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -26,7 +29,7 @@
         <ListView x:Name="MyListView"
             Grid.Row="0" 
             IsVisible="{Binding HasNoPvpData, Converter={StaticResource BoolConverter}}"
-            ItemsSource="{Binding Results}"
+            ItemsSource="{Binding AllResults}"
             RefreshCommand="{Binding LoadItemsCommand}"              
             IsPullToRefreshEnabled="true"
             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
