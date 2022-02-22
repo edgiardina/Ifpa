@@ -39,7 +39,7 @@
                                         <FormattedString.Spans>
                                             <Span Text="{Binding Source={x:Reference PVPDetailPage}, Path=BindingContext.PlayerOneInitials}" TextColor="{DynamicResource SecondaryTextColor}" />
                                             <Span Text=": " TextColor="{DynamicResource SecondaryTextColor}" />
-                                            <Span Text="{Binding P1FinishPosition, Converter={StaticResource intToOrdinalString}}" />
+                                            <Span Text="{Binding FinishPosition.PlayerOne, Converter={StaticResource intToOrdinalString}}" />
                                         </FormattedString.Spans>
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -50,7 +50,7 @@
                                         <FormattedString.Spans>
                                             <Span Text="{Binding Source={x:Reference PVPDetailPage}, Path=BindingContext.PlayerTwoInitials}" TextColor="{DynamicResource SecondaryTextColor}" />
                                             <Span Text=": " TextColor="{DynamicResource SecondaryTextColor}" />
-                                            <Span Text="{Binding P2FinishPosition, Converter={StaticResource intToOrdinalString}}" />
+                                            <Span Text="{Binding FinishPosition.PlayerTwo, Converter={StaticResource intToOrdinalString}}" />
                                         </FormattedString.Spans>
                                     </FormattedString>
                                 </Label.FormattedText>

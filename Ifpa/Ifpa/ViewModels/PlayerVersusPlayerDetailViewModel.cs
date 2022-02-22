@@ -3,14 +3,14 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using PinballApi.Models.WPPR.v1.Pvp;
 using System.Linq;
+using PinballApi.Models.WPPR.v2.Players;
 
 namespace Ifpa.ViewModels
 {
     public class PlayerVersusPlayerDetailViewModel : BaseViewModel
     {
-        public ObservableCollection<Pvp> PlayerVersusPlayer { get; set; }
+        public ObservableCollection<PlayerVersusPlayerComparisonRecord> PlayerVersusPlayer { get; set; }
 
         public string PlayerOneInitials { get; set; }
 
@@ -24,7 +24,7 @@ namespace Ifpa.ViewModels
         {
             this.playerOneId = playerOneId;
             this.playerTwoId = playerTwoId;
-            PlayerVersusPlayer = new ObservableCollection<Pvp>();
+            PlayerVersusPlayer = new ObservableCollection<PlayerVersusPlayerComparisonRecord>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
 
@@ -38,17 +38,17 @@ namespace Ifpa.ViewModels
             try
             {
                 PlayerVersusPlayer.Clear();
-                var pvpResults = await PinballRankingApi.GetPvp(playerOneId, playerTwoId);
+                var pvpResults = await PinballRankingApiV2.GetPlayerVersusPlayerComparison(playerOneId, playerTwoId);
 
-                foreach (var item in pvpResults.Pvp.OrderByDescending(n => n.EventDate))
+                foreach (var item in pvpResults.ComparisonRecords.OrderByDescending(n => n.EventDate))
                 {                 
                     PlayerVersusPlayer.Add(item);
                 }
 
-                Title = $"{pvpResults.P1FirstName} {pvpResults.P1LastName} vs {pvpResults.P2FirstName} {pvpResults.P2LastName}";
+                Title = $"{pvpResults.PlayerOne.FirstName} {pvpResults.PlayerOne.LastName} vs {pvpResults.PlayerTwo.FirstName} {pvpResults.PlayerTwo.LastName}";
 
-                PlayerOneInitials = pvpResults.P1FirstName.FirstOrDefault().ToString() + pvpResults.P1LastName.FirstOrDefault().ToString();
-                PlayerTwoInitials = pvpResults.P2FirstName.FirstOrDefault().ToString() + pvpResults.P2LastName.FirstOrDefault().ToString();
+                PlayerOneInitials = pvpResults.PlayerOne.FirstName.FirstOrDefault().ToString() + pvpResults.PlayerOne.LastName.FirstOrDefault().ToString();
+                PlayerTwoInitials = pvpResults.PlayerTwo.FirstName.FirstOrDefault().ToString() + pvpResults.PlayerTwo.LastName.FirstOrDefault().ToString();
                 OnPropertyChanged("PlayerOneInitials");
                 OnPropertyChanged("PlayerTwoInitials");
             }
