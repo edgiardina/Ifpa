@@ -3,6 +3,7 @@ using PinballApi.Models.WPPR.v2.Nacs;
 using PinballApi.Models.WPPR.v2.Series;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -44,13 +45,7 @@ namespace Ifpa.Views
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
-            //caveat: NACS data started in 2018
-            List<string> yearsToDisplay = new List<string>();
-
-            for (int i = 2018; i <= DateTime.Now.Year; i++)
-                yearsToDisplay.Add(i.ToString());
-
-            string action = await DisplayActionSheet("Championship Series Year", "Cancel", null, yearsToDisplay.ToArray());
+            string action = await DisplayActionSheet("Championship Series Year", "Cancel", null, viewModel.AvailableYears.Select(n => n.ToString()).ToArray());
 
             if (int.TryParse(action, out var yearValue))
             {

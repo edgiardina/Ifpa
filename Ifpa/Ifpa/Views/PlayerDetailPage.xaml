@@ -75,7 +75,7 @@
                 <StackLayout Orientation="Horizontal">
                     <Button Padding="10,0,10,0" Text="Results" HorizontalOptions="FillAndExpand" Clicked="TournamentResults_Button_Clicked" />
                     <Button Padding="10,0,10,0" Text=" PVP " HorizontalOptions="FillAndExpand" Clicked="Pvp_Button_Clicked" />
-                    <Button Padding="10,0,10,0" Text="NACS" HorizontalOptions="FillAndExpand" Clicked="NACS_Button_Clicked" IsVisible="{Binding HasNacsData}" />
+                    <Button Padding="10,0,10,0" Text="Champ. Series" HorizontalOptions="FillAndExpand" Clicked="CS_Button_Clicked" IsVisible="{Binding HasChampionshipSeriesData}" />
                 </StackLayout>
 
 

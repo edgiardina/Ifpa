@@ -2,6 +2,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -35,7 +36,7 @@ namespace Ifpa.ViewModels
                 ChampionshipSeries.Clear();
                 var player = await PinballRankingApiV2.GetPlayer(playerId);
 
-                foreach (var item in player.ChampionshipSeries)
+                foreach (var item in player.ChampionshipSeries.Where(n => n.Year == DateTime.Now.Year))
                 {
                     ChampionshipSeries.Add(item);
                 }

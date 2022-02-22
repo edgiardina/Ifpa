@@ -1,8 +1,10 @@
 ﻿using PinballApi.Models.WPPR.v2.Nacs;
 using PinballApi.Models.WPPR.v2.Series;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -13,6 +15,8 @@ namespace Ifpa.ViewModels
         public ObservableCollection<SeriesOverallResult> SeriesOverallResults { get; set; }
         public Command LoadItemsCommand { get; set; }
 
+        public List<int> AvailableYears { get; set; }
+
         public int Year { get; set; }
 
         public string SeriesCode { get; set; }
@@ -21,6 +25,7 @@ namespace Ifpa.ViewModels
         {
             this.Year = year;
             this.SeriesCode = code;
+            this.AvailableYears = new List<int>();
 
             SeriesOverallResults = new ObservableCollection<SeriesOverallResult>();
 
@@ -41,6 +46,9 @@ namespace Ifpa.ViewModels
             {
                 SeriesOverallResults.Clear();
                 var stateProvinceChampionshipSeries = await PinballRankingApiV2.GetSeriesOverallStanding(SeriesCode, Year);
+                var seriesDetails = await PinballRankingApiV2.GetSeries();
+
+                AvailableYears = seriesDetails.First(n => n.Code == SeriesCode).Years;
 
                 if (stateProvinceChampionshipSeries != null)
                 {

@@ -26,8 +26,7 @@ namespace Ifpa.Views
             if (state == null)
                 return;
 
-            //TODO: swap out NACS hardcoded string with data looked up somewhere
-            await Navigation.PushAsync(new ChampionshipSeriesDetailPage(new ChampionshipSeriesDetailViewModel("NACS", state.StateProvince, state.Year)));
+            await Navigation.PushAsync(new ChampionshipSeriesDetailPage(new ChampionshipSeriesDetailViewModel(state.SeriesCode, state.RegionCode, state.Year)));
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
