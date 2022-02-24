@@ -5,6 +5,7 @@ using PinballApi.Models.WPPR.v2.Players;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -83,7 +84,7 @@ namespace Ifpa.ViewModels
             }
         }
 
-        public bool HasNacsData => PlayerRecord.ChampionshipSeries != null;
+        public bool? HasChampionshipSeriesData => PlayerRecord.ChampionshipSeries?.Any();
 
         public string CountryFlag => $"https://flagcdn.com/w80/{PlayerRecord.CountryCode?.ToLower()}.png";
 

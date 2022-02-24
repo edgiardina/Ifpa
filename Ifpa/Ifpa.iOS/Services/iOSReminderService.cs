@@ -4,8 +4,10 @@ using Ifpa.Interfaces;
 using Ifpa.iOS.Services;
 using Ifpa.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.Linq;
 
 [assembly: Dependency(typeof(iOSReminderService))]
 namespace Ifpa.iOS.Services
@@ -14,17 +16,20 @@ namespace Ifpa.iOS.Services
     {
         protected EKEventStore eventStore = new EKEventStore();
 
-        public async Task<bool> CreateReminder(CalendarDetailViewModel calendarDetail)
+        public async Task<bool> CreateReminder(CalendarDetailViewModel calendarDetail, string calendarIdentifier)
         {
             var granted = await eventStore.RequestAccessAsync(EKEntityType.Event);//, (bool granted, NSError e) =>
             if (granted.Item1)
             {
+                var calendars = eventStore.GetCalendars(EKEntityType.Event);
+                var selectedCalendar = calendars.Single(n => n.Title == calendarIdentifier);
+
                 EKEvent newEvent = EKEvent.FromStore(eventStore);
                 newEvent.StartDate = DateTimeToNSDate(calendarDetail.StartDate);
                 newEvent.EndDate = DateTimeToNSDate(calendarDetail.EndDate);
                 newEvent.Title = calendarDetail.TournamentName;
                 newEvent.Notes = calendarDetail.Details;
-                newEvent.Calendar = eventStore.DefaultCalendarForNewEvents;
+                newEvent.Calendar = selectedCalendar;
                 //TODO: we don't get start/end time for these so fix so its not all day
                 newEvent.AllDay = true;
                 newEvent.Location = $"{calendarDetail.Address1} {calendarDetail.City} {calendarDetail.State}";
@@ -35,6 +40,22 @@ namespace Ifpa.iOS.Services
             else
             {               
                 return false;
+            }
+        }
+
+        public async Task<IEnumerable<string>> GetCalendarList()
+        {
+            var granted = await eventStore.RequestAccessAsync(EKEntityType.Event);
+            if (granted.Item1)
+            {
+                var calendars = eventStore.GetCalendars(EKEntityType.Event)
+                                          .Where(n => (n.Type == EKCalendarType.CalDav || n.Type == EKCalendarType.Local) && n.AllowsContentModifications);
+          
+                return calendars.Select(n => n.Title);
+            }
+            else
+            {
+                return new List<string>();
             }
         }
 
@@ -54,5 +75,7 @@ namespace Ifpa.iOS.Services
                 date = DateTime.SpecifyKind(date, DateTimeKind.Local);
             return (NSDate)date;
         }
+
+
     }
 }

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <UserSecretsId>f2f2536e-4969-48fa-8248-356ee89e25c0</UserSecretsId>
   </PropertyGroup>
 
@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PinballApi" Version="2.0.69" />
+    <PackageReference Include="PinballApi" Version="2.0.74" />
     <PackageReference Include="Plugin.AppShortcuts" Version="1.0.0.3" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="Syncfusion.Licensing" Version="19.4.0.52" />
@@ -106,6 +106,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CalendarPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ChampionshipSeriesListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DataTemplates\ActivityFeedRankChangeViewCell.xaml">

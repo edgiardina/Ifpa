@@ -1,24 +1,24 @@
-﻿using PinballApi.Models.v2.WPPR;
+﻿using PinballApi.Models.WPPR.v2.Nacs;
+using PinballApi.Models.WPPR.v2.Series;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Ifpa.ViewModels
 {
-    public class PlayerChampionshipSeriesViewModel : BaseViewModel
+    public class ChampionshipSeriesListViewModel : BaseViewModel
     {
-        public ObservableCollection<ChampionshipSeries> ChampionshipSeries { get; set; }
+        public ObservableCollection<Series> ChampionshipSeries { get; set; }
         public Command LoadItemsCommand { get; set; }
-
-        private int playerId;
-
-        public PlayerChampionshipSeriesViewModel(int playerId)
+        
+        public ChampionshipSeriesListViewModel()
         {
-            this.playerId = playerId;
-            ChampionshipSeries = new ObservableCollection<ChampionshipSeries>();
+
+            ChampionshipSeries = new ObservableCollection<Series>();
+
+            Title = "Championship Series";
 
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
@@ -34,12 +34,15 @@ namespace Ifpa.ViewModels
             try
             {
                 ChampionshipSeries.Clear();
-                var player = await PinballRankingApiV2.GetPlayer(playerId);
+                var series = await PinballRankingApiV2.GetSeries();
 
-                foreach (var item in player.ChampionshipSeries.Where(n => n.Year == DateTime.Now.Year))
+                if (series != null)
                 {
-                    ChampionshipSeries.Add(item);
-                }
+                    foreach (var item in series)
+                    {
+                        ChampionshipSeries.Add(item);
+                    }
+                }       
             }
             catch (Exception ex)
             {

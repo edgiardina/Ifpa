@@ -86,7 +86,7 @@ namespace Ifpa.Views
 
         private async void AddToCalendarButton_Clicked(object sender, EventArgs e)
         {
-            var status = await Permissions.CheckStatusAsync<Permissions.CalendarWrite>();
+            var status = await Permissions.CheckStatusAsync<Permissions.CalendarRead>();
             if (status != PermissionStatus.Granted)
             {
                 status = await Permissions.RequestAsync<Permissions.CalendarWrite>();
@@ -94,15 +94,27 @@ namespace Ifpa.Views
 
             if (status == PermissionStatus.Granted)
             {
-                var result = await DependencyService.Get<IReminderService>().CreateReminder(this.viewModel);
+                string selectedCalendar = null;
+                var calendars = await DependencyService.Get<IReminderService>().GetCalendarList();
 
-                if (result)
+                //iOS Supports multiple calendars. no idea how to do this in Android yet. 
+                if (Device.RuntimePlatform == Device.iOS)
                 {
-                    await DisplayAlert("Success", "Tournament added to your Calendar", "OK");
+                    selectedCalendar = await DisplayActionSheet("This event will be added to your phone's calendar", "Cancel", null, calendars.ToArray());
                 }
-                else
+
+                if (selectedCalendar != "Cancel")
                 {
-                    await DisplayAlert("Error", "Unable to add Tournament to your Calendar", "OK");
+                    var result = await DependencyService.Get<IReminderService>().CreateReminder(this.viewModel, selectedCalendar);
+
+                    if (result)
+                    {
+                        await DisplayAlert("Success", "Tournament added to your Calendar", "OK");
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", "Unable to add Tournament to your Calendar", "OK");
+                    }
                 }
             }
             else

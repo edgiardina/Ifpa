@@ -1,4 +1,4 @@
-﻿using PinballApi.Models.WPPR.v1.Players;
+﻿using PinballApi.Models.WPPR.v2.Players;
 using System;
 using System.Globalization;
 using Xamarin.Forms;

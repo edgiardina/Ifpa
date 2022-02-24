@@ -1,5 +1,5 @@
 ﻿using Ifpa.ViewModels;
-using PinballApi.Models.WPPR.v1.Players;
+using PinballApi.Models.WPPR.v2.Players;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -33,8 +33,24 @@ namespace Ifpa.Views
         {
             base.OnAppearing();
 
-            if (viewModel.Results.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
+            if (viewModel.AllResults.Count == 0)
+                viewModel.LoadAllItemsCommand.Execute(null);
+        }
+
+        private async void InfoButton_Clicked(object sender, System.EventArgs e)
+        {
+            string action = await DisplayActionSheet("PVP Type", null, null, "All", "Top 250");
+
+            if(action == "All")
+            {
+                viewModel.LoadAllItemsCommand.Execute(null);
+                MyListView.SetBinding(ListView.ItemsSourceProperty, "AllResults"); 
+            }
+            else
+            {
+                viewModel.LoadEliteItemsCommand.Execute(null);
+                MyListView.SetBinding(ListView.ItemsSourceProperty, "EliteResults");
+            }
         }
     }
 }

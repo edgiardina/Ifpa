@@ -1,7 +1,9 @@
 ﻿using Ifpa.ViewModels;
 using PinballApi.Models.WPPR.v2.Nacs;
+using PinballApi.Models.WPPR.v2.Series;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,22 +15,22 @@ namespace Ifpa.Views
         ChampionshipSeriesViewModel viewModel;
         int year = DateTime.Now.Year;
 
-        public ChampionshipSeriesPage()
+        public ChampionshipSeriesPage(string code)
         {
             InitializeComponent();
 
             //TODO: allow user to pick the year            
 
-            BindingContext = this.viewModel = new ChampionshipSeriesViewModel(year);
+            BindingContext = this.viewModel = new ChampionshipSeriesViewModel(code, year);
         }
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var championshipStandings = e.Item as NacsStandings;
+            var championshipStandings = e.Item as SeriesOverallResult;
             if (championshipStandings == null)
                 return;
 
-            await Navigation.PushAsync(new ChampionshipSeriesDetailPage(new ChampionshipSeriesDetailViewModel(championshipStandings.StateProvince, year)));
+            await Navigation.PushAsync(new ChampionshipSeriesDetailPage(new ChampionshipSeriesDetailViewModel(viewModel.SeriesCode, championshipStandings.RegionCode, year)));
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
@@ -37,19 +39,13 @@ namespace Ifpa.Views
         {
             base.OnAppearing();
 
-            if (viewModel.StateProvinceStandings.Count == 0)
+            if (viewModel.SeriesOverallResults.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
         }
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
-            //caveat: NACS data started in 2018
-            List<string> yearsToDisplay = new List<string>();
-
-            for (int i = 2018; i <= DateTime.Now.Year; i++)
-                yearsToDisplay.Add(i.ToString());
-
-            string action = await DisplayActionSheet("Championship Series Year", "Cancel", null, yearsToDisplay.ToArray());
+            string action = await DisplayActionSheet("Championship Series Year", "Cancel", null, viewModel.AvailableYears.Select(n => n.ToString()).ToArray());
 
             if (int.TryParse(action, out var yearValue))
             {

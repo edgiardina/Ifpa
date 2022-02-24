@@ -1,5 +1,5 @@
 ﻿using Ifpa.ViewModels;
-using PinballApi.Models.WPPR.v1.Pvp;
+using PinballApi.Models.WPPR.v2.Players;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,7 +19,7 @@ namespace Ifpa.Views
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {            
-            var tournament = e.Item as Pvp;
+            var tournament = e.Item as PlayerVersusPlayerComparisonRecord;
             if (tournament == null)
                 return;
 
