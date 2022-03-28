@@ -35,7 +35,7 @@ namespace Ifpa
             try
             {
                 if (!Settings.HasConfiguredMyStats                                                                            
-                    && args.Target.ToString().Contains("my-stats")
+                    && args.Target.Location.ToString().Contains("my-stats")
                 )
                 {
                     await DisplayAlert("Configure your Stats", "Looks like you haven't configured your 'My Stats' page. Use the Player Search to find your Player, and press the Star to configure your Stats", "OK");
