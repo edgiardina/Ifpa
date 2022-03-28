@@ -19,7 +19,7 @@ namespace Ifpa
             _ = Shortcuts.AddShortcuts();
 
             InitializeComponent();
-            MainPage = new MainPage();
+            MainPage = new AppShell();
 
             Current.RequestedThemeChanged += (s, a) =>
             {
@@ -66,30 +66,23 @@ namespace Ifpa
             }
         }
 
-        protected override void OnAppLinkRequestReceived(Uri uri)
+        protected override async void OnAppLinkRequestReceived(Uri uri)
         {
-            var option = uri.ToString().Replace(Shortcuts.AppShortcutUriBase, "");
-            if (!string.IsNullOrEmpty(option))
+            //App Shortcut
+            if (uri.ToString().Contains(Shortcuts.AppShortcutUriBase))
             {
-                switch (option)
+                var option = uri.ToString().Replace(Shortcuts.AppShortcutUriBase, "");
+                if (!string.IsNullOrEmpty(option))
                 {
-                    case "playersearch":
-                        Settings.CurrentTabIndex = 1;                
-                        break;
-                    case "mystats":
-                        Settings.CurrentTabIndex = 2;           
-                        break;
-                    case "calendar":
-                        Settings.CurrentTabIndex = 3;            
-                        break;
+                    await Shell.Current.GoToAsync($"///{option}");
                 }
+                else
+                {
+                    base.OnAppLinkRequestReceived(uri);
+                }
+            }
 
-                ((MainPage)(Current.MainPage)).SwitchTabToLastSelectedTab();
-            }
-            else
-            {
-                base.OnAppLinkRequestReceived(uri);
-            }
+            //TODO: Deep Link request
         }
     }
 }

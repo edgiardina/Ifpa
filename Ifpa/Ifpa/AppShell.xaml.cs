@@ -1,0 +1,54 @@
+﻿using Ifpa.Models;
+using Ifpa.Views;
+using System;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace Ifpa
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class AppShell : Shell
+    {
+        public AppShell()
+        {
+            InitializeComponent();
+
+            Routing.RegisterRoute("player-search", typeof(PlayerSearchPage));
+            Routing.RegisterRoute("results", typeof(PlayerResultsPage));
+        }
+
+        protected override async void OnNavigating(ShellNavigatingEventArgs args)
+        {
+            base.OnNavigating(args);
+
+            //var i = this.Children.IndexOf(this.CurrentPage);
+
+            //Settings.CurrentTabIndex = i;
+
+            //await Application.Current.SavePropertiesAsync();
+
+            ShellNavigatingDeferral token = args.GetDeferral();
+
+            //If a user hasn't set up my stats, redirect to player search
+
+            try
+            {
+                if (!Settings.HasConfiguredMyStats                                                                            
+                    && args.Target.ToString().Contains("my-stats")
+                )
+                {
+                    await DisplayAlert("Configure your Stats", "Looks like you haven't configured your 'My Stats' page. Use the Player Search to find your Player, and press the Star to configure your Stats", "OK");
+                    args.Cancel();
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            token?.Complete();
+        }
+    }
+}

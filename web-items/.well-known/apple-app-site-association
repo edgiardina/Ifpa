@@ -1,0 +1,17 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": [ "KH5JKUPW2Q.com.edgiardina.ifpa" ],
+        "components": [
+          {
+            "/": "/player.php",
+            "?": { "p": "?????" },
+            "comment": "Matches any URL whose path starts with /player.php and which has a query item with name 'p' and a value of exactly 4 characters"
+          }
+        ]
+      }
+    ]
+  }
+}

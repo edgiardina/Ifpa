@@ -5,6 +5,7 @@ using Ifpa.iOS.Services;
 using Ifpa.Services;
 using Ifpa.Views;
 using UIKit;
+using Xamarin.Forms;
 
 namespace Ifpa.iOS
 {
@@ -63,18 +64,13 @@ namespace Ifpa.iOS
             if (notification.AlertAction != BaseNotificationService.NewBlogPostTitle)
             {
                 //Navigate to My Stats
-                ((MainPage)(App.Current.MainPage)).CurrentPage = ((MainPage)(App.Current.MainPage)).Children.Single(n => n.Title == "My Stats");
-
-                //Press Tournament Results Button.
-                await (((MainPage)(App.Current.MainPage)).CurrentPage).Navigation.PushAsync(new ActivityFeedPage());
+                //TODO: open specific tournament
+                await Shell.Current.GoToAsync("///my-stats/results/");
             }
             else
             {
-                //Navigate to More
-                ((MainPage)(App.Current.MainPage)).CurrentPage = ((MainPage)(App.Current.MainPage)).Children.Single(n => n.Title == "More");
-
                 //Open News
-                await (((MainPage)(App.Current.MainPage)).CurrentPage).Navigation.PushAsync(new NewsPage());
+                await Shell.Current.GoToAsync("///more/news");
             }
         }
 
