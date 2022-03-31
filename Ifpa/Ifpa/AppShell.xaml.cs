@@ -16,6 +16,7 @@ namespace Ifpa
 
             Routing.RegisterRoute("player-search", typeof(PlayerSearchPage));
             Routing.RegisterRoute("results", typeof(PlayerResultsPage));
+            Routing.RegisterRoute("player-details", typeof(PlayerDetailPage));
         }
 
         protected override async void OnNavigating(ShellNavigatingEventArgs args)

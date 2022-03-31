@@ -7,10 +7,10 @@ using System.Linq;
 using Ifpa.Services;
 using Ifpa.Models;
 using Xamarin.Essentials;
-using Syncfusion.SfChart.XForms;
 
 namespace Ifpa.Views
 {
+    [QueryProperty("PlayerId", "playerId")]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PlayerDetailPage : ContentPage
     {
@@ -18,25 +18,25 @@ namespace Ifpa.Views
 
         bool LoadMyStats = false;
 
-        public PlayerDetailPage(PlayerDetailViewModel viewModel)
-        {
-            InitializeComponent();
-            viewModel.IsBusy = true;
-            BindingContext = this.viewModel = viewModel;
-        }
+        public int PlayerId { get;set; }
 
         public PlayerDetailPage()
         {
             InitializeComponent();
 
-            LoadMyStats = true;
-            BindingContext = this.viewModel = new PlayerDetailViewModel();
+            BindingContext = this.viewModel = App.GetViewModel<PlayerDetailViewModel>();
             viewModel.IsBusy = true;
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+
+
+            if (PlayerId == 0)
+                LoadMyStats = true;
+            else
+                viewModel.PlayerId = PlayerId;
 
             if (LoadMyStats)
             {

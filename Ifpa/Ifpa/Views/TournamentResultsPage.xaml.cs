@@ -28,7 +28,7 @@ namespace Ifpa.Views
 
             if (tournament.PlayerId.HasValue)
             {
-                await Navigation.PushAsync(new PlayerDetailPage(new PlayerDetailViewModel(tournament.PlayerId.Value)));
+                await Shell.Current.GoToAsync($"player-details?playerId={tournament.PlayerId.Value}");
             }
 
             //Deselect Item

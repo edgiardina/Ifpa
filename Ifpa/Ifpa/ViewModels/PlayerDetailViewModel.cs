@@ -93,11 +93,8 @@ namespace Ifpa.ViewModels
 
         public bool IsRegistered => PlayerRecord.IfpaRegistered;
         
-        public PlayerDetailViewModel(int? playerId = null)
+        public PlayerDetailViewModel()
         {
-            if (playerId.HasValue)
-                PlayerId = playerId.Value;
-
             PlayerRankHistory = new ObservableCollection<RankHistory>();
             PlayerRatingHistory = new ObservableCollection<RatingHistory>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());

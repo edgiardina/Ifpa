@@ -22,7 +22,7 @@ namespace Ifpa.Views
 
         private async void CreatorLabel_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PlayerDetailPage(new PlayerDetailViewModel(creatorIfpaNumber)));
+            await Shell.Current.GoToAsync($"player-details?playerId={creatorIfpaNumber}");
         }
 
         private async void ReviewButton_Clicked(object sender, EventArgs e)

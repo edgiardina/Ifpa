@@ -1,20 +1,25 @@
 ﻿using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using Ifpa.Views;
 using Xamarin.Essentials;
 using Ifpa.Models;
 using Ifpa.Styles;
 using System;
+using Ifpa.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using System.Web;
 
-[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Ifpa
 {
     public partial class App : Application
     {
-        public App()
+        protected static IServiceProvider ServiceProvider { get; set; }
+
+        public App(Action<IServiceCollection> addPlatformServices = null)
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(Constants.SyncFusionLicenseKey);
             //initial theme should be light 
+
+            //DI and other service prep
+            SetupServices(addPlatformServices);
 
             _ = Shortcuts.AddShortcuts();
 
@@ -25,6 +30,19 @@ namespace Ifpa
             {
                 SetThemeBasedOnDeviceTheme();
             };
+        }
+
+        private void SetupServices(Action<IServiceCollection> addPlatformServices)
+        {
+            var services = new ServiceCollection();
+
+            //TODO: Add platform specific services and eliminate DependencyService
+            addPlatformServices?.Invoke(services);
+
+            //This extension method call will register all viewmodels in the same namespace as the BaseViewModel
+            services.AddViewModels<BaseViewModel>();
+
+            ServiceProvider = services.BuildServiceProvider();
         }
 
         public static AppTheme AppTheme { get; set; }
@@ -66,6 +84,12 @@ namespace Ifpa
             }
         }
 
+        public static TViewModel GetViewModel<TViewModel>()
+            where TViewModel : BaseViewModel
+        {
+            return ServiceProvider.GetService<TViewModel>();
+        }
+
         protected override async void OnAppLinkRequestReceived(Uri uri)
         {
             //App Shortcut
@@ -83,6 +107,25 @@ namespace Ifpa
             }
 
             //TODO: Deep Link request
+            if (uri.ToString().Contains("player.php"))
+            {
+                //extract player ID from querystring
+                var id = HttpUtility.ParseQueryString(uri.Query)["p"];
+
+                if (!string.IsNullOrEmpty(id))
+                {
+                    await Shell.Current.GoToAsync($"///rankings/player-detail?playerId={id}");
+                }
+            }
+            //tournaments/view.php?t=46773
+            else if (uri.ToString().Contains("tournaments/view.php")) 
+            { 
+                var id = HttpUtility.ParseQueryString(uri.Query)["t"];
+                if (!string.IsNullOrEmpty(id))
+                {
+                    await Shell.Current.GoToAsync($"///rankings/tournament-results?tournamentId={id}");
+                }
+            }
         }
     }
 }
