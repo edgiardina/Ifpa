@@ -7,13 +7,11 @@
         "components": [
           {
             "/": "/player.php",
-            "?": { "p": "?????" },
-            "comment": "Matches any URL whose path starts with /player.php and which has a query item with name 'p' and a value of exactly 4 characters"
+            "comment": "Matches any URL whose path starts with /player.php"
           },
           {
             "/": "/tournaments/view.php",
-            "?": { "t": "?????" },
-            "comment": "Matches any URL whose path starts with tournaments/view.php and which has a query item with name 't' and a value of exactly 4 characters"
+            "comment": "Matches any URL whose path starts with tournaments/view.php"
           }
         ]
       }

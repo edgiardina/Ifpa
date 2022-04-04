@@ -13,6 +13,12 @@ namespace Ifpa.Droid
           DataScheme = "ifpa",
           DataHost = "ifpacompanion",
           AutoVerify = true)]
+    [IntentFilter(new[] { Intent.ActionView },
+          Categories = new[] { Intent.CategoryDefault },
+          DataSchemes = new string[] { "http", "https" },
+          DataHost = "www.ifpapinball.com",
+          DataPaths = new string[] { "/player.php", "/tournaments/view.php" },
+          AutoVerify = true)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
