@@ -3,6 +3,8 @@ using Xamarin.Forms;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Diagnostics;
+using Ifpa.Interfaces;
+using Xamarin.Essentials;
 
 namespace Ifpa.ViewModels
 {
@@ -48,9 +50,11 @@ namespace Ifpa.ViewModels
 
         public int CalendarId { get; set; }
 
-        public CalendarDetailViewModel(int calendarId)
+        private readonly IReminderService ReminderService;
+
+        public CalendarDetailViewModel(IReminderService reminderService)
         {
-            this.CalendarId = calendarId;
+            ReminderService = reminderService;
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
 
@@ -90,6 +94,45 @@ namespace Ifpa.ViewModels
             finally
             {
                 IsBusy = false;
+            }
+        }
+
+        public async Task AddToCalendar()
+        {
+            var status = await Permissions.CheckStatusAsync<Permissions.CalendarRead>();
+            if (status != PermissionStatus.Granted)
+            {
+                status = await Permissions.RequestAsync<Permissions.CalendarWrite>();
+            }
+
+            if (status == PermissionStatus.Granted)
+            {
+                string selectedCalendar = null;
+                var calendars = await ReminderService.GetCalendarList();
+
+                //iOS Supports multiple calendars. no idea how to do this in Android yet. 
+                if (Device.RuntimePlatform == Device.iOS)
+                {
+                    selectedCalendar = await Shell.Current.DisplayActionSheet("This event will be added to your phone's calendar", "Cancel", null, calendars.ToArray());
+                }
+
+                if (selectedCalendar != "Cancel")
+                {
+                    var result = await ReminderService.CreateReminder(this, selectedCalendar);
+
+                    if (result)
+                    {
+                        await Shell.Current.DisplayAlert("Success", "Tournament added to your Calendar", "OK");
+                    }
+                    else
+                    {
+                        await Shell.Current.DisplayAlert("Error", "Unable to add Tournament to your Calendar", "OK");
+                    }
+                }
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("Permission Required", "IFPA Companion requires your permission before adding items to your Calendar", "OK");
             }
         }
 

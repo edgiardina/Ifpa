@@ -61,16 +61,15 @@ namespace Ifpa.iOS
 
         public override async void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)
         {
-            if (notification.AlertAction != BaseNotificationService.NewBlogPostTitle)
-            {
-                //Navigate to My Stats
-                //TODO: open specific tournament
-                await Shell.Current.GoToAsync("///my-stats/results/");
-            }
-            else
+            if (notification.AlertAction == BaseNotificationService.NewBlogPostTitle)
             {
                 //Open News
                 await Shell.Current.GoToAsync("///more/news");
+            }
+            else
+            {
+                //Rank Change or tournament result, just go to My Stats activity feed
+                await Shell.Current.GoToAsync("///my-stats/activity-feed");
             }
         }
 

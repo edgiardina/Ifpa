@@ -53,7 +53,7 @@ namespace Ifpa.Views.Behaviors
         {
             var button = (Button)sender;
             var calendarId = (int)button.CommandParameter;
-            await page.Navigation.PushAsync(new CalendarDetailPage(new CalendarDetailViewModel(calendarId)));
+            await Shell.Current.GoToAsync($"calendar-detail?calendarId={calendarId}");
         }
     }
 }
