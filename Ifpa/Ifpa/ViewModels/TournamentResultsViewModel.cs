@@ -17,10 +17,9 @@ namespace Ifpa.ViewModels
 
         public int TournamentId { get; set; }
 
-        public TournamentResultsViewModel(int tournamentId)
+        public TournamentResultsViewModel()
         {
             Title = "Tournament Results";
-            this.TournamentId = tournamentId;
             Results = new ObservableCollectionRange<TournamentResult>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }

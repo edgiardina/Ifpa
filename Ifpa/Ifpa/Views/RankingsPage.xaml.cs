@@ -62,7 +62,7 @@ namespace Ifpa.Views
 
         private async void SearchButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PlayerSearchPage());
+            await Shell.Current.GoToAsync("player-search");
         }
     }
 }

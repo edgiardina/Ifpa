@@ -31,7 +31,7 @@ namespace Ifpa.Views
 
                 if (item.ActivityType == ActivityFeedType.TournamentResult)
                 {
-                    await Navigation.PushAsync(new TournamentResultsPage(new TournamentResultsViewModel(item.RecordID.Value)));
+                    await Shell.Current.GoToAsync($"tournament-results?tournamentId={item.RecordID.Value}");
                 }
 
                 if (Device.RuntimePlatform == Device.iOS)

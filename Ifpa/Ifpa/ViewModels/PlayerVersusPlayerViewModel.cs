@@ -23,10 +23,9 @@ namespace Ifpa.ViewModels
 
         public bool HasNoPvpData { get; set; }
 
-        public PlayerVersusPlayerViewModel(int playerId)
+        public PlayerVersusPlayerViewModel()
         {
             Title = "PVP";
-            this.PlayerId = playerId;
             AllResults = new ObservableCollection<Grouping<char, PlayerVersusRecord>>();
             EliteResults = new ObservableCollection<Grouping<char, PlayerVersusRecord>>();
             LoadAllItemsCommand = new Command(async () => await ExecuteLoadAllItemsCommand());

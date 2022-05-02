@@ -41,7 +41,7 @@ namespace Ifpa.Views
             if (tournament == null)
                 return;
 
-            await Navigation.PushAsync(new TournamentResultsPage(new TournamentResultsViewModel(tournament.TournamentId)));
+            await Shell.Current.GoToAsync($"tournament-results?tournamentId={tournament.TournamentId}");
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;

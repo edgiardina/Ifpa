@@ -15,9 +15,14 @@ namespace Ifpa
             InitializeComponent();
 
             Routing.RegisterRoute("player-search", typeof(PlayerSearchPage));
-            Routing.RegisterRoute("results", typeof(PlayerResultsPage));
+            Routing.RegisterRoute("player-results", typeof(PlayerResultsPage));
             Routing.RegisterRoute("player-details", typeof(PlayerDetailPage));
+            Routing.RegisterRoute("pvp", typeof(PlayerVersusPlayerPage));
+            Routing.RegisterRoute("pvp-detail", typeof(PlayerVersusPlayerDetailPage));
             Routing.RegisterRoute("activity-feed", typeof(ActivityFeedPage));
+
+            
+            Routing.RegisterRoute("tournament-results", typeof(TournamentResultsPage));
 
             Routing.RegisterRoute("calendar-detail", typeof(CalendarDetailPage));
         }
