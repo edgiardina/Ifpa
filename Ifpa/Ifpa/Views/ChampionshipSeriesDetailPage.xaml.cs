@@ -5,16 +5,25 @@ using Xamarin.Forms.Xaml;
 
 namespace Ifpa.Views
 {
+
+    [QueryProperty("SeriesCode", "seriesCode")]
+    [QueryProperty("RegionCode", "regionCode")]
+    [QueryProperty("Year", "year")]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChampionshipSeriesDetailPage : ContentPage
     {
         ChampionshipSeriesDetailViewModel viewModel;
 
-        public ChampionshipSeriesDetailPage(ChampionshipSeriesDetailViewModel viewModel)
+        public string SeriesCode { get; set; }
+        public string RegionCode { get; set; }  
+        public int Year { get; set; }
+
+
+        public ChampionshipSeriesDetailPage()
         {
             InitializeComponent();
 
-            BindingContext = this.viewModel = viewModel;
+            BindingContext = this.viewModel = App.GetViewModel<ChampionshipSeriesDetailViewModel>();
         }
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -23,14 +32,18 @@ namespace Ifpa.Views
             if (playerStanding == null)
                 return;
 
-            await Navigation.PushAsync(new ChampionshipSeriesPlayerCardPage(new ChampionshipSeriesPlayerCardViewModel(viewModel.Year, playerStanding.PlayerId, viewModel.RegionCode, viewModel.SeriesCode)));
-
+            await Shell.Current.GoToAsync($"champ-series-player??seriesCode={SeriesCode}&regionCode={RegionCode}&year={Year}&playerId={playerStanding.PlayerId}");
+         
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            viewModel.Year = Year;
+            viewModel.RegionCode = RegionCode;
+            viewModel.SeriesCode = SeriesCode;
 
             viewModel.LoadItemsCommand.Execute(null);
         }

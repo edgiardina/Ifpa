@@ -26,7 +26,7 @@ namespace Ifpa.Views
             if (state == null)
                 return;
 
-            await Navigation.PushAsync(new ChampionshipSeriesDetailPage(new ChampionshipSeriesDetailViewModel(state.SeriesCode, state.RegionCode, state.Year)));
+            await Shell.Current.GoToAsync($"champ-series-detail?seriesCode={state.SeriesCode}&regionCode={state.RegionCode}&year={state.Year}");
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;

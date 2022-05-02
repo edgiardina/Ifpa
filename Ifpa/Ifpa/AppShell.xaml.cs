@@ -21,7 +21,10 @@ namespace Ifpa
             Routing.RegisterRoute("pvp-detail", typeof(PlayerVersusPlayerDetailPage));
             Routing.RegisterRoute("activity-feed", typeof(ActivityFeedPage));
 
-            
+            Routing.RegisterRoute("champ-series", typeof(ChampionshipSeriesPage));
+            Routing.RegisterRoute("champ-series-detail", typeof(ChampionshipSeriesDetailPage));
+            Routing.RegisterRoute("champ-series-player", typeof(ChampionshipSeriesPlayerCardPage));
+
             Routing.RegisterRoute("tournament-results", typeof(TournamentResultsPage));
 
             Routing.RegisterRoute("calendar-detail", typeof(CalendarDetailPage));

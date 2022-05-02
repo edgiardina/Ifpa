@@ -14,25 +14,18 @@ namespace Ifpa.ViewModels
         public RegionStandings RegionStandings { get; set; }
         public SeriesTournaments SeriesTournaments { get; set; }    
 
-        public Command LoadItemsCommand { get; set; }
+        public Command LoadItemsCommand { get; set; } 
+        public string RegionCode {get; set;}
+        public string SeriesCode { get; set; }
+        public int Year { get; set; }
 
-        public readonly string RegionCode;
-        public readonly string SeriesCode;
-        public readonly int Year;
-
-        public ChampionshipSeriesDetailViewModel(string seriesCode, string regionCode, int year)
+        public ChampionshipSeriesDetailViewModel()
         {
-            this.SeriesCode = seriesCode;
-            this.RegionCode = regionCode;
-            this.Year = year;
 
-            RegionStandings = new RegionStandings();
-
-            Title = $"{regionCode} {seriesCode} ({year})";
+            RegionStandings = new RegionStandings();     
 
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
-
 
         async Task ExecuteLoadItemsCommand()
         {
@@ -40,6 +33,8 @@ namespace Ifpa.ViewModels
                 return;
 
             IsBusy = true;
+
+            Title = $"{RegionCode} {SeriesCode} ({Year})";
 
             try
             {

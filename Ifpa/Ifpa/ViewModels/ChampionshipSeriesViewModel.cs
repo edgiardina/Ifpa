@@ -21,24 +21,21 @@ namespace Ifpa.ViewModels
 
         public string SeriesCode { get; set; }
         
-        public ChampionshipSeriesViewModel(string code, int year)
-        {
-            this.Year = year;
-            this.SeriesCode = code;
+        public ChampionshipSeriesViewModel()
+        {    
             this.AvailableYears = new List<int>();
 
             SeriesOverallResults = new ObservableCollection<SeriesOverallResult>();
 
-            Title = SeriesCode;
-
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
-
 
         async Task ExecuteLoadItemsCommand()
         {
             if (IsBusy)
                 return;
+
+            Title = SeriesCode;
 
             IsBusy = true;
 
