@@ -28,6 +28,17 @@ namespace Ifpa
             Routing.RegisterRoute("tournament-results", typeof(TournamentResultsPage));
 
             Routing.RegisterRoute("calendar-detail", typeof(CalendarDetailPage));
+            
+            //more menu
+            Routing.RegisterRoute("favorites", typeof(FavoritesPage));
+            Routing.RegisterRoute("custom-rankings", typeof(CustomRankingsPage));
+            Routing.RegisterRoute("news", typeof(NewsPage));
+            Routing.RegisterRoute("news-detail", typeof(NewsDetailPage));
+            Routing.RegisterRoute("rules", typeof(RulesPage));
+            Routing.RegisterRoute("stats", typeof(StatsPage));
+            Routing.RegisterRoute("directors", typeof(DirectorsPage));
+            Routing.RegisterRoute("settings", typeof(SettingsPage));
+            Routing.RegisterRoute("about", typeof(AboutPage));
         }
 
         protected override async void OnNavigating(ShellNavigatingEventArgs args)

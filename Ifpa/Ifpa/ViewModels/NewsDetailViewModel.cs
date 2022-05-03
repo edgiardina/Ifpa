@@ -23,10 +23,9 @@ namespace Ifpa.ViewModels
 
         private BlogPostService blogPostService { get; set; }
 
-        public NewsDetailViewModel(Uri url)
+        public NewsDetailViewModel()
         {
             Title = "News";
-            NewsItemUrl = url;
             blogPostService = new BlogPostService();
 
             Comments = new ObservableCollection<SyndicationItem>();

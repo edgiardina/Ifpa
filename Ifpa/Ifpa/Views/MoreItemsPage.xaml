@@ -8,14 +8,14 @@
     <ListView x:Name="listView" x:FieldModifier="public" ItemSelected="ListView_ItemSelected" >
         <ListView.ItemsSource>
             <x:Array Type="{x:Type local:MoreItemsMenuItem}">
-                <local:MoreItemsMenuItem Title="Favorites" IconSource="favorite.png" TargetType="{x:Type local:FavoritesPage}" />
-                <local:MoreItemsMenuItem Title="Custom Rankings" IconSource="numbered_list.png" TargetType="{x:Type local:CustomRankingsPage}" />
-                <local:MoreItemsMenuItem Title="News" IconSource="news.png" TargetType="{x:Type local:NewsPage}" />
-                <local:MoreItemsMenuItem Title="Rules" IconSource="rules.png" TargetType="{x:Type local:RulesPage}" />
-                <local:MoreItemsMenuItem Title="Stats" IconSource="stats.png" TargetType="{x:Type local:StatsPage}" />
-                <local:MoreItemsMenuItem Title="Directors" IconSource="globe.png" TargetType="{x:Type local:DirectorsPage}" />
-                <local:MoreItemsMenuItem Title="Settings" IconSource="settings.png" TargetType="{x:Type local:SettingsPage}" />
-                <local:MoreItemsMenuItem Title="About" IconSource="tab_about.png" TargetType="{x:Type local:AboutPage}" />
+                <local:MoreItemsMenuItem Title="Favorites" IconSource="favorite.png" Route="favorites" />
+                <local:MoreItemsMenuItem Title="Custom Rankings" IconSource="numbered_list.png" Route="custom-rankings" />
+                <local:MoreItemsMenuItem Title="News" IconSource="news.png" Route="news" />
+                <local:MoreItemsMenuItem Title="Rules" IconSource="rules.png" Route="rules" />
+                <local:MoreItemsMenuItem Title="Stats" IconSource="stats.png" Route="stats" />
+                <local:MoreItemsMenuItem Title="Directors" IconSource="globe.png" Route="directors" />
+                <local:MoreItemsMenuItem Title="Settings" IconSource="settings.png" Route="settings" />
+                <local:MoreItemsMenuItem Title="About" IconSource="tab_about.png" Route="about" />
             </x:Array>
         </ListView.ItemsSource>
         <ListView.ItemTemplate>

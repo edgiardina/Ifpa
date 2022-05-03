@@ -8,16 +8,18 @@ using Xamarin.Forms.Xaml;
 
 namespace Ifpa.Views
 {
+    [QueryProperty("NewsUri", "newsUri")]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewsDetailPage : ContentPage
     {
         NewsDetailViewModel viewModel;
+        public string NewsUri { get; set; }
 
-        public NewsDetailPage(NewsDetailViewModel model)
+        public NewsDetailPage()
         {
             InitializeComponent();
 
-            BindingContext = this.viewModel = model;
+            BindingContext = this.viewModel = App.GetViewModel<NewsDetailViewModel>();
         }
 
         protected override async void OnAppearing()
@@ -26,6 +28,7 @@ namespace Ifpa.Views
 
             if (viewModel.NewsItem == null)
             {
+                viewModel.NewsItemUrl = new System.Uri(NewsUri);
                 await Task.Run(() => viewModel.LoadItemsCommand.Execute(null));
             }
         }
