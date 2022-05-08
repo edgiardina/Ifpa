@@ -114,7 +114,7 @@ namespace Ifpa
 
                 if (!string.IsNullOrEmpty(id))
                 {
-                    await Shell.Current.GoToAsync($"///rankings/player-detail?playerId={id}");
+                    await Shell.Current.GoToAsync($"///rankings/player-details?playerId={id}");
                 }
             }
             //tournaments/view.php?t=46773
