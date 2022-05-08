@@ -4,6 +4,7 @@ using Android.OS;
 using Android.Content;
 using Android.Runtime;
 using Plugin.CurrentActivity;
+using Xamarin.Forms.Platform.Android.AppLinks;
 
 namespace Ifpa.Droid
 {
@@ -29,6 +30,8 @@ namespace Ifpa.Droid
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+
+            AndroidAppLinks.Init(this);
 
             LoadApplication(new App());
 

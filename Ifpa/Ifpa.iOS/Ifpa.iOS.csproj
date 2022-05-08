@@ -55,11 +55,11 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>Apple Development: Ed Giardina (PVMXR5HC9R)</CodesignKey>
+    <CodesignKey>Apple Distribution: Ed Giardina (KH5JKUPW2Q)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignEntitlements>
-    </CodesignEntitlements>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignProvision>
+    </CodesignProvision>
     <BuildIpa>true</BuildIpa>
     <CodesignExtraArgs />
     <CodesignResourceRules />
@@ -72,9 +72,8 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Distribution</CodesignKey>
-    <CodesignEntitlements>
-    </CodesignEntitlements>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchNoSymbolStrip>false</MtouchNoSymbolStrip>
     <OptimizePNGs>true</OptimizePNGs>
     <MtouchFloat32>false</MtouchFloat32>
@@ -184,7 +183,7 @@
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
       <Version>19.4.0.47</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -420,7 +419,7 @@
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties XamarinHotReloadWrongLinkerErrorInfoBarIfpaiOSHideInfoBar="True" TriggeredFromHotReload="False" />
+      <UserProperties TriggeredFromHotReload="False" XamarinHotReloadWrongLinkerErrorInfoBarIfpaiOSHideInfoBar="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

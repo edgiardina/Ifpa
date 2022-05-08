@@ -71,7 +71,10 @@
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
       <Version>19.4.0.47</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
+    <PackageReference Include="Xamarin.Forms.AppLinks">
+      <Version>5.0.0.2401</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Renderers\HomeTabbedPageRenderer.cs" />
