@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Linq;
 using Foundation;
+using Ifpa.Interfaces;
 using Ifpa.iOS.Services;
 using Ifpa.Services;
 using Ifpa.Views;
+using Microsoft.Extensions.DependencyInjection;
 using UIKit;
 using Xamarin.Forms;
 
@@ -33,7 +35,7 @@ namespace Ifpa.iOS
             Syncfusion.SfCalendar.XForms.iOS.SfCalendarRenderer.Init();
             Syncfusion.SfPdfViewer.XForms.iOS.SfPdfDocumentViewRenderer.Init();
 
-            LoadApplication(new App());
+            LoadApplication(new App(PlatformSpecificServices));
 
             UIApplication.SharedApplication.RegisterUserNotificationSettings(UIUserNotificationSettings.GetSettingsForTypes(UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound, null));
             UIApplication.SharedApplication.SetMinimumBackgroundFetchInterval(UIApplication.BackgroundFetchIntervalMinimum);
@@ -71,6 +73,11 @@ namespace Ifpa.iOS
                 //Rank Change or tournament result, just go to My Stats activity feed
                 await Shell.Current.GoToAsync("///my-stats/activity-feed");
             }
+        }
+
+        static void PlatformSpecificServices(IServiceCollection services)
+        {
+            services.AddSingleton<IReminderService, iOSReminderService>();
         }
 
         #region QuickActions       

@@ -11,7 +11,7 @@ using Ifpa.Interfaces;
 namespace Ifpa.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    [QueryProperty("calendarId", "CalendarId")]
+    [QueryProperty("CalendarId", "calendarId")]
     public partial class CalendarDetailPage : ContentPage
     {
         CalendarDetailViewModel viewModel;
@@ -24,10 +24,14 @@ namespace Ifpa.Views
 
             BindingContext = this.viewModel = App.GetViewModel<CalendarDetailViewModel>();
 
-            this.viewModel.CalendarId = CalendarId;
+            ((CalendarDetailViewModel)BindingContext).PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(async (s, e) => await CalendarDetailPage_PropertyChanged(s, e)) ;            
+        }
 
-            ((CalendarDetailViewModel)BindingContext).PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(async (s, e) => await CalendarDetailPage_PropertyChanged(s, e)) ;
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            viewModel.CalendarId = CalendarId;
             viewModel.LoadItemsCommand.Execute(null);
         }
 
