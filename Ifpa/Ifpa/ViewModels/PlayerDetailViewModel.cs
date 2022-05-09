@@ -136,7 +136,6 @@ namespace Ifpa.ViewModels
             }
         }
 
-
         private void AddPlayerToAppLinks()
         {
             var url = $"https://www.ifpapinball.com/player.php?p={PlayerId}";
