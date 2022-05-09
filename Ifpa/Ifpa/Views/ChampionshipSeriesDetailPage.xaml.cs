@@ -32,7 +32,7 @@ namespace Ifpa.Views
             if (playerStanding == null)
                 return;
 
-            await Shell.Current.GoToAsync($"champ-series-player??seriesCode={SeriesCode}&regionCode={RegionCode}&year={Year}&playerId={playerStanding.PlayerId}");
+            await Shell.Current.GoToAsync($"champ-series-player?seriesCode={SeriesCode}&regionCode={RegionCode}&year={Year}&playerId={playerStanding.PlayerId}");
          
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
