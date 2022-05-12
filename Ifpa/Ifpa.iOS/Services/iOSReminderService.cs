@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Linq;
 
-[assembly: Dependency(typeof(iOSReminderService))]
 namespace Ifpa.iOS.Services
 {
     public class iOSReminderService : IReminderService

@@ -5,26 +5,28 @@ using Xamarin.Forms.Xaml;
 
 namespace Ifpa.Views
 {
+    [QueryProperty("PlayerId", "playerId")]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PlayerVersusPlayerPage : ContentPage
     {
         PlayerVersusPlayerViewModel viewModel;
 
-        public PlayerVersusPlayerPage(PlayerVersusPlayerViewModel viewModel)
+        public int PlayerId { get; set; }
+
+        public PlayerVersusPlayerPage()
         {
             InitializeComponent();
 
-            BindingContext = this.viewModel = viewModel;
+            BindingContext = this.viewModel = App.GetViewModel<PlayerVersusPlayerViewModel>();
         }
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            
+        {            
             var pvp = e.Item as PlayerVersusRecord;
             if (pvp == null)
                 return;
 
-            await Navigation.PushAsync(new PlayerVersusPlayerDetailPage (new PlayerVersusPlayerDetailViewModel(viewModel.PlayerId, pvp.PlayerId)));
+            await Shell.Current.GoToAsync($"pvp-detail?playerId={viewModel.PlayerId}&comparePlayerId={pvp.PlayerId}");
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
@@ -34,7 +36,10 @@ namespace Ifpa.Views
             base.OnAppearing();
 
             if (viewModel.AllResults.Count == 0)
+            {
+                viewModel.PlayerId = PlayerId;
                 viewModel.LoadAllItemsCommand.Execute(null);
+            }
         }
 
         private async void InfoButton_Clicked(object sender, System.EventArgs e)

@@ -12,22 +12,14 @@ namespace Ifpa.ViewModels
     {
         public ObservableCollection<PlayerCard> TournamentCardRecords { get; set; }
         public Command LoadItemsCommand { get; set; }
-        private readonly int year;
-        private readonly int playerId;
-        private readonly string regionCode;
-        private readonly string seriesCode;
+        public int Year { get; set; }
+        public int PlayerId { get; set; }
+        public string RegionCode { get; set; }
+        public string SeriesCode { get; set; }
 
-
-        public ChampionshipSeriesPlayerCardViewModel(int year, int playerId, string regionCode, string seriesCode)
+        public ChampionshipSeriesPlayerCardViewModel()
         {
-            this.year = year;
-            this.playerId = playerId;
-            this.regionCode = regionCode;
-            this.seriesCode = seriesCode;
-
             TournamentCardRecords = new ObservableCollection<PlayerCard>();
-
-            Title = $"{regionCode} Championship Series";
 
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
@@ -35,6 +27,8 @@ namespace Ifpa.ViewModels
 
         async Task ExecuteLoadItemsCommand()
         {
+            Title = $"{RegionCode} Championship Series";
+
             if (IsBusy)
                 return;
 
@@ -43,14 +37,14 @@ namespace Ifpa.ViewModels
             try
             {
                 TournamentCardRecords.Clear();
-                var tournamentCard = await PinballRankingApiV2.GetSeriesPlayerCard(playerId, seriesCode, regionCode, year);
+                var tournamentCard = await PinballRankingApiV2.GetSeriesPlayerCard(PlayerId, SeriesCode, RegionCode, Year);
 
                 foreach (var item in tournamentCard.PlayerCard)
                 {
                     TournamentCardRecords.Add(item);
                 }
 
-                Title = $"{regionCode} {seriesCode} ({year}) - {tournamentCard.PlayerName}";
+                Title = $"{RegionCode} {SeriesCode} ({Year}) - {tournamentCard.PlayerName}";
             }
             catch (Exception ex)
             {

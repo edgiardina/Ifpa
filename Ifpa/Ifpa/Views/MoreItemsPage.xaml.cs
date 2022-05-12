@@ -21,7 +21,8 @@ namespace Ifpa.Views
         {
             if (listView.SelectedItem != null)
             {
-                await Navigation.PushAsync((Page)Activator.CreateInstance(((MoreItemsMenuItem)e.SelectedItem).TargetType));
+                await Shell.Current.GoToAsync(((MoreItemsMenuItem)e.SelectedItem).Route);
+
                 listView.SelectedItem = null;
             }
         }

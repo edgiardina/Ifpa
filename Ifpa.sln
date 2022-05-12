@@ -1,13 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2048
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ifpa.Android", "Ifpa\Ifpa.Android\Ifpa.Android.csproj", "{93A4FD23-766C-4815-85D2-C26CFD02EDA0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ifpa.iOS", "Ifpa\Ifpa.iOS\Ifpa.iOS.csproj", "{AC6C8F6D-8F45-457A-A3E1-0998EAFBF1E5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ifpa", "Ifpa\Ifpa\Ifpa.csproj", "{924ED4A9-0C09-4CD9-B460-7656504673DA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web-items", "web-items", "{9FCFB313-B95B-4868-8C58-246A2D97B08B}"
+	ProjectSection(SolutionItems) = preProject
+		web-items\smart-app-banner.html = web-items\smart-app-banner.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".well-known", ".well-known", "{FE6DDF69-9CDF-41D5-9C1C-381EA5B78938}"
+	ProjectSection(SolutionItems) = preProject
+		web-items\.well-known\apple-app-site-association = web-items\.well-known\apple-app-site-association
+		web-items\.well-known\assetlinks.json = web-items\.well-known\assetlinks.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -76,6 +87,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FE6DDF69-9CDF-41D5-9C1C-381EA5B78938} = {9FCFB313-B95B-4868-8C58-246A2D97B08B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9C51CD80-922F-428F-B7E7-4177DB4423F3}

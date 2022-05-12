@@ -8,7 +8,6 @@ using Ifpa.Interfaces;
 using Ifpa.ViewModels;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(AndroidReminderService))]
 namespace Ifpa.Droid.Services
 {
     public class AndroidReminderService : IReminderService

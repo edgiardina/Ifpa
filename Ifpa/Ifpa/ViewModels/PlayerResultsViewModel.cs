@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using PinballApi.Models.WPPR.v2.Players;
 using PinballApi.Models.WPPR.v2;
-using System.Collections.Generic;
 using Ifpa.Models;
 
 namespace Ifpa.ViewModels
@@ -25,12 +23,11 @@ namespace Ifpa.ViewModels
      
         public bool ShowRankingTypeChoice { get; set; }
 
-        private int playerId;
+        public int PlayerId { get; set; }
 
-        public PlayerResultsViewModel(int playerId)
+        public PlayerResultsViewModel()
         {
             Title = "Results";
-            this.playerId = playerId;
             State = ResultType.Active;
             RankingType = RankingType.Main;
             ShowRankingTypeChoice = false;
@@ -50,7 +47,7 @@ namespace Ifpa.ViewModels
 
             try
             {
-                var player = await PinballRankingApiV2.GetPlayer(playerId);
+                var player = await PinballRankingApiV2.GetPlayer(PlayerId);
 
                 //TODO: it would be better to get a list of all categories a player is eligible for
                 if (player.Gender == Gender.Female || (player.Age.HasValue && player.Age.Value < 18))
@@ -63,19 +60,19 @@ namespace Ifpa.ViewModels
                 UnusedResults.Clear();
                 PastResults.Clear();
 
-                var activeResults = await PinballRankingApiV2.GetPlayerResults(playerId, RankingType, ResultType.Active);
+                var activeResults = await PinballRankingApiV2.GetPlayerResults(PlayerId, RankingType, ResultType.Active);
                 if (activeResults.ResultsCount > 0)
                 {
                     ActiveResults.AddRange(activeResults.Results);
                 }
                 
-                var unusedResults = await PinballRankingApiV2.GetPlayerResults(playerId, RankingType, ResultType.NonActive);
+                var unusedResults = await PinballRankingApiV2.GetPlayerResults(PlayerId, RankingType, ResultType.NonActive);
                 if (unusedResults.ResultsCount > 0)
                 {
                     UnusedResults.AddRange(unusedResults.Results);
                 }
                 
-                var pastResults = await PinballRankingApiV2.GetPlayerResults(playerId, RankingType, ResultType.Inactive);
+                var pastResults = await PinballRankingApiV2.GetPlayerResults(PlayerId, RankingType, ResultType.Inactive);
                 if (pastResults.ResultsCount > 0)
                 {
                     PastResults.AddRange(pastResults.Results);

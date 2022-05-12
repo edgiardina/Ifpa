@@ -93,11 +93,8 @@ namespace Ifpa.ViewModels
 
         public bool IsRegistered => PlayerRecord.IfpaRegistered;
         
-        public PlayerDetailViewModel(int? playerId = null)
+        public PlayerDetailViewModel()
         {
-            if (playerId.HasValue)
-                PlayerId = playerId.Value;
-
             PlayerRankHistory = new ObservableCollection<RankHistory>();
             PlayerRatingHistory = new ObservableCollection<RatingHistory>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
@@ -119,7 +116,9 @@ namespace Ifpa.ViewModels
                     if (playerHistoryData.RatingHistory != null)
                         PlayerRatingHistory = new ObservableCollection<RatingHistory>(playerHistoryData.RatingHistory);
 
-                    PlayerRecord = playerData;                   
+                    PlayerRecord = playerData;
+
+                    AddPlayerToAppLinks();
 
                     if (PostPlayerLoadCommand != null)
                     {
@@ -135,6 +134,25 @@ namespace Ifpa.ViewModels
             {
                 IsBusy = false;
             }
+        }
+
+        private void AddPlayerToAppLinks()
+        {
+            var url = $"https://www.ifpapinball.com/player.php?p={PlayerId}";
+
+            var entry = new AppLinkEntry
+            {
+                Title = Name,
+                Description = Rank,
+                AppLinkUri = new Uri(url, UriKind.RelativeOrAbsolute),
+                IsLinkActive = true,
+                Thumbnail = ImageSource.FromUri(new Uri(PlayerAvatar, UriKind.RelativeOrAbsolute))
+            };
+
+            entry.KeyValues.Add("contentType", "Player");
+            entry.KeyValues.Add("appName", "IFPA Companion");
+
+            Application.Current.AppLinks.RegisterLink(entry);
         }
 
     }

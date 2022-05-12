@@ -7,16 +7,19 @@ using Xamarin.Forms.Xaml;
 
 namespace Ifpa.Views
 {
+    [QueryProperty("TournamentId", "tournamentId")]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TournamentResultsPage : ContentPage
     {
         TournamentResultsViewModel viewModel;
+        
+        public int TournamentId { get; set; }
 
-        public TournamentResultsPage(TournamentResultsViewModel viewModel)
+        public TournamentResultsPage()
         {
             InitializeComponent();
 
-            BindingContext = this.viewModel = viewModel;
+            BindingContext = this.viewModel = App.GetViewModel<TournamentResultsViewModel>(); ;
         }
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -28,7 +31,7 @@ namespace Ifpa.Views
 
             if (tournament.PlayerId.HasValue)
             {
-                await Navigation.PushAsync(new PlayerDetailPage(new PlayerDetailViewModel(tournament.PlayerId.Value)));
+                await Shell.Current.GoToAsync($"player-details?playerId={tournament.PlayerId.Value}");
             }
 
             //Deselect Item
@@ -39,7 +42,10 @@ namespace Ifpa.Views
             base.OnAppearing();
 
             if (viewModel.Results.Count == 0)
+            {
+                viewModel.TournamentId = TournamentId;
                 viewModel.LoadItemsCommand.Execute(null);
+            }
         }
 
         private async void ShareButton_Clicked(object sender, EventArgs e)

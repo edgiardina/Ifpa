@@ -5,16 +5,22 @@ using Xamarin.Forms.Xaml;
 
 namespace Ifpa.Views
 {
+    [QueryProperty("PlayerId", "playerId")]
+    [QueryProperty("ComparePlayerId", "comparePlayerId")]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PlayerVersusPlayerDetailPage : ContentPage
     {
         PlayerVersusPlayerDetailViewModel viewModel;
 
-        public PlayerVersusPlayerDetailPage(PlayerVersusPlayerDetailViewModel viewModel)
+        public int PlayerId { get; set; }
+
+        public int ComparePlayerId { get; set; }
+
+        public PlayerVersusPlayerDetailPage()
         {
             InitializeComponent();
 
-            BindingContext = this.viewModel = viewModel;
+            BindingContext = this.viewModel = App.GetViewModel<PlayerVersusPlayerDetailViewModel>(); 
         }
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -23,7 +29,7 @@ namespace Ifpa.Views
             if (tournament == null)
                 return;
 
-            await Navigation.PushAsync(new TournamentResultsPage(new TournamentResultsViewModel(int.Parse(tournament.TournamentId))));
+            await Shell.Current.GoToAsync($"tournament-results?tournamentId={tournament.TournamentId}");
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
@@ -33,7 +39,11 @@ namespace Ifpa.Views
             base.OnAppearing();
 
             if (viewModel.PlayerVersusPlayer.Count == 0)
+            {
+                viewModel.PlayerOneId = PlayerId;
+                viewModel.PlayerTwoId = ComparePlayerId;
                 viewModel.LoadItemsCommand.Execute(null);
+            }
         }
     }
 }

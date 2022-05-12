@@ -23,7 +23,7 @@ namespace Ifpa.Views
             if (player == null)
                 return;
 
-            await Navigation.PushAsync(new PlayerDetailPage(new PlayerDetailViewModel(player.PlayerId)));
+            await Shell.Current.GoToAsync($"player-details?playerId={player.PlayerId}");
 
             // Manually deselect item.
             PlayersListView.SelectedItem = null;

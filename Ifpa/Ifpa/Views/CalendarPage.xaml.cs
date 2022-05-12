@@ -119,7 +119,7 @@ namespace Ifpa.Views
             if (calendar == null)
                 return;
 
-            await Navigation.PushAsync(new CalendarDetailPage(new CalendarDetailViewModel(calendar.CalendarId)));
+            await Shell.Current.GoToAsync($"calendar-detail?calendarId={calendar.CalendarId}");
 
             // Manually deselect item.
             TournamentListView.SelectedItem = null;

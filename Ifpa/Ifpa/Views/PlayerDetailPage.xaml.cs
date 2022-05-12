@@ -7,10 +7,10 @@ using System.Linq;
 using Ifpa.Services;
 using Ifpa.Models;
 using Xamarin.Essentials;
-using Syncfusion.SfChart.XForms;
 
 namespace Ifpa.Views
 {
+    [QueryProperty("PlayerId", "playerId")]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PlayerDetailPage : ContentPage
     {
@@ -18,25 +18,25 @@ namespace Ifpa.Views
 
         bool LoadMyStats = false;
 
-        public PlayerDetailPage(PlayerDetailViewModel viewModel)
-        {
-            InitializeComponent();
-            viewModel.IsBusy = true;
-            BindingContext = this.viewModel = viewModel;
-        }
+        public int PlayerId { get;set; }
 
         public PlayerDetailPage()
         {
             InitializeComponent();
 
-            LoadMyStats = true;
-            BindingContext = this.viewModel = new PlayerDetailViewModel();
+            BindingContext = this.viewModel = App.GetViewModel<PlayerDetailViewModel>();
             viewModel.IsBusy = true;
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+
+
+            if (PlayerId == 0)
+                LoadMyStats = true;
+            else
+                viewModel.PlayerId = PlayerId;
 
             if (LoadMyStats)
             {
@@ -95,12 +95,12 @@ namespace Ifpa.Views
 
         private async void TournamentResults_Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PlayerResultsPage(new PlayerResultsViewModel(viewModel.PlayerId)));
+            await Shell.Current.GoToAsync($"player-results?playerId={viewModel.PlayerId}");
         }
 
         private async void Pvp_Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PlayerVersusPlayerPage(new PlayerVersusPlayerViewModel(viewModel.PlayerId)));
+            await Shell.Current.GoToAsync($"pvp?playerId={viewModel.PlayerId}");
         }
 
         private async void StarButton_Clicked(object sender, EventArgs e)
@@ -124,21 +124,19 @@ namespace Ifpa.Views
             await Settings.SetMyStatsPlayer(viewModel.PlayerId, viewModel.PlayerRecord.PlayerStats.CurrentWpprRank);
 
             await DisplayAlert("Congratulations", "You have now configured your Stats page!", "OK");
-            var masterPage = this.Parent.Parent as TabbedPage;            
-            masterPage.CurrentPage = masterPage.Children[2];
-            await this.Navigation.PopToRootAsync();
+
+            await Shell.Current.GoToAsync("///my-stats");
         }
 
         private async Task RedirectUserToPlayerSearch()
         {
             await DisplayAlert("Configure your Stats", "Looks like you haven't configured your 'My Stats' page. Use the Player Search to find your Player, and press the Star to configure your Stats", "OK");
-            var masterPage = this.Parent.Parent as TabbedPage;
-            masterPage.CurrentPage = masterPage.Children[0];
         }
 
         private async void ActivityFeedButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ActivityFeedPage());
+            await Shell.Current.GoToAsync("activity-feed");
         }
 
         private async void ShareButton_Clicked(object sender, EventArgs e)

@@ -1,0 +1,10 @@
+[
+  {
+    "relation": [ "delegate_permission/common.handle_all_urls" ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.edgiardina.ifpa",
+      "sha256_cert_fingerprints": [ "AD:F1:C8:34:C2:53:1D:3F:06:AE:85:20:42:02:91:53:76:6C:CF:C4:A3:68:7E:F8:C3:08:97:E8:17:F7:15:CB" ]
+    }
+  }
+]
