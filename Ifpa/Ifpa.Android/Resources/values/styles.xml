@@ -9,38 +9,5 @@
     <item name="android:windowFullscreen">true</item>
     <item name="android:windowContentOverlay">@null</item>
     <item name="android:windowActionBar">true</item>
-  </style>
-  <!-- Base theme applied no matter what API -->
-  <style name="MainTheme.Base" parent="Theme.AppCompat.DayNight.DarkActionBar">
-    <!--If you are using revision 22.1 please use just windowNoTitle. Without android:-->
-    <item name="windowNoTitle">true</item>
-    <!--We will be using the toolbar so no need to show ActionBar-->
-    <item name="windowActionBar">false</item>
-    <!-- Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette -->
-    <!-- colorPrimary is used for the default action bar background -->
-    <item name="colorPrimary">#2196F3</item>
-    <!-- colorPrimaryDark is used for the status bar -->
-    <item name="colorPrimaryDark">#1976D2</item>
-    <!-- colorAccent is used as the default value for colorControlActivated
-         which is used to tint widgets -->
-    <item name="colorAccent">#4579FB</item>
-    <!-- You can also set colorControlNormal, colorControlActivated
-         colorControlHighlight and colorSwitchThumbNormal. -->
-    <item name="windowActionModeOverlay">true</item>
-
-    <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
-  </style>
-
-  <style name="AppCompatDialogStyle" parent="Theme.AppCompat.DayNight.Dialog">
-    <item name="colorAccent">#4579FB</item>
-  </style>
-
-
-  <style name="MainTheme.DarkTheme.Base" parent="Theme.AppCompat">
-    <!-- Your app's theme defined here -->
-  </style>
-  <style name="MainTheme.DarkTheme.Toolbar" parent="MainTheme.DarkTheme.Base">
-    <item name="android:drawableTint">@color/iconAccentColor</item>
-    <item name="colorControlNormal">@color/primaryTextColor</item>
-  </style>
+  </style> 
 </resources>

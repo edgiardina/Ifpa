@@ -4,7 +4,7 @@
              x:Class="Ifpa.Views.PlayerDetailPage"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
-             Title="{Binding Name}" BackgroundColor="Transparent">
+             Title="{Binding Name}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:BoolConverter x:Key="BoolConverter" />
@@ -29,10 +29,10 @@
         <ToolbarItem Text="Share" x:Name="ShareButton" Clicked="ShareButton_Clicked" IconImageSource="share.png" />
     </ContentPage.ToolbarItems>
     <ScrollView>
-        <StackLayout >
+        <StackLayout BackgroundColor="{DynamicResource BackgroundColor}">
 
-        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" VerticalOptions="CenterAndExpand" />
-       
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" VerticalOptions="CenterAndExpand" />
+
             <StackLayout IsVisible="{Binding IsBusy, Converter={StaticResource BoolConverter}}" Spacing="20" Padding="15,0,15,0">
 
                 <Grid BackgroundColor="{DynamicResource SecondaryBanner}" Margin="-15,0,-15,0" Padding="15,0,15,0" VerticalOptions="StartAndExpand">
@@ -70,7 +70,7 @@
                         </StackLayout>
                     </StackLayout>
                     <Image Grid.Column="1" Grid.Row="0" Source="{Binding PlayerAvatar, Mode=OneWay}" HeightRequest="100" x:Name="AvatarImage" />
-                    
+
                 </Grid>
                 <StackLayout Orientation="Horizontal">
                     <Button Padding="10,0,10,0" Text="Results" HorizontalOptions="FillAndExpand" Clicked="TournamentResults_Button_Clicked" />
@@ -212,7 +212,7 @@
                     </chart:SfChart>
                 </StackLayout>
             </StackLayout>
-        
-    </StackLayout>
+
+        </StackLayout>
     </ScrollView>
 </ContentPage>

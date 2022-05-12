@@ -1,7 +1,7 @@
 ﻿<Shell xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:views="clr-namespace:Ifpa.Views"
-       x:Class="Ifpa.AppShell">
+       x:Class="Ifpa.AppShell" BackgroundColor="{DynamicResource BackgroundColor}">
     <TabBar>
         <ShellContent Title="Rankings" ContentTemplate="{DataTemplate views:RankingsPage}" Icon="numbered_list.png" Route="rankings" />
         <ShellContent Title="Champ. Series" ContentTemplate="{DataTemplate views:ChampionshipSeriesListPage}" Icon="trophy.png" Route="champ-series-list" />

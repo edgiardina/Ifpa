@@ -29,6 +29,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Strings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
     <Compile Update="Styles\DefaultTheme.xaml.cs">
       <DependentUpon>DefaultTheme.xaml</DependentUpon>
     </Compile>
@@ -100,6 +105,10 @@
   <ItemGroup>
     <EmbeddedResource Update="AppShell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Styles\DarkTheme.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
