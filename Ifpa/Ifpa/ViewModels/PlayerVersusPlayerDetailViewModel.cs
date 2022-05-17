@@ -17,13 +17,11 @@ namespace Ifpa.ViewModels
         public string PlayerTwoInitials { get; set; }
         public Command LoadItemsCommand { get; set; }
 
-        private int playerOneId;
-        private int playerTwoId;
+        public int PlayerOneId { get; set; }
+        public int PlayerTwoId { get; set; }
 
-        public PlayerVersusPlayerDetailViewModel(int playerOneId, int playerTwoId)
+        public PlayerVersusPlayerDetailViewModel()
         {
-            this.playerOneId = playerOneId;
-            this.playerTwoId = playerTwoId;
             PlayerVersusPlayer = new ObservableCollection<PlayerVersusPlayerComparisonRecord>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
@@ -38,7 +36,7 @@ namespace Ifpa.ViewModels
             try
             {
                 PlayerVersusPlayer.Clear();
-                var pvpResults = await PinballRankingApiV2.GetPlayerVersusPlayerComparison(playerOneId, playerTwoId);
+                var pvpResults = await PinballRankingApiV2.GetPlayerVersusPlayerComparison(PlayerOneId, PlayerTwoId);
 
                 foreach (var item in pvpResults.ComparisonRecords.OrderByDescending(n => n.EventDate))
                 {                 

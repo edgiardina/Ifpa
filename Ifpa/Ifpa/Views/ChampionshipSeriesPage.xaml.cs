@@ -9,19 +9,22 @@ using Xamarin.Forms.Xaml;
 
 namespace Ifpa.Views
 {
+    [QueryProperty("SeriesCode", "seriesCode")]
+    [QueryProperty("Year", "year")]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChampionshipSeriesPage : ContentPage
     {
         ChampionshipSeriesViewModel viewModel;
-        int year = DateTime.Now.Year;
+        public int Year { get; set; } = DateTime.Now.Year;
+        public string SeriesCode { get; set; }
 
-        public ChampionshipSeriesPage(string code)
+        public ChampionshipSeriesPage()
         {
             InitializeComponent();
 
             //TODO: allow user to pick the year            
 
-            BindingContext = this.viewModel = new ChampionshipSeriesViewModel(code, year);
+            BindingContext = this.viewModel = App.GetViewModel<ChampionshipSeriesViewModel>(); ;
         }
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -30,7 +33,7 @@ namespace Ifpa.Views
             if (championshipStandings == null)
                 return;
 
-            await Navigation.PushAsync(new ChampionshipSeriesDetailPage(new ChampionshipSeriesDetailViewModel(viewModel.SeriesCode, championshipStandings.RegionCode, year)));
+            await Shell.Current.GoToAsync($"champ-series-detail?seriesCode={viewModel.SeriesCode}&regionCode={championshipStandings.RegionCode}&year={Year}");
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
@@ -40,7 +43,11 @@ namespace Ifpa.Views
             base.OnAppearing();
 
             if (viewModel.SeriesOverallResults.Count == 0)
+            {
+                viewModel.Year = Year;
+                viewModel.SeriesCode = SeriesCode;
                 viewModel.LoadItemsCommand.Execute(null);
+            }
         }
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
@@ -49,7 +56,7 @@ namespace Ifpa.Views
 
             if (int.TryParse(action, out var yearValue))
             {
-                this.year = yearValue;
+                this.Year = yearValue;
                 viewModel.Year = yearValue;
                 viewModel.LoadItemsCommand.Execute(null);
             }

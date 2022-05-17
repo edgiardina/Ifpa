@@ -5,11 +5,36 @@
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              x:Class="Ifpa.Styles.DefaultTheme">
 
-    <Style TargetType="NavigationPage">
-        <Setter Property="BarBackgroundColor" Value="{DynamicResource BarBackgroundColor}" />
+    <Style TargetType="TabBar">
+        <Setter Property="Shell.ForegroundColor" Value="{DynamicResource IconAccentColor}" />
+        <Setter Property="Shell.BackgroundColor" Value="{DynamicResource BackgroundColor}" />
+        <Setter Property="Shell.TitleColor" Value="{DynamicResource PrimaryTextColor}" />
+        <Setter Property="Shell.TabBarBackgroundColor"
+            Value="{DynamicResource BarBackgroundColor}" />
+        <Setter Property="Shell.TabBarTitleColor"
+            Value="{DynamicResource IconAccentColor}" />
+        <Setter Property="Shell.TabBarUnselectedColor"
+            Value="{DynamicResource SecondaryTextColor}" />
+    </Style>
+
+    <Style TargetType="ContentPage">
         <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
-        <Setter Property="BarTextColor"
-                    Value="{OnPlatform Android={DynamicResource PrimaryTextColor}}" />
+    </Style>
+
+    <Style TargetType="Page">
+        <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
+    </Style>
+
+    <Style TargetType="SearchBar">
+        <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
+    </Style>
+
+    <Style TargetType="ListView">
+        <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
+    </Style>
+
+    <Style TargetType="CollectionView">
+        <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
     </Style>
 
     <Style TargetType="Button" ApplyToDerivedTypes="True">
@@ -41,7 +66,6 @@
 
     <Style TargetType="tabView:SfTabItem">
         <Setter Property="TitleFontColor" Value="{DynamicResource PrimaryTextColor}" />
-        <!--<Setter Property="SelectionColor" Value="Purple" />-->
     </Style>
 
 </ResourceDictionary>

@@ -1,0 +1,20 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": [ "KH5JKUPW2Q.com.edgiardina.ifpa" ],
+        "components": [
+          {
+            "/": "/player.php",
+            "comment": "Matches any URL whose path starts with /player.php"
+          },
+          {
+            "/": "/tournaments/view.php",
+            "comment": "Matches any URL whose path starts with tournaments/view.php"
+          }
+        ]
+      }
+    ]
+  }
+}

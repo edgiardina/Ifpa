@@ -13,10 +13,10 @@ namespace Ifpa.Services
     {
         private PinballRankingApiV1 PinballRankingApi => new PinballRankingApiV1(Constants.IfpaApiKey);
 
-        public readonly string NewTournamentNotificationTitle = "New Tournament Result";
+        public static string NewTournamentNotificationTitle = "New Tournament Result";
         protected readonly string NewTournamentNotificationDescription = @"Tournament results for ""{0}"" have been posted to your IFPA profile";
 
-        public readonly string NewRankNotificationTitle = "IFPA Rank Change";
+        public static string NewRankNotificationTitle = "IFPA Rank Change";
         protected readonly string NewRankNotificationDescription = "Your IFPA rank has changed from {0} to {1}";
 
         public static string NewBlogPostTitle = "New News Item";

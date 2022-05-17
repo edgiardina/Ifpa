@@ -45,7 +45,7 @@ namespace Ifpa.Views
             if (player == null)
                 return;
 
-            await Navigation.PushAsync(new PlayerDetailPage(new PlayerDetailViewModel(player.PlayerId)));
+            await Shell.Current.GoToAsync($"player-details?playerId={player.PlayerId}");
 
             // Manually deselect item.
             PlayersListView.SelectedItem = null;
@@ -62,7 +62,7 @@ namespace Ifpa.Views
 
         private async void SearchButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PlayerSearchPage());
+            await Shell.Current.GoToAsync("player-search");
         }
     }
 }

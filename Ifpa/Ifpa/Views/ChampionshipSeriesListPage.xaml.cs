@@ -1,12 +1,6 @@
 ﻿using Ifpa.ViewModels;
 using PinballApi.Models.WPPR.v2.Series;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -37,8 +31,8 @@ namespace Ifpa.Views
             if (e.CurrentSelection.FirstOrDefault() != null)
             {
                 var championshipSeries = e.CurrentSelection.FirstOrDefault() as Series;
-     
-                await Navigation.PushAsync(new ChampionshipSeriesPage(championshipSeries.Code));
+
+                await Shell.Current.GoToAsync($"champ-series?seriesCode={championshipSeries.Code}");
 
                 //Deselect Item
                 ((CollectionView)sender).SelectedItem = null;

@@ -8,7 +8,7 @@ namespace Ifpa.Models
 {
     public static class Shortcuts
     {
-        public const string AppShortcutUriBase = "ifpa://ifpacompanion/";
+        public const string AppShortcutUriBase = "ifpa://ifpacompanion";
 
         public static List<Shortcut> ShortcutList = new List<Shortcut>
                                                     {
@@ -16,19 +16,19 @@ namespace Ifpa.Models
                                                             Label = "Calendar",
                                                             Description = "IFPA Tournament Calendar",
                                                             Icon = new DateIcon(),
-                                                            Uri = $"{AppShortcutUriBase}calendar"
+                                                            Uri = $"{AppShortcutUriBase}/calendar"
                                                         },
                                                         new Shortcut() {
                                                             Label = "My Stats",
                                                             Description = "Your IFPA player data",
                                                             Icon = new ContactIcon(),
-                                                            Uri = $"{AppShortcutUriBase}mystats"
+                                                            Uri = $"{AppShortcutUriBase}/my-stats"
                                                         },
                                                         new Shortcut() {
                                                             Label = "Player Search",
                                                             Description = "Search for other players in the IFPA database",
                                                             Icon = new SearchIcon(),
-                                                            Uri = $"{AppShortcutUriBase}playersearch"
+                                                            Uri = $"{AppShortcutUriBase}/rankings/player-search"
                                                         }
                                                     };
 

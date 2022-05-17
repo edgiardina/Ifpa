@@ -9,17 +9,19 @@ using Xamarin.Forms.Xaml;
 
 namespace Ifpa.Views
 {
+    [QueryProperty("PlayerId", "playerId")]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PlayerResultsPage : ContentPage
     {
         PlayerResultsViewModel viewModel;
+        public int PlayerId { get; set; }
         public ObservableCollection<string> Items { get; set; }
 
-        public PlayerResultsPage(PlayerResultsViewModel viewModel)
+        public PlayerResultsPage()
         {
             InitializeComponent();
 
-            BindingContext = this.viewModel = viewModel;
+            BindingContext = this.viewModel = App.GetViewModel<PlayerResultsViewModel>();            
         }
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -28,7 +30,7 @@ namespace Ifpa.Views
             if (tournament == null)
                 return;
 
-            await Navigation.PushAsync(new TournamentResultsPage(new TournamentResultsViewModel(tournament.TournamentId)));
+            await Shell.Current.GoToAsync($"tournament-results?tournamentId={tournament.TournamentId}");
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
@@ -38,7 +40,10 @@ namespace Ifpa.Views
             base.OnAppearing();
 
             if (viewModel.ActiveResults.Count == 0)
+            {
+                viewModel.PlayerId = PlayerId;
                 viewModel.LoadItemsCommand.Execute(null);
+            }
         }
 
         private async void RankingProfileButton_Clicked(object sender, EventArgs e)

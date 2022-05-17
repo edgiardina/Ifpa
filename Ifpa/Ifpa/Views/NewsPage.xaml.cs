@@ -37,7 +37,7 @@ namespace Ifpa.Views
 
             ItemsListView.SelectedItem = null;
 
-            await Navigation.PushAsync(new NewsDetailPage(new NewsDetailViewModel(newsItem.Links.FirstOrDefault().Uri)));
+            await Shell.Current.GoToAsync($"news-detail?newsUri={System.Uri.EscapeDataString(newsItem.Links.FirstOrDefault().Uri.ToString())}");    
         }
     }
 }

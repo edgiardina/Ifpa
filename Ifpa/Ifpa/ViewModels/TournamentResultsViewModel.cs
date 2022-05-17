@@ -17,10 +17,9 @@ namespace Ifpa.ViewModels
 
         public int TournamentId { get; set; }
 
-        public TournamentResultsViewModel(int tournamentId)
+        public TournamentResultsViewModel()
         {
             Title = "Tournament Results";
-            this.TournamentId = tournamentId;
             Results = new ObservableCollectionRange<TournamentResult>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
@@ -42,6 +41,8 @@ namespace Ifpa.ViewModels
 
                 Title = TournamentDetails.TournamentName;
                 OnPropertyChanged(nameof(TournamentDetails));
+
+                AddTournamentToAppLinks();
             }
             catch (Exception ex)
             {
@@ -51,6 +52,26 @@ namespace Ifpa.ViewModels
             {
                 IsBusy = false;
             }
+        }
+
+        private void AddTournamentToAppLinks()
+        {
+            var url = $"https://www.ifpapinball.com/tournaments/view.php?t={TournamentId}";
+
+            var entry = new AppLinkEntry
+            {
+                Title = TournamentDetails.TournamentName,
+                Description = TournamentDetails.EventName,
+                AppLinkUri = new Uri(url, UriKind.RelativeOrAbsolute),
+                IsLinkActive = true
+                //TODO: show thumbnail?
+                //Thumbnail = ImageSource.FromUri(new Uri(TournamentDetails., UriKind.RelativeOrAbsolute))
+            };
+
+            entry.KeyValues.Add("contentType", "Tournament Result");
+            entry.KeyValues.Add("appName", "IFPA Companion");
+
+            Application.Current.AppLinks.RegisterLink(entry);
         }
     }
 }
