@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              xmlns:syncfusion1="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
-             xmlns:local="clr-namespace:Ifpa.Views.Behaviors"
+             xmlns:local="clr-namespace:Ifpa.Views.Behaviors" xmlns:controls="clr-namespace:Ifpa.Views.Controls"
              x:Class="Ifpa.Views.CalendarPage"
              Title="Calendar">
     <ContentPage.ToolbarItems>
@@ -15,7 +15,7 @@
     </ContentPage.Behaviors>
     <StackLayout Spacing="0">
         <StackLayout x:Name="MapLayout" Spacing="0">
-            <maps:Map WidthRequest="320" HeightRequest="200"
+            <controls:CustomMap WidthRequest="320" HeightRequest="200"
                 x:Name="calendarMap"                  
                 VerticalOptions="Start"
                 MapType="Street" />

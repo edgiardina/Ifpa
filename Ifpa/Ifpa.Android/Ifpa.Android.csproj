@@ -74,6 +74,7 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Renderers\CustomMapRenderer.cs" />
     <Compile Include="Renderers\HomeTabbedPageRenderer.cs" />
     <Compile Include="Renderers\TintImageEffect.cs" />
     <Compile Include="Services\AndroidReminderService.cs" />
@@ -92,6 +93,8 @@
     <None Include="Properties\AndroidManifest.xml">
       <SubType>Designer</SubType>
     </None>
+    <AndroidResource Include="Resources\raw\MapsDarkMode.json" />
+    <AndroidResource Include="Resources\raw\MapsLightMode.json" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\calendar_add.png" />
