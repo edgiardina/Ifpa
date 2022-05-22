@@ -320,11 +320,11 @@ namespace Ifpa.Droid
 			global::Com.Syncfusion.Sfrangeslider.Resource.Dimension.label_font_size = global::Ifpa.Droid.Resource.Dimension.label_font_size;
 			global::Com.Syncfusion.Sfrangeslider.Resource.Dimension.thumb_size = global::Ifpa.Droid.Resource.Dimension.thumb_size;
 			global::Com.Syncfusion.Sfrangeslider.Resource.Dimension.tick_size = global::Ifpa.Droid.Resource.Dimension.tick_size;
+			global::Com.Syncfusion.Sfrangeslider.Resource.Dimension.tooltip_textsize = global::Ifpa.Droid.Resource.Dimension.tooltip_textsize;
 			global::Com.Syncfusion.Sfrangeslider.Resource.Dimension.tool_bottom = global::Ifpa.Droid.Resource.Dimension.tool_bottom;
 			global::Com.Syncfusion.Sfrangeslider.Resource.Dimension.tool_left = global::Ifpa.Droid.Resource.Dimension.tool_left;
 			global::Com.Syncfusion.Sfrangeslider.Resource.Dimension.tool_right = global::Ifpa.Droid.Resource.Dimension.tool_right;
 			global::Com.Syncfusion.Sfrangeslider.Resource.Dimension.tool_top = global::Ifpa.Droid.Resource.Dimension.tool_top;
-			global::Com.Syncfusion.Sfrangeslider.Resource.Dimension.tooltip_textsize = global::Ifpa.Droid.Resource.Dimension.tooltip_textsize;
 			global::Com.Syncfusion.Sfrangeslider.Resource.Dimension.track_size = global::Ifpa.Droid.Resource.Dimension.track_size;
 			global::Com.Syncfusion.Sfrangeslider.Resource.Id.bottomRight = global::Ifpa.Droid.Resource.Id.bottomRight;
 			global::Com.Syncfusion.Sfrangeslider.Resource.Id.horizontal = global::Ifpa.Droid.Resource.Id.horizontal;
