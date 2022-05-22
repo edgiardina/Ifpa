@@ -16,11 +16,11 @@
     <PackageReference Include="Plugin.AppShortcuts" Version="1.0.0.3" />
     <PackageReference Include="Scrutor" Version="4.1.0" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
-    <PackageReference Include="Syncfusion.Licensing" Version="19.4.0.52" />
-    <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="19.4.0.52" />
-    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="19.4.0.52" />
-    <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="19.4.0.52" />
-    <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="19.4.0.52" />
+    <PackageReference Include="Syncfusion.Licensing" Version="20.1.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="20.1.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="20.1.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="20.1.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="20.1.0.55" />
     <PackageReference Include="System.ServiceModel.Syndication" Version="6.0.0" />
     <PackageReference Include="Xamarin.Badge.Plugin" Version="2.0.0" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
