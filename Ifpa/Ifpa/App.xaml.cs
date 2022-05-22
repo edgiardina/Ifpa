@@ -92,7 +92,7 @@ namespace Ifpa
 
         protected override async void OnAppLinkRequestReceived(Uri uri)
         {
-            //App Shortcut
+            //App Shortcuts
             if (uri.ToString().Contains(Shortcuts.AppShortcutUriBase))
             {
                 var option = uri.ToString().Replace(Shortcuts.AppShortcutUriBase, "");
@@ -104,9 +104,11 @@ namespace Ifpa
                 {
                     base.OnAppLinkRequestReceived(uri);
                 }
-            }
 
-            //TODO: Deep Link request
+                return;
+            }
+            
+            //DeepLinks
             if (uri.ToString().Contains("player.php"))
             {
                 //extract player ID from querystring

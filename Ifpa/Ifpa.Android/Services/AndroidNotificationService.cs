@@ -49,18 +49,16 @@ namespace Ifpa.Droid.Services
             notificationManager.CreateNotificationChannel(channel2);
         }
 
-        public override void SendNotification(string title, string description)
+        public override void SendNotification(string title, string description, string url)
         {
             // When the user clicks the notification, SecondActivity will start up.
             var resultIntent = new Intent(context, typeof(MainActivity));
-            
-            // Construct a back stack for cross-task navigation:
-            var stackBuilder = TaskStackBuilder.Create(context);
-            stackBuilder.AddParentStack(Class.FromType(typeof(MainActivity)));
-            stackBuilder.AddNextIntent(resultIntent);
+
+            resultIntent.SetAction("IfpaNotification");
+            resultIntent.PutExtra("IfpaShellRoute", url);
 
             // Create the PendingIntent with the back stack:
-            var resultPendingIntent = stackBuilder.GetPendingIntent(0, PendingIntentFlags.UpdateCurrent);
+            var resultPendingIntent = PendingIntent.GetActivity(context, 0, resultIntent, PendingIntentFlags.CancelCurrent);
 
 
             // Instantiate the builder and set notification elements:

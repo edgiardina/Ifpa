@@ -11,7 +11,7 @@ using Ifpa.Droid.Services;
 
 namespace Ifpa.Droid
 {
-    [Activity(Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, LaunchMode = LaunchMode.SingleTop)]
     [IntentFilter(new[] { Intent.ActionView },
           Categories = new[] { Intent.CategoryDefault },
           DataScheme = "ifpa",
@@ -51,6 +51,22 @@ namespace Ifpa.Droid
         static void PlatformSpecificServices(IServiceCollection services)
         {
             services.AddSingleton<IReminderService, AndroidReminderService>();
+        }
+
+        protected override void OnNewIntent(Intent intent)
+        {
+            base.OnNewIntent(intent);
+            NotificationOpened(intent);
+        }
+
+        async void NotificationOpened(Intent intent)
+        {
+            if (intent.Action == "IfpaNotification" && intent.HasExtra("IfpaShellRoute"))
+            {
+                var routeUrl = intent.Extras.GetString("IfpaShellRoute");
+
+                await AndroidNotificationService.NotificationOpened(routeUrl);
+            }
         }
     }
 }
