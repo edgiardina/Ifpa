@@ -15,9 +15,9 @@ namespace Ifpa.iOS.Services
             notification.FireDate = NSDate.FromTimeIntervalSinceNow(5);
 
             // configure the alert
-            notification.AlertAction = title;
+            notification.AlertAction = url;
             notification.AlertBody = description;
-            
+            notification.AlertTitle = title;
 
             // set the sound to be the default sound
             notification.SoundName = UILocalNotification.DefaultSoundName;
