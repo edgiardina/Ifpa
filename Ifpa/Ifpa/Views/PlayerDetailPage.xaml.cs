@@ -135,7 +135,6 @@ namespace Ifpa.Views
 
         private async void ActivityFeedButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ActivityFeedPage());
             await Shell.Current.GoToAsync("activity-feed");
         }
 
