@@ -8,6 +8,7 @@ using Xamarin.Forms.Platform.Android.AppLinks;
 using Microsoft.Extensions.DependencyInjection;
 using Ifpa.Interfaces;
 using Ifpa.Droid.Services;
+using Plugin.LocalNotification;
 
 namespace Ifpa.Droid
 {
@@ -37,7 +38,11 @@ namespace Ifpa.Droid
 
             AndroidAppLinks.Init(this);
 
+            NotificationCenter.CreateNotificationChannel();
+
             LoadApplication(new App(PlatformSpecificServices));
+
+            NotificationCenter.NotifyNotificationTapped(Intent);
 
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
 
@@ -55,18 +60,8 @@ namespace Ifpa.Droid
 
         protected override void OnNewIntent(Intent intent)
         {
+            NotificationCenter.NotifyNotificationTapped(intent);
             base.OnNewIntent(intent);
-            NotificationOpened(intent);
-        }
-
-        async void NotificationOpened(Intent intent)
-        {
-            if (intent.Action == "IfpaNotification" && intent.HasExtra("IfpaShellRoute"))
-            {
-                var routeUrl = intent.Extras.GetString("IfpaShellRoute");
-
-                await AndroidNotificationService.NotificationOpened(routeUrl);
-            }
         }
     }
 }

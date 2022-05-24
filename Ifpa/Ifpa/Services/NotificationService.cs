@@ -2,6 +2,7 @@
 using PinballApi;
 using PinballApi.Extensions;
 using Plugin.Badge;
+using Plugin.LocalNotification;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ using Xamarin.Forms;
 
 namespace Ifpa.Services
 {
-    public abstract class BaseNotificationService
+    public class NotificationService
     {
         private PinballRankingApiV1 PinballRankingApi => new PinballRankingApiV1(Constants.IfpaApiKey);
 
@@ -57,7 +58,7 @@ namespace Ifpa.Services
                             
                             if (Settings.NotifyOnTournamentResult && !isHistoricalEventPopulation)
                             {
-                                SendNotification(NewTournamentNotificationTitle, string.Format(NewTournamentNotificationDescription, result.TournamentName), $"///my-stats/tournament-results?tournamentId={result.TournamentId}");
+                                await SendNotification(NewTournamentNotificationTitle, string.Format(NewTournamentNotificationDescription, result.TournamentName), $"///my-stats/tournament-results?tournamentId={result.TournamentId}");
                                 await UpdateBadgeIfNeeded();
                             }
                         }
@@ -85,7 +86,7 @@ namespace Ifpa.Services
                     {
                         if (Settings.NotifyOnRankChange)
                         {
-                            SendNotification(NewRankNotificationTitle, string.Format(NewRankNotificationDescription, lastRecordedWpprRank.OrdinalSuffix(), currentWpprRank.OrdinalSuffix()), "///my-stats/activity-feed");
+                            await SendNotification(NewRankNotificationTitle, string.Format(NewRankNotificationDescription, lastRecordedWpprRank.OrdinalSuffix(), currentWpprRank.OrdinalSuffix()), "///my-stats/activity-feed");
                             await UpdateBadgeIfNeeded();
                         }
 
@@ -128,7 +129,7 @@ namespace Ifpa.Services
                     {
                         if(Settings.LastBlogPostGuid > 0)
                         {
-                            SendNotification(NewBlogPostTitle, string.Format(NewBlogPostDescription, latestPost.Title.Text), $"///news/news-detail?newsUri={latestPost.Links.FirstOrDefault().Uri}");
+                            await SendNotification(NewBlogPostTitle, string.Format(NewBlogPostDescription, latestPost.Title.Text), $"///news/news-detail?newsUri={latestPost.Links.FirstOrDefault().Uri}");
                         }
 
                         Settings.LastBlogPostGuid = latestGuidInPosts;
@@ -151,11 +152,14 @@ namespace Ifpa.Services
             }
         }
 
-        public static async Task NotificationOpened(string url)
+        public async Task SendNotification(string title, string description, string url)
         {
-            await Shell.Current.GoToAsync(url);
+            await NotificationCenter.Current.Show((notification) => notification                                       
+                    .WithReturningData(url)
+                    .WithTitle(title)
+                    .WithDescription(description)
+                    .WithNotificationId(100)
+                    .Create());
         }
-
-        public abstract void SendNotification(string title, string description, string url);
     }
 }

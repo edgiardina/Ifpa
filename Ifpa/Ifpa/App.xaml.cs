@@ -6,6 +6,7 @@ using System;
 using Ifpa.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using System.Web;
+using Plugin.LocalNotification;
 
 namespace Ifpa
 {
@@ -24,12 +25,20 @@ namespace Ifpa
             _ = Shortcuts.AddShortcuts();
 
             InitializeComponent();
+
+            NotificationCenter.Current.NotificationTapped += Current_NotificationTapped;
+
             MainPage = new AppShell();
 
             Current.RequestedThemeChanged += (s, a) =>
             {
                 SetThemeBasedOnDeviceTheme();
             };
+        }
+
+        private async void Current_NotificationTapped(Plugin.LocalNotification.EventArgs.NotificationEventArgs e)
+        {
+            await Shell.Current.GoToAsync(e.Request.ReturningData);
         }
 
         private void SetupServices(Action<IServiceCollection> addPlatformServices)

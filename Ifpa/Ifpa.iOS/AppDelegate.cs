@@ -18,7 +18,7 @@ namespace Ifpa.iOS
     public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
 
-        iOSNotificationService NotificationService = new iOSNotificationService();
+        NotificationService NotificationService = new NotificationService();
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
         // method you should instantiate the window, load the UI into it and then make the window
@@ -34,6 +34,10 @@ namespace Ifpa.iOS
             Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
             Syncfusion.SfCalendar.XForms.iOS.SfCalendarRenderer.Init();
             Syncfusion.SfPdfViewer.XForms.iOS.SfPdfDocumentViewRenderer.Init();
+
+            // Ask the user for permission to show notifications on iOS 10.0+ at startup.
+            // If not asked at startup, user will be asked when showing the first notification.
+            Plugin.LocalNotification.NotificationCenter.AskPermission();
 
             LoadApplication(new App(PlatformSpecificServices));
 
@@ -59,11 +63,6 @@ namespace Ifpa.iOS
                 completionHandler(UIBackgroundFetchResult.Failed);
             }
 
-        }
-
-        public override async void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)
-        {
-            await iOSNotificationService.NotificationOpened(notification.AlertAction);            
         }
 
         static void PlatformSpecificServices(IServiceCollection services)
