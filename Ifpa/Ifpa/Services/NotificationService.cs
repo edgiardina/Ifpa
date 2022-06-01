@@ -129,7 +129,7 @@ namespace Ifpa.Services
                     {
                         if(Settings.LastBlogPostGuid > 0)
                         {
-                            await SendNotification(NewBlogPostTitle, string.Format(NewBlogPostDescription, latestPost.Title.Text), $"///news/news-detail?newsUri={latestPost.Links.FirstOrDefault().Uri}");
+                            await SendNotification(NewBlogPostTitle, string.Format(NewBlogPostDescription, latestPost.Title.Text), $"///more/news/news-detail?newsUri={latestPost.Links.FirstOrDefault().Uri}");
                         }
 
                         Settings.LastBlogPostGuid = latestGuidInPosts;
@@ -157,8 +157,7 @@ namespace Ifpa.Services
             await NotificationCenter.Current.Show((notification) => notification                                       
                     .WithReturningData(url)
                     .WithTitle(title)
-                    .WithDescription(description)
-                    .WithNotificationId(100)
+                    .WithDescription(description)                
                     .Create());
         }
     }

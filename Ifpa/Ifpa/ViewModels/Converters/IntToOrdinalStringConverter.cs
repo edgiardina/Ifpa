@@ -9,6 +9,11 @@ namespace Ifpa.ViewModels.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if(object.Equals(value, null))
+            {
+                return "Not Ranked";
+            }
+
             return ((int)value).OrdinalSuffix();
         }
 

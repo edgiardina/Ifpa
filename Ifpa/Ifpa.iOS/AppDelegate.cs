@@ -41,10 +41,15 @@ namespace Ifpa.iOS
 
             LoadApplication(new App(PlatformSpecificServices));
 
-            UIApplication.SharedApplication.RegisterUserNotificationSettings(UIUserNotificationSettings.GetSettingsForTypes(UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound, null));
             UIApplication.SharedApplication.SetMinimumBackgroundFetchInterval(UIApplication.BackgroundFetchIntervalMinimum);
 
             return base.FinishedLaunching(app, options);
+        }
+
+        public override async void WillEnterForeground(UIApplication uiApplication)
+        {
+            await Plugin.LocalNotification.NotificationCenter.ResetApplicationIconBadgeNumber(uiApplication);
+            base.WillEnterForeground(uiApplication);
         }
 
         public override async void PerformFetch(UIApplication application, Action<UIBackgroundFetchResult> completionHandler)
