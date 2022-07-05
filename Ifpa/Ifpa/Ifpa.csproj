@@ -12,8 +12,9 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
-    <PackageReference Include="PinballApi" Version="2.0.77" />
+    <PackageReference Include="PinballApi" Version="2.0.78" />
     <PackageReference Include="Plugin.AppShortcuts" Version="1.0.0.3" />
+    <PackageReference Include="Plugin.LocalNotification" Version="9.2.0" />
     <PackageReference Include="Scrutor" Version="4.1.0" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="Syncfusion.Licensing" Version="20.1.0.55" />
@@ -23,6 +24,7 @@
     <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="20.1.0.55" />
     <PackageReference Include="System.ServiceModel.Syndication" Version="6.0.0" />
     <PackageReference Include="Xamarin.Badge.Plugin" Version="2.0.0" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.2" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
     <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2401" />  

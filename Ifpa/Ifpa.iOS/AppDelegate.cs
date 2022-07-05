@@ -18,7 +18,7 @@ namespace Ifpa.iOS
     public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
 
-        iOSNotificationService NotificationService = new iOSNotificationService();
+        NotificationService NotificationService = new NotificationService();
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
         // method you should instantiate the window, load the UI into it and then make the window
@@ -35,12 +35,21 @@ namespace Ifpa.iOS
             Syncfusion.SfCalendar.XForms.iOS.SfCalendarRenderer.Init();
             Syncfusion.SfPdfViewer.XForms.iOS.SfPdfDocumentViewRenderer.Init();
 
+            // Ask the user for permission to show notifications on iOS 10.0+ at startup.
+            // If not asked at startup, user will be asked when showing the first notification.
+            Plugin.LocalNotification.NotificationCenter.AskPermission();
+
             LoadApplication(new App(PlatformSpecificServices));
 
-            UIApplication.SharedApplication.RegisterUserNotificationSettings(UIUserNotificationSettings.GetSettingsForTypes(UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound, null));
             UIApplication.SharedApplication.SetMinimumBackgroundFetchInterval(UIApplication.BackgroundFetchIntervalMinimum);
 
             return base.FinishedLaunching(app, options);
+        }
+
+        public override async void WillEnterForeground(UIApplication uiApplication)
+        {
+            await Plugin.LocalNotification.NotificationCenter.ResetApplicationIconBadgeNumber(uiApplication);
+            base.WillEnterForeground(uiApplication);
         }
 
         public override async void PerformFetch(UIApplication application, Action<UIBackgroundFetchResult> completionHandler)
@@ -59,20 +68,6 @@ namespace Ifpa.iOS
                 completionHandler(UIBackgroundFetchResult.Failed);
             }
 
-        }
-
-        public override async void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)
-        {
-            if (notification.AlertAction == BaseNotificationService.NewBlogPostTitle)
-            {
-                //Open News
-                await Shell.Current.GoToAsync("///more/news");
-            }
-            else
-            {
-                //Rank Change or tournament result, just go to My Stats activity feed
-                await Shell.Current.GoToAsync("///my-stats/activity-feed");
-            }
         }
 
         static void PlatformSpecificServices(IServiceCollection services)

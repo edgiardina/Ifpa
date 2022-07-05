@@ -8,10 +8,11 @@ using Xamarin.Forms.Platform.Android.AppLinks;
 using Microsoft.Extensions.DependencyInjection;
 using Ifpa.Interfaces;
 using Ifpa.Droid.Services;
+using Plugin.LocalNotification;
 
 namespace Ifpa.Droid
 {
-    [Activity(Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, LaunchMode = LaunchMode.SingleTop)]
     [IntentFilter(new[] { Intent.ActionView },
           Categories = new[] { Intent.CategoryDefault },
           DataScheme = "ifpa",
@@ -37,7 +38,11 @@ namespace Ifpa.Droid
 
             AndroidAppLinks.Init(this);
 
+            NotificationCenter.CreateNotificationChannel();
+
             LoadApplication(new App(PlatformSpecificServices));
+
+            NotificationCenter.NotifyNotificationTapped(Intent);
 
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
 
@@ -51,6 +56,12 @@ namespace Ifpa.Droid
         static void PlatformSpecificServices(IServiceCollection services)
         {
             services.AddSingleton<IReminderService, AndroidReminderService>();
+        }
+
+        protected override void OnNewIntent(Intent intent)
+        {
+            NotificationCenter.NotifyNotificationTapped(intent);
+            base.OnNewIntent(intent);
         }
     }
 }

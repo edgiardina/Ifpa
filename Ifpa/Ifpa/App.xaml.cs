@@ -6,6 +6,7 @@ using System;
 using Ifpa.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using System.Web;
+using Plugin.LocalNotification;
 
 namespace Ifpa
 {
@@ -24,12 +25,20 @@ namespace Ifpa
             _ = Shortcuts.AddShortcuts();
 
             InitializeComponent();
+
+            NotificationCenter.Current.NotificationTapped += Current_NotificationTapped;
+
             MainPage = new AppShell();
 
             Current.RequestedThemeChanged += (s, a) =>
             {
                 SetThemeBasedOnDeviceTheme();
             };
+        }
+
+        private async void Current_NotificationTapped(Plugin.LocalNotification.EventArgs.NotificationEventArgs e)
+        {
+            await Shell.Current.GoToAsync(e.Request.ReturningData);
         }
 
         private void SetupServices(Action<IServiceCollection> addPlatformServices)
@@ -92,21 +101,27 @@ namespace Ifpa
 
         protected override async void OnAppLinkRequestReceived(Uri uri)
         {
-            //App Shortcut
+            base.OnAppLinkRequestReceived(uri);
+
+            //App Shortcuts
             if (uri.ToString().Contains(Shortcuts.AppShortcutUriBase))
             {
                 var option = uri.ToString().Replace(Shortcuts.AppShortcutUriBase, "");
                 if (!string.IsNullOrEmpty(option))
                 {
-                    await Shell.Current.GoToAsync($"///{option}");
+                    if(option.Contains("ranking"))
+                    {
+                        //Note: iOS Xamarin appears broken in applinkrequests
+                        //https://stackoverflow.com/questions/70719731/xamarin-forms-shell-gotoasync-is-not-working-as-expected-in-ios
+                        Shell.Current.CurrentItem = Shell.Current.CurrentItem.Items[0];
+                    }
+                    await Shell.Current.GoToAsync($"//{option}");
                 }
-                else
-                {
-                    base.OnAppLinkRequestReceived(uri);
-                }
-            }
 
-            //TODO: Deep Link request
+                return;
+            }
+            
+            //DeepLinks
             if (uri.ToString().Contains("player.php"))
             {
                 //extract player ID from querystring
@@ -114,7 +129,8 @@ namespace Ifpa
 
                 if (!string.IsNullOrEmpty(id))
                 {
-                    await Shell.Current.GoToAsync($"///rankings/player-details?playerId={id}");
+                    Shell.Current.CurrentItem = Shell.Current.CurrentItem.Items[0];
+                    await Shell.Current.GoToAsync($"//rankings/player-details?playerId={id}");
                 }
             }
             //tournaments/view.php?t=46773
@@ -123,7 +139,8 @@ namespace Ifpa
                 var id = HttpUtility.ParseQueryString(uri.Query)["t"];
                 if (!string.IsNullOrEmpty(id))
                 {
-                    await Shell.Current.GoToAsync($"///rankings/tournament-results?tournamentId={id}");
+                    Shell.Current.CurrentItem = Shell.Current.CurrentItem.Items[0];
+                    await Shell.Current.GoToAsync($"//rankings/tournament-results?tournamentId={id}");
                 }
             }
         }

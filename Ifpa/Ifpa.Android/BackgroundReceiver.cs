@@ -1,13 +1,14 @@
 ﻿using Android.Content;
 using Android.OS;
 using Ifpa.Droid.Services;
+using Ifpa.Services;
 
 namespace Ifpa.Droid
 {
     [BroadcastReceiver]
     public class BackgroundReceiver : BroadcastReceiver
     {
-        private AndroidNotificationService NotificationService;
+        private NotificationService NotificationService;
 
         public override async void OnReceive(Context context, Intent intent)
         {
@@ -15,7 +16,7 @@ namespace Ifpa.Droid
             PowerManager.WakeLock wakeLock = pm.NewWakeLock(WakeLockFlags.Partial, "BackgroundReceiver");
             wakeLock.Acquire();
 
-            NotificationService = new AndroidNotificationService(context);
+            NotificationService = new NotificationService();
 
             await NotificationService.NotifyIfUserHasNewlySubmittedTourneyResults();
             await NotificationService.NotifyIfUsersRankChanged();
