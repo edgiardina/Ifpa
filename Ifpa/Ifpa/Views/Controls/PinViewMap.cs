@@ -1,4 +1,4 @@
-﻿using Xamarin.Forms.Maps;
+﻿using Microsoft.Maui.Maps;
 
 namespace Ifpa.Views.Controls
 {

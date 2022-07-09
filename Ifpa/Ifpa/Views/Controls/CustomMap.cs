@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Xamarin.Forms.Maps;
+using Microsoft.Maui.Maps;
 
 namespace Ifpa.Views.Controls
 {

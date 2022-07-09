@@ -1,7 +1,7 @@
-﻿using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Microsoft.Maui;
+using Microsoft.Maui.Xaml;
 using Ifpa.ViewModels;
-using Xamarin.Essentials;
+using Microsoft.Maui.Essentials;
 using PinballApi.Models.WPPR.v2;
 using System;
 using PinballApi.Models.WPPR.v2.Rankings;

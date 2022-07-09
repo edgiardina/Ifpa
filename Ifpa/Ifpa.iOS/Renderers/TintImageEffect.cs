@@ -2,8 +2,8 @@
 using System;
 using System.Linq;
 using UIKit;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.iOS;
+using Microsoft.Maui;
+using Microsoft.Maui.Platform.iOS;
 using FormsTintImageEffect = Ifpa.Effects.TintImageEffect;
 
 [assembly: ResolutionGroupName(FormsTintImageEffect.GroupName)]

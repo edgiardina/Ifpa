@@ -6,7 +6,7 @@ using Android.Views;
 using Google.Android.Material.BottomNavigation;
 using Ifpa.Droid.Renderers;
 using Ifpa.Models;
-using Xamarin.Forms.Platform.Android.AppCompat;
+using Microsoft.Maui.Platform.Android.AppCompat;
 
 [assembly: Xamarin.Forms.ExportRenderer(typeof(HomeTabbedPage), typeof(HomeTabbedPageRenderer))]
 namespace Ifpa.Droid.Renderers

@@ -1,7 +1,7 @@
 ﻿using Ifpa.Models;
 using Ifpa.ViewModels;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using Microsoft.Maui;
+using Microsoft.Maui.Xaml;
 
 namespace Ifpa.Views
 {

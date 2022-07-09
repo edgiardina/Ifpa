@@ -2,7 +2,7 @@
 using Ifpa.ViewModels;
 using Syncfusion.SfCalendar.XForms;
 using System;
-using Xamarin.Forms;
+using Microsoft.Maui;
 
 namespace Ifpa.Views.Behaviors
 {

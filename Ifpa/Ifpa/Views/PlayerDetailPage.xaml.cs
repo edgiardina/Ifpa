@@ -1,12 +1,12 @@
-﻿using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Microsoft.Maui;
+using Microsoft.Maui.Xaml;
 using Ifpa.ViewModels;
 using System;
 using System.Threading.Tasks;
 using System.Linq;
 using Ifpa.Services;
 using Ifpa.Models;
-using Xamarin.Essentials;
+using Microsoft.Maui.Essentials;
 
 namespace Ifpa.Views
 {

@@ -2,8 +2,8 @@
 using Ifpa.Droid.Services;
 using Ifpa.Services;
 using Plugin.CurrentActivity;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.Android;
+using Microsoft.Maui;
+using Microsoft.Maui.Platform.Android;
 
 [assembly: Dependency(typeof(ToolbarItemBadgeService))]
 namespace Ifpa.Droid.Services

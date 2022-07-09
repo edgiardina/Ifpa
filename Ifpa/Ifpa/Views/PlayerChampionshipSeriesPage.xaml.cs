@@ -2,8 +2,8 @@
 using PinballApi.Models.v2.WPPR;
 using System;
 using System.Collections.ObjectModel;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using Microsoft.Maui;
+using Microsoft.Maui.Xaml;
 
 namespace Ifpa.Views
 {

@@ -6,7 +6,7 @@ using Android.Provider;
 using Ifpa.Droid.Services;
 using Ifpa.Interfaces;
 using Ifpa.ViewModels;
-using Xamarin.Forms;
+using Microsoft.Maui;
 
 namespace Ifpa.Droid.Services
 {

@@ -4,11 +4,12 @@ using Android.OS;
 using Android.Content;
 using Android.Runtime;
 using Plugin.CurrentActivity;
-using Xamarin.Forms.Platform.Android.AppLinks;
+using Microsoft.Maui.Platform.Android.AppLinks;
 using Microsoft.Extensions.DependencyInjection;
 using Ifpa.Interfaces;
 using Ifpa.Droid.Services;
 using Plugin.LocalNotification;
+using Microsoft.Maui;
 
 namespace Ifpa.Droid
 {
@@ -27,7 +28,7 @@ namespace Ifpa.Droid
           DataHost = "www.ifpapinball.com",
           DataPaths = new string[] { "/player.php", "/tournaments/view.php" },
           AutoVerify = true)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    public class MainActivity : MauiAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {

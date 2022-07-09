@@ -1,4 +1,4 @@
-﻿<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:views="clr-namespace:Ifpa.Views"
        x:Class="Ifpa.AppShell" BackgroundColor="{DynamicResource BackgroundColor}">

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using Xamarin.Essentials;
+using Microsoft.Maui;
+using Microsoft.Maui.Xaml;
+using Microsoft.Maui.Essentials;
 using Ifpa.ViewModels;
-using Xamarin.Forms.Maps;
+using Microsoft.Maui.Maps;
 using System.Diagnostics;
 using PinballApi.Models.WPPR.v1.Calendar;
 using Ifpa.Models;

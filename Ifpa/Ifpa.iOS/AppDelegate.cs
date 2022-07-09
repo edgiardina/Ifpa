@@ -7,7 +7,7 @@ using Ifpa.Services;
 using Ifpa.Views;
 using Microsoft.Extensions.DependencyInjection;
 using UIKit;
-using Xamarin.Forms;
+using Microsoft.Maui;
 
 namespace Ifpa.iOS
 {
@@ -15,7 +15,7 @@ namespace Ifpa.iOS
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+    public partial class AppDelegate : MauiUIApplicationDelegate
     {
 
         NotificationService NotificationService = new NotificationService();

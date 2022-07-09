@@ -1,8 +1,8 @@
 ﻿using Ifpa.iOS.Services;
 using Ifpa.iOS.Utils;
 using Ifpa.Services;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.iOS;
+using Microsoft.Maui;
+using Microsoft.Maui.Platform.iOS;
 
 [assembly: Dependency(typeof(ToolbarItemBadgeService))]
 namespace Ifpa.iOS.Services

@@ -1,9 +1,9 @@
 ﻿using Ifpa.iOS.Renderers;
 using Ifpa.Views.Controls;
 using MapKit;
-using Xamarin.Forms;
-using Xamarin.Forms.Maps.iOS;
-using Xamarin.Forms.Platform.iOS;
+using Microsoft.Maui;
+using Microsoft.Maui.Maps.iOS;
+using Microsoft.Maui.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(PinViewMap), typeof(PinViewMapRenderer))]
 namespace Ifpa.iOS.Renderers

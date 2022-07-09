@@ -1,8 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <UserSecretsId>f2f2536e-4969-48fa-8248-356ee89e25c0</UserSecretsId>
+	  <TargetFrameworks>net6.0-ios;net6.0-android</TargetFrameworks>
+	  <UseMaui>True</UseMaui>
+	  <OutputType>Library</OutputType>
+	  <ImplicitUsings>enable</ImplicitUsings>
+
+	  <!-- Required for C# Hot Reload -->
+	  <UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
+
+	  <UserSecretsId>f2f2536e-4969-48fa-8248-356ee89e25c0</UserSecretsId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -24,9 +31,6 @@
     <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="20.1.0.55" />
     <PackageReference Include="System.ServiceModel.Syndication" Version="6.0.0" />
     <PackageReference Include="Xamarin.Badge.Plugin" Version="2.0.0" />
-    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.2" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
     <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2401" />  
   </ItemGroup>
 

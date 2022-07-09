@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using Microsoft.Maui.Essentials;
+using Microsoft.Maui;
+using Microsoft.Maui.Xaml;
 
 namespace Ifpa.Views
 {

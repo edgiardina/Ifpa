@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using Xamarin.Forms;
+using Microsoft.Maui;
 using Ifpa.Services;
 using System.ServiceModel.Syndication;
 using System.Web;
