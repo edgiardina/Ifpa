@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
              xmlns:local1="clr-namespace:Ifpa.Views.Controls"
              x:Class="Ifpa.Views.CalendarDetailPage"
-             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"            
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"                         
              ios:Page.LargeTitleDisplay="Never">
     <ContentPage.Resources>
         <ResourceDictionary>

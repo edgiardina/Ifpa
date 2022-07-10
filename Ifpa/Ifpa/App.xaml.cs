@@ -40,19 +40,6 @@ namespace Ifpa
             await Shell.Current.GoToAsync(e.Request.ReturningData);
         }
 
-        private void SetupServices(Action<IServiceCollection> addPlatformServices)
-        {
-            var services = new ServiceCollection();
-
-            //TODO: Add platform specific services and eliminate DependencyService
-            addPlatformServices?.Invoke(services);
-
-            //This extension method call will register all viewmodels in the same namespace as the BaseViewModel
-            services.AddViewModels<BaseViewModel>();
-
-            ServiceProvider = services.BuildServiceProvider();
-        }
-
         public static AppTheme AppTheme { get; set; }
 
         protected override void OnStart()
