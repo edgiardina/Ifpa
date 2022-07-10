@@ -1,10 +1,7 @@
-﻿using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Microsoft.Maui;
 using Ifpa.ViewModels;
 using System;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
-using Xamarin.Forms.Maps;
 using System.Linq;
 using Ifpa.Interfaces;
 
@@ -40,31 +37,34 @@ namespace Ifpa.Views
             //when busy is flipped back to false it means we are done loading the address
             if (e.PropertyName == "IsBusy" && viewModel.IsBusy == false)
             {
-                try
-                {
-                    var locations = await Geocoding.GetLocationsAsync(viewModel.Address1 + " " + viewModel.City + ", " + viewModel.State);
 
-                    var position = new Position(locations.First().Latitude, locations.First().Longitude);
-                    calendarMap.MoveToRegion(new MapSpan(position, 0.1, 0.1));
-                    var pin = new Pin
-                    {
-                        Label = viewModel.TournamentName,
-                        Position = position,
-                        Address = viewModel.Location,
-                        Type = PinType.Generic                        
-                    };
+                //TODO: Restore adding pin to map
 
-                    pin.InfoWindowClicked += Pin_Clicked;
+                //try
+                //{
+                //    var locations = await Geocoding.GetLocationsAsync(viewModel.Address1 + " " + viewModel.City + ", " + viewModel.State);
+
+                //    var position = new Position(locations.First().Latitude, locations.First().Longitude);
+                //    calendarMap.MoveToRegion(new MapSpan(position, 0.1, 0.1));
+                //    var pin = new Pin
+                //    {
+                //        Label = viewModel.TournamentName,
+                //        Position = position,
+                //        Address = viewModel.Location,
+                //        Type = PinType.Generic                        
+                //    };
+
+                //    pin.InfoWindowClicked += Pin_Clicked;
                
-                    calendarMap.Pins.Add(pin);
+                //    calendarMap.Pins.Add(pin);
                     
-                    calendarMap.IsVisible = true;
-                }
-                //unable to geocode position on the map, ignore. 
-                catch(Exception)
-                {
-                    calendarMap.IsVisible = false;
-                }                
+                //    calendarMap.IsVisible = true;
+                //}
+                ////unable to geocode position on the map, ignore. 
+                //catch(Exception)
+                //{
+                //    calendarMap.IsVisible = false;
+                //}                
             }
         }
 
@@ -87,9 +87,9 @@ namespace Ifpa.Views
                 Thoroughfare = viewModel.Address1,
                 Locality = viewModel.City
             };
-            var options = new MapLaunchOptions { Name = viewModel.TournamentName };
+            var options = new MapLaunchOptions { Name = viewModel.TournamentName };  
 
-            await Xamarin.Essentials.Map.OpenAsync(placemark, options);
+            await Map.OpenAsync(placemark, options);
         }
 
         private async void AddToCalendarButton_Clicked(object sender, EventArgs e)

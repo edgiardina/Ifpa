@@ -1,5 +1,5 @@
-﻿using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Microsoft.Maui;
+
 using Ifpa.ViewModels;
 using PinballApi.Models.WPPR.v1.Players;
 

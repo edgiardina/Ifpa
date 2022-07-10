@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Ifpa.ViewModels.Converters"
              xmlns:local1="clr-namespace:Ifpa.Views.Controls"
              x:Class="Ifpa.Views.CalendarDetailPage"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"            
              ios:Page.LargeTitleDisplay="Never">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -49,9 +49,11 @@
         </Frame>
         <ScrollView VerticalOptions="FillAndExpand"  BackgroundColor="{DynamicResource BackgroundColor}"  IsClippedToBounds="True">
             <StackLayout Spacing="0">
-                <local1:PinViewMap
+                <!-- TODO: Restore Map on Calendar Page-->
+                
+                <!--<local1:PinViewMap
                     x:Name="calendarMap" HasScrollEnabled="False" HasZoomEnabled="False" HeightRequest="200"              
-                     MapType="Street" IsVisible="False" />
+                     MapType="Street" IsVisible="False" />-->
 
                 <StackLayout VerticalOptions="FillAndExpand" Padding="20,20,20,20" >                          
 

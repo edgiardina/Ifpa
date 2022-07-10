@@ -3,9 +3,9 @@ using Android.Graphics;
 using Android.Widget;
 using Ifpa.Droid.Renderers;
 using Java.Lang;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.Android;
 using FormsTintImageEffect = Ifpa.Effects.TintImageEffect;
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
 
 [assembly: ResolutionGroupName(FormsTintImageEffect.GroupName)]
 [assembly: ExportEffect(typeof(TintImageEffect), FormsTintImageEffect.Name)]

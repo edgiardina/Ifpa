@@ -4,11 +4,12 @@ using Android.OS;
 using Android.Content;
 using Android.Runtime;
 using Plugin.CurrentActivity;
-using Xamarin.Forms.Platform.Android.AppLinks;
 using Microsoft.Extensions.DependencyInjection;
 using Ifpa.Interfaces;
 using Ifpa.Droid.Services;
 using Plugin.LocalNotification;
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
 
 namespace Ifpa.Droid
 {
@@ -20,27 +21,23 @@ namespace Ifpa.Droid
           AutoVerify = true)]
     [IntentFilter(new[] { Intent.ActionView },
           Categories = new[] {
-              Android.Content.Intent.CategoryDefault,
-              Android.Content.Intent.CategoryBrowsable 
+              Intent.CategoryDefault,
+              Intent.CategoryBrowsable 
           },
           DataSchemes = new string[] { "http", "https" },
           DataHost = "www.ifpapinball.com",
           DataPaths = new string[] { "/player.php", "/tournaments/view.php" },
           AutoVerify = true)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    public class MainActivity : MauiAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
 
             base.OnCreate(savedInstanceState);
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-
-            AndroidAppLinks.Init(this);
 
             NotificationCenter.CreateNotificationChannel();
 
-            LoadApplication(new App(PlatformSpecificServices));
+           // LoadApplication(new App(PlatformSpecificServices));
 
             NotificationCenter.NotifyNotificationTapped(Intent);
 

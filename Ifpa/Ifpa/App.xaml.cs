@@ -1,5 +1,4 @@
-﻿using Xamarin.Forms;
-using Xamarin.Essentials;
+﻿using Microsoft.Maui;
 using Ifpa.Models;
 using Ifpa.Styles;
 using System;

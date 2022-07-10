@@ -1,7 +1,7 @@
 ﻿using PinballApi.Models.WPPR.v2.Players;
 using System;
 using System.Globalization;
-using Xamarin.Forms;
+using Microsoft.Maui;
 
 namespace Ifpa.ViewModels.Converters
 {
@@ -10,7 +10,7 @@ namespace Ifpa.ViewModels.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null)
-                return Color.Transparent;
+                return Colors.Transparent;
 
             var pvpRecord = (PlayerVersusRecord)value;
 

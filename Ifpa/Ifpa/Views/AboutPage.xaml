@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ifpa.Views.AboutPage"
              xmlns:vm="clr-namespace:Ifpa.ViewModels"
@@ -26,7 +26,7 @@
                             <FormattedString.Spans>
                                 <Span Text="IFPA Companion" FontAttributes="Bold" FontSize="22" />
                                 <Span Text=" " />
-                                <Span Text="{Binding CurrentVersion}" ForegroundColor="{DynamicResource SecondaryTextColor}" />
+                                <Span Text="{Binding CurrentVersion}" TextColor="{DynamicResource SecondaryTextColor}" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
@@ -35,9 +35,9 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="This app is written in C# and native APIs using the" />
+                                <Span Text="This app is written in C# and native APIs using" />
                                 <Span Text=" " />
-                                <Span Text="Xamarin Platform" FontAttributes="Bold" />
+                                <Span Text=".NET MAUI" FontAttributes="Bold" />
                                 <Span Text="." />
                             </FormattedString.Spans>
                         </FormattedString>

@@ -4,8 +4,8 @@ using PinballApi.Models.WPPR.v2.Series;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using Microsoft.Maui;
+
 
 namespace Ifpa.Views
 {

@@ -2,10 +2,9 @@
 using Android.Content;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
-using Xamarin.Essentials;
-using Xamarin.Forms;
-using Xamarin.Forms.Maps.Android;
 using Ifpa.Views.Controls;
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
 
 [assembly: ExportRenderer(typeof(CustomMap), typeof(CustomMapRenderer))]
 [assembly: ExportRenderer(typeof(PinViewMap), typeof(CustomMapRenderer))]

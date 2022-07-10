@@ -3,8 +3,8 @@ using Ifpa.ViewModels;
 using Plugin.Badge;
 using System;
 using System.Linq;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using Microsoft.Maui;
+
 
 namespace Ifpa.Views
 {

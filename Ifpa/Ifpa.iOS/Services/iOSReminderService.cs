@@ -6,8 +6,9 @@ using Ifpa.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 using System.Linq;
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
 
 namespace Ifpa.iOS.Services
 {

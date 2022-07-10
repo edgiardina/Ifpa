@@ -1,6 +1,4 @@
-﻿using Xamarin.Essentials;
-
-namespace Ifpa.ViewModels
+﻿namespace Ifpa.ViewModels
 {
     public class AboutViewModel : BaseViewModel
     {

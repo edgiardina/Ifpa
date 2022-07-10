@@ -1,5 +1,4 @@
-﻿using Xamarin.Forms.Maps;
-
+﻿
 namespace Ifpa.Views.Controls
 {
     /// <summary>

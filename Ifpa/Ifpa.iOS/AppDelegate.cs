@@ -7,7 +7,9 @@ using Ifpa.Services;
 using Ifpa.Views;
 using Microsoft.Extensions.DependencyInjection;
 using UIKit;
-using Xamarin.Forms;
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Hosting;
 
 namespace Ifpa.iOS
 {
@@ -15,9 +17,12 @@ namespace Ifpa.iOS
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+    public partial class AppDelegate : MauiUIApplicationDelegate
     {
+        
+        protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
 
+        
         NotificationService NotificationService = new NotificationService();
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
@@ -28,18 +33,18 @@ namespace Ifpa.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.Init();
-            global::Xamarin.FormsMaps.Init();
-            Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer.Init();
-            Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
-            Syncfusion.SfCalendar.XForms.iOS.SfCalendarRenderer.Init();
-            Syncfusion.SfPdfViewer.XForms.iOS.SfPdfDocumentViewRenderer.Init();
+            //global::Xamarin.Forms.Forms.Init();
+            //global::Xamarin.FormsMaps.Init();
+            //Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer.Init();
+            //Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
+            //Syncfusion.SfCalendar.XForms.iOS.SfCalendarRenderer.Init();
+            //Syncfusion.SfPdfViewer.XForms.iOS.SfPdfDocumentViewRenderer.Init();
 
             // Ask the user for permission to show notifications on iOS 10.0+ at startup.
             // If not asked at startup, user will be asked when showing the first notification.
-            Plugin.LocalNotification.NotificationCenter.AskPermission();
+            //Plugin.LocalNotification.NotificationCenter.AskPermission();
 
-            LoadApplication(new App(PlatformSpecificServices));
+            //LoadApplication(new App(PlatformSpecificServices));
 
             UIApplication.SharedApplication.SetMinimumBackgroundFetchInterval(UIApplication.BackgroundFetchIntervalMinimum);
 
@@ -52,23 +57,25 @@ namespace Ifpa.iOS
             base.WillEnterForeground(uiApplication);
         }
 
-        public override async void PerformFetch(UIApplication application, Action<UIBackgroundFetchResult> completionHandler)
-        {
-            try
-            {
-                await NotificationService.NotifyIfUserHasNewlySubmittedTourneyResults();
-                await NotificationService.NotifyIfUsersRankChanged();
-                await NotificationService.NotifyIfNewBlogItemPosted();
+        
 
-                // Inform system of fetch results
-                completionHandler(UIBackgroundFetchResult.NewData);
-            }
-            catch
-            {
-                completionHandler(UIBackgroundFetchResult.Failed);
-            }
+        //public override async void PerformFetch(UIApplication application, Action<UIBackgroundFetchResult> completionHandler)
+        //{
+        //    try
+        //    {
+        //        await NotificationService.NotifyIfUserHasNewlySubmittedTourneyResults();
+        //        await NotificationService.NotifyIfUsersRankChanged();
+        //        await NotificationService.NotifyIfNewBlogItemPosted();
 
-        }
+        //        // Inform system of fetch results
+        //        completionHandler(UIBackgroundFetchResult.NewData);
+        //    }
+        //    catch
+        //    {
+        //        completionHandler(UIBackgroundFetchResult.Failed);
+        //    }
+
+        //}
 
         static void PlatformSpecificServices(IServiceCollection services)
         {
@@ -77,14 +84,14 @@ namespace Ifpa.iOS
 
         #region QuickActions       
 
-        public override void PerformActionForShortcutItem(UIApplication application, UIApplicationShortcutItem shortcutItem, UIOperationHandler completionHandler)
-        {
-            var uri = Plugin.AppShortcuts.iOS.ArgumentsHelper.GetUriFromApplicationShortcutItem(shortcutItem);
-            if (uri != null)
-            {
-                Xamarin.Forms.Application.Current.SendOnAppLinkRequestReceived(uri);
-            }
-        }
+        //public override void PerformActionForShortcutItem(UIApplication application, UIApplicationShortcutItem shortcutItem, UIOperationHandler completionHandler)
+        //{
+        //    var uri = Plugin.AppShortcuts.iOS.ArgumentsHelper.GetUriFromApplicationShortcutItem(shortcutItem);
+        //    if (uri != null)
+        //    {
+        //        Xamarin.Forms.Application.Current.SendOnAppLinkRequestReceived(uri);
+        //    }
+        //}
 
         #endregion
     }

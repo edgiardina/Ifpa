@@ -2,9 +2,8 @@
 using PinballApi.Models.WPPR.v2;
 using PinballApi.Models.WPPR.v2.Rankings;
 using System;
-using Xamarin.Essentials;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using Microsoft.Maui;
+
 
 namespace Ifpa.Views
 {

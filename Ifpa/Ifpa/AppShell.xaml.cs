@@ -1,9 +1,7 @@
 ﻿using Ifpa.Models;
 using Ifpa.Views;
 using System;
-
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using Microsoft.Maui;
 
 namespace Ifpa
 {

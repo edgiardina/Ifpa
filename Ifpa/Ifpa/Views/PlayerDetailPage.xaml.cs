@@ -1,12 +1,10 @@
-﻿using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Microsoft.Maui;
 using Ifpa.ViewModels;
 using System;
 using System.Threading.Tasks;
 using System.Linq;
 using Ifpa.Services;
 using Ifpa.Models;
-using Xamarin.Essentials;
 
 namespace Ifpa.Views
 {
@@ -90,7 +88,7 @@ namespace Ifpa.Views
         private async Task PostPlayerLoad()
         {
             var numOfUnread = await Settings.LocalDatabase.GetUnreadActivityCount();
-            DependencyService.Get<IToolbarItemBadgeService>().SetBadge(this, ToolbarItems.SingleOrDefault(n => n.Text == "Activity Feed"), numOfUnread.ToString(), Color.Red, Color.White);
+            DependencyService.Get<IToolbarItemBadgeService>().SetBadge(this, ToolbarItems.SingleOrDefault(n => n.Text == "Activity Feed"), numOfUnread.ToString(), Colors.Red, Colors.White);
         }
 
         private async void TournamentResults_Button_Clicked(object sender, EventArgs e)

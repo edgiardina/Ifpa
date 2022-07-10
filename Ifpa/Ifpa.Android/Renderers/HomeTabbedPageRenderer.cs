@@ -6,9 +6,12 @@ using Android.Views;
 using Google.Android.Material.BottomNavigation;
 using Ifpa.Droid.Renderers;
 using Ifpa.Models;
-using Xamarin.Forms.Platform.Android.AppCompat;
+using Microsoft.Maui;
+using Microsoft.Maui.Controls.Compatibility;
+using Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat;
+using View = Android.Views.View;
 
-[assembly: Xamarin.Forms.ExportRenderer(typeof(HomeTabbedPage), typeof(HomeTabbedPageRenderer))]
+[assembly: ExportRenderer(typeof(HomeTabbedPage), typeof(HomeTabbedPageRenderer))]
 namespace Ifpa.Droid.Renderers
 {
     public class HomeTabbedPageRenderer : TabbedPageRenderer, BottomNavigationView.IOnNavigationItemReselectedListener

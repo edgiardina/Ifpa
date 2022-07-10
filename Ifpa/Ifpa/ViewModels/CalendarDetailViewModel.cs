@@ -1,10 +1,9 @@
 ﻿using System;
-using Xamarin.Forms;
+using Microsoft.Maui;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Diagnostics;
 using Ifpa.Interfaces;
-using Xamarin.Essentials;
 
 namespace Ifpa.ViewModels
 {

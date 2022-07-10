@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              xmlns:syncfusion1="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
              xmlns:local="clr-namespace:Ifpa.Views.Behaviors" xmlns:controls="clr-namespace:Ifpa.Views.Controls"
              x:Class="Ifpa.Views.CalendarPage"
@@ -15,10 +14,14 @@
     </ContentPage.Behaviors>
     <StackLayout Spacing="0">
         <StackLayout x:Name="MapLayout" Spacing="0">
-            <controls:CustomMap WidthRequest="320" HeightRequest="200"
+            
+            <!-- TODO: Re-implement map -->
+            
+            <!--<controls:CustomMap WidthRequest="320" HeightRequest="200"
                 x:Name="calendarMap"                  
                 VerticalOptions="Start"
-                MapType="Street" />
+                MapType="Street" />-->
+            
             <ListView x:Name="TournamentListView"                  
                     ItemsSource="{Binding CalendarDetails}"
                     VerticalOptions="FillAndExpand"
