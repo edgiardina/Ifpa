@@ -4,7 +4,7 @@ using Ifpa.ViewModels;
 using System;
 using System.Threading.Tasks;
 using Microsoft.Maui.Essentials;
-using Microsoft.Maui.Maps;
+//using Microsoft.Maui.Maps;
 using System.Linq;
 using Ifpa.Interfaces;
 

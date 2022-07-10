@@ -27,7 +27,7 @@ namespace Ifpa.ViewModels.Converters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null || parameter == null) return Color.White;
+            if (value == null || parameter == null) return Colors.White;
             return (((ListView)parameter).ItemsSource.Cast<object>().ToList().IndexOf(value) + StartingRank).OrdinalSuffix();
         }
 

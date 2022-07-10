@@ -8,66 +8,17 @@
 		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-android'">31.0</SupportedOSPlatformVersion>
 	</PropertyGroup>
 	<PropertyGroup>
-		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-		<ProjectGuid>{93A4FD23-766C-4815-85D2-C26CFD02EDA0}</ProjectGuid>
-		<ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-		<TemplateGuid>{6968b3a4-1835-46a3-ac5c-1ae33b475983}</TemplateGuid>
-		<OutputType>Library</OutputType>
-		<RootNamespace>Ifpa.Droid</RootNamespace>
-		<AssemblyName>Ifpa.Android</AssemblyName>
-		<AndroidApplication>True</AndroidApplication>
-		<AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
-		<AndroidResgenClass>Resource</AndroidResgenClass>
-		<AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-		<MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
-		<MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-		<AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
-		<TargetFrameworkVersion>v11.0</TargetFrameworkVersion>
-		<AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
-		<NuGetPackageImportStamp>
-		</NuGetPackageImportStamp>
+		<UseInterpreter Condition="$(TargetFramework.Contains('-android'))">True</UseInterpreter>
+		<SupportedOSPlatformVersion>28.0</SupportedOSPlatformVersion>
 	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-		<DebugSymbols>true</DebugSymbols>
-		<DebugType>portable</DebugType>
-		<Optimize>false</Optimize>
-		<OutputPath>bin\Debug</OutputPath>
-		<DefineConstants>DEBUG;</DefineConstants>
-		<ErrorReport>prompt</ErrorReport>
-		<WarningLevel>4</WarningLevel>
-		<AndroidLinkMode>None</AndroidLinkMode>
-		<AotAssemblies>false</AotAssemblies>
-		<EnableLLVM>false</EnableLLVM>
-		<BundleAssemblies>false</BundleAssemblies>
-		<AndroidEnableMultiDex>true</AndroidEnableMultiDex>
-		<AndroidSupportedAbis />
-		<AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-		<DebugSymbols>false</DebugSymbols>
-		<DebugType>pdbonly</DebugType>
-		<Optimize>true</Optimize>
-		<OutputPath>bin\Release</OutputPath>
-		<ErrorReport>prompt</ErrorReport>
-		<WarningLevel>4</WarningLevel>
-		<AndroidManagedSymbols>true</AndroidManagedSymbols>
-		<AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
-		<AotAssemblies>false</AotAssemblies>
-		<EnableLLVM>false</EnableLLVM>
-		<BundleAssemblies>false</BundleAssemblies>
-		<EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
-		<AndroidSupportedAbis />
-		<AndroidEnableMultiDex>true</AndroidEnableMultiDex>
-		<AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
-	</PropertyGroup>
+
 	<ItemGroup>
-		<Reference Include="Mono.Android" />
-		<Reference Include="System" />
-		<Reference Include="System.Core" />
-		<Reference Include="System.Xml.Linq" />
-		<Reference Include="System.Xml" />
+		<ProjectReference Include="..\Ifpa\Ifpa.csproj">
+			<Project>{924ed4a9-0c09-4cd9-b460-7656504673da}</Project>
+			<Name>Ifpa</Name>
+		</ProjectReference>
 	</ItemGroup>
+	
 	<ItemGroup>
 		<PackageReference Include="Plugin.AppShortcuts">
 			<Version>1.0.0.3</Version>
@@ -77,26 +28,8 @@
 		</PackageReference>
 		<PackageReference Include="Syncfusion.Xamarin.SfChart">
 			<Version>20.1.0.55</Version>
-		</PackageReference>
-		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
-		<PackageReference Include="Xamarin.Forms.AppLinks">
-			<Version>5.0.0.2401</Version>
-		</PackageReference>
-	</ItemGroup>
-	<ItemGroup>
-		<Compile Include="MainApplication.cs" />
-		<Compile Include="Renderers\CustomMapRenderer.cs" />
-		<Compile Include="Renderers\HomeTabbedPageRenderer.cs" />
-		<Compile Include="Renderers\TintImageEffect.cs" />
-		<Compile Include="Resources\Resource.designer.cs" />
-		<Compile Include="Services\AndroidReminderService.cs" />
-		<Compile Include="BackgroundReceiver.cs" />
-		<Compile Include="BadgeDrawable.cs" />
-		<Compile Include="MainActivity.cs" />
-		<Compile Include="Properties\AssemblyInfo.cs" />
-		<Compile Include="Services\ToolbarItemBadgeService.cs" />
-		<Compile Include="SplashActivity.cs" />
-	</ItemGroup>
+		</PackageReference>		
+	</ItemGroup>	
 	<ItemGroup>
 		<None Include="Resources\AboutResources.txt" />
 		<None Include="Assets\AboutAssets.txt" />
@@ -172,12 +105,7 @@
 	<ItemGroup>
 		<AndroidResource Include="Resources\drawable\notification_icon.png" />
 	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\Ifpa\Ifpa.csproj">
-			<Project>{924ed4a9-0c09-4cd9-b460-7656504673da}</Project>
-			<Name>Ifpa</Name>
-		</ProjectReference>
-	</ItemGroup>
+
 	<ItemGroup>
 		<AndroidResource Include="Resources\drawable\more.png" />
 	</ItemGroup>
@@ -244,10 +172,5 @@
 			<SubType>Designer</SubType>
 		</AndroidResource>
 	</ItemGroup>
-	<Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
-	<ProjectExtensions>
-		<VisualStudio>
-			<UserProperties TriggeredFromHotReload="False" />
-		</VisualStudio>
-	</ProjectExtensions>
+	
 </Project>

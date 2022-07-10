@@ -1,156 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-	  <TargetFrameworks>net6.0-ios;net6.0-android</TargetFrameworks>
-	  <UseMaui>True</UseMaui>
-	  <OutputType>Library</OutputType>
-	  <ImplicitUsings>enable</ImplicitUsings>
+	<PropertyGroup>
+		<TargetFrameworks>net6.0-ios;net6.0-android</TargetFrameworks>
+		<UseMaui>True</UseMaui>
+		<OutputType>Library</OutputType>
+		<ImplicitUsings>enable</ImplicitUsings>
 
-	  <!-- Required for C# Hot Reload -->
-	  <UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
+		<!-- Required for C# Hot Reload -->
+		<UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
 
-	  <UserSecretsId>f2f2536e-4969-48fa-8248-356ee89e25c0</UserSecretsId>
-  </PropertyGroup>
+		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-ios'">15.4</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-android'">31.0</SupportedOSPlatformVersion>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DebugType>pdbonly</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
-    <PackageReference Include="PinballApi" Version="2.0.78" />
-    <PackageReference Include="Plugin.AppShortcuts" Version="1.0.0.3" />
-    <PackageReference Include="Plugin.LocalNotification" Version="9.2.0" />
-    <PackageReference Include="Scrutor" Version="4.1.0" />
-    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
-    <PackageReference Include="Syncfusion.Licensing" Version="20.1.0.55" />
-    <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="20.1.0.55" />
-    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="20.1.0.55" />
-    <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="20.1.0.55" />
-    <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="20.1.0.55" />
-    <PackageReference Include="System.ServiceModel.Syndication" Version="6.0.0" />
-    <PackageReference Include="Xamarin.Badge.Plugin" Version="2.0.0" />
-    <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2401" />  
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Strings.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Strings.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Styles\DefaultTheme.xaml.cs">
-      <DependentUpon>DefaultTheme.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Styles\LightTheme.xaml.cs">
-      <DependentUpon>LightTheme.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\ChampionshipSeriesPlayerCardPage.xaml.cs">
-      <DependentUpon>ChampionshipSeriesPlayerCardPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\ChampionshipSeriesPage.xaml.cs">
-      <DependentUpon>ChampionshipSeriesPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\CustomRankingsDetailPage.xaml.cs">
-      <DependentUpon>CustomRankingsDetailPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\DataTemplates\ActivityFeedTournamentResultViewCell.xaml.cs">
-      <DependentUpon>ActivityFeedTournamentResultViewCell.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\DirectorsPage.xaml.cs">
-      <DependentUpon>DirectorsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\CustomRankingsPage.xaml.cs">
-      <DependentUpon>CustomRankingsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\FavoritesPage.xaml.cs">
-      <DependentUpon>FavoritesPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\ChampionshipSeriesDetailPage.xaml.cs">
-      <DependentUpon>ChampionshipSeriesDetailPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\PlayerChampionshipSeriesPage.xaml.cs">
-      <DependentUpon>PlayerChampionshipSeriesPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\RulesPage.xaml.cs">
-      <DependentUpon>RulesPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\NewsDetailPage.xaml.cs">
-      <DependentUpon>NewsDetailPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\NewsPage.xaml.cs">
-      <DependentUpon>NewsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\CalendarDetailPage.xaml.cs">
-      <DependentUpon>CalendarDetailPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\PlayerDetailPage.xaml.cs">
-      <DependentUpon>PlayerDetailPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\PlayerSearchPage.xaml.cs">
-      <DependentUpon>PlayerSearchPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\PlayerVersusPlayerPage.xaml.cs">
-      <DependentUpon>PlayerVersusPlayerPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\PlayerVersusPlayerDetailPage.xaml.cs">
-      <DependentUpon>PlayerVersusPlayerDetailPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\TournamentResultsPage.xaml.cs">
-      <DependentUpon>TournamentResultsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\RankingsPage.xaml.cs">
-      <DependentUpon>RankingsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\PlayerResultsPage.xaml.cs">
-      <DependentUpon>PlayerResultsPage.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="AppShell.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Styles\DarkTheme.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\ActivityFeedPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\CalendarFilterModalPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\CalendarPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\ChampionshipSeriesListPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\DataTemplates\ActivityFeedRankChangeViewCell.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\MoreItemsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\PlayerResultsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\RankingsFilterModalPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SettingsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\StatsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\TournamentInfoPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+		<PackageReference Include="PinballApi" Version="2.0.78" />
+		<PackageReference Include="Plugin.AppShortcuts" Version="1.0.0.3" />
+		<PackageReference Include="Plugin.LocalNotification" Version="9.2.0" />
+		<PackageReference Include="Scrutor" Version="4.1.0" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+		<PackageReference Include="Syncfusion.Licensing" Version="20.1.0.55" />
+		<PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="20.1.0.55" />
+		<PackageReference Include="Syncfusion.Xamarin.SfChart" Version="20.1.0.55" />
+		<PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="20.1.0.55" />
+		<PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="20.1.0.55" />
+		<PackageReference Include="System.ServiceModel.Syndication" Version="6.0.0" />
+		<PackageReference Include="Xamarin.Badge.Plugin" Version="2.0.0" />
+		<!--<PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2401" />-->
+	</ItemGroup>
 </Project>

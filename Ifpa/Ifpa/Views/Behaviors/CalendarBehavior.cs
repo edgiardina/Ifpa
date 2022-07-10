@@ -28,7 +28,7 @@ namespace Ifpa.Views.Behaviors
                 foreach (InlineCalendarItem appt in e.Appointments)
                 {
                     Button button = new Button();
-                    button.BackgroundColor = Color.Transparent;
+                    button.BackgroundColor = Colors.Transparent;
                     button.TextColor = (Color)Application.Current.Resources["PrimaryTextColor"];
                     button.Text = appt.Subject;
                     button.CommandParameter = appt.CalendarId;
@@ -40,7 +40,7 @@ namespace Ifpa.Views.Behaviors
             {
                 var label = new Button();
                 label.Text = "No Tournaments";
-                label.BackgroundColor = Color.Transparent;
+                label.BackgroundColor = Colors.Transparent;
                 label.TextColor = (Color)Application.Current.Resources["PrimaryTextColor"];
                 stackLayout.Children.Add(label);
             }
