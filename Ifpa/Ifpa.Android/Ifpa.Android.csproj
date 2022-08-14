@@ -28,10 +28,7 @@
     </PackageReference>
     <PackageReference Include="Plugin.CurrentActivity">
       <Version>2.1.0.4</Version>
-    </PackageReference>
-    <PackageReference Include="Syncfusion.Xamarin.SfChart">
-      <Version>20.1.0.55</Version>
-    </PackageReference>
+    </PackageReference>   
     <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.330701">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

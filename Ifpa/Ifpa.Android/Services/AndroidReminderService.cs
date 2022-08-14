@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Android.Content;
+﻿using Android.Content;
 using Android.Provider;
-using Ifpa.Droid.Services;
 using Ifpa.Interfaces;
 using Ifpa.ViewModels;
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
 
 namespace Ifpa.Droid.Services
 {
-    public class AndroidReminderService : IReminderService
+    public class ReminderService : IReminderService
     {
         public async Task<bool> CreateReminder(CalendarDetailViewModel calendarDetail, string calendarIdentifier)
         {

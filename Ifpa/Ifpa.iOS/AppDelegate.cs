@@ -53,7 +53,7 @@ namespace Ifpa.iOS
 
         public override async void WillEnterForeground(UIApplication uiApplication)
         {
-            await Plugin.LocalNotification.NotificationCenter.ResetApplicationIconBadgeNumber(uiApplication);
+            //await Plugin.LocalNotification.NotificationCenter.ResetApplicationIconBadgeNumber(uiApplication);
             base.WillEnterForeground(uiApplication);
         }
 
@@ -77,10 +77,10 @@ namespace Ifpa.iOS
 
         //}
 
-        static void PlatformSpecificServices(IServiceCollection services)
-        {
-            services.AddSingleton<IReminderService, iOSReminderService>();
-        }
+        //static void PlatformSpecificServices(IServiceCollection services)
+        //{
+        //    services.AddSingleton<IReminderService, iOSReminderService>();
+        //}
 
         #region QuickActions       
 

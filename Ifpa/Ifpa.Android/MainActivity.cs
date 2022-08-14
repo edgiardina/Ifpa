@@ -52,7 +52,7 @@ namespace Ifpa.Droid
 
         static void PlatformSpecificServices(IServiceCollection services)
         {
-            services.AddSingleton<IReminderService, AndroidReminderService>();
+            services.AddSingleton<IReminderService, ReminderService>();
         }
 
         protected override void OnNewIntent(Intent intent)
